@@ -1,0 +1,15 @@
+<div class="row" style="margin-bottom: 20px">
+  <div class="col-xs-4">
+    <i class="fa fa-star fa-lg"></i>
+    <span>{{number}}</span>
+  </div>
+  <div class="col-xs-4">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+           [ngStyle]="{'width': percent + '%', 'background-color': color}" [attr.aria-valuenow]="percent"></div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <span>{{percent}}</span>
+  </div>
+</div>

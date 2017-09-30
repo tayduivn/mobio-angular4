@@ -1,0 +1,23 @@
+:host {
+    .chart-wrapper {
+        height: 190px;
+    }
+    @media (min-width: 768px) {
+        .chart-wrapper {
+            margin-top: 20px;
+        }
+    }
+}
+
+.filter-date {
+    .input-group-addon {
+        border: 1px solid #d1d1d1;
+        border-radius: 5px 0 0 5px;
+        border-right: none;
+    }
+    .form-control {
+        border: 1px solid #d1d1d1;
+        border-left: none;
+        border-radius: 0 5px 5px 0 !important;
+    }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "value": 0,
+    "title": "Thực Phẩm"
+  },
+  {
+    "value": 1,
+    "title": "Quấn áo"
+  },
+  {
+    "value": 2,
+    "title": "Mỹ Phẩm"
+  },
+  {
+    "value": 3,
+    "title": "Ăn Uống"
+  },
+  {
+    "value": 4,
+    "title": "Khăn Giấy"
+  },
+  {
+    "value": 5,
+    "title": "Đồ Ăn"
+  },
+  {
+    "value": 6,
+    "title": "Đồ Chơi"
+  },
+  {
+    "value": 7,
+    "title": "Xe Hơi"
+  }
+]

@@ -1,0 +1,138 @@
+.item {
+  & > * {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-items: flex-start;
+  .action,
+  .phone,
+  .time,
+  .employee {
+    flex: 0 0 10%;
+  }
+  .time-waiting {
+    flex: 0 0 13%;
+  }
+  .duration {
+    flex: 0 0 14%;
+  }
+  .note {
+    flex: 0 0 15%;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .customer {
+    flex: 0 0 18%;
+  }
+  .customer {
+    display: flex;
+    align-items: flex-start;
+    .icon {
+      flex: 0 0 30px;
+    }
+    .avatar {
+      flex: 0 0 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+  }
+  .employee {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .phone {
+    display: flex;
+    align-items: flex-start;
+    .phone-icon {
+      display: none;
+      margin-left: 5px;
+      i {
+        font-size: 1rem;
+      }
+    }
+    .number {
+      flex: 0 0 80%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #69c2e6;
+      cursor: pointer;
+    }
+    &:hover .phone-icon {
+      display: inline;
+    }
+  }
+  .action {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    & > * {
+      flex: 0 0 30px;
+      height: 30px;
+    }
+    a {
+      cursor: pointer;
+    }
+    .edit-note,
+    .play,
+    .download {
+      a {
+        height: 30px;
+        width: 30px;
+        display: block;
+      }
+    }
+    .edit-note a {
+      background: url("/../../../assets/img/call-center/note.svg") no-repeat center; 
+      &:hover {
+        background: url("/../../../assets/img/call-center/note-yellow.svg") no-repeat center; 
+      }
+    }
+    .play a {
+      background: url("/../../../assets/img/call-center/play.svg") no-repeat center;
+      &:hover {
+        background: url("/../../../assets/img/call-center/play-yellow.svg") no-repeat center;
+      }
+    }
+    .download a {
+      background: url("/../../../assets/img/call-center/download.svg") no-repeat center;
+      &:hover {
+        background: url("/../../../assets/img/call-center/download-yellow.svg") no-repeat center;
+      }
+    }
+    .input-edit {
+      background-color: #ffffff;
+      position: absolute;
+      z-index: 10;
+      border: 1px solid #e1e6ef;
+      right: 74px;
+      width: 250px;
+      top: 17px;
+      padding: 8px;
+      border-radius: 3px;
+      textarea {
+        border-radius: 3px;
+      }
+      .action-edit {
+        margin-top: 5px;
+        .count {
+          font-size: 0.6rem;
+        }
+        button {
+          padding: 3px 10px;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}

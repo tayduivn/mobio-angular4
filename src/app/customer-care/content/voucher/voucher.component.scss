@@ -1,0 +1,43 @@
+.button-status {
+  display: block;
+}
+
+.text-view {
+  display: block;
+}
+
+.label-title {
+  margin-left: 0px;
+
+}
+
+.menu-bottom span {
+  font-size: 9px;
+}
+
+.list-category {
+  max-height: 200px;
+  overflow: auto;
+}
+
+.time-start {
+  padding-left: 0;
+}
+
+.tooltip-show {
+  border-bottom: none;
+}
+
+.time-setting {
+  width: 93.5%;
+}
+
+.footer-btn-execute {
+  text-align: right !important;
+  button {
+    width: 95px;
+  }
+  button.btn-cancle {
+    margin-right: 5px;
+  }
+}

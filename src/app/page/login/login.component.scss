@@ -1,0 +1,53 @@
+.title-login {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#btn-register:hover {
+  cursor: pointer;
+}
+
+button {
+  border-radius: 0 !important;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  cursor: pointer;
+}
+
+.info-register {
+  text-align: justify;
+  padding-left: 37px;
+}
+
+.btn {
+  min-width: 120px;
+}
+
+.btn-default {
+  background-color: white;
+  &:hover {
+    background-color: #e1e6ef;
+  }
+  &:active {
+    background-color: #e1e6ef;
+  }
+}
+
+.section-login {
+  margin-bottom: 15px !important;
+}
+
+.validate-error {
+  margin-bottom: 10px;
+  margin-top: -15px;
+  color: red;
+}
+
+.view-login{
+  display: none;
+}

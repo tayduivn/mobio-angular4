@@ -1,0 +1,303 @@
+<div class="animated fadeIn" [hidden]="!hidden">
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-7">
+      <div class="card">
+        <div class="card-header">
+          <strong style="font-size: 13px">Điểm đổi quà tặng</strong>
+          <div class="card-actions">
+            <div class="input-group date filter-date">
+                            <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                                <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                            </span>
+              <input type="text" class="form-control" id="filterDate" daterangepicker
+                     [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter"
+                     (applyDaterangepicker)="selectedDateFitter($event)">
+            </div>
+          </div>
+        </div>
+        <!-- /card header -->
+        <div class="card-block" *ngFor="let c of giftpoint">
+          <mo-line-chart [data]="PointGiftData"></mo-line-chart>
+        </div>
+        <!-- card-block -->
+      </div>
+      <!-- /card -->
+    </div>
+    <!-- /col -->
+    <div class="col-xs-5">
+      <div class="card">
+        <div class="card-header">
+          <strong style="font-size: 13px">Điểm đổi quà tặng theo danh mục</strong>
+          <div class="card-actions">
+            <div class="input-group date filter-date">
+                            <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                                <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                            </span>
+              <input type="text" class="form-control" id="filterDate" daterangepicker
+                     [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter"
+                     (applyDaterangepicker)="selectedDateFitter($event)">
+            </div>
+          </div>
+        </div>
+        <!-- /card header -->
+        <div class="card-block" *ngFor="let c of giftcategory">
+          <mo-progress [data]="PointGiftOfCategoryData"></mo-progress>
+        </div>
+        <!-- card block -->
+      </div>
+      <!-- /card -->
+    </div>
+    <!-- /col -->
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <strong style="font-size: 13px">Lượt tương tác</strong>
+          <div class="card-actions">
+            <div class="input-group date filter-date">
+                            <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                                <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                            </span>
+              <input type="text" class="form-control" id="filterDate" daterangepicker
+                     [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter"
+                     (applyDaterangepicker)="selectedDateFitter($event)">
+            </div>
+          </div>
+        </div>
+        <!-- /card header -->
+        <div class="card-block" *ngFor="let c of giftinteractive">
+          <mo-line-chart [data]="InteractiveData"></mo-line-chart>
+        </div>
+        <!-- card-block -->
+      </div>
+      <!-- /card -->
+    </div>
+    <!-- /col -->
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-3">
+      <div class="input-group">
+                <span class="input-group-btn">
+                    <button (click)="searchProduct($event)" type="button" class="btn btn-primary"><i
+                      class="fa fa-search"></i></button>
+                </span>
+        <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm"
+               #searchItem (keypress)="searchProduct($event)"/>
+      </div>
+    </div>
+    <div class="col-xs-offset-6 col-xs-3">
+      <div class="input-group date filter-date">
+                <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                </span>
+        <input type="text" class="form-control" id="filterDate" daterangepicker [(ngModel)]="stringdaterangeFitter"
+               [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+        <button class="btn btn-default"><i class="fa fa-download"></i> Xuất file</button>
+      </div>
+    </div>
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-top:10px;">
+    <div class="col-xs-3">
+      <div class="card" style="max-height:500px; overflow: auto;">
+        <div class="card-block">
+          <h6>Trạng thái hiển thị</h6>
+          <div class="form-group" style="margin-top:10px ">
+            <div class="radio">
+              <label><input type="radio" name="show" #showStateItem
+                            (change)="filterStateShow($event)"> Hiển thị</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="show" #hideStateItem
+                            (change)="filterStateShow($event)"> Ẩn</label>
+            </div>
+          </div>
+
+          <h6>Trạng thái đổi điểm</h6>
+          <div class="form-group" style="margin-top:10px ">
+            <div class="radio">
+              <label><input type="radio" name="optradio" #allowChangeItem
+                            (change)="filterAllowChange($event)"> Cho phép đổi</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="optradio" #dontAllowChangeItem
+                            (change)="filterAllowChange($event)"> Không cho phép đổi</label>
+            </div>
+          </div>
+
+          <h6>Danh mục</h6>
+          <div class="form-group" style="margin-top:10px ">
+            <div class="checkbox" *ngFor="let promotionType of promotionTypes">
+              <label>
+                <input name="{{promotionType.code}}" type="checkbox" value="{{promotionType.code}}"
+                       (change)="filterPromotion($event, promotionType.code)"> {{promotionType.title.vi}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+    <div class="col-xs-9">
+      <div class="card">
+        <table class="table table-condensed">
+          <thead>
+          <th>Tên quà tặng</th>
+          <th>Điểm đổi quà tặng trong kỳ báo cáo</th>
+          <th>Điểm đổi quà toàn thời gian</th>
+          </thead>
+          <tbody>
+          <tr class="animated fadeIn" *ngFor="let p of giftpresent">
+            <td><a href="javascript:void(0);" (click)="showPromotionDetail(p.idPromotion)">{{p.name}}</a></td>
+            <td>{{p.period}}</td>
+            <td>{{p.all}}</td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="1">
+              <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+            </td>
+            <td colspan="1"></td>
+            <td colspan="1" style="padding-right: 0;">
+              <div class="input-group">
+                <span class="input-group-addon file-upload-show">Hiển thị </span>
+                <select class="select-page" id="select-page" name="select-page" size="1" #_selectCurrentPage
+                        (change)="changePerPage(_selectCurrentPage.value)">
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- row -->
+</div>
+<!-- /content -->
+
+<!-- detail content -->
+<div class="animated fadeIn web-card" [hidden]="hidden">
+  <div class="row" style="margin-bottom:10px" *ngFor="let p of presentdetail">
+    <button (click)="changeHideShow()" style="position:absolute; top:-30px; right:30px" type="button"
+            class="btn btn-sm btn-default">Chi tiết <i class="fa fa-close"></i></button>
+    <div class="col-xs-3">
+      <div class="image-detail">
+        <img [src]="p.image" alt="">
+      </div>
+    </div>
+    <!-- /col -->
+    <div class="col-xs-7">
+      <div class="content-detail">
+        <h5>{{p.name}}</h5>
+        <div class="gift-point">
+          <div class="row">
+            <div class="col-xs-4">
+              <strong>{{p.total_user_purchase || 0}}</strong>
+              <p>Điểm khách hàng đổi quà tặng</p>
+            </div>
+            <div class="col-xs-4">
+              <strong>{{p.total_purchase || 0}}</strong>
+              <p>Lượt đổi quà tặng</p>
+            </div>
+            <div class="col-xs-4">
+              <strong>{{p.purchase || 0}}</strong>
+              <p>Lượt nhận</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- /col -->
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-3">
+      <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </span>
+        <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm"/>
+      </div>
+    </div>
+    <div class="col-xs-offset-7 col-xs-2">
+      <div class="input-group" style="display:block;">
+        <button style="float:right;" class="btn btn-default"><i class="fa fa-download"></i> Xuất file</button>
+      </div>
+    </div>
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-12">
+      <div class="card" style="padding:5px;">
+        <div class="row">
+          <div class="col-xs-4" *ngFor="let t of transaction">
+            <div class="card">
+              <div class="card-block">
+                <div class="customer-content">
+                  <p><strong>{{t.nameCustomer}}</strong></p>
+                  <p>{{t.tel}}</p>
+                  <p>{{t.email}}</p>
+                </div>
+                <div class="customer-content">
+                  <p>Mã giao dịch: <strong>{{t.code}}</strong></p>
+                  <p>
+                    <button type="button" class="btn btn-sm"
+                            [ngClass]="{'btn-warning':t.status === 1, 'btn-success':t.status ===2, 'btn-danger':t.status === 3,'btn-info':t.status === 4}">
+                      <span *ngIf="t.status === 1">Chờ xác nhận</span>
+                      <span *ngIf="t.status === 2">Xác nhận</span>
+                      <span *ngIf="t.status === 3">Huỷ</span>
+                      <span *ngIf="t.status === 4">Đã nhận</span>
+                    </button>
+                  </p>
+                </div>
+                <div class="customer-content">
+                  <p>Đổi quà tặng: {{t.timeOfRegister | date:'short'}}</p>
+                  <p *ngIf="t.status != 3">Xác nhận yêu cầu: {{t.timeOfUpdate| date:'short'}}</p>
+                  <p *ngIf="t.status === 3">Huỷ: {{t.timeOfUpdate | date:'short'}}</p>
+                  <p *ngIf="t.timeOfConfirm">Nhận: {{t.timeOfConfirm | date:'short'}}</p>
+                </div>
+                <div class="customer-content">
+                  <p>Thông tin nhận: {{t.address}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /col -->
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-bottom:15px;">
+    <div class="col-xs-10">
+    </div>
+    <div class="col-xs-2">
+      <div class="input-group">
+        <span class="input-group-addon file-upload-show">Hiển thị </span>
+        <select class="select-page" id="select-page" name="select-page" size="1">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /detail content -->

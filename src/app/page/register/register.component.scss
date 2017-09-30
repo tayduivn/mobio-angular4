@@ -1,0 +1,74 @@
+.text-muted-2 {
+  margin-top: 10px !important;
+  margin-bottom: -10px !important;;
+  color: #a74333 !important;
+  margin-left: 1px !important;
+}
+
+button {
+  border-radius: 0 !important;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  cursor: pointer;
+}
+
+.fa {
+  font-size: 20px;
+}
+
+select {
+  width: 100%;
+  text-align: right;
+  padding-left: 12px
+}
+
+.title-register {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.input-group-addon {
+  width: 60px;
+}
+
+.btn-block {
+  width: 120px;
+  margin: 0 auto;
+}
+
+.register-account {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.view-login {
+  display: none;
+}
+
+.help-block {
+  color: red;
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+.view-display {
+  color: #20a8d8;
+}
+
+.view-display {
+  &:hover {
+    color: #167495;
+    text-decoration: underline;
+  }
+  &:focus {
+    color: #167495;
+    text-decoration: underline;
+  }
+}

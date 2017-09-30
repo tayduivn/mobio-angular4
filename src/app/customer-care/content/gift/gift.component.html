@@ -1,0 +1,478 @@
+<div class="animated fadeIn">
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-3">
+      <div class="input-group search-content">
+                <span class="input-group-btn">
+                    <button (click)="searchGift()" type="button" class="btn btn-primary"><i
+                      class="fa fa-search"></i></button>
+                  </span>
+        <input [(ngModel)]="keySearch" (keyup.enter)="searchGift()" type="text" id="input1-group2" name="input1-group2"
+               class="form-control"
+               placeholder="Tìm kiếm"/>
+      </div>
+    </div>
+    <!--search-->
+    <div class="col-md-4">
+      <button class="btn btn-delete" [disabled]="!allowButton" (click)="removeGiftSelect()">Xóa
+      </button>
+      <button class="btn btn-hide" [disabled]="!allowButton" (click)="switchStateGift(2)">Ẩn
+      </button>
+      <button class="btn btn-show" [disabled]="!allowButton" (click)="switchStateGift(1)">Hiển thị</button>
+    </div>
+    <div class="col-md-5 btn-execute">
+      <button class="btn btn-created" type="button" (click)="showCreateGift()"><i
+        class="fa fa-plus-circle"></i> Tạo quà tặng
+      </button>
+    </div>
+  </div>
+  <!--search and upload file, create gift-->
+
+  <div class="row">
+    <div class="col-md-2 col-sm-9">
+      <div class="card card-filter">
+        <div class="card-header">Trạng thái hiển thị</div>
+        <div class="card-block">
+          <div class="checkbox">
+            <label>
+              <input name="chkShow" type="checkbox" value="show" #showStateItem
+                     (change)="filterStateShow()"> Hiển
+              Thị
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input name="chkHide" type="checkbox" value="hide" #hideStateItem
+                     (change)="filterStateHide()"> Ẩn
+            </label>
+          </div>
+        </div>
+        <!--Trạng thái hiển thị -->
+        <div class="card-header">Trạng thái hiệu lực</div>
+        <div class="card-block">
+          <div class="checkbox">
+            <label>
+              <input name="chkAllow" type="checkbox" value="allow" #acceptEffect
+                     (change)="filterAcceptEffect()"> Có
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input name="chkReject" type="checkbox" value="reject" #rejectEffect
+                     (change)="filterRejectEffect()"> Không
+            </label>
+          </div>
+        </div>
+        <!--Trạng thai hiệu lực -->
+        <div class="card-header">Danh Mục</div>
+        <div class="card-block list-category">
+          <div class="checkbox" *ngFor="let promotionType of promotionTypes">
+            <label>
+              <input name="{{promotionType.code}}" type="checkbox" value="{{promotionType.code}}"
+                     (change)="filterCate($event, promotionType.code)"> {{promotionType.title.vi}}
+            </label>
+          </div>
+        </div>
+        <!--Danh mục -->
+      </div>
+    </div>
+    <!--Menu left- Filtering promotion-->
+    <div class="col-md-10 col-sm-12">
+      <div class="card">
+        <table class="table table-list">
+          <thead>
+          <tr>
+            <th style="width:20px">
+              <input type="checkbox" (click)="selectGifts($event)" #_selectAllGift/>
+            </th>
+            <th style="width: 15%">
+              Ảnh đại diện
+            </th>
+            <th style="width: 20%">
+              Tên quà tặng
+              <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconName===0,
+                    'fa-sort-asc':setIconName===1,'fa-sort-desc':setIconName===2}" aria-hidden="true"
+                 (click)="sortNameGift()"></i>
+            </th>
+            <th style="width: 10%">
+              Điểm
+              <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconPoint===0,
+                    'fa-sort-asc':setIconPoint===1,'fa-sort-desc':setIconPoint===2}" aria-hidden="true"
+                 (click)="sortPoint()"></i>
+            </th>
+            <th style="width: 20%;text-align: center">
+              Thời gian bắt đầu
+              <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconTimeStart===0,
+                    'fa-sort-asc':setIconTimeStart===1,'fa-sort-desc':setIconTimeStart===2}" aria-hidden="true"
+                 (click)="sortTimeStart()"></i>
+            </th>
+            <th style="width: 20%;text-align: center;">
+              Thời gian kết thúc
+              <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconTimeEnd===0,
+                    'fa-sort-asc':setIconTimeEnd===1,'fa-sort-desc':setIconTimeEnd===2}" aria-hidden="true"
+                 (click)="sortTimeEnd()"></i>
+            </th>
+            <th style="width: 20%;text-align: center;"> Thao tác</th>
+          </tr>
+          </thead>
+          <tbody style="height: 450px">
+          <tr *ngFor="let gift of gifts" [class.state-show]="gift.state === 2">
+            <td><input name="{{gift.idGift}}" value="{{gift.idGift}}" type="checkbox"
+                       (change)="selectGift($event,gift.idGift)" [checked]="gift['select']">
+            </td>
+            <td><img
+              [src]="!gift.avatar?'http://icons.iconarchive.com/icons/icons8/ios7/96/Ecommerce-Gift-icon.png':gift.avatar"
+              width="100%" height="72" alt=""></td>
+            <td style="color: #37b7f7">
+              <button class="btn out-date" [ngStyle]="{'display': gift.stateOfEffect === 1? 'none':'initial'}">
+                Hết hiệu lực
+              </button>
+              <br/>
+              <label>{{gift.nameGiff}}</label>
+            </td>
+            <td style="text-align: center;">{{gift.conversionPoint}}</td>
+            <td style="text-align: center;">{{gift.timeStartPromotion}}</td>
+            <td style="text-align: center;">{{gift.timeEndPromotion}}</td>
+            <td style="text-align: center" class="btn-execute">
+              <i (click)="showEditGift(gift.idGift, gift.state)" class="fa fa-pencil-square-o fa-3" tooltip="Sửa"
+                 aria-hidden="true"></i>
+              <i (click)="switchSingleState(gift.idGift, gift.state)" class="fa"
+                 [tooltip]="gift.state === 1? 'Ẩn': 'Hiện'"
+                 [ngClass]="{'fa-eye': gift.state === 2,'fa-eye-slash': gift.state === 1}"></i>
+              <i (click)="removeGift(gift.nameGiff,gift.idGift)" class="glyphicon glyphicon-trash" tooltip="Xóa"></i>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="5">
+              <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+            </td>
+            <td></td>
+            <td style="float: right;">
+              <div class="input-group">
+                <span class="input-group-addon file-upload-show">Hiển thị </span>
+                <select class="select-page" id="select-page" name="select-page" size="1" #_selectCurrentPage
+                        (change)="changePerPage(_selectCurrentPage.value)">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <!--Table show data and action add + edit + delete-->
+  </div>
+  <!--Show Table List Product-->
+</div>
+<!-- From Cread Voucher-->
+<div bsModal #giftModal="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{textTitle}}</h4>
+        <button type="button" class="close" (click)="giftModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="    height: 533px;overflow: auto;">
+        <div class="row body-create-product">
+          <div class="col-sm-8 col-sm-offset-4">
+            <div class="col-sm-12 creat-product">
+              <div class="form-group row">
+
+                <div class="col-sm-12">
+                  <label class="col-sm-10 form-control-label label-title" for="input-name">Tên quà tặng(*)</label>
+                  <div class="input-group">
+                    <input class="form-control input-sm col-sm-11" id="input-name" name="input-name" maxlength="256"
+                           [(ngModel)]="gift.nameGiff" [disabled]="isLoadingGift" placeholder="Tên quà tặng(*)"
+                           type="text">
+
+                  </div>
+                </div>
+                <!--username-->
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-10 form-control-label">Danh muc (*)</label>
+                <div class="col-sm-4" *ngFor="let promotionType of promotionTypesModal">
+                  <div class="checkbox">
+                    <label>
+                      <input name="input-category" type="checkbox" [checked]="promotionType['select']"
+                             [value]="promotionType.code" [disabled]="isLoadingGift"
+                             (change)="selectPromotionInModal($event, promotionType.code)"> {{promotionType.title.vi}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!--Danh Mục-->
+              <!--Danh Muc-->
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <label class="col-sm-4 form-control-label label-title">Kiểu quà tặng</label>
+                  <select #typeGift class="form-control ng-valid ng-dirty ng-touched col-sm-11"
+                          (change)='selectGiftForm(typeGift.value)'>
+                    <option value="[1]" [selected]="gift.giftForm === '[1]'">Quà tặng nhận ngay sau khi đổi</option>
+                    <option value="[2]" [selected]="gift.giftForm === '[2]'">Quà tặng nhận sau qua bưu điện</option>
+                  </select>
+                </div>
+                <!--Kieu Nhan Qua nhung thuc ra là HinhThucMhanQua -->
+              </div>
+              <div class="form-group row" *ngIf="gift.giftForm === '[1]'">
+                <div class="col-sm-12">
+                  <label class="col-sm-4 form-control-label label-title">Quà tặng</label>
+                  <select class="form-control ng-valid ng-dirty ng-touched col-sm-11" #_giftType
+                          (change)='selectGiftTypes(_giftType.value)'>
+                    <option [value]="0" disabled [selected]="gift.typeGift === 0">Chọn quà tặng</option>
+                    <option *ngFor="let giftType of giftTypes" [value]="giftType.id"
+                            [selected]="gift.typeGift === giftType.id">{{giftType.name}}
+                    </option>
+                  </select>
+                </div>
+                <!--Qua Tang nhan nhung thuc ra là KieuQuaTang-->
+              </div>
+              <!--condition-->
+
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <label class="col-sm-12 form-control-label label-title" for="input-name">Trị giá quà tặng (*)</label>
+                  <div class="input-group">
+                    <input class="form-control input-sm col-sm-9" name="distance-boy" (change)="changePriceGift()"
+                           placeholder="Trị giá quà tặng (*)" type="number" style="max-width: 84%;" min="0"
+                           [(ngModel)]="gift.price" [disabled]="gift.giftForm === '[1]' || isLoadingGift">
+                    <span class="input-group-addon">VNĐ</span>
+                  </div>
+                </div>
+                <!--password-->
+              </div>
+              <!--condition-->
+
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <label class="col-sm-12 form-control-label label-title" for="input-name">Điểm đổi quà tặng (*)</label>
+                  <input class="form-control input-sm col-sm-11" name="distance-boy" [(ngModel)]="gift.conversionPoint"
+                         placeholder="Điểm đổi quà tặng (*)" type="number" min="0">
+                </div>
+                <!--password-->
+              </div>
+              <!--condition-->
+
+            </div>
+            <!---- Create product section 1--->
+            <div class="col-sm-12 creat-product">
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <label class="col-sm-12 form-control-label label-title" for="input-name">Số lượng quà tặng (*)</label>
+                  <input #giftExchangePoint class="form-control input-sm col-sm-11" name="" min="0"
+                         placeholder="Số lượng quà tặng (*)" type="number" [(ngModel)]="gift.number_max"
+                         style="max-width: 84%;" (change)="validateGift(giftExchangePoint.value, typeGift.value)">
+                  <span class="error-message col-sm-11" [ngStyle]="{'display': setErrorQuantity?'none':'block'}"
+                        style="color: #f00; padding: 0px;max-width: 87%;">Số lượng quà tặng không được phép lớn hơn trong kho</span>
+                </div>
+                <!--password-->
+                <div class="col-sm-6" [ngStyle]="{'display': gift.giftForm === '[1]'? 'initial': 'none'}">
+                  <label class="col-sm-12 form-control-label label-title">Số lượng quà tặng còn trong kho</label>
+                  <input class="form-control input-sm col-sm-10" name="distance-boy" min="0" type="number"
+                         placeholder="Số lượng quà tặng còn trong kho" [ngModel]="totalGifAvailable" disabled>
+                </div>
+                <!--password-->
+              </div>
+            </div>
+            <div class="col-sm-12 creat-product">
+              <div class="form-group row input-two-data">
+                <div class="col-6" style="padding-left: 0;">
+                  <label class="col-sm-12 form-control-label">Thời gian bắt đầu(*)</label>
+                  <div class="col-sm-12">
+                    <duc-datetimepicker [options]="optionsStartEventDatetimePicker" [groupClass]="'left-ico'"
+                                        [groupIconClass]="'fa fa-calendar'"
+                                        [(ngModel)]="gift.timeStartPromotion"></duc-datetimepicker>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="col-sm-12 form-control-label">Thời gian kết thúc</label>
+                  <div class="col-sm-12">
+                    <duc-datetimepicker [options]="optionsEndEventDatetimePicker" [groupClass]="'left-ico'"
+                                        [groupIconClass]="'fa fa-calendar'"
+                                        [(ngModel)]="gift.timeEndPromotion"></duc-datetimepicker>
+                  </div>
+                </div>
+              </div>
+              <!--Date start and End date-->
+              <div class="form-group row input-two-data">
+                <div class="col-6" style="padding-left: 0;">
+                  <label class="col-sm-12 form-control-label">Thời gian bắt đầu hiện thị(*)</label>
+                  <div class="col-sm-12">
+                    <duc-datetimepicker [options]="optionsStartDisplayDatetimePicker" [groupClass]="'left-ico'"
+                                        [groupIconClass]="'fa fa-calendar'"
+                                        [(ngModel)]="gift.timeStartDisplay"></duc-datetimepicker>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="col-sm-12 form-control-label">Thời gian kết thúc hiển thị</label>
+                  <div class="col-sm-12">
+                    <duc-datetimepicker [options]="optionsEndDisplayDatetimePicker" [groupClass]="'left-ico'"
+                                        [groupIconClass]="'fa fa-calendar'"
+                                        [(ngModel)]="gift.timeEndDisplay"></duc-datetimepicker>
+                  </div>
+                </div>
+              </div>
+              <!--Date start display and date end display-->
+            </div>
+            <!-- Create promotion section 3 -->
+            <div class="col-sm-12 creat-product">
+              <div class="form-group" style="width: 91.5%;margin-left: 0%;">
+                <label class="form-control-label">Mô tả (*)</label>
+                <ckeditor [config]="config" [(ngModel)]="gift.description"></ckeditor>
+              </div>
+              <div class="form-group row" style="padding: 0 15px;">
+                <label>Tags <i class="fa fa-question"
+                               tooltip="Bạn nên chọn các từ khóa có liên quan đến khuyễn mãi để tối ưu hóa tim kiếm trên Google Search và các công cụ tìm kiếm khác"></i></label>
+                <div style="width: 96%;">
+                  <tag-input [(ngModel)]='tags'></tag-input>
+                </div>
+              </div>
+            </div>
+            <!-- Create promotion section 4 -->
+            <div class="col-sm-12 creat-product" style="padding: 20px 40px 0;" #elImageDescription>
+              <div class="col-sm-12 header-upload">
+                <label class="col-sm-10 form-control-label title-upload">Ảnh đại diện (*)</label><br/>
+                <i>Kích thước 320x320 pixels Dung lượng =< 100kB Ảnh jpg, jpeg, png</i>
+              </div>
+              <div class="col-sm-12" style="min-height: 150px;">
+                <div class="form-group row">
+                  <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOverAvatar}"
+                       (onFileDrop)="changeUrlFileUploadAvatar()" (fileOver)="fileOverBaseUploadAvatar($event)"
+                       [uploader]="uploaderAvatar" class="well my-drop-zone">
+                    <div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và thả ảnh</div>
+                    <div class="row">
+                      <div class="col-sm-4 text-right text-hoac">
+                        Hoặc :
+                      </div>
+                      <div class="col-sm-6">
+                        <button class="btn btn-s" type="button" (click)="chooseFileUpdateAvatar()">
+                          <span class="glyphicon glyphicon-upload"></span> Chọn file
+                        </button>
+                        <div class="hidden-md-down hidden-md-up">
+                          <input type="file" #elInputFileAvatar ng2FileSelect (change)="changeUrlFileUploadAvatar()"
+                                 [(uploader)]="uploaderAvatar"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div *ngFor="let imgAvatar of uploaderAvatar.queue,let iImgAvatar = index" class="fileImgUpload">
+                      <img [src]="imgAvatar.url" [alt]="'Ảnh '+iImgAvatar">
+                      <span (click)="imgAvatar.remove()"> <i class="fa fa-close"></i></span>
+                    </div>
+                    <div *ngIf="gift.avatar && gift.avatar!=='' && uploaderAvatar.queue.length===0"
+                         class="fileImgUpload">
+                      <img [src]="gift.avatar">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Ảnh đại diện -->
+              <div class="col-sm-12 header-upload">
+                <label class="col-sm-10 form-control-label title-upload">Ảnh mô tả (*)</label><br/>
+                <i>Kích thước 720x450 pixels Dung lượng =< 100kB Ảnh jpg, jpeg, png</i>
+              </div>
+              <div class="col-sm-12" style="min-height: 150px;">
+                <div class="form-group row">
+                  <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOverImageDescriptions}"
+                       (onFileDrop)="changeUrlFileUploadImageDescriptions()"
+                       (fileOver)="fileOverBaseUploadImageDescriptions($event)" [uploader]="uploaderImageDescriptions"
+                       class="well my-drop-zone">
+                    <div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và thả ảnh</div>
+                    <div class="row">
+                      <div class="col-sm-4 text-right text-hoac">
+                        Hoặc :
+                      </div>
+                      <div class="col-sm-6">
+                        <button class="btn btn-s" type="button" (click)="chooseFileUpdateImageDescriptions()">
+                          <span class="glyphicon glyphicon-upload"></span> Chọn file
+                        </button>
+                        <span style="display: none" *ngFor="let item of uploaderImageDescriptions.queue">
+                          {{ item?.file?.name }}
+                        </span>
+                        <div class="hidden-md-down hidden-md-up">
+                          <input type="file" accept="image/x-png,image/gif,image/jpeg" [disabled]="isLoadingGift"
+                                 #elInputFileImageDescriptions ng2FileSelect
+                                 (change)="changeUrlFileUploadImageDescriptions()"
+                                 [(uploader)]="uploaderImageDescriptions" multiple/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div *ngFor="let imgDescription of uploaderImageDescriptions.queue,let iImgDescription = index"
+                         class="fileImgUpload">
+                      <img [src]="imgDescription.url" [alt]="'Ảnh '+iImgDescription">
+                      <span (click)="imgDescription.remove()"> <i class="fa fa-close"></i></span>
+                    </div>
+                    <div *ngFor="let imgEdit of gift.imageDescriptions;let iImgDescription = index"
+                         class="fileImgUpload">
+                      <img [src]="imgEdit.linkImage">
+                      <span (click)="removeImgDescription(iImgDescription)"> <i class="fa fa-close"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- ảnh mô tả -->
+            </div>
+            <!-- Create gift section 6 => Image description -->
+
+            <div class="col-sm-12 creat-product" style="padding: 20px 40px 0;">
+              <div class="form-group row">
+                <label class="col-sm-3 form-control-label">Trạng Thái Hiển Thị</label>
+                <label class="switch switch-3d switch-mobio" style="margin-top:5px;">
+                  <input checked="" class="switch-input" type="checkbox" (change)="switchState($event)"
+                         [checked]="gift.state===1" [disabled]="isLoadingGift">
+                  <span class="switch-label"></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </div>
+            </div>
+            <!--Create  section 7 Trạng Thái Hiển Thị -->
+
+
+          </div>
+          <!--Left body content-->
+
+          <div class="col-sm-4" id="viewmobile" style="position: relative;">
+            <div id="scroolMobie" class="fixed sidebar-outer">
+              <div id="contentIphoneOut">
+                <div id="contentIphoneIn">
+                  <mobile-gift-component #elMobileGift [uploaderImageDescriptions]="uploaderImageDescriptions.queue"
+                                         [uploaderAvatar]="(!!uploaderAvatar && uploaderAvatar.queue.length > 0)?uploaderAvatar.queue[0].url:''"
+                                         [gift]="gift" [setTop]="setTop"></mobile-gift-component>
+                </div>
+              </div>
+              <!--<mobileKaraoke-component></mobileKaraoke-component>-->
+            </div>
+          </div>
+          <!-- Mobile view product-->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-xs-12">
+
+          <button class="btn btn-created" type="button" [ladda]="isLoadingGift" (click)="saveGift()">Lưu
+          </button>
+
+          <button class="btn btn-cancle" type="button" (click)="giftModal.hide()">Bỏ qua
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->

@@ -1,0 +1,174 @@
+
+.title_creat_shop {
+  margin-left: -16px;
+  font-size: 16px;
+  color: black;
+  padding-left: 0px;
+}
+
+.tooltip-show {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-show .tooltiptext-show {
+  visibility: hidden;
+  width: 59%;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 53%;
+  margin-left: -355px;
+  opacity: 0;
+  transition: opacity 1s;
+  visibility: visible;
+  top: -60px;
+  left: 88%;
+  text-align: justify;
+  padding: 5px;
+}
+
+.tooltip-show .tooltiptext-show::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 13%;
+  margin-left: -35px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+  display: none;
+}
+
+.tooltip-show:hover .tooltiptext-show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.body-create-card .form-control-label {
+  padding: 0px;
+}
+
+.buttom-option {
+  text-align: center;
+}
+
+.buttom-option button {
+  width: 100px;
+}
+
+.titleinfo {
+  display: block;
+  margin-top: -9px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  width: 100%;
+}
+
+.setupCart ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.setupCart {
+  width: 96%;
+  padding: 0px;
+  margin-left: 0px;
+}
+
+.setupCart ul {
+  width: 100%;
+}
+
+.setupCart ul li {
+  width: 100%;
+  border: 1px solid #ccc;
+  font-size: 16px;
+
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-bottom: 5px;
+  cursor: move;
+  height: 38px;
+}
+
+.label-card {
+
+  width: 210px;
+  margin: 0px;
+  float: left;
+  padding: 6px 9px;
+  clear: both;
+  cursor: move;
+}
+
+.condition-cart {
+  width: 63%;
+  float: right;
+  height: 36px;
+  border: none;
+  border-left: 1px solid #ccc;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.error-message {
+  text-align: center;
+  display: block;
+  width: 100%;
+  color: #f00;
+}
+
+.modal-body {
+  overflow-y: scroll !important;
+  height: 525px !important;
+}
+
+.modal-create-product {
+  overflow-y: hidden !important;
+}
+
+// table card style======================================
+tr[class='list-card-pattern'] th {
+  text-align: left;
+}
+
+// === End style table scroll
+#totalPoint {
+  border: 3px solid #ccc;
+  padding: 10px;
+  width: 66%;
+}
+
+#totalPoint span {
+  display: block;
+  float: right;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 19px;
+}
+
+#filterDate {
+  float: right;
+  height: 40px;
+  margin-right: 10px;
+  width: 70%;
+}
+
+.filter-date {
+  width: 80%;
+}
+
+.blue {
+  color: #09c519;
+}
+
+.red {
+  color: #f00;
+}

@@ -1,0 +1,18 @@
+<div [ngStyle]="style">
+	<div class="sq-datetimepicker-input-group input-group date" [ngClass]="groupClass">
+		<span class="input-group-addon">          
+			<span [ngClass]="groupIconClass"></span>
+		</span>
+		<input type="text" 
+			[ngClass]="inputClass" 
+			[readOnly]="readOnly" 
+			[placeholder]="placeholder"
+			[textMask]="{mask: dateTimeMask}"/>
+		<span class="input-group-addon">          
+			<span [ngClass]="groupIconClass"></span>
+		</span>
+	</div>
+	<input type="text" class="sq-datetimepicker-input" [ngClass]="inputClass" [readOnly]="readOnly" [placeholder]="placeholder"
+	/>
+	<div class="sq-datetimepicker-inline"></div>
+</div>

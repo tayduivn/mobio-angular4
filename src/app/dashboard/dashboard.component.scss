@@ -1,0 +1,35 @@
+:host {
+    .rating {
+        overflow-y: auto;
+    }
+}
+
+h1 {
+    font: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+}
+
+.demo-view {
+    font-size: 18px;
+}
+
+:host /deep/ .card {
+    .card-header {
+        background: transparent;
+        border-bottom: 0;
+    }
+    margin-bottom: 3px;
+}
+
+.progress {
+    margin-bottom: 10px;
+}
+
+:host() /deep/ {
+    .double-height-card {
+        height: 321px;
+    }
+}
+
+.progress-bar {
+    height: 12px !important;
+}

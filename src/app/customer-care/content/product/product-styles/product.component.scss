@@ -1,0 +1,251 @@
+.header-pagination {
+    padding-left: 0;
+}
+
+.perpage-pagination {
+    padding-right: 0;
+    float: right;
+}
+
+// default style table
+:host /deep/ .card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: white !important;
+    border-bottom: 1px solid white !important;
+}
+
+td>button {
+    border-radius: 5px;
+    color: white;
+}
+
+.btn-remove {
+    border: 1px solid red;
+    border-radius: 5px;
+    color: red;
+}
+
+.btn-display {
+    border: 1px solid green;
+    border-radius: 5px;
+    color: green;
+}
+
+h1 {
+    color: red;
+}
+
+:host /deep/ .btn-execute>button {
+    float: right;
+}
+
+button {
+     :hover {
+        cursor: pointer;
+    }
+     :active {
+        cursor: pointer;
+    }
+}
+
+.btn-crud>button {
+    background-color: white !important;
+}
+
+.title-filter {
+    text-transform: uppercase;
+}
+
+label>input[type='checkbox'] {
+    margin-left: 5px;
+}
+
+.card-header {
+    text-transform: uppercase;
+}
+
+.card-filter>.card-block {
+    padding-bottom: 5px !important;
+    padding-top: 10px !important;
+}
+
+.execute>i:hover {
+    cursor: pointer;
+}
+
+td>i {
+    padding-right: 5px;
+}
+
+.tooltip-show {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    .tooltiptext-show {
+        visibility: hidden;
+        width: 100%;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 53%;
+        margin-left: -355px;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+    .tooltiptext-show::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 7%;
+        margin-left: -35px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+     :hover .tooltiptext-show {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.modal-create-product {
+    max-height: 710px !important;
+    overflow-y: hidden;
+}
+
+.modal-lg {
+    .modal-body {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 550px;
+    }
+}
+
+.btn-create-product {
+    float: right;
+    margin-left: 15px;
+    width: 100px;
+}
+
+// scroll categories and table
+.list-category {
+    height: 31vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 20px;
+}
+
+th i {
+    float: right;
+}
+
+.select-page {
+    width: 60px;
+    padding-left: 15px;
+}
+
+ul[class='pagination'] li:hover {
+    cursor: pointer !important;
+}
+
+.select-cursor:hover {
+    cursor: pointer;
+}
+
+.input-upload {
+    color: white;
+     :hover {
+        cursor: pointer;
+    }
+}
+
+.validate-error {
+    color: red;
+}
+
+.header-upload {
+    padding-left: 0;
+    margin-bottom: 10px;
+}
+
+.title-upload {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.out-icon-sort {
+    position: relative;
+    padding: 4px 8px 3px 5px;
+    float: right;
+    i.fa-sort-asc {
+        font-size: 24px;
+        position: absolute;
+        top: 5px;
+        left: 0;
+        cursor: pointer;
+        height: 11px;
+        font-size: 24px;
+        height: 20px;
+        /* border: 1px solid; */
+        width: 30px;
+        top: -5px;
+        padding-top: 8px;
+        /* background: #f00; */
+        left: -10px;
+        z-index: 9999;
+    }
+    i.fa-sort-desc {
+        font-size: 24px;
+        position: absolute;
+        /* margin-top: 6px; */
+        left: 0;
+        cursor: pointer;
+        /* background: black; */
+        height: 11px;
+        /* border: 1px solid; */
+        top: 16px;
+        line-height: 2px;
+        height: 20px;
+        width: 30px;
+        left: -10px;
+        z-index: 99999;
+    }
+    i.fa-sort-asc:hover {
+        background: #e2e2e2;
+    }
+    i.fa-sort-desc:hover {
+        background: #e2e2e2;
+    }
+}
+
+.label-title {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.table-list {
+    td,
+    .table-list th {
+        float: none;
+    }
+    tbody td {
+        width: 0;
+    }
+    .btn-execute {
+        text-align: center;
+        border-right: 1px solid #f1f1f1;
+    }
+    .allowShow {
+        background: #f9f9f9;
+    }
+}
+
+.fa-sm-cs {
+    font-size: 14px;
+}

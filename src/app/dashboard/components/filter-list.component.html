@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header">
+        <h6 style="font-weight:400">{{data.title}}</h6>
+    </div>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-inline">
+                    <div class="col-md-3 mb-1" *ngFor="let filter of data.filters; let idx = index">
+                        <input type="radio" id="{{data.name + '-radio-' + idx}}" [name]="data.name" value="filter.id" [attr.checked]="idx === 0 ? '': null ">
+                        <label for="{{data.name + '-radio-' + idx}}" class="d-inline">{{filter.name}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+        <table class="table table-bordered" style="border:none">
+            <thead style="border:none; border-bottom:1px solid #d1d1d1;">
+                <tr>
+                    <th style="border-right:1px solid #d1d1d1 !important">Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of data.products">
+                    <td style="border-right:1px solid #d1d1d1 !important; border-bottom:1px solid #d1d1d1 !important">{{product.name}}</td>
+                    <td style="border-bottom:1px solid #d1d1d1 !important">{{product.total}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--/.card-->

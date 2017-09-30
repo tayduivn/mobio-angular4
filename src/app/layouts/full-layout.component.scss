@@ -1,0 +1,35 @@
+@media screen and (min-width: 768px) {
+
+  .megamenu ul {
+    padding-bottom: 15px;
+  }
+
+  .megamenu > .dropdown-menu {
+    left: -90%;
+    min-width: 800px;
+  }
+
+}
+
+.dropdown-md > .dropdown-menu {
+  min-width: 450px;
+}
+
+.dropdown-lg > .dropdown-menu {
+  min-width: 850px;
+}
+
+/* responsive nav stacked liked 3.x */
+@media(max-width: 48em) {
+  .navbar .navbar-nav > .nav-item {
+    float: none;
+    margin-left: .1rem;
+  }
+  .navbar .navbar-nav, .navbar .navbar-brand {
+    float: none !important;
+  }
+}
+
+div[class='dropdown-menu dropdown-menu-right'] > a[class='dropdown-item']:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,50 @@
+<div class="table-calls">
+  <div class="row header">
+    <div class="customer">
+      Khách hàng
+    </div>
+    <div class="phone">
+      Điện thoại
+    </div>
+    <div class="time">
+      Thời gian <a (click)="filter()"><i class="fa fa-sort" aria-hidden="true"></i></a>
+    </div>
+    <div class="time-waiting">
+      Thời gian chờ <a (click)="filter()"><i class="fa fa-sort" aria-hidden="true"></i></a>
+    </div>
+    <div class="duration">
+      Độ dài cuộc gọi <a (click)="filter()"><i class="fa fa-sort" aria-hidden="true"></i></a>
+    </div>
+    <div class="employee">
+      Nhân viên <a (click)="filter()"><i class="fa fa-sort" aria-hidden="true"></i></a>
+    </div>
+    <div class="note">
+      Ghi chú
+    </div>
+    <div class="action">
+      Thao tác
+    </div>
+  </div>
+  <div class="list-call">
+    <div *ngFor="let item of data?.data">
+      <mo-manage-calls-table-row (eventAudio)="eventAudio($event)" [data]="item"></mo-manage-calls-table-row>
+    </div>
+  </div>
+</div>
+<div class="row footer clearfix">
+  <div class="paging pull-left">
+    <pagination-mobio [paging]="data.paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+  </div>
+  <div class="pull-right quantity">
+    <div>Hiển thị</div>
+    <select class="form-control">
+		<option value="5">5</option>
+		<option value="10">10</option>
+		<option value="20">20</option>
+		<option value="50">50</option>
+	</select>
+  </div>
+</div>
+<div class="audio">
+  <mo-audio [data]="sourceAudio"></mo-audio>
+</div>

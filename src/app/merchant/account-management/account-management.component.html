@@ -1,0 +1,292 @@
+<div class="animated fadeIn">
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-4">
+      <div class="input-group">
+        <span class="input-group-btn">
+                    <button type="button" (click)="searchAccount()" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                  </span>
+        <input type="text" [(ngModel)]="keySearch" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm"
+        />
+      </div>
+    </div>
+    <!--search-->
+    <div class="col-md-4 btn-crud">
+      <button class="btn btn-default" [disabled]="!allowButton" type="submit" (click)="removeAccountSelect()">Xóa
+      </button>
+    </div>
+    <div class="col-md-4 btn-execute">
+      <button class="btn btn-created" type="button" data-toggle="modal" (click)="showCreateAccountManagement()"><i
+        class="fa fa-plus-circle"></i> Tạo tài khoản
+      </button>
+
+    </div>
+  </div>
+  <!--seach and upload file, create product-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <table class="table">
+          <thead>
+            <tr class="list-card-pattern">
+              <th style="width: 1%;text-align: left;">
+                <input type="checkbox" (click)="selectAllAccount($event)" #_selectAllAccount/>
+              </th>
+              <th style="width: 15%;text-align: center;">
+                Ảnh đại diện
+              </th>
+              <th style="width: 15%;text-align: center;">
+                Tên tài khoản
+                <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconName===0,
+                    'fa-sort-asc':setIconName===1,'fa-sort-desc':setIconName===2}" aria-hidden="true" (click)="sortName()"></i>
+              </th>
+              <th style="width: 15%">
+                Họ và tên
+                <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconFullName===0,
+                    'fa-sort-asc':setIconFullName===1,'fa-sort-desc':setIconFullName===2}" aria-hidden="true" (click)="sortFullName()"></i>
+              </th>
+              <th style="width: 15%">
+                Email
+                <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconEmail===0,
+                    'fa-sort-asc':setIconEmail===1,'fa-sort-desc':setIconEmail===2}" aria-hidden="true" (click)="sortEmail()"></i>
+              </th>
+              <th style="width: 10%;">
+                Số Điện thoại
+              </th>
+              <th style="width: 20%;">
+                Quyền tài khoản
+              </th>
+              <th style="width: 10%;">
+                Thao tác
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--[ngStyle]="{'display': item.select && hide?'none':'table-row'}"-->
+            <tr *ngIf="!accountManagements" class="text-center">
+              <td colspan="8"> Không có dữ liệu hiển thị</td>
+            </tr>
+            <tr *ngFor="let accountManagement of accountManagements" class="animated fadeIn">
+              <td style="width: 1%;"><input name="{{accountManagement.idAccount}}" value="{{accountManagement.idAccount}}" type="checkbox" (change)="selectAccountManage($event,accountManagement.idAccount)"
+                  [checked]="accountManagement['select']">
+              </td>
+              <td style="text-align: center;max-width: 15%"><img [src]="accountManagement.images" width="110" height="62" alt=""></td>
+              <td class="wrap-text" style="max-width: 220px;">{{accountManagement.username}}</td>
+              <td style="max-width: 15%">{{accountManagement.fullName || "Chưa có tên"}}</td>
+              <td style="max-width: 15%">{{accountManagement.email}}</td>
+              <td style="color: #2874ea;font-weight: 500;max-width: 10%">
+                <label>{{accountManagement.phone}}</label>
+              </td>
+              <td style="max-width: 20%">
+                <button *ngFor="let role of accountManagement.roles" class="btn btn-sm btn-role" [ngClass]="{'btn-default':true}" [ngStyle]="{'border-radius':'6px;','background-color':role.idGroup==='MANAGER'?'rgb(233, 190, 34)'
+                        : (role.idGroup==='CONTENT_STAFF'?'#41b654': (role.idGroup==='SHOP_KEEPER'?'#f8aa73':'#006600'))}">
+                {{role.nameGroup}}
+              </button>
+              </td>
+              <td style="max-width: 10%;" class="btn-execute">
+                <i (click)="showEditAccountManagement(accountManagement.idAccount)" class="fa fa-pencil-square-o fa-3" tooltip="Sửa" aria-hidden="true"></i>
+                <i (click)="removeAccount(accountManagement.idAccount)" class="fa fa-trash-o" aria-hidden="true" tooltip="Xóa" style="font-size: 15px"></i>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6" class="header-pagination">
+                <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+              </td>
+              <td colspan="1"></td>
+              <td colspan="1" class="perpage-pagination">
+                <div class="input-group">
+                  <span class="input-group-addon file-upload-show">Hiển thị </span>
+                  <select class="select-page" id="select-page" name="select-page" size="1" #_selectCurrentPage (change)="changePerPage(_selectCurrentPage.value)">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--Show Table List Product-->
+</div>
+
+<!-- modal-dialogn -->
+<div bsModal #accountManagementModal="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" #showTitleAccountModal></h4>
+        <button type="button" class="close" (click)="hideModalAccountManaganent()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row body-create-card">
+          <div class="col-sm-12 col-sm-offset-4">
+
+            <div class="col-sm-12 creat-product" style="padding: 10px 40px 0 40px;">
+              <h4 class="form-control-label" for="input-name">Thông tin chung </h4>
+              <div style="padding: 0 15px;">
+                <div class="form-group row">
+                  <div class="col-sm-6" style="padding-right: 30px;">
+                    <label class="form-control-label label-title" for="input-name">Tên tài khoản(*)</label>
+                    <div class="input-group">
+                      <input class="form-control input-sm col-sm-8" id="input-name" name="input-username" #userName (change)="validateUserName(userName.value)"
+                        [(ngModel)]="accountManagement.username" placeholder="Tên tài khoản" type="text" style="text-transform: lowercase;">
+                      <span _ngcontent-c3="" class="input-group-addon col-sm-4">@{{merchantName}}</span>
+                    </div>
+                    <span *ngIf="userNameErrorAlert" class="error">Chỉ sử dụng chữ cái (a-z), số, dấu chấm(.), gạch dưới (_) và độ dài từ 4 đến 27 ký tự</span>
+                  </div>
+                  <!--username-->
+                  <div class="col-sm-6" style="padding-left: 30px;">
+                    <label class="form-control-label label-title" for="input-name">Email (*)</label>
+                    <div class="input-group">
+                      <input #email class="form-control input-sm" id="input-email" name="input-email" [(ngModel)]="accountManagement.email" placeholder="Địa chỉ email"
+                        type="text" (change)="validateEmail(email.value)">
+                    </div>
+                    <span *ngIf="emailErrorAlert" class="error">Email không đúng đinh dạng</span>
+                  </div>
+                  <!-- email -->
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6" style="padding-right: 30px;">
+                    <label class="form-control-label label-title" for="input-name">Họ và tên</label>
+                    <div class="input-group">
+                      <input class="form-control input-sm" id="input-fullname" name="input-fullname" [(ngModel)]="accountManagement.fullName" placeholder="Họ và tên"
+                        type="text">
+                    </div>
+                  </div>
+                  <!--full name-->
+                  <div class="col-sm-6" style="padding-left: 30px;">
+                    <label class="form-control-label label-title" for="input-phone">Số điện thoại (*)</label>
+                    <div class="input-group">
+                      <input #phone class="form-control input-sm" id="input-phone" name="input-phone" (change)="validatePhone(phone.value)" [(ngModel)]="accountManagement.phone"
+                        placeholder="Số điện thoại" type="text">
+                    </div>
+                    <span *ngIf="phoneErrorAlert" class="error">Số điện thoại Không đúng đinh dạng</span>
+                  </div>
+                  <!-- phone -->
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6" style="padding-right: 30px;">
+                    <label class="form-control-label label-title" for="input-name">Mật khẩu(*)</label>
+                    <div class="input-group">
+                      <input #pass class="form-control input-sm col-sm-8" id="input-password" name="input-password" (change)="validatePass(accountManagement.password)"
+                        [(ngModel)]="accountManagement.password" [disabled]="disablePassword" placeholder="Mật khẩu (*)" type="text">
+                      <span class="input-group-addon col-sm-4 random-password" (click)="createPassword()">Sinh mật khẩu</span>
+                    </div>
+                    <span *ngIf="passErrorAlert" class="error">Mật khẩu phải từ 4 đến 12 kí tự, có đủ chữ số, ký tự đặc biệt !@#$&*, chữ hoa và chữ thường!</span>
+                  </div>
+                  <!--password-->
+                </div>
+              </div>
+              <!--condition-->
+            </div>
+            <!-- Create product section 1 -->
+
+            <div class="col-sm-12 creat-product">
+              <label class="col-sm-10 form-control-label label-title" for="input-phone" style="margin-bottom: 10px;">Quyền
+                Tài khoản (*)</label>
+              <div style="padding: 0 15px;" class="form-group row listLevel" *ngFor="let role of roles">
+                <div class="radio">
+                  <label>
+                    <input name="radios" type="radio" [value]="role.idGroup" [(ngModel)]="roleSelect">
+                    {{role.nameGroup}}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- Create product section 2 anh the -->
+
+            <div class="col-sm-12 creat-product" style="padding: 0 40px;padding-bottom:30px;">
+              <label style="margin-left: -13px;margin-top: 10px;" class="col-sm-10 form-control-label">Cửa hàng quản lý</label>
+              <div class="row bar-filter-shop">
+                <div class="col-md-4">
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </span>
+                    <input type="text" id="input-search-shop" name="input-search-shop" class="form-control" placeholder="Tìm cửa hàng" [(ngModel)]="valueAddressSearch"
+                    />
+                  </div>
+                </div>
+                <!--search-->
+                <div class="col-md-4 dopdownSelect">
+                  <label class="lableSelect" (click)=setViewArea()>Chọn vùng miền
+                    <i [ngClass]="{'fa-angle-down':setHideSelectArea,'fa-angle-up':!setHideSelectArea}" class="fa"></i>
+                  </label>
+                  <ul [ngStyle]="{'display': setHideSelectArea?'none':'block'}">
+                    <li style="border-bottom: 1px solid #e4e0e0;"><input type="checkbox" (change)="selectAllDomain($event)" value="0" />
+                      <span id="selectAreaAll"> {{!checkBoxArea?'Chọn tất cả':'Bỏ tất cả'}}</span>
+                    </li>
+                    <li *ngFor="let province of provinces">
+                      <input type="checkbox" [value]="province.code" [checked]="province['select']" (change)="selectDomain($event, province.code)"
+                      />
+                      <span>{{province.name.vi}}</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Select a region -->
+                <div class="col-md-4 dopdownSelect">
+                  <label class="lableSelect" (click)=setViewCity()>Chọn tỉnh thành
+                    <i [ngClass]="{'fa-angle-down':setHideSelectCity,'fa-angle-up':!setHideSelectCity}" class="fa"></i>
+                  </label>
+                  <ul [ngStyle]="{'display': setHideSelectCity?'none':'block'}">
+                    <li style="border-bottom: 1px solid #e4e0e0;"><input [checked]="checkAllCity" type="checkbox" value="0" (change)="selectAllProvincesCity($event)" />
+                      <span id="selectCityAll">{{!checkBoxCity?'Chọn tất cả':'Bỏ tất cả'}}</span>
+                    </li>
+                    <li *ngFor="let provincesCity of provincesCityByModal">
+                      <input name="demo" type="checkbox" (click)="selectProvincesCity($event, provincesCity.code)" [checked]="checkBoxCity" [value]="provincesCity.code"
+                      />
+                      <span>{{provincesCity.name}}</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Select a city -->
+              </div>
+              <!-- Select a city -->
+
+              <div class="row" style="margin: 0 1px;margin-top: 15px;">
+                <table class="table table-shop" style="width: 80%;margin-bottom: 1rem;margin: 0 auto;border: 1px solid #F1F1F1;">
+                  <thead style="display: block;">
+                    <tr>
+                      <th width="100px"><input type="checkbox" (change)="selectAllShop($event)" [checked]="checkAllShop">
+                      </th>
+                      <th style="width: 1000px;padding-left: 110px;">Địa chỉ</th>
+                    </tr>
+                  </thead>
+                  <tbody style="display: block;height: 250px;overflow-y: auto;overflow-x: hidden;">
+                    <tr *ngFor="let shop of shops | dataFilterShop: valueAddressSearch">
+                      <td width="100px"><input type="checkbox" (change)="selectShop($event,shop.idShop)" [checked]="shop['select']">
+                      </td>
+                      <td style="width: 1000px;">{{shop.address}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!---- Create promotion section 5 => Địa điểm áp dụng ---->
+          </div>
+
+          <div class="col-sm-12 buttom-option" style="padding: 20px 40px 0;text-align: right;">
+            <button class="btn btn-primary" type="button" [disabled]="validateErrorAll" [ladda]="isLoadingAccount" (click)="saveAccount()">Lưu
+            </button>
+            <button class="btn btn-secondary" type="button" (click)="accountManagementModal.hide()">Bỏ qua</button>
+          </div>
+          <!--Create product section 3 Trạng Thái-->
+        </div>
+        <!--body content-->
+      </div>
+    </div>
+    <div #divOutClick id="divOutClick" (click)="dismisDopdown()" [ngStyle]="{'display': setHideSelectOutClick?'none':'block'}"></div>
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->

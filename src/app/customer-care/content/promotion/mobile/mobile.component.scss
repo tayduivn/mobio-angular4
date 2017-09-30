@@ -1,0 +1,3043 @@
+/* Begin fix */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333333;
+  font-size: 14px;
+}
+
+img {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: #333333;
+}
+
+a:hover {
+  color: #007cff;
+}
+
+p {
+  margin: 0;
+  color: #666666;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: normal;
+  color: #333333;
+}
+
+/* End fix */
+
+/* .......Begin index....... */
+
+.conten-full {
+  float: left;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.conten {
+  float: left;
+  width: 100%;
+  background: #fff;
+  padding-bottom: 60px;
+  height: 389px;
+  overflow: auto;
+  border: 1px solid #ccc;
+}
+
+.pading5 {
+  padding: 0 5px;
+}
+
+/* Begin tai-app */
+
+.tai-app {
+  float: left;
+  padding: 8px 0;
+  width: 100%;
+  background: #f3f3f3
+}
+
+.star {
+  height: 13px;
+  width: 13px;
+  float: left;
+  margin-right: 3px;
+}
+
+.icon-app {
+  float: left;
+  padding-right: 10px;
+}
+
+.close-app {
+  float: left;
+  margin-top: 20px;
+  padding: 0 5px;
+}
+
+.tai-app-title {
+  font-size: 16px;
+}
+
+.tai-app-name {
+  color: #666;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.tai-app-item {
+  color: #666;
+  float: left;
+  font-size: 12px;
+  width: 100%;
+}
+
+.app-right {
+  float: left;
+  width: 84%;
+}
+
+.icon-app img {
+  height: 57px;
+  width: 57px;
+}
+
+.tai-app-store {
+  color: #007cff;
+  float: right;
+  font-size: 15px;
+  margin-right: 5px;
+  position: absolute;
+  right: 0;
+}
+
+/* End tai-app */
+
+/* Begin hearder */
+
+.menumobiletop-full {
+  width: 100%;
+  position: fixed;
+  left: 100%;
+  top: 50px;
+  height: auto;
+  background: #fff;
+  z-index: 9999998;
+  transition: all 500ms ease-in-out;
+  max-height: 370px;
+  overflow: auto;
+}
+
+.show-menu {
+  left: 0px;
+  transition: all 500ms ease-in-out;
+  top: 0px;
+}
+
+.hearder_mobile {
+  float: left;
+  background: #ffca28;
+  height: 45px;
+  z-index: 9999;
+  width: 223px;
+  position: fixed;
+  margin-top: -1px;
+}
+
+.menu-icon-sammo {
+  float: left;
+  height: 50px;
+  width: 40px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.menu-icon-sammo img {
+  margin-top: 14px;
+}
+
+.menumobiletop {
+  width: 250px;
+  position: fixed;
+  left: -250px;
+  top: 50px;
+  height: auto;
+  background: #f2f2f2;
+  z-index: 9999998;
+  transition: all 500ms ease-in-out;
+  max-height: 370px;
+  overflow: auto;
+}
+
+.show-menu {
+  left: 0px;
+  transition: all 500ms ease-in-out;
+  top: 50px;
+}
+
+.menu_mobile_list a {
+  color: #333;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.menu_mobile_list a:hover {
+  color: #1b89ff;
+}
+
+.cap-2-mobi > a {
+  color: #ffffff;
+  float: left;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  padding: 7px 0 7px 10px;
+  width: 83%;
+}
+
+.menu_mobile_list {
+  line-height: 24px;
+  float: left;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.btn-show-cat {
+  float: right;
+  height: 20px;
+  text-align: center;
+  width: 34px;
+}
+
+.ul-menu {
+  display: block;
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+
+.cap-2-mobi {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.logomobile {
+  float: left;
+}
+
+.hearder-item {
+  float: right;
+  position: absolute;
+  right: 0;
+}
+
+.hearder-item-icon {
+  float: left;
+  height: 50px;
+  padding: 0 0;
+  margin-left: 75px;
+}
+
+.hearder-item-icon img {
+  margin-top: 14px;
+}
+
+.logomobile img {
+  padding-top: 2px;
+}
+
+.ring-ring {
+  background: #ff0000 none repeat scroll 0 0;
+  border-radius: 100%;
+  color: #fff;
+  float: right;
+  font-size: 12px;
+  height: 16px;
+  line-height: 16px;
+  position: relative;
+  right: 5px;
+  text-align: center;
+  top: -31px;
+  width: 16px;
+  z-index: 990;
+}
+
+.hearder-item-icon > a {
+  float: left;
+  text-align: center;
+  width: 100%;
+}
+
+.thanhvien-avata {
+  float: left;
+  margin-right: 10px;
+}
+
+.thanhvien-avata > img {
+  border-radius: 100%;
+  float: left;
+  margin-left: 6px;
+  height: 40px;
+  width: 40px;
+}
+
+.thanh-vien-item {
+  padding: 10px 0;
+  border-bottom: solid 1px #ddd;
+  float: left;
+  width: 100%;
+}
+
+.cap-nhat-sdt {
+  /*background: url(../images/dang-nhap.png) no-repeat;*/
+  background-position: 6px 3px;
+  float: left;
+  height: 24px;
+  width: 27px;
+}
+
+.lich-su-gd {
+  /*background: url(../images/lich-su-giao-dich.png) no-repeat;*/
+  background-position: 6px 3px;
+  float: left;
+  height: 24px;
+  width: 27px;
+}
+
+.quan-ly-lich-hen {
+  /*background: url(../images/quan-ly-lich-hen.png) no-repeat;*/
+  background-position: 6px 3px;
+  float: left;
+  height: 24px;
+  width: 27px;
+}
+
+.ds-yeu-thich {
+  /*background: url(../images/danh-sach-yeu-thich.png) no-repeat;*/
+  background-position: 6px 3px;
+  float: left;
+  height: 24px;
+  width: 27px;
+}
+
+.huong-dan-tro-giup {
+  /*background: url(../images/huong-dan-tro-giup.png) no-repeat;*/
+  background-position: 6px 3px;
+  float: left;
+  height: 24px;
+  width: 27px;
+}
+
+.cai-dat {
+  /*background: url(../images/cai-dat.png) no-repeat;*/
+  background-position: 6px 3px;
+  float: left;
+  height: 24px;
+  width: 27px;
+}
+
+.dang-xuat {
+  /*background: url(../images/dang-xuat.png) no-repeat;*/
+  background-position: 6px 3px;
+  float: left;
+  height: 24px;
+  width: 27px;
+}
+
+/* End hearder */
+
+/* Begin slive */
+
+.slive {
+  float: left;
+  width: 100%;
+}
+
+.jssorb05 {
+  position: absolute;
+}
+
+.jssorb05 div,
+.jssorb05 div:hover,
+.jssorb05 .av {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  /*background: url(../images/icon_slder.png) no-repeat;*/
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.jssorb05 div {
+  background-position: -7px -7px;
+}
+
+.jssorb05 div:hover,
+.jssorb05 .av:hover {
+  background-position: -37px -7px;
+}
+
+.jssorb05 .av {
+  background-position: -67px -7px;
+}
+
+.jssorb05 .dn,
+.jssorb05 .dn:hover {
+  background-position: -97px -7px;
+}
+
+.jssora11l,
+.jssora11r {
+  display: block;
+  position: absolute;
+  width: 37px;
+  height: 37px;
+  cursor: pointer;
+  /*background: url(../images/nex_view.png) no-repeat;*/
+  overflow: hidden;
+}
+
+.jssora11l {
+  background-position: -11px -41px;
+}
+
+.jssora11r {
+  background-position: -71px -41px;
+}
+
+.jssora11l:hover {
+  background-position: -131px -41px;
+}
+
+.jssora11r:hover {
+  background-position: -191px -41px;
+}
+
+.jssora11l.jssora11ldn {
+  background-position: -251px -41px;
+}
+
+.jssora11r.jssora11rdn {
+  background-position: -311px -41px;
+}
+
+/* End slive */
+
+/* Begin menu-bar */
+
+.menu-bar {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+  border-bottom: solid 1px #ddd;
+}
+
+.menu-bar-item {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  width: 33.3%;
+}
+
+.icon-gan-nhat {
+  /*background: url(../images/gan-nhat.png) no-repeat;*/
+  background-position: 23% 7px;
+  float: left;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.icon-gan-nhat:hover {
+  /*background: url(../images/gan-nhat-hover.png) no-repeat;*/
+  border-bottom: solid 1px #007cff;
+  background-position: 23% 7px;
+  color: #007cff;
+}
+
+.icon-gan-nhat.active {
+  /*background: url(../images/gan-nhat-hover.png) no-repeat;*/
+  border-bottom: solid 1px #007cff;
+  background-position: 23% 7px;
+  color: #007cff;
+}
+
+.icon-moi-nhat {
+  /*background: url(../images/moi-nhat.png) no-repeat;*/
+  background-position: 23% 7px;
+  float: left;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.icon-moi-nhat:hover {
+  /*background: url(../images/moi-nhat-hover.png) no-repeat;*/
+  border-bottom: solid 1px #007cff;
+  background-position: 23% 7px;
+  color: #007cff;
+}
+
+.icon-moi-nhat.active {
+  /*background: url(../images/moi-nhat-hover.png) no-repeat;*/
+  border-bottom: solid 1px #007cff;
+  background-position: 23% 7px;
+  color: #007cff;
+}
+
+.icon-mua-nhieu {
+  /*background: url(../images/mua-nhieu.png) no-repeat;*/
+  background-position: 23% 7px;
+  float: left;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.icon-mua-nhieu:hover {
+  /*background: url(../images/mua-nhieu-hover.png) no-repeat;*/
+  border-bottom: solid 1px #007cff;
+  background-position: 23% 7px;
+  color: #007cff;
+}
+
+.icon-mua-nhieu.active {
+  /*background: url(../images/mua-nhieu-hover.png) no-repeat;*/
+  border-bottom: solid 1px #007cff;
+  background-position: 23% 7px;
+  color: #007cff;
+}
+
+/* End menu-bar */
+
+.dv-nhanhang > span {
+  font-size: 15px;
+  padding: 0 5px;
+}
+
+.meta-nhanhang {
+  padding: 0 5px;
+  font-size: 15px;
+  color: #007cff
+}
+
+/* Begin box-conten */
+
+.box-conten {
+  float: left;
+  width: 100%;
+  padding-top: 44px;
+  /*margin-top: 44px;*/
+}
+
+.item-list {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.cat-title {
+  float: left;
+  width: 100%;
+}
+
+.avata-name {
+  float: left;
+  padding: 0 5px;
+}
+
+.avata-name > img {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+}
+
+.cat-post-title {
+  font-size: 16px;
+  line-height: 30px;
+  float: left;
+}
+
+.post-conten {
+  float: left;
+  width: 100%;
+}
+
+.post-thumnal {
+  float: left;
+  width: 100%;
+}
+
+.post-thumnal > a {
+  float: left;
+  width: 100%;
+}
+
+.post-thumnal img {
+  float: left;
+  width: 100%;
+}
+
+.bg-title {
+  /*background: url(../images/bg-opacity.png) repeat-x;*/
+  float: left;
+  height: 80px;
+  margin-top: -80px;
+  width: 100%;
+}
+
+.post-bg-title {
+  height: 24px;
+  line-height: 24px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  padding-top: 12px;
+}
+
+.post-bg-title > a {
+  color: #fff;
+  font-size: 16px;
+}
+
+.post-bg-title > a:hover {
+  color: #007cff;
+}
+
+.bg-e7e7e7 {
+  background: #e7e7e7 none repeat scroll 0 0;
+  float: left;
+  width: 100%;
+}
+
+.post-time {
+  color: #fff;
+}
+
+.padding10 {
+  padding: 10px;
+}
+
+/* End box-conten */
+
+/* Begin menu-bottom */
+
+.menu-bottom {
+  background: #fff none repeat scroll 0 0;
+  bottom: 0;
+  float: left;
+  border-top: 1px solid #ddd;
+  position: fixed;
+  height: 45px;
+  width: 100%;
+  z-index: 999;
+}
+
+.menu-bottom-item {
+  float: left;
+  text-align: center;
+  font-size: 12px;
+  width: 20%;
+}
+
+.icon-bottom {
+  float: left;
+  height: 40px;
+  width: 100%;
+}
+
+.icon-bottom > span {
+  float: left;
+  margin-top: 26px;
+  width: 100%;
+}
+
+.ma-the {
+  float: left;
+  width: 100%;
+  margin-top: -25px;
+}
+
+.ma-the > img {
+  height: 65px;
+  width: 65px;
+}
+
+.sale-xpoints {
+  background: #007cff;
+  float: right;
+  height: 50px;
+  position: absolute;
+  border-radius: 100%;
+  right: 5px;
+  margin-top: 5px;
+  width: 50px;
+  z-index: 999;
+}
+
+.sale-xpoints > p {
+  color: #fff;
+  font-size: 11px;
+  text-align: center;
+}
+
+.icon-uu-dai {
+  /*background: url(../images/uu-dai.png) no-repeat;*/
+  background-position: 50% 7px;
+  float: left;
+  height: 24px;
+  width: 100%;
+  line-height: 65px;
+}
+
+.icon-uu-dai:hover {
+  /*background: url(../images/uu-dai-hover.png) no-repeat;*/
+  background-position: 50% 7px;
+  color: #007cff;
+}
+
+.icon-uu-dai.active {
+  /*background: url(../images/uu-dai-hover.png) no-repeat;*/
+  background-position: 50% 7px;
+  color: #007cff;
+}
+
+.icon-the {
+  /*background: url(../images/the.png) no-repeat;*/
+  background-position: 50% 7px;
+  float: left;
+  height: 24px;
+  width: 100%;
+  line-height: 65px;
+}
+
+.icon-the:hover {
+  /*background: url(../images/the-hover.png) no-repeat;*/
+  background-position: 50% 7px;
+  color: #007cff;
+}
+
+.icon-the.active {
+  /*background: url(../images/the-hover.png) no-repeat;*/
+  background-position: 50% 7px;
+  color: #007cff;
+}
+
+.icon-vouche {
+  /*background: url(../images/vouche.png) no-repeat;*/
+  background-position: 50% 7px;
+  float: left;
+  height: 24px;
+  width: 100%;
+  line-height: 65px;
+}
+
+.icon-vouche:hover {
+  /*background: url(../images/vouche-hover.png) no-repeat;*/
+  background-position: 50% 7px;
+  color: #007cff;
+}
+
+.icon-vouche.active {
+  /*background: url(../images/vouche-hover.png) no-repeat;*/
+  background-position: 50% 7px;
+  color: #007cff;
+}
+
+.icon-qua-tang {
+  /*background: url(../images/qua-tang.png) no-repeat;*/
+  background-position: 50% 7px;
+  float: left;
+  height: 24px;
+  width: 100%;
+  line-height: 65px;
+}
+
+.icon-qua-tang:hover {
+  /*background: url(../images/qua-tang-hover.png) no-repeat;*/
+  background-position: 50% 7px;
+  color: #007cff;
+}
+
+.icon-qua-tang.active {
+  /*background: url(../images/qua-tang-hover.png) no-repeat;*/
+  background-position: 50% 7px;
+  color: #007cff;
+}
+
+/* End menu-bottom */
+
+/* .......End index....... */
+
+/* .......Bengin thong bao....... */
+
+.menu-bar-col2 {
+  float: left;
+  padding: 15px 0;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  width: 50%;
+}
+
+.menu-bar-col2:hover {
+  border-bottom: 2px solid #323132;
+  color: #111;
+}
+
+.menu-bar-col2.active {
+  border-bottom: 2px solid #323132;
+  color: #111;
+}
+
+.new-item {
+  border-bottom: 1px solid #ddd;
+  float: left;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.thong-bao-img {
+  float: left;
+  margin-right: 10px;
+  margin-left: 5px;
+  width: 40px;
+}
+
+.xem-them {
+  float: left;
+  padding: 10px 0;
+  text-align: center;
+  border-top: solid 1px #ddd;
+  width: 100%;
+}
+
+.thong-bao-img > img {
+  border-radius: 100%;
+  float: left;
+  height: 40px;
+  width: 40px;
+  width: 100%;
+}
+
+.thong-bao-time {
+  color: #1485fb;
+  font-size: 12px;
+}
+
+.thong-bao-title {
+  font-size: 13px;
+  line-height: 18px;
+  padding-bottom: 5px;
+}
+
+.new-item-post {
+  float: left;
+  width: 80%;
+}
+
+/* .......End thong bao....... */
+
+/* .......End lay-hinh-anh-qr-code....... */
+
+.ma-code {
+  width: 100%;
+  float: left;
+  margin: 15px 0;
+}
+
+.ma-code-auto {
+  width: 270px;
+  margin: auto;
+}
+
+.ma-code-item {
+  border: 2px dashed #777777;
+  background: #fff;
+  float: left;
+  height: 270px;
+  text-align: center;
+  width: 99%;
+  margin-bottom: 10px
+}
+
+.mcode {
+  float: left;
+  line-height: 24px;
+  margin-top: 130px;
+  width: 15%;
+}
+
+.gui-yeu-cau {
+  float: left;
+  width: 100%;
+  margin-bottom: 20px
+}
+
+.gui-yeu-cau > a {
+  float: left;
+  text-align: center;
+  background: #ffca28;
+  padding: 12px 0;
+  color: #fff;
+  font-size: 16px;
+  width: 100%;
+}
+
+.gui-yeu-cau > a:hover {
+  background: #ebb922;
+}
+
+.ma-code-add {
+  float: left;
+  width: 100%;
+  text-align: center;
+  max-width: 100%;
+  background: #fff;
+  padding: 20px 0;
+}
+
+.them-the {
+  float: left;
+  width: 100%;
+}
+
+.them-the-title {
+  font-size: 13px;
+  line-height: 40px;
+}
+
+.the-img {
+  background: #007cff;
+  border-radius: 100%;
+  color: #fff;
+  float: left;
+  font-size: 24px;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 10px;
+  text-align: center;
+  margin-left: 5px;
+  width: 40px;
+}
+
+.them-the-item {
+  background: #ebebeb;
+  border-radius: 5px;
+  float: left;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.them-the-item:hover {
+  background: #f2f2f2;
+}
+
+.them-the-item > a {
+  float: left;
+  line-height: 40px;
+  width: 100%;
+  color: #007cff;
+  font-size: 15px;
+}
+
+.new-item-0 {
+  margin: 5px 0;
+  width: 100%;
+  float: left;
+}
+
+.input-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  float: left;
+  height: 32px;
+  width: 99.8%;
+}
+
+.input-search {
+  border: medium none;
+  color: #666;
+  float: left;
+  height: 25px;
+  line-height: 25px;
+  width: 87%;
+}
+
+.icon-search {
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 4px;
+}
+
+.chu-the {
+  float: left;
+  padding: 10px 0;
+  width: 100%;
+  font-size: 16px;
+}
+
+.chu-the-title {
+  font-size: 16px;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+
+.chu-the-col {
+  float: left;
+  line-height: 19px;
+  padding-bottom: 5px;
+  width: 50%;
+}
+
+.radio-1 {
+  float: left;
+  margin-right: 8px;
+}
+
+.ma-vach-the {
+  float: left;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.icon-mv {
+  float: left;
+  margin-right: 5px;
+}
+
+.mv-2 {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  float: left;
+  height: 26px;
+  width: 100%;
+}
+
+.anh-the-col {
+  float: left;
+  text-align: center;
+  width: 50%;
+}
+
+.anh-the-col img {
+  max-width: 100%;
+}
+
+.ma-vach-buttom {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.buttom-the {
+  background: #ffca28;
+  color: #fff;
+  font-size: 16px;
+  height: 35px;
+  padding: 0 35px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}
+
+.buttom-the:hover {
+  background: #eab410;
+}
+
+.them-ten-the {
+  border: none;
+  border-bottom: solid 1px #eaeaea;
+  float: left;
+  font-size: 16px;
+  width: 75%;
+}
+
+.singer-2 {
+  float: left;
+  width: 100%;
+}
+
+/* .......End lay-hinh-anh-qr-code....... */
+
+/* .......Bengin vouche....... */
+
+.da-tich-vang {
+  /*background: url(../images/da-tich-vang.png) no-repeat;*/
+  float: right;
+  font-size: 12px;
+  height: 51px;
+  margin-right: 5px;
+  padding-top: 10px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 46px;
+  z-index: 999;
+}
+
+.da-tich-vang > p {
+  color: #fff;
+}
+
+.da-tich-xanh {
+  /*background: url(../images/da-tich-xanh.png) no-repeat;*/
+  float: right;
+  font-size: 12px;
+  height: 51px;
+  margin-right: 5px;
+  padding-top: 10px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 46px;
+  z-index: 999;
+}
+
+.da-tich-xanh > p {
+  color: #fff;
+}
+
+.post-thumnal-vouche {
+  float: left;
+  margin-top: -60px;
+  width: 100%;
+}
+
+.post-thumnal-vouche > a {
+  float: left;
+  width: 100%;
+}
+
+.post-thumnal-vouche img {
+  float: left;
+  width: 100%;
+}
+
+.avata-thumnal > img {
+  border-radius: 100%;
+  margin-top: 5px;
+  height: 24px;
+  width: 24px;
+}
+
+.singger-title {
+  font-size: 18px;
+  float: left;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.singger-time {
+  float: left;
+  width: 100%;
+  color: #007cff;
+  padding-bottom: 5px;
+}
+
+.singer {
+  float: left;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.luot-thich {
+  float: left;
+  width: 10%;
+}
+
+.luot-thich-item {
+  /*background: url(../images/luot-thich.png) no-repeat;*/
+  float: left;
+  width: 24px;
+  height: 24px;
+  margin: 0 3px;
+}
+
+.luot-thich-item:hover {
+  /*background: url(../images/luot-thich-hover.png) no-repeat;*/
+  float: left;
+  width: 24px;
+  height: 24px;
+  margin: 0 3px;
+}
+
+.luot-thich-item.active {
+  /*background: url(../images/luot-thich-hover.png) no-repeat;*/
+  float: left;
+  width: 24px;
+  height: 24px;
+  margin: 0 3px;
+}
+
+.tich-vouche {
+  margin-bottom: 30px;
+  float: left;
+  text-align: center;
+  width: 100%;
+}
+
+.ma-xac-thuc-vouche {
+  background: #eee none repeat scroll 0 0;
+  float: left;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.ma-xac-thuc-left {
+  float: left;
+  padding: 0 10px;
+}
+
+.ma-xac-thuc-right {
+  float: right;
+  padding: 0 10px;
+}
+
+.ma-xac-thuc-left > p {
+  color: #333;
+  line-height: 20px;
+}
+
+.km-so {
+  float: right;
+  text-align: center;
+  width: 35px;
+}
+
+.box-vouche {
+  float: left;
+  text-align: center;
+  width: 100%;
+}
+
+.ma-xac-thuc-right img {
+  height: 32px;
+  width: 32px;
+}
+
+.chitiet {
+  width: 100%;
+  float: left;
+  padding: 10px 0;
+  border-top: solid 1px #ddd;
+}
+
+.entry-title {
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  float: left;
+  padding: 10px 0;
+  text-indent: 5px;
+  width: 100%;
+}
+
+.entry {
+  float: left;
+  padding: 8px 0;
+  line-height: 20px;
+  width: 100%;
+}
+
+.entry > p {
+  padding-bottom: 8px;
+}
+
+.morecontent p {
+  padding-bottom: 8px;
+}
+
+.entry.shortened > p {
+  padding-bottom: 8px;
+}
+
+.morelink {
+  border-top: solid 1px #ddd;
+  padding: 8px 0;
+  float: left;
+  text-align: center;
+  color: #06F;
+  width: 100%;
+}
+
+.morelink:hover {
+  color: #ffba00;
+}
+
+.xem-them > a {
+  color: #06F;
+}
+
+.xem-them > a:hover {
+  color: #ffba00;
+}
+
+.thumnail-dia-diem {
+  border-top: 1px solid #ddd;
+  float: left;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.left-dia-diem {
+  float: left;
+  width: 55%;
+  margin-left: 5px;
+}
+
+.right-dia-diem {
+  float: right;
+}
+
+.xemchitiet {
+  border: 1px solid #007cff;
+  border-radius: 5px;
+  color: #007cff;
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 7px;
+  margin-right: 5px;
+  padding: 0 10px;
+}
+
+.xemchitiet:hover {
+  border: 1px solid #ffc40f;
+  color: #ffc40f;
+}
+
+.goi-call {
+  /*background: url(../images/goi-call.png) no-repeat;*/
+  text-indent: 12px;
+  background-position: 5% 7px;
+  border: 1px solid #007cff;
+  border-radius: 5px;
+  color: #007cff;
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 7px;
+  margin-right: 5px;
+  padding: 0 10px;
+}
+
+.goi-call:hover {
+  color: #fff;
+  /*background: url(../images/goi-call-hover.png) no-repeat;*/
+  background-position: 5% 7px;
+  background-color: #0073ee;
+}
+
+.row-item-add {
+  float: left;
+  border-left: 2px solid #fff;
+  padding: 10px 0;
+  width: 100%;
+  width: 99.8%;
+}
+
+.row-item-add:hover {
+  background: #f2f2f2;
+  border-left: 2px solid #ffca28;
+}
+
+.row-item-add-1 {
+  padding-left: 10px;
+  float: left;
+  width: 72%;
+}
+
+.row-item-add-2 {
+  float: right;
+  text-align: right;
+  width: 20%;
+  padding-right: 10px;
+}
+
+.row-item-add-1 a {
+  float: left;
+  width: 100%;
+}
+
+.vouche-box {
+  float: left;
+  width: 100%;
+}
+
+.singer-respon {
+  float: left;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* .......End vouche....... */
+
+/* .......Bingin qua tang....... */
+
+.qua-tang-col {
+  float: left;
+  margin: 2%;
+  width: 46%;
+}
+
+.qua-tang-thumnal > a {
+  float: left;
+  width: 100%;
+}
+
+.qua-tang-thumnal {
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.qua-tang-thumnal img {
+  float: left;
+  height: 622px;
+  width: 100%;
+}
+
+.qua-tang-title {
+  float: left;
+  height: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.xpoints {
+  color: #007cff;
+  font-size: 14px;
+}
+
+.xpoints-vnd {
+  text-decoration: line-through;
+  font-size: 12px;
+}
+
+.chi-tiet-img {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.chi-tiet-img > img {
+  width: 100%;
+}
+
+.qua-tang-title-singer {
+  float: left;
+  font-size: 16px;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+.qua-tang-1 {
+  float: left;
+  width: 70%;
+}
+
+.xpoints-thumnal {
+  float: right;
+  margin-top: -30px;
+  position: relative;
+}
+
+.xpoints-thumnal > img {
+  border-radius: 100%;
+  height: 24px;
+  width: 24px;
+}
+
+.qua-tang-2 {
+  float: right;
+  text-align: center;
+}
+
+.qua-tang-item {
+  float: left;
+  width: 100%;
+}
+
+.xpoints-chitiet > img {
+  border-radius: 100%;
+  height: 24px;
+  width: 24px;
+}
+
+.doi-qua-buttom {
+  background: #007cff;
+  float: left;
+  font-size: 16px;
+  height: 40px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.doi-qua-buttom:hover {
+  background: #ffca28;
+  color: #fff;
+}
+
+.popup-from {
+  background: #fff none repeat scroll 0 0;
+  float: left;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.popup-conten {
+  float: left;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.dong-the {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  font-size: 24px;
+  height: 24px;
+  position: absolute;
+  right: 1px;
+  top: -4px;
+  width: 24px;
+}
+
+.title-popup {
+  color: #ffca28;
+  float: left;
+  font-size: 16px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  width: 93%;
+}
+
+.popup-buttom {
+  background: #ffca28;
+  color: #fff;
+  float: left;
+  font-size: 16px;
+  border-radius: 3px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.popup-buttom:hover {
+  background: #eab40f;
+  color: #fff;
+}
+
+.qua-tang-buttom {
+  float: left;
+  width: 100%;
+}
+
+.from-input-popup > p {
+  padding: 5px 0;
+}
+
+.from-input-popup {
+  border-bottom: 1px solid #ddd;
+  float: left;
+  margin: 5px 0;
+  font-size: 12px;
+  width: 100%;
+}
+
+.input-popup {
+  border: none;
+  border-radius: 3px;
+  color: #333;
+  float: left;
+  font-size: 14px;
+  height: 30px;
+  width: 98%;
+}
+
+.popup-conten > p {
+  padding: 3px 0;
+  font-size: 12px;
+}
+
+.qua-tang-mxt {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.qua-tang-mxt img {
+  max-width: 100%;
+}
+
+/*Bengin popup */
+
+.doi-qua-buttom {
+  background: #007cff none repeat scroll 0 0;
+  border: medium none;
+  color: #fff;
+  float: left;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+doi-qua-buttom:focus {
+  outline: none;
+}
+
+doi-qua-buttom:hover {
+  background: #aed2e1;
+}
+
+.doi-qua-popup {
+  float: left;
+  width: 100%;
+}
+
+/*End popup */
+
+/* .......End qua tang....... */
+
+/* .......Bengin khuyen mai....... */
+
+.star-thich {
+  float: right;
+  margin-top: -100px;
+  position: relative;
+  text-align: right;
+}
+
+.icon-star-thich {
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
+
+.sale-voucher {
+  /*background: url(../images/sale.png) no-repeat;*/
+  height: 57px;
+  width: 57px;
+  float: right;
+  position: absolute;
+  z-index: 999;
+  right: 0;
+}
+
+.post-thumnal-2 {
+  float: left;
+  width: 100%;
+}
+
+.tang-voucher {
+  bottom: 0;
+  float: right;
+  margin-right: 5px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 999;
+}
+
+.sale-voucher-text {
+  color: #fff;
+  float: right;
+  font-size: 13px;
+  line-height: 33px;
+  margin-right: 3px;
+}
+
+.km-right {
+  float: right;
+  font-size: 13px;
+  padding-top: 10px;
+}
+
+.icon-klm {
+  /*background: url(../images/klm.png) no-repeat;*/
+  float: right;
+  height: 14px;
+  margin: 0 5px;
+  margin-top: 0;
+  width: 14px;
+}
+
+.title-cat {
+  color: #fff;
+  font-size: 17px;
+  padding-top: 16px;
+}
+
+.like-comment {
+  float: left;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.like-comment-col {
+  border-right: 1px solid #ddd;
+  float: left;
+  text-align: center;
+  width: 32.5%;
+}
+
+.share-mxh {
+  background: #f2f2f2 none repeat scroll 0 0;
+  float: left;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.comment-item {
+  float: left;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.comment-item > span {
+  margin-left: 10px;
+}
+
+.share-mxh > a {
+  float: left;
+  margin-right: 10px;
+}
+
+.share-mxh > span {
+  float: left;
+  line-height: 27px;
+  padding: 0 10px;
+}
+
+.avata-comment {
+  float: left;
+  margin-left: 5px;
+  margin-right: 10px;
+  width: 40px;
+}
+
+.avata-comment > img {
+  border-radius: 100%;
+  float: left;
+  width: 100%;
+}
+
+.text-comment {
+  float: left;
+  width: 80%;
+}
+
+.text-comment > p {
+  padding-bottom: 4px;
+}
+
+.i-comment {
+  color: #ffba00;
+}
+
+.i-comment:hover {
+  /*color: 0 a96ef*/
+}
+
+.time-comment {
+  color: #999;
+  font-size: 12px;
+}
+
+.box-comment {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  float: left;
+  height: 35px;
+  width: 100%;
+}
+
+.input-comment {
+  border: medium none;
+  color: #999;
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  margin-left: 5px;
+  width: 82%;
+}
+
+.send-comment {
+  float: right;
+  margin-right: 8px;
+  margin-top: 9px;
+}
+
+.singer-entry {
+  float: left;
+  width: 100%;
+}
+
+/*Bengin popup */
+
+.login-wrapper {
+  align-self: center;
+  background-color: #ffffff;
+  width: 280px;
+}
+
+.overlay-1 {
+  /*background: url(../images/bg-popup.png) repeat;*/
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.close-1 {
+  display: block;
+  transition: all 400ms ease;
+}
+
+.close-1:hover {
+  cursor: pointer;
+}
+
+.overlay-2 {
+  /*background: url(../images/bg-popup.png) repeat;*/
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.close-2 {
+  display: block;
+  transition: all 400ms ease;
+}
+
+.close-2:hover {
+  cursor: pointer;
+}
+
+.overlay-3 {
+  /*background: url(../images/bg-popup.png) repeat;*/
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.close-3 {
+  display: block;
+  transition: all 400ms ease;
+}
+
+.close-3:hover {
+  cursor: pointer;
+}
+
+.overlay-4 {
+  /*background: url(../images/bg-popup.png) repeat;*/
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.close-4 {
+  display: block;
+  transition: all 400ms ease;
+}
+
+.close-4:hover {
+  cursor: pointer;
+}
+
+.overlay-5 {
+  /*background: url(../images/bg-popup.png) repeat;*/
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.close-5 {
+  display: block;
+  transition: all 400ms ease;
+  color: #2679ff;
+}
+
+.close-5:hover {
+  cursor: pointer;
+  color: #ffca28;
+}
+
+.overlay-6 {
+  /*background: url(../images/bg-popup.png) repeat;*/
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.close-6 {
+  color: #2679ff;
+  display: block;
+  transition: all 400ms ease;
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.close-6:hover {
+  cursor: pointer;
+  color: #efa60a;
+}
+
+.overlay-7 {
+  /*background: url(../images/bg-popup.png) repeat;*/
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.close-7 {
+  display: block;
+  transition: all 400ms ease;
+}
+
+.close-7:hover {
+  cursor: pointer;
+}
+
+.xbando {
+  float: right;
+  font-size: 20px;
+  margin-top: -11px;
+}
+
+.login-content > p {
+  padding: 5px 0;
+}
+
+.danh-gia-item {
+  float: left;
+  width: 100%;
+}
+
+.sao-item-1 {
+  /*background: url(../images/sao-item-1.png) no-repeat;*/
+  height: 38px;
+  width: 38px;
+  margin: 7px;
+  float: left;
+}
+
+.sao-item-1:hover {
+  /*background: url(../images/sao-item-1-hover.png) no-repeat;*/
+}
+
+.danh-gia-buttom {
+  float: left;
+  font-size: 18px;
+  padding: 20px 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 50%;
+}
+
+.danh-gia-buttom > a {
+  color: #0a96ef;
+}
+
+.danh-gia-buttom > a:hover {
+  color: #efa60a;
+}
+
+/*End popup */
+
+.danh-gia-6 {
+  float: left;
+  padding-bottom: 15px;
+  text-align: right;
+  width: 100%;
+}
+
+.lich-hen-post-ct {
+  float: left;
+  width: 70%;
+}
+
+.ct-lich {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.ct-lich > p {
+  line-height: 18px;
+  padding: 5px 0;
+}
+
+/* .......End khuyen mai....... */
+
+/* .......Bengin sanpham....... */
+
+.menu-item-sanpham {
+  color: #666;
+  float: left;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.menu-item-sanpham:hover {
+  border-bottom: 2px solid #323132;
+  color: #111;
+}
+
+.menu-item-sanpham.active {
+  border-bottom: 2px solid #323132;
+  color: #111;
+}
+
+.sp-thich {
+  float: right;
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  margin-top: 15px;
+}
+
+.icon-sp-thich {
+  float: left;
+  margin-left: 10px;
+}
+
+.sp-giavnd {
+  float: left;
+  width: 100%;
+}
+
+.login-rows {
+  float: left;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  width: 100%;
+}
+
+.login-item_list {
+  float: left;
+  width: 100%;
+  text-align: left;
+}
+
+.login-item_list > a {
+  float: left;
+  padding: 10px;
+  line-height: 23px;
+}
+
+.login-item_list img {
+  float: left;
+  margin-right: 5px;
+}
+
+.input-popup-2 {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #999;
+  float: left;
+  font-size: 14px;
+  height: 30px;
+  text-indent: 5px;
+  width: 98%;
+}
+
+.input-popup-2 > p {
+  padding: 3px 0;
+  font-size: 12px;
+}
+
+.input-1 {
+  float: left;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.input-1 > p {
+  padding-bottom: 5px;
+}
+
+.dk-tk {
+  float: left;
+  font-size: 13px;
+  margin-right: 20px;
+}
+
+.caidat-them {
+  float: right;
+  margin-top: -35px;
+  padding-right: 10px;
+  position: relative;
+}
+
+.img-entry {
+  text-align: center;
+}
+
+.img-entry > img {
+  max-width: 100%;
+}
+
+.khuyemmai-title {
+  float: left;
+  width: 100%;
+}
+
+.post-khuyenmai-title {
+  padding-bottom: 5px;
+}
+
+.khuyenmai-time {
+  color: #666;
+  color: #007cff;
+}
+
+.avata-name-khuyenmai {
+  float: right;
+  margin-top: -40px;
+  position: relative;
+}
+
+.avata-name-khuyenmai > img {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+}
+
+.row-ct {
+  float: left;
+  width: 100%;
+}
+
+.list-ct {
+  float: left;
+  width: 100%;
+  border-bottom: solid 1px #ddd;
+  padding: 10px 0;
+}
+
+.ten-ct {
+  float: left;
+  color: #333;
+  padding-bottom: 5px;
+  text-indent: 10px;
+  width: 100%;
+}
+
+.time-ct {
+  float: left;
+  font-size: 12px;
+  text-indent: 10px;
+  width: 100%;
+}
+
+.so-ct {
+  float: right;
+  color: #007cff;
+  margin-top: -20px;
+  padding-right: 10px;
+}
+
+.lich-hen-img {
+  float: left;
+  width: 70px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.lich-hen-img > img {
+  border-radius: 100%;
+  float: left;
+  height: 70px;
+  width: 100%;
+}
+
+.lich-hen-post {
+  float: left;
+  width: 70%;
+}
+
+.xpoints-sp {
+  color: #007cff;
+  font-size: 12px;
+}
+
+.padding10-1 {
+  padding: 10px 0;
+}
+
+/* .......End sanpham....... */
+
+/* .......Bengin menu app....... */
+
+.menu-app {
+  overflow: hidden;
+  float: left;
+  width: 100%;
+  height: 42px;
+  line-height: 40px;
+}
+
+.menu-item-app-1 {
+  float: left;
+  font-size: 14px;
+  padding: 0 20px;
+  color: #666;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu-item-app-1:hover {
+  color: #333;
+  border-bottom: solid 2px #333;
+}
+
+.menu-item-app-1.active {
+  color: #333;
+  border-bottom: solid 2px #333;
+}
+
+/* .......End menu app....... */
+
+.ma-code-conten {
+  float: left;
+  padding: 20px 0;
+  border-top: solid 1px #ddd;
+  width: 100%;
+}
+
+.ma-code-col {
+  float: left;
+  margin: 2%;
+  width: 21%;
+}
+
+.img-ma-code {
+  float: left;
+  margin-bottom: 7px;
+  width: 100%;
+}
+
+.img-ma-code > img {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  float: left;
+  width: 100%;
+}
+
+.title-macadoe {
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.icon-macode {
+  float: left;
+  width: 100%;
+}
+
+.img-mcode {
+  float: left;
+  width: 33%;
+}
+
+.img-mcode > img {
+  float: left;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+
+.menu-bar-col3 {
+  float: left;
+  padding: 15px 0;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  width: 33.3%;
+}
+
+.menu-bar-col3:hover {
+  border-bottom: 2px solid #323132;
+  color: #111;
+}
+
+.menu-bar-col3.active {
+  border-bottom: 2px solid #323132;
+  color: #111;
+}
+
+.imgcall {
+  float: left;
+  margin-right: 5px;
+  margin-top: 6px;
+}
+
+.ma-code-add img {
+  max-width: 100%;
+}
+
+.tien-ich-kraoke {
+  float: left;
+  width: 100%;
+  border-top: solid 1px #ddd;
+  border-bottom: solid 1px #ddd;
+  padding: 10px 0;
+}
+
+.tien-ich-img {
+  float: left;
+  width: 17%;
+  text-align: center;
+}
+
+.entry > img {
+  max-width: 100%;
+}
+
+.bg-karaok {
+  background: #000 none repeat scroll 0 0;
+  float: left;
+  margin-top: -10px;
+  width: 100%;
+}
+
+.post-title-karaoke {
+  height: 24px;
+  line-height: 24px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.post-title-karaoke > a {
+  color: #fff;
+  font-size: 16px;
+}
+
+.post-title-karaoke > a:hover {
+  color: #007cff;
+}
+
+.karaoke-thich {
+  float: right;
+  margin-right: 10px;
+  margin-top: -40px;
+  position: relative;
+}
+
+.like-comment-col-2 {
+  border-right: 1px solid #ddd;
+  float: left;
+  text-align: center;
+  width: 49%;
+}
+
+.dat-cho-kra {
+  border-bottom: 1px solid #ddd;
+  float: left;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.item-can-nhan > span {
+  line-height: 21px;
+}
+
+.item-can-nhan {
+  border-top: 1px solid #ddd;
+  float: left;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.item-can-nhan > img {
+  float: left;
+  margin: 0 10px;
+}
+
+.box-photo {
+  background-color: #333333;
+  float: left;
+  width: 100%;
+}
+
+.box-photo > img {
+  float: left;
+  height: 100%;
+  width: 100%;
+}
+
+.img-avata-photo > img {
+  border-radius: 100%;
+  height: 114px;
+}
+
+.photo-bg {
+  /*background: url(../images/ZDRooQC.jpg) no-repeat;*/
+  float: left;
+  width: 100%;
+  height: 240px;
+}
+
+.photo-avata {
+  float: left;
+  padding: 30px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.photo-avata > p {
+  color: #fff;
+  font-size: 16px;
+}
+
+.item-ponits-2 {
+  float: left;
+  width: 100%;
+}
+
+.item-ponits-2 {
+  border-top: 1px solid #ccc;
+  float: left;
+  height: 54px;
+  margin-top: -55px;
+  position: relative;
+  width: 100%;
+}
+
+.col-item-ponits-2 {
+  float: left;
+  text-align: center;
+  width: 49%;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.col-item-ponits-2 > p {
+  color: #fff;
+}
+
+.poto-col3 {
+  float: left;
+  text-align: center;
+  width: 33.3%;
+}
+
+.poto-col3 > p {
+  color: #fff;
+  font-size: 16px;
+}
+
+.photo-auto {
+  width: 270px;
+  margin: auto;
+  text-align: center;
+}
+
+.poto-col1 {
+  float: left;
+  text-align: center;
+  width: 50px;
+}
+
+.poto-col1 img {
+  margin-top: 35px;
+}
+
+.poto-col2 {
+  float: left;
+  text-align: center;
+  width: 170px;
+}
+
+.poto-col2 > p {
+  color: #fff;
+  font-size: 16px;
+}
+
+.poto-col3 {
+  float: right;
+  text-align: center;
+  width: 50px;
+}
+
+.poto-col3 img {
+  margin-top: 35px;
+}
+
+.backround-conten {
+  float: left;
+  width: 100%;
+}
+
+.backround-col {
+  float: left;
+  margin: 0.5px;
+  width: 33%;
+}
+
+.backround-col > img {
+  float: left;
+  height: 450px;
+  width: 100%;
+}
+
+.ma-code-add-2 {
+  background: #fff none repeat scroll 0 0;
+  float: left;
+  text-align: center;
+  padding: 30% 0;
+  width: 100%;
+}
+
+.backround-slider {
+  float: left;
+  margin: 0.5%;
+  width: 32.3%;
+}
+
+.backround-slider > img {
+  float: left;
+  width: 100%;
+}
+
+.box-ket-noi {
+  float: left;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.box-ket-noi > p {
+  padding: 5px 0;
+}
+
+.tien-ich-title {
+  float: left;
+}
+
+.tien-ich-all > p {
+  padding: 10px 0;
+}
+
+.icon-all {
+  float: left;
+  margin-right: 10px;
+}
+
+.tien-ich-close {
+  text-align: right;
+}
+
+.tien-ich-close {
+  color: #2679ff;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+/* cai-dat */
+
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.cmn-toggle-round + label {
+  background-color: #dddddd;
+  border-radius: 25px;
+  height: 15px;
+  width: 35px;
+}
+
+.cmn-toggle-round + label:before,
+input.cmn-toggle-round + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: "";
+}
+
+.cmn-toggle-round + label:before {
+  right: 1px;
+  border-radius: 25px;
+  -webkit-transition: background 0.4s;
+  -moz-transition: background 0.4s;
+  -o-transition: background 0.4s;
+  transition: background 0.4s;
+}
+
+.cmn-toggle-round + label:after {
+  width: 15px;
+  background-color: #007cff;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-transition: margin 0.4s;
+  -moz-transition: margin 0.4s;
+  -o-transition: margin 0.4s;
+  transition: margin 0.4s;
+}
+
+.cmn-toggle-round:checked + label:before {
+  background-color: #6cb3ff;
+}
+
+.cmn-toggle-round:checked + label:after {
+  margin-left: 20px;
+}
+
+.ma-code-full {
+  background: #e7e7e7;
+}
+
+.photo-avata-canhan {
+  float: left;
+  padding: 25% 0;
+  text-align: center;
+  width: 100%;
+}
+
+.item-dat-cho {
+  float: left;
+  width: 100%;
+}
+
+.so-12 {
+  background: #ffca28;
+  border-radius: 100%;
+  color: #fff;
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  margin-right: 10px;
+  text-align: center;
+  width: 20px;
+}
+
+.item-dat-cho {
+  float: left;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.ghi-chu {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #666;
+  float: left;
+  font-family: arial;
+  font-size: 14px;
+  height: 80px;
+  padding: 10px 0;
+  width: 97%;
+}
+
+.from-dat-cho {
+  float: left;
+  width: 100%;
+}
+
+.dat-cho-input-item {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  float: left;
+  height: 32px;
+  margin-right: 10px;
+  width: 48%;
+}
+
+.dat-cho-input-item:nth-child(2n+2) {
+  margin-right: 0px;
+}
+
+.img-inut > img {
+  float: left;
+  margin: 6px;
+}
+
+.dat-cho-input-select {
+  border: none;
+  color: #666;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  width: 95%;
+}
+
+.dat-cho-input {
+  border: medium none;
+  color: #666;
+  float: left;
+  height: 29px;
+  line-height: 29px;
+  width: 74%;
+}
+
+.from-1 {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.text-td {
+  float: left;
+  width: 80px;
+  line-height: 32px;
+}
+
+.dat-cho-input-2 {
+  float: left;
+  width: 91%;
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  height: 29px;
+  line-height: 29px;
+}
+
+.item-button {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.button-dat-cho {
+  background: #09C;
+  height: 35px;
+  border-radius: 3px;
+  border: none;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.button-dat-cho:hover {
+  background: #FC3;
+  color: #fff;
+}
+
+@media only screen and (max-width: 1280px) {
+  .dat-cho-input-select {
+    width: 93%;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .backround-col > img {
+      float: left;
+      height: 250px;
+      width: 100%;
+    }
+
+    .qua-tang-thumnal img {
+      float: left;
+      height: 450px;
+      width: 100%;
+    }
+
+    .dat-cho-input-2 {
+      width: 96%;
+    }
+
+    .dat-cho-input-select {
+      width: 93%;
+    }
+  }
+  @media only screen and (max-width: 980px) {
+    .qua-tang-thumnal img {
+      float: left;
+      height: 400px;
+      width: 100%;
+    }
+
+    .backround-col > img {
+      height: 270px;
+    }
+
+    .dat-cho-input-select {
+      width: 91%;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .backround-col > img {
+      height: 270px;
+    }
+
+    .qua-tang-thumnal img {
+      float: left;
+      height: 330px;
+      width: 100%;
+    }
+
+    .tien-ich-img {
+      float: left;
+      width: 15%;
+      text-align: center;
+    }
+
+    .dat-cho-input-select {
+      width: 89%;
+    }
+  }
+  @media only screen and (max-width: 640px) {
+    .conten-main {
+      width: 100%;
+      float: left;
+    }
+
+    .app-right {
+      float: left;
+      width: 66%;
+    }
+
+    .menu-bottom {
+      width: 100%;
+    }
+
+    .icon-gan-nhat {
+      /*background: url(../images/gan-nhat.png) no-repeat;*/
+      text-indent: 12px;
+      background-position: 5% 7px;
+      float: left;
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .icon-gan-nhat:hover {
+      /*background: url(../images/gan-nhat-hover.png) no-repeat;*/
+      border-bottom: solid 1px #007cff;
+      background-position: 5% 7px;
+      color: #007cff;
+    }
+
+    .icon-gan-nhat.active {
+      /*background: url(../images/gan-nhat-hover.png) no-repeat;*/
+      border-bottom: solid 1px #007cff;
+      background-position: 5% 7px;
+      color: #007cff;
+    }
+
+    .icon-moi-nhat {
+      /*background: url(../images/moi-nhat.png) no-repeat;*/
+      text-indent: 12px;
+      background-position: 5% 7px;
+      float: left;
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .icon-moi-nhat:hover {
+      /*background: url(../images/moi-nhat-hover.png) no-repeat;*/
+      border-bottom: solid 1px #007cff;
+      background-position: 5% 7px;
+      color: #007cff;
+    }
+
+    .icon-moi-nhat.active {
+      /*background: url(../images/moi-nhat-hover.png) no-repeat;*/
+      border-bottom: solid 1px #007cff;
+      background-position: 5% 7px;
+      color: #007cff;
+    }
+
+    .icon-mua-nhieu {
+      /*background: url(../images/mua-nhieu.png) no-repeat;*/
+      text-indent: 12px;
+      background-position: 5% 7px;
+      float: left;
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .icon-mua-nhieu:hover {
+      /*background: url(../images/mua-nhieu-hover.png) no-repeat;*/
+      border-bottom: solid 1px #007cff;
+      background-position: 5% 7px;
+      color: #007cff;
+    }
+
+    .icon-mua-nhieu.active {
+      /*background: url(../images/mua-nhieu-hover.png) no-repeat;*/
+      border-bottom: solid 1px #007cff;
+      background-position: 5% 7px;
+      color: #007cff;
+    }
+
+    .qua-tang-thumnal img {
+      float: left;
+      height: 250px;
+      width: 100%;
+    }
+
+    .ma-code-col {
+      float: left;
+      margin: 2%;
+      width: 46%;
+      margin-bottom: 10px;
+    }
+
+    .backround-col > img {
+      height: 190px;
+    }
+
+    .dat-cho-input-item {
+      width: 47.3%;
+    }
+
+    .dat-cho-input-select {
+      width: 85%;
+    }
+  }
+  @media (max-width: 480px) {
+    .qua-tang-thumnal img {
+      float: left;
+      height: 200px;
+      width: 100%;
+    }
+
+    .backround-col > img {
+      height: 145px;
+    }
+
+    .ghi-chu {
+      width: 98%;
+    }
+
+    .dat-cho-input-select {
+      width: 80%;
+    }
+  }
+  @media (max-width: 360px) {
+    .qua-tang-thumnal img {
+      float: left;
+      height: 150px;
+      width: 100%;
+    }
+
+    .backround-col > img {
+      height: 110px;
+    }
+
+    .new-item-post {
+      width: 75%;
+    }
+
+    .dat-cho-input-select {
+      width: 75%;
+    }
+  }
+  @media (max-width: 320px) {
+    .icon-gan-nhat {
+      font-size: 13px;
+    }
+
+    .qua-tang-thumnal img {
+      float: left;
+      height: 140px;
+      width: 100%;
+    }
+
+    .backround-col > img {
+      height: 100px;
+    }
+
+    .backround-col {
+      float: left;
+      margin: 0.5px;
+      width: 32.9%;
+    }
+
+    .tien-ich-img {
+      width: 14%;
+    }
+  }
+}
+.slive{
+	padding-top: 45px;
+	height:100px;
+	margin-top: 9px;
+}
+/deep/.carousel-control {
+	display: none;
+}

@@ -1,0 +1,169 @@
+.out-icon-sort {
+  position: relative;
+  position: relative;
+  padding: 4px 17px 3px 8px;
+  i {
+    cursor: pointer;
+  }
+  i.fa-sort-asc {
+    font-size: 24px;
+    position: absolute;
+    top: 2px;
+  }
+  i.fa-sort-desc {
+    font-size: 24px;
+    position: absolute;
+  }
+}
+
+.modal-content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+:host /deep/ table[class='table-shop'] {
+  margin: 0 auto !important;
+  width: 80% !important;
+  border: 1px solid #F1F1F1 !important;
+}
+
+.label-title {
+  padding: 0px;
+  margin: 0px;
+}
+
+.error {
+  font-size: 12px;
+  color: #f00;
+}
+
+.listLevel {
+  margin: 0;
+  margin-left: 0;
+}
+
+.lableSelect {
+  border: 1px solid rgba(220, 217, 217, 0.59);
+  padding: 6px;
+  width: 95%;
+  text-align: center;
+  /* border-radius: 2px; */
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: #fff;
+  z-index: 9999 !important;
+}
+
+.dopdownSelect {
+  z-index: 999999;
+  ul {
+    position: absolute;
+    z-index: 99999;
+    border: 1px solid #dedede;
+    width: 95%;
+    left: 0px;
+    overflow: auto;
+    height: 100px;
+    background: #fff;
+    padding: 5px;
+    border-top: none;
+    top: 33px;
+    display: none;
+  }
+}
+
+#divOutClick {
+  position: fixed;
+  z-index: 9999;
+  background: rgba(255, 0, 0, 0);
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  display: none;
+}
+
+.wrap-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.random-password:hover {
+  cursor: pointer;
+}
+
+div.buttom-option > button {
+  width: 125px !important;
+}
+
+.btn-role {
+  border-radius: 6px !important;
+}
+
+// custom input checkbox
+
+input[type="checkbox"] {
+  height: 15px;
+  width: 15px;
+  vertical-align: middle;
+  margin: 0 0.4em 0.4em 0;
+  border: 1px solid #000000;
+  -webkit-appearance: none;
+  -webkit-transition: box-shadow 200ms;
+}
+
+/* border radius for checkbox */
+input[type="checkbox"] {
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* hover state */
+input[type="checkbox"]:not(:disabled):hover {
+  border-color: #37B7F7;
+}
+
+/* active state */
+input[type="checkbox"]:active:not(:disabled) {
+  border-color: #37B7F7;
+}
+
+/* focus state */
+input[type="checkbox"]:focus {
+  outline: none;
+}
+
+/* input checked border color */
+input[type="checkbox"]:checked {
+  border-color: #37B7F7;
+  background-color: #37B7F7;
+}
+
+/* radio checked */
+input[type="radio"]:checked:before {
+  display: block;
+  height: 0.4em;
+  width: 0.4em;
+  position: relative;
+  left: 0.4em;
+  top: 0.4em;
+  background: #fff;
+  border-radius: 100%;
+  content: '';
+}
+
+/* checkbox checked */
+input[type="checkbox"]:checked:before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-left: 5px;
+  margin-top: 1px;
+}

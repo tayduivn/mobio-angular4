@@ -1,0 +1,292 @@
+// The dropdown wrapper (`<div>`)
+.dropup,
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    // Generate the caret automatically
+    // Prevent the focus on the dropdown toggle when closing dropdowns
+    &:focus {
+        outline: 0;
+    }
+}
+
+.dropup {
+    .dropdown-toggle {
+        &::after {
+            border-top: 0;
+            border-bottom: $caret-width solid;
+        }
+    }
+}
+
+// The dropdown menu
+.dropdown-menu {
+    position: absolute;
+    text-transform: initial;
+    top: 71px;
+    left: 0px;
+    z-index: $zindex-dropdown;
+    display: none; // none by default, but block on "open" of the menu
+    float: left;
+    min-width: $dropdown-min-width;
+    padding: $dropdown-padding-y 0;
+    margin: $dropdown-margin-top 0 0; // override default ul
+    font-size: $font-size-base; // Redeclare because nesting can cause inheritance issues
+    color: $body-color;
+    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    list-style: none;
+    background-color: $dropdown-bg;
+    background-clip: padding-box;
+    border: $dropdown-border-width solid $dropdown-border-color;
+    -webkit-box-shadow: 0px 5px 3px #e1e1e1;
+    box-shadow: 0px 5px 3px #e1e1e1;
+    border-top: 5px solid $mobio-color;
+    @include border-radius($border-radius);
+    @include box-shadow($dropdown-box-shadow);
+    li {
+        ul {
+            list-style: none;
+            padding-left: 10px;
+            li {
+                width: 100%;
+                word-wrap: break-word;
+                &:first-child {
+                    border-bottom: 2px solid $mobio-color;
+                    a {
+                        color: $mobio-color;
+                        &:hover {
+                            color: $gray-dark;
+                            background: transparent;
+                            i {
+                                color: $gray-dark !important;
+                            }
+                        }
+                        i {
+                            color: $mobio-color !important;
+                        }
+                    }
+                }
+                a {
+                    color: $gray-dark;
+                    &:hover {
+                        color: $mobio-color;
+                        background: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Dividers (basically an `<hr>`) within the dropdown
+.dropdown-divider {
+    @include nav-divider($dropdown-divider-bg);
+}
+
+// Links, buttons, and more within the dropdown menu
+//
+// `<button>`-specific styles are denoted with `// For <button>s`
+.dropdown-item {
+    display: block;
+    width: 100%; // For `<button>`s
+    padding: 3px $dropdown-item-padding-x;
+    clear: both;
+    font-weight: $font-weight-normal;
+    color: $dropdown-link-color;
+    text-align: inherit; // For `<button>`s
+    background: none; // For `<button>`s
+    border: 0; // For `<button>`s
+    @include hover-focus {
+        color: $dropdown-link-hover-color;
+        text-decoration: none;
+        background-color: $dropdown-link-hover-bg;
+    }
+    &.active,
+    &:active {
+        color: $dropdown-link-active-color;
+        text-decoration: none;
+        background-color: $dropdown-link-active-bg;
+    }
+    &.disabled,
+    &:disabled {
+        color: $dropdown-link-disabled-color;
+        cursor: $cursor-disabled;
+        background-color: transparent;
+        // Remove CSS gradients if they're enabled
+        @if $enable-gradients {
+            background-image: none;
+        }
+    }
+}
+
+// Open state for the dropdown
+.show {
+    // Show the menu
+    >.dropdown-menu {
+        display: block;
+    }
+    // Remove the outline when :focus is triggered
+    >a {
+        outline: 0;
+    }
+}
+
+// Menu positioning
+//
+// Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
+// menu with the parent.
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+    top: 1px; // Reset the default from `.dropdown-menu`
+    width: 250px;
+    &::after {
+        content: '';
+        position: absolute;
+        right: 10px;
+        top: -12px;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid $mobio-color;
+        clear: both;
+    }
+    .dropdown-item {
+        padding: 10px;
+    }
+}
+
+.dropdown-menu-left {
+    &::after {
+        content: '';
+        position: absolute;
+        left: 15%;
+        top: -12px;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid $mobio-color;
+        clear: both;
+    }
+}
+
+// Dropdown section headers
+.dropdown-header {
+    display: block;
+    padding: $dropdown-padding-y $dropdown-item-padding-x;
+    margin-bottom: 0; // for use with heading elements
+    font-size: $font-size-sm;
+    color: $mobio-color;
+    white-space: nowrap; // as with > li > a
+    a {
+        color: $mobio-color;
+    }
+}
+
+// Backdrop to catch body clicks on mobile, etc.
+.dropdown-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-dropdown-backdrop;
+}
+
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+//
+// Just add .dropup after the standard .dropdown class and you're set.
+.dropup {
+    // Different positioning for bottom up menu
+    .dropdown-menu {
+        top: auto;
+        bottom: 100%;
+        margin-bottom: $dropdown-margin-top;
+    }
+}
+
+.notify {
+    position: relative;
+    top: -13px;
+    right: -4px;
+}
+
+.notify .heartbit {
+    position: absolute;
+    top: -20px;
+    right: -4px;
+    height: 25px;
+    width: 25px;
+    z-index: 10;
+    border: 5px solid #F9C023;
+    border-radius: 70px;
+    -moz-animation: heartbit 1s ease-out;
+    -moz-animation-iteration-count: infinite;
+    -o-animation: heartbit 1s ease-out;
+    -o-animation-iteration-count: infinite;
+    -webkit-animation: heartbit 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.notify .point {
+    width: 6px;
+    height: 6px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: #F9C023;
+    position: absolute;
+    right: 6px;
+    top: -10px;
+}
+
+@-moz-keyframes heartbit {
+    0% {
+        -moz-transform: scale(0);
+        opacity: 0.0;
+    }
+    25% {
+        -moz-transform: scale(0.1);
+        opacity: 0.1;
+    }
+    50% {
+        -moz-transform: scale(0.5);
+        opacity: 0.3;
+    }
+    75% {
+        -moz-transform: scale(0.8);
+        opacity: 0.5;
+    }
+    100% {
+        -moz-transform: scale(1);
+        opacity: 0.0;
+    }
+}
+
+@-webkit-keyframes heartbit {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0.0;
+    }
+    25% {
+        -webkit-transform: scale(0.1);
+        opacity: 0.1;
+    }
+    50% {
+        -webkit-transform: scale(0.5);
+        opacity: 0.3;
+    }
+    75% {
+        -webkit-transform: scale(0.8);
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0.0;
+    }
+}

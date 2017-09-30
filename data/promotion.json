@@ -1,0 +1,179 @@
+[
+  {
+    "name": "Cocacola, Pepsi, kaka 😎",
+    "avatar": "http://vanchuyen666.com/upload/images/uu-dai-1472531110.png",
+    "idCategory": "ANUONG",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "AnhMoTa": [{"LinkAnh": "http://storage.googleapis.com/test_xloyalty1/images/test/a83b15e2-775a-11e7-a599-0242ac160008"}],
+    "stateOfEffect": 1,
+    "status": 1,
+    "idPromotion": 1
+  },
+  {
+    "name": "😍 Trung tâm chăm sóc tốt nhất thế giới",
+    "avatar": "https://www.willowcreekcarecenter.org/wp-content/themes/agtnoname/images/CareCenterLogoHome.png",
+    "idCategory": "FITNESSCENTER",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 2,
+    "status": 0,
+    "idPromotion": 2
+  },
+  {
+    "name": "Free khách sạn ahihi 🤣",
+    "avatar": "https://hoanghamobile.com/Uploads/Originals/2016/11/19/201611192241174632_landing%20page%20online%20trang%201-01.jpg",
+    "idCategory": "KHACHSAN",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 1,
+    "status": 0,
+    "idPromotion": 3
+  },
+  {
+    "name": "Đậu Xanh, Máy Ảnh Kakakaka 😋",
+    "avatar": "http://www.vpbank.com.vn/sites/default/files/pictures/banner%20FB%20-%20Uu%20dai%20cuoi%20tuan%204-5--1-2014-01.jpg",
+    "idCategory": "MAYANH",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 2,
+    "status": 0,
+    "idPromotion": 4
+  },
+  {
+    "name": "Cocacola, Pepsi, kaka 😎",
+    "avatar": "http://vanchuyen666.com/upload/images/uu-dai-1472531110.png",
+    "idCategory": "ANUONG",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 1,
+    "status": 1,
+    "idPromotion": 5
+  },
+  {
+    "name": "😍 Trung tâm chăm sóc tốt nhất thế giới",
+    "avatar": "https://www.willowcreekcarecenter.org/wp-content/themes/agtnoname/images/CareCenterLogoHome.png",
+    "idCategory": "FITNESSCENTER",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 1,
+    "status": 1,
+    "idPromotion": 6
+  },
+  {
+    "name": "Free khách sạn ahihi 🤣",
+    "avatar": "https://hoanghamobile.com/Uploads/Originals/2016/11/19/201611192241174632_landing%20page%20online%20trang%201-01.jpg",
+    "idCategory": "KHACHSAN",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 2,
+    "status": 0,
+    "idPromotion": 7
+  },
+  {
+    "name": "Đậu Xanh, Máy Ảnh Kakakaka 😋",
+    "avatar": "http://www.vpbank.com.vn/sites/default/files/pictures/banner%20FB%20-%20Uu%20dai%20cuoi%20tuan%204-5--1-2014-01.jpg",
+    "idCategory": "MAYANH",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 1,
+    "status": 1,
+    "idPromotion": 8
+  },
+  {
+    "name": "Cocacola, Pepsi, kaka 😎",
+    "avatar": "http://vanchuyen666.com/upload/images/uu-dai-1472531110.png",
+    "idCategory": "ANUONG",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 1,
+    "status": 1,
+    "idPromotion": 9
+  },
+  {
+    "name": "😍 Trung tâm chăm sóc tốt nhất thế giới",
+    "avatar": "https://www.willowcreekcarecenter.org/wp-content/themes/agtnoname/images/CareCenterLogoHome.png",
+    "idCategory": "FITNESSCENTER",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 2,
+    "status": 1,
+    "idPromotion": 10
+  },
+  {
+    "name": "Free khách sạn ahihi 🤣",
+    "avatar": "https://hoanghamobile.com/Uploads/Originals/2016/11/19/201611192241174632_landing%20page%20online%20trang%201-01.jpg",
+    "idCategory": "KHACHSAN",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 0,
+    "status": 1,
+    "idPromotion": 11
+  },
+  {
+    "name": "Đậu Xanh, Máy Ảnh Kakakaka 😋",
+    "avatar": "http://www.vpbank.com.vn/sites/default/files/pictures/banner%20FB%20-%20Uu%20dai%20cuoi%20tuan%204-5--1-2014-01.jpg",
+    "idCategory": "MAYANH",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 1,
+    "status": 1,
+    "idPromotion": 12
+  },
+  {
+    "name": "Cocacola, Pepsi, kaka 😎",
+    "avatar": "http://vanchuyen666.com/upload/images/uu-dai-1472531110.png",
+    "idCategory": "ANUONG",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 1,
+    "status": 1,
+    "idPromotion": 13
+  },
+  {
+    "name": "😍 Trung tâm chăm sóc tốt nhất thế giới",
+    "avatar": "http://hoccocungkientuong.com/wp-content/uploads/2013/08/uu-dai-phu-huynh-hoc-co.jpg",
+    "idCategory": "FITNESSCENTER",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 1,
+    "status": 1,
+    "idPromotion": 14
+  },
+  {
+    "name": "Free khách sạn ahihi 🤣",
+    "avatar": "https://hoanghamobile.com/Uploads/Originals/2016/11/19/201611192241174632_landing%20page%20online%20trang%201-01.jpg",
+    "idCategory": "KHACHSAN",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 2,
+    "status": 1,
+    "idPromotion": 15
+  },
+  {
+    "name": "Đậu Xanh, Máy Ảnh Kakakaka 😋",
+    "avatar": "http://www.vpbank.com.vn/sites/default/files/pictures/banner%20FB%20-%20Uu%20dai%20cuoi%20tuan%204-5--1-2014-01.jpg",
+    "idCategory": "MAYANH",
+    "timeStart": "10/04/2017 23:59",
+    "timeEnd": "10/05/2017 23:59",
+    "statusChangePoint": 1,
+    "stateOfEffect": 1,
+    "status": 1,
+    "idPromotion": 16
+  }
+]

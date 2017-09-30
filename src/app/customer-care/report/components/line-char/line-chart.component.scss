@@ -1,0 +1,21 @@
+:host {
+    .chart-wrapper {
+        height: 300px;
+    }
+    .m-point {
+        border-top: 1px solid #d1d1d1;
+        margin: 20px 0px 0px;
+    }
+    .m-point h4 {
+        margin-left: 30px;
+        margin-top: 10px;
+    }
+    .m-point p {
+        margin-left: 30px;
+    }
+    @media (min-width: 768px) {
+        .chart-wrapper {
+            margin-top: 40px;
+        }
+    }
+}

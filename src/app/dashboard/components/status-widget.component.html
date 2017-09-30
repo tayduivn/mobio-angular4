@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="row">
+        <!-- <i class="fa fa-cogs bg-primary p-2 font-2xl mr-1 float-right"></i> -->
+        <div class="col-sm-7" style="height:159px">
+            <div class="text-center" style="margin-top:50px;">
+                <p class="h4">{{data.number}}</p>
+                <p style="color:rgba(0, 0, 0, 0.3)">{{data.text}}</p>
+            </div>
+
+        </div>
+        <div class="col-sm-5" style="height:159px;">
+            <div class="icon-wrapper both-center">
+                <img src="{{data.image}}" class="img-responsive img-status" [ngClass]="{'img-status-60':data.resize == 60,'img-status-55':data.resize==55}">
+            </div>
+        </div>
+    </div>
+</div>

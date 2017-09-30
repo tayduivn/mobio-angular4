@@ -1,0 +1,223 @@
+<div class="animated fadeIn">
+
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-6">
+      <p id="totalPoint">Điểm hiện tại trong tài khoản <span>1000 mPoint</span></p>
+    </div>
+    <!--search-->
+
+    <div class="col-md-6" style="text-align: right">
+      <button class="btn btn-default" type="button" data-toggle="modal" (click)="largeModal.show()"
+              style="    background-color: rgb(224, 110, 110) !important;color: #fff;">
+        <i class="fa fa-cog"></i> Nhập thông báo công nợ
+      </button>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-6">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+        </span>
+        <input type="text" id="input1-group2" name="input1-group2" class="form-control col-md-7"
+               placeholder="Tìm kiếm"/>
+      </div>
+    </div>
+    <!--search-->
+
+    <div class="col-md-6 btn-execute">
+      <button class="btn btn-default" type="button" (click)="exportFile()">
+        <i class="fa fa-download"></i> Xuất file
+      </button>
+      <div class="input-group date filter-date">
+        <span class="input-group-addon" (click)="showDaterangeFitter($event)">       
+          <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+        </span>
+        <input type="text" class="form-control" id="filterDate" 
+              daterangepicker 
+              [(ngModel)]="stringdaterangeFitter"
+              [options]="optionsDateFitter" 
+              (applyDaterangepicker)="selectedDateFitter($event)">
+      </div>
+    </div>
+  </div>
+  <!--seach and upload file, create product-->
+  <div class="row">
+    <div class="col-md-4 col-sm-12" style="padding: 0px 0.4% 0px 1%;">
+      <div class="card card-filter">
+        <div class="card-header">Nội dung giao dịch</div>
+        <div class="card-block">
+          <div class="checkbox">
+            <label>
+              <input class="chkHide" type="checkbox" value="1"> Nạp mPoint
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input class="chkHide" type="checkbox" value="2"> Điểm tặng từ Mobio
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input class="chkHide" type="checkbox" value="3"> Điểm thu từ khách hàng đổi quà trên Mobio
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input class="chkHide" type="checkbox" value="4"> Điểm tặng khách hàng mua sắm tại cửa hàng
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input class="chkHide" type="checkbox" value="5"> Điểm tặng khách hàng đánh giá
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input class="chkHide" type="checkbox" value="6"> Điểm tặng khách hàng ghé thăm cửa hàng</label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input class="chkHide" type="checkbox" value="7"> Hoàn điểm cho khách hàng
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input class="chkHide" type="checkbox" value="8"> Điểm tặng khác
+            </label>
+          </div>
+        </div><!--Trạn thái hiển thị-->
+      </div>
+    </div>
+    <div class="col-md-8 col-sm-12">
+      <div class="card">
+        <table class="table table-condensed">
+          <thead>
+          <tr>
+
+            <th style="width: 20%; text-align: center">Ngày</th>
+            <th style="width: 40%">Nội dung giao dịch</th>
+            <th style="width: 20%;text-align: center;"> Số điểm</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let debt of debts">
+            <td style="text-align: center"><label>{{debt.date}}</label></td>
+            <td><label>{{debt.transactionContent}}</label></td>
+            <td style="text-align: center"><label [ngClass]="{'blue': debt.plusOrMinus === 1,'red':debt.plusOrMinus === 0}">{{( debt.plusOrMinus === 1)?'+':'-'}}{{debt.point}}</label></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--Show Table List Product-->
+</div>
+
+<div bsModal #largeModal="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Cấu hình nhận thông báo công nợ</h4>
+        <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row body-create-card">
+          <div class="col-sm-12 col-sm-offset-4">
+            <div class="col-sm-12 creat-product" style="padding: 10px 17px 11px 25px;">
+              <div style="border-bottom: none;" class="tooltip-show">
+                <label>Ngưỡng công nợ nhận thông báo (*) <i class="fa fa-question" aria-hidden="true" style="    font-size: 14px !important;
+                    border: 1px solid #4e4747;border-radius: 50%;padding: 3px 6px;cursor: pointer;"></i></label>
+                <span class="tooltiptext-show" style="border-bottom: none;left: 239%; top: -16px; height: 52px; width: 300px;">
+                      Bấm và di chuyển vị trí trên thanh cuận để <br/> chọn các ngưỡng công nợ nhận thông báo
+                    </span>
+              </div>
+              <ion-range-slider #sliderElement
+                                type="double"
+                                [min]="0"
+                                max="100"
+                                from="28">
+              </ion-range-slider>
+            </div> <!-- Create product section 1-->
+            <div class="col-sm-12 creat-product">
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <div style="border-bottom: none;" class="tooltip-show">
+                    <label>Nhận thông báo qua email <i class="fa fa-question" aria-hidden="true" style="    font-size: 14px !important;
+                    border: 1px solid #4e4747;border-radius: 50%;padding: 3px 6px;cursor: pointer;"></i></label>
+
+                    <span class="tooltiptext-show" style="border-bottom: none;left: 293%;top: -4px; height: 30px;">
+                      Các email cách nhau băng ;
+                    </span>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label>Email</label>
+                </div>
+                <div class="col-sm-8">
+                  <input class="form-control input-sm" #email name="Email">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <div style="border-bottom: none;" class="tooltip-show">
+                    <label>Nhận thông báo qua SMS <i class="fa fa-question" aria-hidden="true" style="    font-size: 14px !important;
+                    border: 1px solid #4e4747;border-radius: 50%;padding: 3px 6px;cursor: pointer;"></i></label>
+                    <span class="tooltiptext-show" style="border-bottom: none;left: 293%;top: -4px; height: 30px;">
+                      Các số điện thoại cách nhau băng ;
+                    </span>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label>Số điện thoại</label>
+                </div>
+                <div class="col-sm-8">
+                  <input class="form-control input-sm" #phone name="phone">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-8">
+                  <label>Nhận thông báo qua Push notification</label>
+                </div>
+                <div class="col-sm-4">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label>Tài khoản quản trị</label>
+                </div>
+                <div class="col-sm-8">
+                  <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems"
+                                        [settings]="dropdownSettings"
+                                        (onSelect)="onItemSelect($event)"
+                                        (onDeSelect)="OnItemDeSelect($event)"
+                                        (onSelectAll)="onSelectAll($event)"
+                                        (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+                </div>
+              </div>
+            </div><!--Create product section 2 anh the-->
+            <div class="col-sm-12 buttom-option" style="padding: 20px 40px 0;">
+              <button class="btn btn-primary" type="button" (click)="largeModal.hide()">Lưu</button>
+              <button class="btn btn-secondary" type="button" (click)="largeModal.hide()">Bỏ qua</button>
+            </div><!--Create product section 3 Trạng Thái-->
+          </div><!--body content-->
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+<!-- Modal Create Product -->
+

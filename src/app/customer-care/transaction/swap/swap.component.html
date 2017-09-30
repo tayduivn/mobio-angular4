@@ -1,0 +1,74 @@
+<div class="row">
+	<div class="col-md-6">
+		<p><a (click)="changeTab()" style="cursor:pointer;">NHẬP TRỰC TIẾP</a></p>
+	</div>
+	<div class="col-md-6">
+		<p><a (click)="changeTab()" style="cursor:pointer;">NHẬP FILE</a></p>
+	</div>
+</div>
+
+<div class="row">
+
+	<div *ngIf="tab" class="col-md-6" style="margin: auto;">
+		<form>
+			<div class="form-group">
+				<label class="">Cửa hàng (*)</label>
+				<input type="text" class="form-control" placeholder="Chọn cửa hàng">
+			</div>
+
+			<div class="form-group">
+				<label class="">Mã giao dịch (*)</label>
+				<input type="text" class="form-control">
+			</div>
+			<button type="button" class="btn btn-primary pull-right">
+				Đồng ý
+			</button>
+		</form>
+	</div>
+
+	<div *ngIf="!tab" class="col-sm-6" style="min-height: 150px; margin:auto;">
+		<div class="form-group row">
+			<div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOverImageDescriptions}" (onFileDrop)="changeUrlFileUploadImageDescriptions($event)"
+			 (fileOver)="fileOverBaseUploadImageDescriptions($event)" [uploader]="uploaderImageDescriptions" class="well my-drop-zone">
+				<div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và file</div>
+				<div class="row">
+					<div class="col-sm-4 text-right text-hoac">
+						Hoặc :
+					</div>
+					<div class="col-sm-6">
+						<button class="btn btn-s" style="cursor:pointer;" type="button" (click)="chooseFileUpdateImageDescriptions($event)">
+						<span class="glyphicon glyphicon-upload"></span> Chọn file
+					</button>
+						<span *ngFor="let item of uploaderImageDescriptions.queue">
+						{{ item?.file?.name }}
+					</span>
+						<div class="hidden-md-down hidden-md-up">
+							<input type="file" accept="image/x-png,image/gif,image/jpeg" #elInputFileImageDescriptions ng2FileSelect (change)="changeUrlFileUploadImageDescriptions()"
+							 [(uploader)]="uploaderImageDescriptions" multiple/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div *ngFor="let imgDescription of uploaderImageDescriptions.queue,let iImgDescription = index" class="fileImgUpload">
+					<img [src]="imgDescription.url" [alt]="'Ảnh '+iImgDescription">
+					<span (click)="imgDescription.remove()"> <i class="fa fa-close"></i></span>
+				</div>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label for="mail" class="col-md-12">Email nhận kết quả: <br></label>
+			<input type="email " class="col-md-12" [(ngModel)]="mail" name="mail" id="mail">
+		</div>
+
+		<button type="button" class="btn btn-primary pull-right">Đồng ý</button>
+
+
+
+
+
+
+
+
+
+	</div>

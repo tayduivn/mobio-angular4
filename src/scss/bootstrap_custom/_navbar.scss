@@ -1,0 +1,110 @@
+header.navbar {
+    position: relative;
+    flex-direction: row;
+    height: $navbar-height;
+    padding: 0;
+    background-color: $navbar-bg;
+    @include borders($navbar-border);
+    .navbar-brand {
+        display: inline-block;
+        width: $navbar-brand-width;
+        padding: $navbar-padding-y $navbar-padding-x;
+        margin-right: 0;
+        background-color: $navbar-brand-bg;
+        background-image: $navbar-brand-logo;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: $navbar-brand-logo-size;
+    }
+    .navbar-nav {
+        flex-direction: row;
+        align-items: center;
+        li {
+            &:hover {
+                .dropdown-menu {
+                    display: block;
+                }
+            }
+            &:focus {
+                .dropdown-menu {
+                    display: none;
+                }
+            }
+        }
+    }
+    .nav-item {
+        position: relative;
+        padding: 1.6rem 0.6rem;
+        text-transform: uppercase;
+        margin: 0 !important;
+        text-align: center;
+        font-size: 0.95rem;
+        .nav-link {
+            padding-top: 0;
+            padding-bottom: 0;
+            .badge {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -16px;
+                margin-left: 0;
+            }
+            >.img-avatar {
+                height: $navbar-height - 20px;
+                margin: 0 10px;
+            }
+        }
+        .dropdown-toggle {
+            color: rgba(225, 225, 225, .50) !important;
+            &:hover {
+                color: $mobio-color !important;
+                .text-info {
+                    color: $mobio-color !important;
+                }
+            }
+        }
+    }
+    .dropdown-menu {
+        padding-bottom: 0;
+        line-height: $line-height-base;
+    }
+    .dropdown-item {
+        min-width: 180px;
+    }
+    a.dropdown-item {
+        i {
+            color: $mobio-color;
+        }
+        &:hover {
+            color: $mobio-color;
+        }
+    }
+}
+
+.navbar-brand {
+    color: $navbar-active-color;
+    @include hover-focus {
+        color: $navbar-active-color;
+    }
+}
+
+.navbar-nav {
+    .nav-link {
+        color: $navbar-color;
+        @include hover-focus {
+            color: $navbar-hover-color;
+        }
+    }
+    .open>.nav-link,
+    .active>.nav-link,
+    .nav-link.open,
+    .nav-link.active {
+        @include plain-hover-focus {
+            color: $navbar-active-color;
+        }
+    }
+}
+
+.navbar-divider {
+    background-color: rgba(0, 0, 0, .075);
+}

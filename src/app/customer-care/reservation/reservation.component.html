@@ -1,0 +1,228 @@
+<div class="animated fadeIn">
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-3">
+      <div class="input-group">
+        <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" (click)="buttonSearch()"><i class="fa fa-search"></i></button>
+                  </span>
+        <input type="text" [(ngModel)]="keySearch" name="input1-group2" class="form-control"
+               placeholder="Tìm kiếm"/>
+      </div>
+    </div>
+    <!--search-->
+    <div class="col-md-5 btn-crud">
+    </div>
+    <div class="col-md-4 btn-execute">
+    </div>
+  </div>
+  <!--seach and upload file, create product-->
+  <div class="row">
+    <div class="col-md-3 col-sm-12">
+      <div class="card card-filter">
+        <div class="card-header">Trạng thái duyệt</div>
+        <div class="card-block filter-state">
+          <div class="checkbox">
+            <label>
+              <input name="status" type="radio" value="pendding"
+                     (change)="filterStatus(1)"> Chờ xác nhận
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input name="status" type="radio" value="cartVip"
+                     (change)="filterStatus(2)"> Đồng ý</label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input name="status" type="radio" value="cancel"
+                     (change)="filterStatus(3)"> Từ chối</label>
+          </div>
+        </div>
+        <div class="card-header">Thời gian gửi yêu cầu</div>
+        <div class="card-block filter-date-start">
+          <div class="input-group date filter-date">
+            <span class="input-group-addon">
+              <span class="fa fa-calendar"></span>
+            </span>
+            <input type="text" class="form-control" daterangepicker [(ngModel)]="timeRangerOrder"
+                   (applyDaterangepicker)="filterTimeOrder($event)">
+          </div>
+        </div>
+        <div class="card-header">Thời gian Đặt</div>
+        <div class="card-block">
+          <div class="input-group date filter-date">
+            <span class="input-group-addon">
+              <span class="fa fa-calendar"></span>
+            </span>
+            <input type="text" class="form-control" daterangepicker [(ngModel)]="timeRangerUtil"
+                   (applyDaterangepicker)="filterTimeUtil($event)">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 col-sm-12">
+      <div class="card">
+        <table class="table table-condensed">
+          <thead>
+          <tr>
+            <th style="width:20px">
+              <!-- <input type="checkbox" (click)="selectAllReservation($event)" #_selectAllReservation/> -->
+            </th>
+            <th style="width: 20%">
+              Thời gian gửi yêu cầu
+            </th>
+            <th style="width: 18%;text-align: center">
+              Số điện thoại
+            </th>
+            <th style="width: 12%;text-align: center;">
+              Số người
+            </th>
+            <th style="width: 18%;text-align: center;">
+              Thời gian đặt
+            </th>
+            <th style="width: 20%;text-align: center;">
+              Địa điểm
+            </th>
+            <th style="width: 20%;text-align: center;">
+              Ghi chú
+            </th>
+            <th style="width: 15%;text-align: center;">
+              Thao tác
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <!--[ngStyle]="{'display': item.select && hide?'none':'table-row'}"-->
+          <tr *ngFor="let reservation of reservations">
+            <td></td>
+            <td>{{reservation.created_time}}</td>
+            <td>{{reservation.detail.contact_phone}}</td>
+            <td><p class="datetime">{{reservation.detail.number_of_peoples}}</p></td>
+            <td><p class="datetime">{{reservation.detail.time}}</p></td>
+            <td style="text-align: justify;">{{reservation.venue?.name}}</td>
+            <td>{{reservation.detail.note}}</td>
+            <td style="text-align: center;" class="btn-execute">
+              <i *ngIf="reservation.status === 1" (click)="editReservation(reservation.id)" tooltip="Sửa"
+                 class="fa fa-pencil-square-o fa-3"
+                 aria-hidden="true"></i>
+              <i *ngIf="reservation.status === 1"
+                 (click)="acceptReservation(reservation.id)" class="fa fa-check" tooltip="Duyệt"
+                 aria-hidden="true">
+              </i>
+              <i *ngIf="reservation.status === 1"
+                 (click)="rejectReservation(reservation.id)"
+                 class="fa fa-2 fa-times" tooltip="Hủy" aria-hidden="true"></i>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="5" class="header-pagination">
+              <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+            </td>
+            <td colspan="2"></td>
+            <td colspan="1" class="perpage-pagination">
+              <div class="input-group">
+                <span class="input-group-addon file-upload-show">Hiển thị </span>
+                <select class="select-page" name="select-page" size="1" #_selectCurrentPage
+                        (change)="changePerPage(_selectCurrentPage.value)">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--Show Table List Product-->
+</div>
+
+<div bsModal #reservationModal="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">THÔNG TIN ĐẶT CHỖ</h4>
+        <button type="button" class="close" (click)="reservationModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row body-create-card">
+          <div class="col-sm-12 col-sm-offset-4">
+            <div class="col-sm-12 creat-product">
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <label class="col-sm-10 form-control-label label-title">Số điện thoại (*)</label>
+                  <input class="form-control input-sm col-sm-11"
+                         name="input-accumulative-point" placeholder="Số điện thoại"
+                         type="text" [(ngModel)]="reservation.detail.contact_phone">
+                </div>
+                <!--SDT-->
+                <div class="col-sm-6">
+                  <label class="col-sm-10 form-control-label label-title">Thời gian đặt (*)</label>
+                  <div class="date-picker">
+                    <duc-datetimepicker [options]="optionsEndDisplayDatetimePicker" [groupClass]="'left-ico'"
+                                        [groupIconClass]="'fa fa-calendar'"
+                                        [(ngModel)]="reservation.detail.time"></duc-datetimepicker>
+                  </div>
+                </div>
+                <!--Thoi Gian Dat -->
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <label class="col-sm-10 form-control-label label-title">Số người (*)</label>
+                  <input class="form-control input-sm col-sm-11"
+                         name="input-accumulative-point" placeholder="Số người"
+                         type="number" [(ngModel)]="reservation.detail.number_of_peoples">
+                </div>
+                <!--So nguoi-->
+                <div class="col-sm-6">
+                  <label class="col-sm-10 form-control-label label-title">Địa chỉ (*)</label>
+                  <!--<input #elName class="form-control input-sm col-sm-11" name="input-accumulative-point"-->
+                  <!--placeholder="Địa chỉ"-->
+                  <!--type="text" [(ngModel)]="reservation.venue.name">-->
+                  <angular2-multiselect [data]="dropDownListShop" [(ngModel)]="selectedShop"
+                                        [settings]="dropDownSettings"
+                                        (onSelect)="onShopSelect($event)"
+                                        (onDeSelect)="onShopDeSelect()"></angular2-multiselect>
+                </div>
+                <!--Dia chi -->
+              </div>
+              <!--So nguoi + dia chi-->
+
+              <div class="form-group row">
+                <div class="col-sm-12 note-reservation">
+                  <label class="col-sm-10 form-control-label label-title">Ghi chú</label>
+                  <!-- <input class="form-control input-sm col-sm-11"
+                          name="input-accumulative-point" placeholder="Ghi chú"
+                          type="text" [(ngModel)]="reservation.detail.note">-->
+                  <textarea class="form-control col-sm-12" cols="15" rows="3"
+                            [(ngModel)]="reservation.detail.note"></textarea>
+                </div>
+              </div>
+            </div>
+            <!-- body content -->
+            <div class="col-sm-12 button-option">
+              <button class="btn btn-primary" type="button" (click)="updateReservation(reservation.id)">Lưu</button>
+              <button class="btn btn-secondary" type="button" (click)="hideModalUpdate()">Bỏ qua</button>
+            </div>
+          </div>
+          <!--footer-content-->
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- Modal Update reservation -->

@@ -1,0 +1,1862 @@
+<div class="animated fadeIn" [hidden]="hidden">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="connect-social">
+                <h4>Kết nối mạng xã hội</h4>
+                <p><i class="fa fa-plus-circle" (click)="lgModal.show()"></i></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="animated fadeIn" [hidden]="!hidden">
+    <div class="row">
+        <div class="col-xs-10">
+            <ul class="social-action">
+                <li [ngClass]="{'active':!all}"><a (click)="actionAll()" href="javascript:void(0)">Tất cả</a> </li>
+                <li [ngClass]="{'active':face}"><img src="../../../assets/img/icon/facebook-no-color.png"> <a (click)="actionFace()" href="javascript:void(0)">Facebook</a></li>
+                <li [ngClass]="{'active':ins}"><img src="../../../assets/img/icon/instargram-no-color.png"> <a (click)="actionIns()" href="javascript:void(0)">Instargram</a></li>
+                <li [ngClass]="{'active':zalo}"><img src="../../../assets/img/icon/zalo-no-color.png"> <a (click)="actionZalo()" href="javascript:void(0)">Zalo</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-2">
+            <button class="btn btn-new pull-right"><i class="fa fa-plus"></i> Tạo mới</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-create-social"><i class="fa fa-refresh"></i> Làm mới</button>
+            <button class="btn btn-create-social" (click)="lgModal.show()"><i class="fa fa-plus"></i> Thêm mới mạng xã hội</button>
+            <button class="btn btn-create-social" (click)="insertModal.show()"><i class="fa fa-plus"></i> Thêm mới nội dung hiển thị</button>
+        </div>
+    </div>
+    <div class="row" [hidden]="all">
+        <div class="col-xs-12">
+            <div class="display-social">
+                <div style="width: 200%;">
+                    <div class="single-social">
+                        <div class="col-xs-12">
+                            <div class="single-social-header">
+                                <img src="../../../assets/img/icon/facebook.png"> <a href="javascript:void(0)">Cocasuki Việt Nam</a>
+                                <span>Bài viết</span>
+                                <i class="fa fa-close fa-lg pull-right"></i>
+                            </div>
+                            <div class="single-social-content">
+                                <div class="row" *ngFor="let f of facebook; let i = index">
+                                    <div class="col-xs-12" *ngFor="let p of f.posts">
+                                        <img class="img-circle avatar" src="{{p.avatar}}">
+                                        <span class="name"><a href="#">{{p.pageName}}</a> <span class="time
+                            ">{{p.time}}</span></span>
+                                        <span class="babge">{{p.noReply}}</span>
+                                        <p class="content">
+                                            {{p.content}}
+                                        </p>
+                                        <img class="img-content" src="{{p.image}}">
+                                        <ul class="social-icon">
+                                            <li><a href="javascript:void(0)" title="Like"><i class="fa fa-thumbs-o-up" style="color:#1e7bc9;"></i> </a>{{p.totalLike}}</li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-comment-o"></i></a> {{p.totalComment}}</li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-mail-forward"></i></a></li>
+                                            <li><a href="javascript:void(0)" (click)="showOnly($event,i)"><i class="fa fa-sign-out"></i></a>
+                                                <ul class="only" [hidden]="!only[i]">
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công cho tôi</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công abc@cocasuki.com</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn@cocasuki.com</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn1@cocasuki.com</a>
+                                                    </li>
+                                                </ul>
+
+                                            </li>
+                                            <li><a href="javascript:void(0)" (click)="showAction($event,i)"><i class="fa fa-ellipsis-v"></i></a>
+                                                <ul [hidden]="!actionpage[i]">
+                                                    <li>
+                                                        <a href="javascript:void(0)"> <i class="fa fa-pencil"></i> Sửa</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"> <i class="fa fa-trash"></i> Xoá</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                        <div class="social-comment">
+                                            <div class="image-avatar">
+                                                <img class="img-circle avatar" src="{{p.avatar}}">
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                                                <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                        </span>
+                                            </div>
+                                            <div class="icon">
+                                                <ul>
+                                                    <li><i class="fa fa-play fa-rotate-90" (click)="showRely($event,i)"></i>
+                                                        <ul [hidden]="!reply[i]">
+                                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="display-comment" *ngFor="let c of p.comments | slice:0:show ; let i = index">
+                                            <div class="image-avatar">
+                                                <img class="img-circle avatar" src="{{c.avatar}}">
+                                            </div>
+                                            <div class="comment-content">
+                                                <p class="name">{{c.name}}</p>
+                                                <p class="content">{{c.content}}</p>
+                                                <p class="time">
+                                                    <span>{{c.time}}</span>
+                                                    <select name="" id="radiusSelect" class="pull-right">
+                                            <option value="3">Tích cực</option>
+                                            <option value="5">Tiêu cực</option>
+                                            <option value="10">Trung lập</option>
+                                        </select>
+                                                </p>
+                                                <ul class="icon">
+                                                    <li><a href="javascript:void(0)" title="Like"><i class="fa fa-thumbs-o-up" style="color:#1e7bc9;"></i> </a>{{c.totalLike}}</li>
+                                                    <li><a href="javascript:void(0)" (click)="showComment($event,i)"><i  class="fa fa-comment-o"></i></a> {{c.totalReply}}</li>
+                                                    <li><a href="javascript:void(0)" (click)="showActionComment($event,i)"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul [hidden]="!actioncomment[i]">
+                                                            <li>
+                                                                <a href="javascript:void(0)"> <i class="fa fa-eye-slash"></i> Ẩn</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)"> <i class="fa fa-trash"></i> Xoá</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)"> <i class="fa fa-comment"></i> Gửi tin nhắn</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <div class="social-comment" [hidden]="!comment[i]">
+                                                    <div class="image-avatar">
+                                                        <img class="img-circle avatar" src="../../../assets/images/coca.jpg">
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                                                        <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                                    </span>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <ul>
+                                                            <li><i class="fa fa-play fa-rotate-90" (click)="showReplyComment($event,i)"></i>
+                                                                <ul class="comment-reply" [hidden]="!commentreply[i]">
+                                                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="social-comment" [hidden]="!comment[i]" *ngFor="let r of c.reply">
+                                                    <div class="image-avatar">
+                                                        <img class="img-circle avatar" src="{{p.avatar}}">
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <p class="name">{{r.name}}</p>
+                                                        <p class="content">{{r.content}}</p>
+                                                        <p class="time">
+                                                            <span>{{r.time}}</span>
+                                                        </p>
+                                                        <ul class="social-icon">
+                                                            <li><a href="javascript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                                                            <li><a href="javascript:void(0)"><i class="fa fa-trash"></i></a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /display comment -->
+                                        <div class="showmore">
+                                            <i (click)="show = show + 5 " class="fa fa-angle-double-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-social">
+                        <div class="single-social-header">
+                            <img src="../../../assets/img/icon/facebook.png"> <a href="javascript:void(0)">Cocasuki Việt Nam</a>
+                            <span>Tin nhắn</span>
+                            <i class="fa fa-close fa-lg pull-right"></i>
+                            <span class="babge">3</span>
+                        </div>
+                        <div class="single-social-content" *ngFor="let f of facebook">
+                            <div class="display-comment" *ngFor="let m of f.messenger ; let i = index">
+                                <div class="image-avatar">
+                                    <img class="img-circle avatar" src="{{m.avatar}}">
+                                </div>
+                                <div class="comment-content">
+                                    <p class="name">{{m.name}}</p>
+                                    <p class="content">{{m.content}}</p>
+                                    <p class="time">
+                                        <span>{{m.time}}</span>
+                                        <select name="" id="radiusSelect" class="pull-right">
+                                    <option value="3">Tích cực</option>
+                                    <option value="5">Tiêu cực</option>
+                                    <option value="10">Trung lập</option>
+                                </select>
+                                    </p>
+                                    <ul class="icon">
+                                        <li><a href="javascript:void(0)" title="Like" (click)="mesModal.show();"><i class="fa fa-reply" ></i> </a></li>
+                                        <li><a href="javascript:void(0)" (click)="showOnlyMes($event,i)"><i class="fa fa-sign-out"></i></a>
+                                            <ul class="only" [hidden]="!onlymes[i]">
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công cho tôi</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công abc@cocasuki.com</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn@cocasuki.com</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn1@cocasuki.com</a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /display-comment -->
+
+                        </div>
+                    </div>
+                    <!-- /single-social -->
+                    <div class="single-social">
+                        <div class="single-social-header">
+                            <img src="../../../assets/img/icon/instargram.png"> <a href="javascript:void(0)">Cocasuki Việt Nam</a>
+                            <span>Bài viết</span>
+                            <i class="fa fa-close fa-lg pull-right"></i>
+                        </div>
+                        <div class="single-social-content">
+                            <div *ngFor="let f of instargram; let i = index">
+                                <div *ngFor="let p of f.posts">
+                                    <img class="img-circle avatar" src="{{p.avatar}}">
+                                    <span class="name"><a href="#">{{p.pageName}}</a> <span class="time
+                                    ">{{p.time}}</span></span>
+                                    <span class="babge">{{p.noReply}}</span>
+                                    <p class="content">
+                                        {{p.content}}
+                                    </p>
+                                    <img class="img-content" src="{{p.image}}">
+                                    <ul class="social-icon">
+                                        <li><a href="javascript:void(0)" title="Like"><i class="fa fa-heart" style="color:red;"></i> </a>{{p.totalLike}}</li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-comment-o"></i></a> {{p.totalComment}}</li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-mail-forward"></i></a></li>
+                                        <li><a href="javascript:void(0)" (click)="showOnly($event,i)"><i class="fa fa-sign-out"></i></a>
+                                            <ul class="only" [hidden]="!only[i]">
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công cho tôi</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công abc@cocasuki.com</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn@cocasuki.com</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn1@cocasuki.com</a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                        <li><a href="javascript:void(0)" (click)="showAction($event,i)"><i class="fa fa-ellipsis-v"></i></a>
+                                            <ul [hidden]="!actionpage[i]">
+                                                <li>
+                                                    <a href="javascript:void(0)"> <i class="fa fa-pencil"></i> Sửa</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"> <i class="fa fa-trash"></i> Xoá</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                    <div class="social-comment">
+                                        <div class="image-avatar">
+                                            <img class="img-circle avatar" src="{{p.avatar}}">
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                                            <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                                </span>
+                                        </div>
+                                        <div class="icon">
+                                            <ul>
+                                                <li><i class="fa fa-play fa-rotate-90" (click)="showRely($event,i)"></i>
+                                                    <ul [hidden]="!reply[i]">
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="display-comment" *ngFor="let c of p.comments | slice:0:show ; let i = index">
+                                        <div class="image-avatar">
+                                            <img class="img-circle avatar" src="{{c.avatar}}">
+                                        </div>
+                                        <div class="comment-content">
+                                            <p class="name">{{c.name}}</p>
+                                            <p class="content">{{c.content}}</p>
+                                            <p class="time">
+                                                <span>{{c.time}}</span>
+                                                <select name="" id="radiusSelect" class="pull-right">
+                                                    <option value="3">Tích cực</option>
+                                                    <option value="5">Tiêu cực</option>
+                                                    <option value="10">Trung lập</option>
+                                                </select>
+                                            </p>
+                                            <ul class="icon">
+                                                <li><a href="javascript:void(0)" title="Like"><i class="fa fa-eye-slash"></i> </a></li>
+                                                <li><a href="javascript:void(0)"><i  class="fa fa-trash"></i></a> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- /display comment -->
+                                    <div class="showmore">
+                                        <i (click)="show = show + 5 " class="fa fa-angle-double-down"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-social">
+                        <div class="single-social-header">
+                            <img src="../../../assets/img/icon/instargram.png"> <a href="javascript:void(0)">Cocasuki Việt Nam</a>
+                            <span>Tin nhắn</span>
+                            <i class="fa fa-close fa-lg pull-right"></i>
+                            <span class="babge">3</span>
+                        </div>
+                        <div class="single-social-content" *ngFor="let f of facebook">
+                            <div class="comment" *ngFor="let m of f.messenger ; let i = index">
+                                <div class="done">
+                                    <i class="icon-check icons"></i>
+                                    <span class="name">hn@cocasuki.com</span>
+                                </div>
+                                <div class="display-comment">
+                                    <div class="image-avatar">
+                                        <img class="img-circle avatar" src="{{m.avatar}}">
+                                    </div>
+                                    <div class="comment-content">
+                                        <p class="name">{{m.name}}</p>
+                                        <p class="content">{{m.content}}</p>
+                                        <p class="time">
+                                            <span>{{m.time}}</span>
+                                            <select name="" id="radiusSelect" class="pull-right">
+                                        <option value="3">Tích cực</option>
+                                        <option value="5">Tiêu cực</option>
+                                        <option value="10">Trung lập</option>
+                                    </select>
+                                        </p>
+                                        <ul class="icon">
+                                            <li><a href="javascript:void(0)" title="Like" (click)="mesModal.show();"><i class="fa fa-reply" ></i> </a></li>
+                                            <li><a href="javascript:void(0)" (click)="showOnlyMes($event,i)"><i class="fa fa-sign-out"></i></a>
+                                                <ul class="only" [hidden]="!onlymes[i]">
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công cho tôi</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công abc@cocasuki.com</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn@cocasuki.com</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn1@cocasuki.com</a>
+                                                    </li>
+                                                </ul>
+
+                                            </li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- /display-comment -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-social">
+                        <div class="single-social-header">
+                            <img src="../../../assets/img/icon/zalo.png"> <a href="javascript:void(0)">Cocasuki Việt Nam</a>
+                            <span>Tin nhắn</span>
+                            <i class="fa fa-close fa-lg pull-right"></i>
+                            <span class="babge">3</span>
+                        </div>
+                        <div class="single-social-content" *ngFor="let f of facebook">
+                            <div class="comment" *ngFor="let m of f.messenger ; let i = index">
+                                <div class="done">
+                                    <i class="icon-check icons"></i>
+                                    <span class="name">hn@cocasuki.com</span>
+                                </div>
+                                <div class="display-comment">
+                                    <div class="image-avatar">
+                                        <img class="img-circle avatar" src="{{m.avatar}}">
+                                    </div>
+                                    <div class="comment-content">
+                                        <p class="name">{{m.name}}</p>
+                                        <p class="content">{{m.content}}</p>
+                                        <p class="time">
+                                            <span>{{m.time}}</span>
+                                            <select name="" id="radiusSelect" class="pull-right">
+                                            <option value="3">Tích cực</option>
+                                            <option value="5">Tiêu cực</option>
+                                            <option value="10">Trung lập</option>
+                                        </select>
+                                        </p>
+                                        <ul class="icon">
+                                            <li><a href="javascript:void(0)" title="Like" (click)="mesModal.show();"><i class="fa fa-reply" ></i> </a></li>
+                                            <li><a href="javascript:void(0)" (click)="showOnlyMes($event,i)"><i class="fa fa-sign-out"></i></a>
+                                                <ul class="only" [hidden]="!onlymes[i]">
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công cho tôi</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công abc@cocasuki.com</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn@cocasuki.com</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn1@cocasuki.com</a>
+                                                    </li>
+                                                </ul>
+
+                                            </li>
+                                            <li><a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- /display-comment -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /displaysocial -->
+        </div>
+        <!-- /col12 -->
+    </div>
+    <!-- /all -->
+    <div class="row" [hidden]="!face">
+        <div class="col-xs-3">
+            <div class="social-assignment">
+                <div class="header">
+                    <h6><i class="fa fa-reorder fa-lg"></i> Đã phân công cho</h6>
+                    <span class="fa fa-user-circle-o"></span>
+                </div>
+                <div class="single-social-content" *ngFor="let f of facebook">
+                    <div class="comment" *ngFor="let m of f.messenger ; let i = index" (click)="showPost()">
+                        <div class="done">
+                            <i class="icon-check icons"></i>
+                            <span class="name">hn@cocasuki.com</span>
+                        </div>
+                        <div class="display-comment">
+                            <div class="image-avatar">
+                                <img class="img-circle avatar" src="{{m.avatar}}">
+                            </div>
+                            <div class="comment-content">
+                                <p class="name">{{m.name}}</p>
+                                <p class="content">{{m.content}}</p>
+                                <p class="time">
+                                    <span>{{m.time}}</span>
+                                    <select name="" id="radiusSelect" class="pull-right">
+                                            <option value="3">Tích cực</option>
+                                            <option value="5">Tiêu cực</option>
+                                            <option value="10">Trung lập</option>
+                                        </select>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /display-comment -->
+                    </div>
+                    <h6>Bài viết <span class="babge">3</span></h6>
+                    <div class="comment" *ngFor="let m of f.messenger ; let i = index" (click)="showPost()">
+                        <div class="done">
+                            <i class="icon-check icons"></i>
+                            <span class="name">hn@cocasuki.com</span>
+                        </div>
+                        <div class="display-comment">
+                            <div class="image-avatar">
+                                <img class="img-circle avatar" src="{{m.avatar}}">
+                            </div>
+                            <div class="comment-content">
+                                <p class="name">{{m.name}}</p>
+                                <p class="content">{{m.content}}</p>
+                                <p class="time">
+                                    <span>{{m.time}}</span>
+                                    <select name="" id="radiusSelect" class="pull-right">
+                                        <option value="3">Tích cực</option>
+                                        <option value="5">Tiêu cực</option>
+                                        <option value="10">Trung lập</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /display-comment -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col3 -->
+        <div class="col-xs-6">
+            <div class="social-assignment-content">
+                <div class="header">
+                    <div class="assignment">
+                        <span class="fa-stack">
+                            <i class="fa fa-circle-o fa-stack-2x"></i>
+                            <i class="fa fa-sign-out fa-stack-1x"></i>
+                        </span>
+                        <span>Đã phân công bởi <b>admin@cocasuki.vn</b> cho <b>abc@cocasuki.com</b> lúc 10/08/2017 08:30</span>
+                    </div>
+                    <div class="action">
+                        <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                        <span class="name">Mèo Pen</span>
+                        <select name="" id="radiusSelect">
+                                <option value="3">Tích cực</option>
+                                <option value="5">Tiêu cực</option>
+                                <option value="10">Trung lập</option>
+                            </select>
+                        <span class="icon">
+                            <i class="fa fa-sign-out"></i>
+                            <i class="fa fa-trash"></i>
+                            <i class="icon-check icons"></i>
+                            Xong
+                        </span>
+                    </div>
+                </div>
+                <div class="content-assignment-mess" [hidden]="!post">
+                    <div style="height:508px; border-bottom:1px solid #ededed;border-top:1px solid #ededed;overflow:scroll;">
+                        <div class="customer-messeger">
+                            <div class="avatar">
+                                <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                            </div>
+                            <div class="content">
+                                <h6>Mèo Pen <span class="time pull-right">10/08/2017 08:30</span></h6>
+                                <p>Có chương trình giảm giá khi đi nhóm đông người không ad ơi ? :D :D :D</p>
+                            </div>
+                        </div>
+                        <div class="admin-messeger">
+                            <div class="avatar">
+                                <img class="img-circle" src="https://imgur.com/AeqvEKN.png">
+                            </div>
+                            <div class="content">
+                                <h6>Cocasuki VietNam <span class="time pull-left">10/08/2017 08:30</span></h6>
+                                <p>Có chương trình giảm giá khi đi nhóm đông người không ad ơi ? :D :D :D</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-assignment-post" [hidden]="post">
+                    <div class="single-social">
+                        <div class="single-social-header">
+                            <img src="../../../assets/img/icon/facebook.png"> <a href="javascript:void(0)">Cocasuki Việt Nam</a>
+                            <span>Bài viết</span>
+                        </div>
+                        <div class="single-social-content">
+                            <div *ngFor="let f of facebook; let i = index">
+                                <div *ngFor="let p of f.posts">
+                                    <img class="img-circle avatar" src="{{p.avatar}}">
+                                    <span class="name"><a href="#">{{p.pageName}}</a> <span class="time
+                                    ">{{p.time}}</span></span>
+                                    <span class="babge">{{p.noReply}}</span>
+                                    <p class="content">
+                                        {{p.content}}
+                                    </p>
+                                    <img class="img-content" src="{{p.image}}">
+                                    <ul class="social-icon">
+                                        <li><a href="javascript:void(0)" title="Like"><i class="fa fa-thumbs-o-up" style="color:#1e7bc9;"></i> </a>{{p.totalLike}}</li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-comment-o"></i></a> {{p.totalComment}}</li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-mail-forward"></i></a></li>
+                                        <li><a href="javascript:void(0)" (click)="showOnly($event,i)"><i class="fa fa-sign-out"></i></a>
+                                            <ul class="only" [hidden]="!only[i]">
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công cho tôi</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công abc@cocasuki.com</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn@cocasuki.com</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn1@cocasuki.com</a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                        <li><a href="javascript:void(0)" (click)="showAction($event,i)"><i class="fa fa-ellipsis-v"></i></a>
+                                            <ul [hidden]="!actionpage[i]">
+                                                <li>
+                                                    <a href="javascript:void(0)"> <i class="fa fa-pencil"></i> Sửa</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"> <i class="fa fa-trash"></i> Xoá</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                    <div class="social-comment">
+                                        <div class="image-avatar">
+                                            <img class="img-circle avatar" src="{{p.avatar}}">
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                                            <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                                </span>
+                                        </div>
+                                        <div class="icon">
+                                            <ul>
+                                                <li><i class="fa fa-play fa-rotate-90" (click)="showRely($event,i)"></i>
+                                                    <ul [hidden]="!reply[i]">
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="display-comment" *ngFor="let c of p.comments | slice:0:show ; let i = index">
+                                        <div class="image-avatar">
+                                            <img class="img-circle avatar" src="{{c.avatar}}">
+                                        </div>
+                                        <div class="comment-content">
+                                            <p class="name">{{c.name}}</p>
+                                            <p class="content">{{c.content}}</p>
+                                            <p class="time">
+                                                <span>{{c.time}}</span>
+                                                <select name="" id="radiusSelect" class="pull-right">
+                                                    <option value="3">Tích cực</option>
+                                                    <option value="5">Tiêu cực</option>
+                                                    <option value="10">Trung lập</option>
+                                                </select>
+                                            </p>
+                                            <ul class="icon">
+                                                <li><a href="javascript:void(0)" title="Like"><i class="fa fa-thumbs-o-up" style="color:#1e7bc9;"></i> </a>{{c.totalLike}}</li>
+                                                <li><a href="javascript:void(0)" (click)="showComment($event,i)"><i  class="fa fa-comment-o"></i></a> {{c.totalReply}}</li>
+                                                <li><a href="javascript:void(0)" (click)="showActionComment($event,i)"><i class="fa fa-ellipsis-v"></i></a>
+                                                    <ul [hidden]="!actioncomment[i]">
+                                                        <li>
+                                                            <a href="javascript:void(0)"> <i class="fa fa-eye-slash"></i> Ẩn</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"> <i class="fa fa-trash"></i> Xoá</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"> <i class="fa fa-comment"></i> Gửi tin nhắn</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <div class="social-comment" [hidden]="!comment[i]">
+                                                <div class="image-avatar">
+                                                    <img class="img-circle avatar" src="../../../assets/images/coca.jpg">
+                                                </div>
+                                                <div class="input-group">
+                                                    <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                                                    <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                                            </span>
+                                                </div>
+                                                <div class="icon">
+                                                    <ul>
+                                                        <li><i class="fa fa-play fa-rotate-90" (click)="showReplyComment($event,i)"></i>
+                                                            <ul class="comment-reply" [hidden]="!commentreply[i]">
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="social-comment" [hidden]="!comment[i]" *ngFor="let r of c.reply">
+                                                <div class="image-avatar">
+                                                    <img class="img-circle avatar" src="{{p.avatar}}">
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p class="name">{{r.name}}</p>
+                                                    <p class="content">{{r.content}}</p>
+                                                    <p class="time">
+                                                        <span>{{r.time}}</span>
+                                                    </p>
+                                                    <ul class="social-icon">
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-trash"></i></a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /display comment -->
+                                    <div class="showmore">
+                                        <i (click)="show = show + 5 " class="fa fa-angle-double-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /single-social -->
+                </div>
+                <div class="social-comment">
+                    <div class="image-avatar">
+                        <img class="img-circle avatar" src="https://imgur.com/AeqvEKN.png">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                        <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                </span>
+                    </div>
+                    <div class="icon">
+                        <ul>
+                            <li><i class="fa fa-play fa-rotate-90" (click)="showRely($event,i)"></i>
+                                <ul [hidden]="!reply[i]">
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col6 -->
+        <div class="col-xs-3">
+            <div class="customer-info">
+                <div [hidden]="post">
+                    <h6 style="font-size: 14px;text-transform: uppercase;color: #F9C023;">Ghi chú</h6>
+                    <hr>
+                    <div class="note">
+                        <div class="note-detail">
+                            <b>amin@cocasuki</b> <i class="fa fa-arrow-right"></i> <b>abc@cocasuki</b>
+                            <p class="time">10/10/2017 8:30</p>
+                            <p>Nhiều khách hàng thắc mắc về chương trình KM: điều kiện áp dụng, mức ưu đãi, địa điểm áp dụng.Yêu cầu xử lý xong thì.</p>
+                        </div>
+                        <hr>
+                        <div class="note-detail">
+                            <b>amin@cocasuki</b> <i class="fa fa-arrow-right"></i> <b>abc@cocasuki</b>
+                            <p class="time">10/10/2017 8:30</p>
+                            <p>Nhiều khách hàng thắc mắc về chương trình KM: điều kiện áp dụng, mức ưu đãi, địa điểm áp dụng.Yêu cầu xử lý xong thì.</p>
+                        </div>
+                        <hr>
+                        <div class="note-detail">
+                            <b>amin@cocasuki</b> <i class="fa fa-arrow-right"></i> <b>abc@cocasuki</b>
+                            <p class="time">10/10/2017 8:30</p>
+                            <p>Nhiều khách hàng thắc mắc về chương trình KM: điều kiện áp dụng, mức ưu đãi, địa điểm áp dụng.Yêu cầu xử lý xong thì.</p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <fieldset>
+                    <legend style="text-align:center">THÔNG TIN KHÁCH HÀNG</legend>
+                    <div class="avatar">
+                        <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                        <span class="name">Mèo Pen<a class="face" href="#">Xem thông tin facebook</a></span>
+                    </div>
+                    <hr style="margin-top:20px;">
+                    <div class="lever-card">
+                        <div class="cards">
+                            <p>Hạng thẻ</p>
+                            <p style="font-size:16px; font-weight:400;">Thẻ vàng</p>
+                        </div>
+                        <div class="m-ranking">
+                            <p>M-ranking</p>
+                            <p style="font-size:16px; font-weight:400;">---</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-envelope-o"></i> nhatlinh@gmail.com
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-mobile" style="font-size:20px;"></i> 0906041134
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-venus-mars"></i> Nữ
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-calendar"></i> 20/11/1992
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-home" style="font-size:18px;"></i> 22 - Phan Huy Chú - Hoàn Kiếm - Hà Nội
+                    </div>
+                </fieldset>
+                <h6 style="margin-top:10px;text-transform:uppercase;font-weight:400px;font-size:14px;">Tra cứu khách hàng</h6>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon-magnifier icons"></i>
+                        </span>
+                    <input (change)="notifyModal.show()" type="text" id="input1-group1" name="input1-group1" class="form-control" placeholder="Nhập tên , số điện thoại, email">
+                </div>
+                <div class="customer-search">
+                    <img class="social-avatar img-circle" src="https://imgur.com/TlflmpH.png">
+                    <span class="name">Mèo Pen</span>
+                    <i (click)="showInfo()" class="icons font-2xl pull-right" [ngClass]="{'icon-arrow-down':showinfo,'icon-arrow-up':!showinfo}"></i>
+                    <fieldset [hidden]="showinfo" style="border:1px solid #ededed;border-left:none;border-right:none;border-bottom:none;margin:5px -10px; ">
+                        <legend style="text-align:center;">THÔNG TIN KHÁCH HÀNG</legend>
+                        <div class="lever-card">
+                            <div class="cards">
+                                <p>Hạng thẻ</p>
+                                <p style="font-size:16px; font-weight:400;">Thẻ vàng</p>
+                            </div>
+                            <div class="m-ranking">
+                                <p>M-ranking</p>
+                                <p style="font-size:16px; font-weight:400;">---</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-envelope-o"></i> nhatlinh@gmail.com
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-mobile" style="font-size:20px;"></i> 0906041134
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-venus-mars"></i> Nữ
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-calendar"></i> 20/11/1992
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-home" style="font-size:18px;"></i> 22 - Phan Huy Chú - Hoàn Kiếm - Hà Nội
+                        </div>
+                    </fieldset>
+                    <fieldset [hidden]="showinfo" style="border:1px solid #ededed;border-left:none;border-right:none;border-bottom:none;margin:5px -10px; ">
+                        <legend style="text-align:center;">KHÁCH HÀNG GIAO DỊCH</legend>
+                        <p style="margin:0 5px;">Điểm tích luỹ<span class="pull-right">1000 mPoint</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Thành viên từ<span class="pull-right">1/7/2017</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Tổng số giao dịch<span class="pull-right">1100</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Giao dịch tại cửa hàng<span class="pull-right">900</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Giao dịch tại mobio<span class="pull-right">600</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Giao dịch mới nhất<span class="pull-right">30/4/2017</span></p>
+                        <hr>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /facebook -->
+    <div class="row" [hidden]="!ins">
+        <div class="col-xs-3">
+            <div class="social-assignment">
+                <div class="header">
+                    <h6><i class="fa fa-reorder fa-lg"></i> Đã phân công cho</h6>
+                    <span class="fa fa-user-circle-o"></span>
+                </div>
+                <div class="single-social-content" *ngFor="let f of facebook">
+                    <div class="comment" *ngFor="let m of f.messenger ; let i = index" (click)="showPost()">
+                        <div class="done">
+                            <i class="icon-check icons"></i>
+                            <span class="name">hn@cocasuki.com</span>
+                        </div>
+                        <div class="display-comment">
+                            <div class="image-avatar">
+                                <img class="img-circle avatar" src="{{m.avatar}}">
+                            </div>
+                            <div class="comment-content">
+                                <p class="name">{{m.name}}</p>
+                                <p class="content">{{m.content}}</p>
+                                <p class="time">
+                                    <span>{{m.time}}</span>
+                                    <select name="" id="radiusSelect" class="pull-right">
+                                                <option value="3">Tích cực</option>
+                                                <option value="5">Tiêu cực</option>
+                                                <option value="10">Trung lập</option>
+                                            </select>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /display-comment -->
+                    </div>
+                    <h6>Bài viết <span class="babge">3</span></h6>
+                    <div class="comment" *ngFor="let m of f.messenger ; let i = index" (click)="showPost()">
+                        <div class="done">
+                            <i class="icon-check icons"></i>
+                            <span class="name">hn@cocasuki.com</span>
+                        </div>
+                        <div class="display-comment">
+                            <div class="image-avatar">
+                                <img class="img-circle avatar" src="{{m.avatar}}">
+                            </div>
+                            <div class="comment-content">
+                                <p class="name">{{m.name}}</p>
+                                <p class="content">{{m.content}}</p>
+                                <p class="time">
+                                    <span>{{m.time}}</span>
+                                    <select name="" id="radiusSelect" class="pull-right">
+                                            <option value="3">Tích cực</option>
+                                            <option value="5">Tiêu cực</option>
+                                            <option value="10">Trung lập</option>
+                                        </select>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /display-comment -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col3 -->
+        <div class="col-xs-6">
+            <div class="social-assignment-content">
+                <div class="header">
+                    <div class="assignment">
+                        <span class="fa-stack">
+                                <i class="fa fa-circle-o fa-stack-2x"></i>
+                                <i class="fa fa-sign-out fa-stack-1x"></i>
+                            </span>
+                        <span>Đã phân công bởi <b>admin@cocasuki.vn</b> cho <b>abc@cocasuki.com</b> lúc 10/08/2017 08:30</span>
+                    </div>
+                    <div class="action">
+                        <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                        <span class="name">Mèo Pen</span>
+                        <select name="" id="radiusSelect">
+                                    <option value="3">Tích cực</option>
+                                    <option value="5">Tiêu cực</option>
+                                    <option value="10">Trung lập</option>
+                                </select>
+                        <span class="icon">
+                                <i class="fa fa-sign-out"></i>
+                                <i class="fa fa-trash"></i>
+                                <i class="icon-check icons"></i>
+                                Xong
+                            </span>
+                    </div>
+                </div>
+                <div class="content-assignment-mess" [hidden]="!post">
+                    <div style="height:508px; border-bottom:1px solid #ededed;border-top:1px solid #ededed;overflow:scroll;">
+                        <div class="customer-messeger">
+                            <div class="avatar">
+                                <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                            </div>
+                            <div class="content">
+                                <h6>Mèo Pen <span class="time pull-right">10/08/2017 08:30</span></h6>
+                                <p>Có chương trình giảm giá khi đi nhóm đông người không ad ơi ? :D :D :D</p>
+                            </div>
+                        </div>
+                        <div class="admin-messeger">
+                            <div class="avatar">
+                                <img class="img-circle" src="https://imgur.com/AeqvEKN.png">
+                            </div>
+                            <div class="content">
+                                <h6>Cocasuki VietNam <span class="time pull-left">10/08/2017 08:30</span></h6>
+                                <p>Có chương trình giảm giá khi đi nhóm đông người không ad ơi ? :D :D :D</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-assignment-post" [hidden]="post">
+                    <div class="single-social">
+                        <div class="single-social-header">
+                            <img src="../../../assets/img/icon/facebook.png"> <a href="javascript:void(0)">Cocasuki Việt Nam</a>
+                            <span>Bài viết</span>
+                        </div>
+                        <div class="single-social-content">
+                            <div *ngFor="let f of facebook; let i = index">
+                                <div *ngFor="let p of f.posts">
+                                    <img class="img-circle avatar" src="{{p.avatar}}">
+                                    <span class="name"><a href="#">{{p.pageName}}</a> <span class="time
+                                        ">{{p.time}}</span></span>
+                                    <span class="babge">{{p.noReply}}</span>
+                                    <p class="content">
+                                        {{p.content}}
+                                    </p>
+                                    <img class="img-content" src="{{p.image}}">
+                                    <ul class="social-icon">
+                                        <li><a href="javascript:void(0)" title="Like"><i class="fa fa-thumbs-o-up" style="color:#1e7bc9;"></i> </a>{{p.totalLike}}</li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-comment-o"></i></a> {{p.totalComment}}</li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-mail-forward"></i></a></li>
+                                        <li><a href="javascript:void(0)" (click)="showOnly($event,i)"><i class="fa fa-sign-out"></i></a>
+                                            <ul class="only" [hidden]="!only[i]">
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công cho tôi</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công abc@cocasuki.com</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn@cocasuki.com</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Phân công hn1@cocasuki.com</a>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                        <li><a href="javascript:void(0)" (click)="showAction($event,i)"><i class="fa fa-ellipsis-v"></i></a>
+                                            <ul [hidden]="!actionpage[i]">
+                                                <li>
+                                                    <a href="javascript:void(0)"> <i class="fa fa-pencil"></i> Sửa</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)"> <i class="fa fa-trash"></i> Xoá</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                    <div class="social-comment">
+                                        <div class="image-avatar">
+                                            <img class="img-circle avatar" src="{{p.avatar}}">
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                                            <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                                    </span>
+                                        </div>
+                                        <div class="icon">
+                                            <ul>
+                                                <li><i class="fa fa-play fa-rotate-90" (click)="showRely($event,i)"></i>
+                                                    <ul [hidden]="!reply[i]">
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                        <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="display-comment" *ngFor="let c of p.comments | slice:0:show ; let i = index">
+                                        <div class="image-avatar">
+                                            <img class="img-circle avatar" src="{{c.avatar}}">
+                                        </div>
+                                        <div class="comment-content">
+                                            <p class="name">{{c.name}}</p>
+                                            <p class="content">{{c.content}}</p>
+                                            <p class="time">
+                                                <span>{{c.time}}</span>
+                                                <select name="" id="radiusSelect" class="pull-right">
+                                                        <option value="3">Tích cực</option>
+                                                        <option value="5">Tiêu cực</option>
+                                                        <option value="10">Trung lập</option>
+                                                    </select>
+                                            </p>
+                                            <ul class="icon">
+                                                <li><a href="javascript:void(0)" title="Like"><i class="fa fa-thumbs-o-up" style="color:#1e7bc9;"></i> </a>{{c.totalLike}}</li>
+                                                <li><a href="javascript:void(0)" (click)="showComment($event,i)"><i  class="fa fa-comment-o"></i></a> {{c.totalReply}}</li>
+                                                <li><a href="javascript:void(0)" (click)="showActionComment($event,i)"><i class="fa fa-ellipsis-v"></i></a>
+                                                    <ul [hidden]="!actioncomment[i]">
+                                                        <li>
+                                                            <a href="javascript:void(0)"> <i class="fa fa-eye-slash"></i> Ẩn</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"> <i class="fa fa-trash"></i> Xoá</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"> <i class="fa fa-comment"></i> Gửi tin nhắn</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <div class="social-comment" [hidden]="!comment[i]">
+                                                <div class="image-avatar">
+                                                    <img class="img-circle avatar" src="../../../assets/images/coca.jpg">
+                                                </div>
+                                                <div class="input-group">
+                                                    <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                                                    <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                                                </span>
+                                                </div>
+                                                <div class="icon">
+                                                    <ul>
+                                                        <li><i class="fa fa-play fa-rotate-90" (click)="showReplyComment($event,i)"></i>
+                                                            <ul class="comment-reply" [hidden]="!commentreply[i]">
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                                <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="social-comment" [hidden]="!comment[i]" *ngFor="let r of c.reply">
+                                                <div class="image-avatar">
+                                                    <img class="img-circle avatar" src="{{p.avatar}}">
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p class="name">{{r.name}}</p>
+                                                    <p class="content">{{r.content}}</p>
+                                                    <p class="time">
+                                                        <span>{{r.time}}</span>
+                                                    </p>
+                                                    <ul class="social-icon">
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                                                        <li><a href="javascript:void(0)"><i class="fa fa-trash"></i></a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /display comment -->
+                                    <div class="showmore">
+                                        <i (click)="show = show + 5 " class="fa fa-angle-double-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /single-social -->
+                </div>
+                <div class="social-comment">
+                    <div class="image-avatar">
+                        <img class="img-circle avatar" src="https://imgur.com/AeqvEKN.png">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                        <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                    </span>
+                    </div>
+                    <div class="icon">
+                        <ul>
+                            <li><i class="fa fa-play fa-rotate-90" (click)="showRely($event,i)"></i>
+                                <ul [hidden]="!reply[i]">
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col6 -->
+        <div class="col-xs-3">
+            <div class="customer-info">
+                <div [hidden]="post">
+                    <h6 style="font-size: 14px;text-transform: uppercase;color: #F9C023;">Ghi chú</h6>
+                    <hr>
+                    <div class="note">
+                        <div class="note-detail">
+                            <b>amin@cocasuki</b> <i class="fa fa-arrow-right"></i> <b>abc@cocasuki</b>
+                            <p class="time">10/10/2017 8:30</p>
+                            <p>Nhiều khách hàng thắc mắc về chương trình KM: điều kiện áp dụng, mức ưu đãi, địa điểm áp dụng.Yêu cầu xử lý xong thì.</p>
+                        </div>
+                        <hr>
+                        <div class="note-detail">
+                            <b>amin@cocasuki</b> <i class="fa fa-arrow-right"></i> <b>abc@cocasuki</b>
+                            <p class="time">10/10/2017 8:30</p>
+                            <p>Nhiều khách hàng thắc mắc về chương trình KM: điều kiện áp dụng, mức ưu đãi, địa điểm áp dụng.Yêu cầu xử lý xong thì.</p>
+                        </div>
+                        <hr>
+                        <div class="note-detail">
+                            <b>amin@cocasuki</b> <i class="fa fa-arrow-right"></i> <b>abc@cocasuki</b>
+                            <p class="time">10/10/2017 8:30</p>
+                            <p>Nhiều khách hàng thắc mắc về chương trình KM: điều kiện áp dụng, mức ưu đãi, địa điểm áp dụng.Yêu cầu xử lý xong thì.</p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <fieldset>
+                    <legend style="text-align:center">THÔNG TIN KHÁCH HÀNG</legend>
+                    <div class="avatar">
+                        <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                        <span class="name">Mèo Pen<a class="face" href="#">Xem thông tin facebook</a></span>
+                    </div>
+                    <hr style="margin-top:20px;">
+                    <div class="lever-card">
+                        <div class="cards">
+                            <p>Hạng thẻ</p>
+                            <p style="font-size:16px; font-weight:400;">Thẻ vàng</p>
+                        </div>
+                        <div class="m-ranking">
+                            <p>M-ranking</p>
+                            <p style="font-size:16px; font-weight:400;">---</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-envelope-o"></i> nhatlinh@gmail.com
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-mobile" style="font-size:20px;"></i> 0906041134
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-venus-mars"></i> Nữ
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-calendar"></i> 20/11/1992
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-home" style="font-size:18px;"></i> 22 - Phan Huy Chú - Hoàn Kiếm - Hà Nội
+                    </div>
+                </fieldset>
+                <h6 style="margin-top:10px;text-transform:uppercase;font-weight:400px;font-size:14px;">Tra cứu khách hàng</h6>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon-magnifier icons"></i>
+                            </span>
+                    <input (change)="notifyModal.show()" type="text" id="input1-group1" name="input1-group1" class="form-control" placeholder="Nhập tên , số điện thoại, email">
+                </div>
+                <div class="customer-search">
+                    <img class="social-avatar img-circle" src="https://imgur.com/TlflmpH.png">
+                    <span class="name">Mèo Pen</span>
+                    <i (click)="showInfo()" class="icons font-2xl pull-right" [ngClass]="{'icon-arrow-down':showinfo,'icon-arrow-up':!showinfo}"></i>
+                    <fieldset [hidden]="showinfo" style="border:1px solid #ededed;border-left:none;border-right:none;border-bottom:none;margin:5px -10px; ">
+                        <legend style="text-align:center;">THÔNG TIN KHÁCH HÀNG</legend>
+                        <div class="lever-card">
+                            <div class="cards">
+                                <p>Hạng thẻ</p>
+                                <p style="font-size:16px; font-weight:400;">Thẻ vàng</p>
+                            </div>
+                            <div class="m-ranking">
+                                <p>M-ranking</p>
+                                <p style="font-size:16px; font-weight:400;">---</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-envelope-o"></i> nhatlinh@gmail.com
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-mobile" style="font-size:20px;"></i> 0906041134
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-venus-mars"></i> Nữ
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-calendar"></i> 20/11/1992
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-home" style="font-size:18px;"></i> 22 - Phan Huy Chú - Hoàn Kiếm - Hà Nội
+                        </div>
+                    </fieldset>
+                    <fieldset [hidden]="showinfo" style="border:1px solid #ededed;border-left:none;border-right:none;border-bottom:none;margin:5px -10px; ">
+                        <legend style="text-align:center;">KHÁCH HÀNG GIAO DỊCH</legend>
+                        <p style="margin:0 5px;">Điểm tích luỹ<span class="pull-right">1000 mPoint</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Thành viên từ<span class="pull-right">1/7/2017</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Tổng số giao dịch<span class="pull-right">1100</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Giao dịch tại cửa hàng<span class="pull-right">900</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Giao dịch tại mobio<span class="pull-right">600</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Giao dịch mới nhất<span class="pull-right">30/4/2017</span></p>
+                        <hr>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /instargram -->
+    <div class="row" [hidden]="!zalo">
+        <div class="col-xs-3">
+            <div class="social-assignment">
+                <div class="header">
+                    <h6><i class="fa fa-reorder fa-lg"></i> Đã phân công cho</h6>
+                    <span class="fa fa-user-circle-o"></span>
+                </div>
+                <div class="single-social-content" *ngFor="let f of facebook">
+                    <div class="comment" *ngFor="let m of f.messenger ; let i = index">
+                        <div class="done">
+                            <i class="icon-check icons"></i>
+                            <span class="name">hn@cocasuki.com</span>
+                        </div>
+                        <div class="display-comment">
+                            <div class="image-avatar">
+                                <img class="img-circle avatar" src="{{m.avatar}}">
+                            </div>
+                            <div class="comment-content">
+                                <p class="name">{{m.name}}</p>
+                                <p class="content">{{m.content}}</p>
+                                <p class="time">
+                                    <span>{{m.time}}</span>
+                                    <select name="" id="radiusSelect" class="pull-right">
+                                                    <option value="3">Tích cực</option>
+                                                    <option value="5">Tiêu cực</option>
+                                                    <option value="10">Trung lập</option>
+                                                </select>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /display-comment -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col3 -->
+        <div class="col-xs-6">
+            <div class="social-assignment-content">
+                <div class="header">
+                    <div class="assignment">
+                        <span class="fa-stack">
+                                    <i class="fa fa-circle-o fa-stack-2x"></i>
+                                    <i class="fa fa-sign-out fa-stack-1x"></i>
+                                </span>
+                        <span>Đã phân công bởi <b>admin@cocasuki.vn</b> cho <b>abc@cocasuki.com</b> lúc 10/08/2017 08:30</span>
+                    </div>
+                    <div class="action">
+                        <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                        <span class="name">Mèo Pen</span>
+                        <select name="" id="radiusSelect">
+                                        <option value="3">Tích cực</option>
+                                        <option value="5">Tiêu cực</option>
+                                        <option value="10">Trung lập</option>
+                                    </select>
+                        <span class="icon">
+                                    <i class="fa fa-sign-out"></i>
+                                    <i class="fa fa-trash"></i>
+                                    <i class="icon-check icons"></i>
+                                    Xong
+                                </span>
+                    </div>
+                </div>
+                <div class="content-assignment-mess">
+                    <div style="height:508px; border-bottom:1px solid #ededed;border-top:1px solid #ededed;overflow:scroll;">
+                        <div class="customer-messeger">
+                            <div class="avatar">
+                                <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                            </div>
+                            <div class="content">
+                                <h6>Mèo Pen <span class="time pull-right">10/08/2017 08:30</span></h6>
+                                <p>Có chương trình giảm giá khi đi nhóm đông người không ad ơi ? :D :D :D</p>
+                            </div>
+                        </div>
+                        <div class="admin-messeger">
+                            <div class="avatar">
+                                <img class="img-circle" src="https://imgur.com/AeqvEKN.png">
+                            </div>
+                            <div class="content">
+                                <h6>Cocasuki VietNam <span class="time pull-left">10/08/2017 08:30</span></h6>
+                                <p>Có chương trình giảm giá khi đi nhóm đông người không ad ơi ? :D :D :D</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-comment">
+                    <div class="image-avatar">
+                        <img class="img-circle avatar" src="https://imgur.com/AeqvEKN.png">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                        <span class="input-group-addon"><i class="fa fa-camera"></i>
+                                        </span>
+                    </div>
+                    <div class="icon">
+                        <ul>
+                            <li><i class="fa fa-play fa-rotate-90" (click)="showRely($event,i)"></i>
+                                <ul [hidden]="!reply[i]">
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                    <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col6 -->
+        <div class="col-xs-3">
+            <div class="customer-info">
+                <fieldset>
+                    <legend style="text-align:center">THÔNG TIN KHÁCH HÀNG</legend>
+                    <div class="avatar">
+                        <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                        <span class="name">Mèo Pen<a class="face" href="#">Xem thông tin facebook</a></span>
+                    </div>
+                    <hr style="margin-top:20px;">
+                    <div class="lever-card">
+                        <div class="cards">
+                            <p>Hạng thẻ</p>
+                            <p style="font-size:16px; font-weight:400;">Thẻ vàng</p>
+                        </div>
+                        <div class="m-ranking">
+                            <p>M-ranking</p>
+                            <p style="font-size:16px; font-weight:400;">---</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-envelope-o"></i> nhatlinh@gmail.com
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-mobile" style="font-size:20px;"></i> 0906041134
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-venus-mars"></i> Nữ
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-calendar"></i> 20/11/1992
+                    </div>
+                    <hr>
+                    <div class="info">
+                        <i class="fa fa-home" style="font-size:18px;"></i> 22 - Phan Huy Chú - Hoàn Kiếm - Hà Nội
+                    </div>
+                </fieldset>
+                <h6 style="margin-top:10px;text-transform:uppercase;font-weight:400px;font-size:14px;">Tra cứu khách hàng</h6>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon-magnifier icons"></i>
+                                </span>
+                    <input (change)="notifyModal.show()" type="text" id="input1-group1" name="input1-group1" class="form-control" placeholder="Nhập tên , số điện thoại, email">
+                </div>
+                <div class="customer-search">
+                    <img class="social-avatar img-circle" src="https://imgur.com/TlflmpH.png">
+                    <span class="name">Mèo Pen</span>
+                    <i (click)="showInfo()" class="icons font-2xl pull-right" [ngClass]="{'icon-arrow-down':showinfo,'icon-arrow-up':!showinfo}"></i>
+                    <fieldset [hidden]="showinfo" style="border:1px solid #ededed;border-left:none;border-right:none;border-bottom:none;margin:5px -10px; ">
+                        <legend style="text-align:center;">THÔNG TIN KHÁCH HÀNG</legend>
+                        <div class="lever-card">
+                            <div class="cards">
+                                <p>Hạng thẻ</p>
+                                <p style="font-size:16px; font-weight:400;">Thẻ vàng</p>
+                            </div>
+                            <div class="m-ranking">
+                                <p>M-ranking</p>
+                                <p style="font-size:16px; font-weight:400;">---</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-envelope-o"></i> nhatlinh@gmail.com
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-mobile" style="font-size:20px;"></i> 0906041134
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-venus-mars"></i> Nữ
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-calendar"></i> 20/11/1992
+                        </div>
+                        <hr>
+                        <div class="info">
+                            <i class="fa fa-home" style="font-size:18px;"></i> 22 - Phan Huy Chú - Hoàn Kiếm - Hà Nội
+                        </div>
+                    </fieldset>
+                    <fieldset [hidden]="showinfo" style="border:1px solid #ededed;border-left:none;border-right:none;border-bottom:none;margin:5px -10px; ">
+                        <legend style="text-align:center;">KHÁCH HÀNG GIAO DỊCH</legend>
+                        <p style="margin:0 5px;">Điểm tích luỹ<span class="pull-right">1000 mPoint</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Thành viên từ<span class="pull-right">1/7/2017</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Tổng số giao dịch<span class="pull-right">1100</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Giao dịch tại cửa hàng<span class="pull-right">900</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Giao dịch tại mobio<span class="pull-right">600</span></p>
+                        <hr>
+                        <p style="margin:0 5px;">Giao dịch mới nhất<span class="pull-right">30/4/2017</span></p>
+                        <hr>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /instargram -->
+</div>
+<!-- large modal -->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left text-uppercase">Kết nối mạng xã hội</h5>
+                <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <ul class="social">
+                            <li class="active"><img src="../../../assets/img/icon/facebook.png"> <a href="javascript:void(0)">Facebook</a></li>
+                            <li><img src="../../../assets/img/icon/instargram.png"> <a href="javascript:void(0)">Instargram</a></li>
+                            <li><img src="../../../assets/img/icon/zalo.png"> <a href="javascript:void(0)">Zalo</a></li>
+                            <li><img src="../../../assets/img/icon/google.png"> <a href="javascript:void(0)">Google</a></li>
+                            <li><img src="../../../assets/img/icon/youtube.png"> <a href="javascript:void(0)">Youtube</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-9" [hidden]="hiddensocial">
+                        <div class="social-content">
+                            <h6 class="text-uppercase">Facebook</h6>
+                            <p>Kết nối với Facebook đồng nghĩa với việc bạn đã cấp quyền cho Mobio tiếp cận khách hàng thông qua Facebook</p>
+                            <div class="btn btn-info" (click)="smModal.show();lgModal.hide()">Kết nối với Facebook</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3" [hidden]="!hiddensocial">
+                        <div class="social-content">
+                            <div class="pages-select">
+                                <img class="img-circle" src="../../../assets/img/avatars/anh1.png">
+                                <span class="name">Mobio</span>
+                                <i class="fa fa-close pull-right" (click)="showPageSocial($event)"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12" [hidden]="!hiddensocial">
+                        <div class="btn btn-info pull-right" (click)="showContent($event);lgModal.hide();">Kết nối</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- small modal -->
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-2" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-second">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left text-uppercase">Kết nối facebook</h5>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="smModal.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="max-height:350px; overflow:scroll">
+                    <div class="col-xs-6">
+                        <div class="radio pages">
+                            <label for="radio1">
+                            <input type="radio" id="radio1" name="radios1" value="option1">
+                            <img class="img-circle" src="../../../assets/img/avatars/anh1.png">
+                            <span class="name">Mobio<span class="like">1290 likes</span></span>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="radio pages">
+                            <label for="radio2">
+                            <input type="radio" id="radio2" name="radios2" value="option">
+                            <img class="img-circle" src="../../../assets/img/avatars/anh2.png">
+                            <span class="name">Mobio<span class="like">1290 likes</span></span>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="radio pages">
+                            <label for="radio3">
+                            <input type="radio" id="radio3" name="radios3" value="option1">
+                            <img class="img-circle" src="../../../assets/img/avatars/anh3.png">
+                            <span class="name">Mobio<span class="like">1290 likes</span></span>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="radio pages">
+                            <label for="radio4">
+                            <input type="radio" id="radio4" name="radios4" value="option1">
+                            <img class="img-circle" src="../../../assets/img/avatars/anh4.png">
+                            <span class="name">Mobio<span class="like">1290 likes</span></span>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="radio pages">
+                            <label for="radio5">
+                            <input type="radio" id="radio5" name="radios5" value="option1">
+                            <img class="img-circle" src="../../../assets/img/avatars/anh1.png">
+                            <span class="name">Mobio<span class="like">1290 likes</span></span>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="radio pages">
+                            <label for="radio1">
+                            <input type="radio" id="radio1" name="radios6" value="option1">
+                            <img class="img-circle" src="../../../assets/img/avatars/anh1.png">
+                            <span class="name">Mobio<span class="like">1290 likes</span></span>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="radio pages">
+                            <label for="radio8">
+                            <input type="radio" id="radio8" name="radios7" value="option1">
+                            <img class="img-circle" src="../../../assets/img/avatars/anh1.png">
+                            <span class="name">Mobio<span class="like">1290 likes</span></span>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="radio pages">
+                            <label for="radio7">
+                            <input type="radio" id="radio1" name="radios8" value="option1">
+                            <img class="img-circle" src="../../../assets/img/avatars/anh1.png">
+                            <span class="name">Mobio<span class="like">1290 likes</span></span>
+                          </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20px">
+                    <div class="col-xs-4 col-xs-offset-8">
+                        <div class="btn btn-info" (click)="showPageSocial($event); smModal.hide();lgModal.show();">Đồng ý</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #mesModal="bs-modal" class="modal fade" tabindex="-2" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left text-uppercase">Tin nhắn</h5>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="mesModal.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="messeger-to">
+                <h6>Tới: Mèo Pen <span class="pull-right"><span class="fa fa-sign-out"></span> <span class="icon-check icons"></span> Xong</span>
+                </h6>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="height:350px; border-bottom:1px solid #ededed;">
+                    <div class="col-xs-12">
+                        <div class="customer-messeger">
+                            <div class="avatar">
+                                <img class="img-circle" src="https://imgur.com/TlflmpH.png">
+                            </div>
+                            <div class="content">
+                                <h6>Mèo Pen <span class="time pull-right">10/08/2017 08:30</span></h6>
+                                <p>Có chương trình giảm giá khi đi nhóm đông người không ad ơi ? :D :D :D</p>
+                            </div>
+                        </div>
+                        <div class="admin-messeger">
+                            <div class="content">
+                                <h6>Cocasuki VietNam <span class="time pull-left">10/08/2017 08:30</span></h6>
+                                <p>Có chương trình giảm giá khi đi nhóm đông người không ad ơi ? :D :D :D</p>
+                            </div>
+                            <div class="avatar">
+                                <img class="img-circle" src="https://imgur.com/AeqvEKN.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="social-comment">
+                            <div class="image-avatar">
+                                <img class="img-circle avatar" src="../../../assets/images/coca.jpg">
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="input2-group1" name="input2-group1" class="form-control input-xs" placeholder="Bình luận...">
+                                <span class="input-group-addon"><i class="fa fa-camera"></i>
+                            </span>
+
+                            </div>
+                            <div class="icon">
+                                <ul>
+                                    <li><i class="fa fa-play fa-rotate-90" (click)="showReplyComment($event,i)"></i>
+                                        <ul class="comment-reply" [hidden]="!commentreply[i]">
+                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                            <li>Mẫu trả lời 1: <i class="fa fa-send pull-right"></i></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div bsModal #insertModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">THÊM MỚI NỘI DUNG HIỂN THỊ</h5>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="insertModal.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+                <p>Chọn mạng xã hội</p>
+
+                <select id="select" name="select" class="form-control">
+                    <option value="0">Lựa chọn mạng xã hội</option>
+                    <option value="1">Facebook</option>
+                    <option value="2">Instargram</option>
+                    <option value="3">Zalo</option>
+                </select>
+
+
+
+                <p style="margin-top:20px;">Chọn nội dung hiển thị</p>
+                <div class="dislay-content-social ">
+                    <p>Bài viết <i class="fa fa-plus-circle"></i></p>
+                    <p>Tin nhắn <i class="fa fa-plus-circle"></i></p>
+                </div>
+            </div>
+            <div class="col-xs-12" style="margin-bottom:10px">
+                <div class="btn btn-info pull-right" (click)="insertModal.hide()">Thêm mới</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div bsModal #notifyModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">THÔNG BÁO</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="notifyModal.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p>Khách hàng chưa đăng ký thẻ thành viên.Bạn có muốn lưu thông tin khách hàng vào danh sách khách hàng tiềm năng không?</p>
+            </div>
+            <div class="row" style="margin:20px 0;">
+                <div class="col-xs-4 col-xs-offset-8">
+                    <div class="btn btn-default" style="border-radius:5px;" (click)="notifyModal.hide()">Không</div>
+                    <div class="btn btn-info" style="border-radius:5px;" (click)="saveCustomerModal.show();notifyModal.hide()">Có</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div bsModal #saveCustomerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">LƯU THÔNG TIN KHÁCH HÀNG TIỀM NĂNG</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="saveCustomerModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="modal-body save-customer">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" class="form-control" id="name" placeholder="Họ và tên">
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="fb">Facebook ID</label>
+                            <input type="text" class="form-control" id="fb" placeholder="Facebook ID">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="sdt">Số điện thoại</label>
+                            <input type="text" class="form-control" id="sdt" placeholder="Số điện thoại">
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="Email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="birth">Ngày/Tháng/Năm Sinh</label>
+                            <input type="text" class="form-control" id="name" placeholder="Ngày sinh">
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="address">Địa chỉ</label>
+                            <input type="text" class="form-control" id="address" placeholder="Địa chỉ">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <p>Giới tính</p>
+                    </div>
+                    <div class="col-xs-12">
+                        <label class="radio-inline" for="inline-radio1" style="margin-right:30px;">
+                            <input type="radio" id="inline-radio1" name="inline-radios" value="option1">Nam
+                        </label>
+                        <label class="radio-inline" for="inline-radio2">
+                            <input type="radio" id="inline-radio2" name="inline-radios" value="option2">Nữ
+                        </label>
+                    </div>
+
+                </div>
+                <div class="row" style="margin:20px 0;">
+                    <div class="col-xs-4 col-xs-offset-8">
+                        <div class="btn btn-default" style="border-radius:5px;" (click)="saveCustomerModal.hide()">Bỏ qua</div>
+                        <div class="btn btn-info" style="border-radius:5px;" (click)="saveCustomerModal.hide()">Lưu</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,235 @@
+<div class="animated fadeIn">
+  <div class="row" style="margin-bottom:10px">
+    <div class="col-sm-4">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-search fa-lg"></i></span>
+        <input type="text" id="search-marketing" name="search-marketing" class="form-control input-lg"
+               placeholder="Tìm kiếm...">
+      </div>
+    </div>
+    <!-- /col4 -->
+    <div class="col-sm-6"></div>
+    <div class="col-sm-2">
+      <a [routerLink]="['/marketing/dashboard/campaign']" class="btn btn-marketing">
+        <i class="icon-plus icons" aria-hidden="true"></i> Tạo chiến dịch
+      </a>
+    </div>
+    <!-- /col2 -->
+  </div>
+  <!-- /row -->
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card filter-marketing">
+        <div class="card-body">
+          <h5>Trạng thái</h5>
+          <div class="form-group">
+            <div class="checkbox">
+              <label for="checkbox1">
+                <input type="checkbox" id="checkbox1" name="checkbox1" value="option1"> Đã diễn ra
+              </label>
+            </div>
+            <div class="checkbox">
+              <label for="checkbox2">
+                <input type="checkbox" id="checkbox2" name="checkbox2" value="option2"> Đang lên lịch
+              </label>
+            </div>
+            <div class="checkbox">
+              <label for="checkbox3">
+                <input type="checkbox" id="checkbox3" name="checkbox3" value="option3"> Đã hoàn thành
+              </label>
+            </div>
+            <div class="checkbox">
+              <label for="checkbox4">
+                <input type="checkbox" id="checkbox4" name="checkbox4" value="option4"> Tạm dừng
+              </label>
+            </div>
+            <div class="checkbox">
+              <label for="checkbox5">
+                <input type="checkbox" id="checkbox5" name="checkbox5" value="option5"> Nháp
+              </label>
+            </div>
+          </div>
+          <h5>Kênh</h5>
+          <div class="form-group">
+            <div class="checkbox">
+              <label for="checkbox6">
+                <input type="checkbox" id="checkbox6" name="checkbox6" value="option6"> Push
+              </label>
+            </div>
+            <div class="checkbox">
+              <label for="checkbox7">
+                <input type="checkbox" id="checkbox7" name="checkbox7" value="option7"> Email
+              </label>
+            </div>
+            <div class="checkbox">
+              <label for="checkbox8">
+                <input type="checkbox" id="checkbox8" name="checkbox8" value="option8"> Đã FB Messenger
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col3 -->
+    <div class="col-sm-9">
+      <div class="card campaign" *ngFor="let c of campaign">
+        <div class="card-body">
+          <div class="campaign-header">
+            <div class="row">
+              <div class="col-sm-3">
+                <h5>{{c.name}}</h5>
+                <p class="time-register">Tạo lúc {{c.timeRegister}}</p>
+              </div>
+              <div class="col-sm-2">
+                <button class="btn"
+                        [ngClass]="{'btn-success':c.status==1,'btn-danger':c.status == 2,'btn-warning': c.status == 3, 'btn-default':c==4}">
+                  <span *ngIf="c.status==1">Đang diễn ra</span>
+                  <span *ngIf="c.status==2">Tạm dừng</span>
+                  <span *ngIf="c.status==3">Nháp</span>
+                  <span *ngIf="c.status==4">Kết thúc</span>
+                </button>
+              </div>
+              <div class="col-sm-3">
+                <label class="switch switch-xs switch-3d switch-primary">
+                  <input type="checkbox" class="switch-input" checked="" (change)="changeStateCampaign($event)"
+                         #stateCampaign>
+                  <span class="switch-label"></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </div>
+              <div class="col-sm-4">
+                <ul class="action" style="text-align: right;">
+                  <li><a [routerLink]="['./report']" tooltip="Báo cáo"><i class="fa
+                                      fa-bar-chart"></i></a></li>
+                  <li><a href="javascript:void(0);" tooltip="Sửa"><i class="icon-note icons"></i></a></li>
+                  <li><a href="javascript:void(0);" (click)="smModal.show();" tooltip="Copy"><i class="fa
+                                      fa-clone"></i></a></li>
+                  <li><a href="javascript:void(0);" tooltip="Nháp"><i class="fa
+                                        fa-trash-o"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="campaign-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <div class="icon">
+                      <i class="icon-speedometer icons font-xl d-block mt-4"></i>
+                      <span class="tooltip-icon" tooltip="Thời gian diễn ra chiến dịch" placement="right"
+                            container="body">?</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-10">
+                    <p>{{c.timeRegister}} - {{c.timeEnd}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    <div class="icon">
+                      <i class="icon-volume-2 icons font-xl d-block mt-4"></i>
+                      <span class="tooltip-icon" tooltip="Kênh gửi thông tin" placement="right"
+                            container="body">?</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-10">
+                    <p>{{c.channelAction}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    <div class="icon">
+                      <i class="icon-user icons font-xl d-block mt-4"></i>
+                      <span class="tooltip-icon" tooltip="Tên tập khách hàng" placement="right"
+                            container="body">?</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-10">
+                    <p>{{c.customerTag}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    <div class="icon">
+                      <i class="icon-tag icons font-xl d-block mt-4"></i>
+                      <span class="tooltip-icon" tooltip="Thông tin chương trình voucher" placement="right"
+                            container="body">?</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-10">
+                    <p>{{c.voucher}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <div class="customer">
+                      <div class="round-progress" style="position:relative">
+                        <round-progress [ngStyle]="{'margin':'auto'}" [color]="'#606060'" [current]="c.customerApproach"
+                                        [stroke]="2" [max]="c.customerApproach" [radius]="55"></round-progress>
+                        <p class="value both-center">{{c.customerApproach}}</p>
+                      </div>
+                      <p class="name" style="text-align: center;">Khách hàng tiếp cận <span class="tooltip-icon"
+                                                                                            tooltip="Thông tin chương trình voucher"
+                                                                                            placement="bottom"
+                                                                                            container="body">?</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <div class="open-percent">
+                      <div class="round-progress" style="position:relative">
+                        <round-progress [ngStyle]="{'margin':'auto'}" [color]="'#F85061'" [current]="c.customerOpen"
+                                        [stroke]="2" [max]="c.customerApproach" [radius]="55">
+                        </round-progress>
+                        <p class="value both-center">{{c.customerOpen / c.customerApproach * 100}}%</p>
+                      </div>
+                      <p class="name">Tỉ lệ mở <span class="tooltip-icon" tooltip="Thông tin chương trình voucher"
+                                                     placement="bottom" container="body">?</span></p>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <div class="crv">
+                      <div class="round-progress" style="position:relative">
+                        <round-progress [ngStyle]="{'margin':'auto'}" [color]="'#E0D517'" [current]="c.crv" [stroke]="2"
+                                        [max]="c.customerApproach" [radius]="55"></round-progress>
+                        <p class="value both-center">{{c.crv / c.customerApproach * 100}}%</p>
+                      </div>
+                      <p class="name">CRV <span class="tooltip-icon" tooltip="Thông tin chương trình voucher"
+                                                placement="bottom" container="body">?</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col9 -->
+  </div>
+  <!-- /row -->
+</div>
+<!-- /content -->
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title pull-left">THÔNG BÁO</h6>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="smModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-weight:300; margin-top:20px;">Bạn có muốn sao chép chiến dịch này không?</p>
+      </div>
+      <div class="col-xs-offset-7 col-xs-5">
+        <a (click)="smModal.hide()" class="btn btn-cancle">Không</a>
+        <a (click)="smModal.hide()" class="btn btn-confirm">Có</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,142 @@
+[
+  {
+    "idShop": 1,
+    "address": "143 Bà Triệu, Lê Đại Hành, Hà Nội, Việt Nam",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 2,
+    "address": " 93 Kim Mã, P.Kim Mã, Q.Ba Đình, Hà Nội",
+    "city": "22",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 0
+  },
+  {
+    "idShop": 3,
+    "address": " 141 Hàng Bông, P.Hàng Bông, Q.Hoàn Kiếm, Hà Nội",
+    "city": "45",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 4,
+    "address": " 172 Đường 3/2, Q10, TP.HCM",
+    "city": "47",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 0
+  },
+  {
+    "idShop": 5,
+    "address": " 172 Đường 3/2, Q10, TP.HCM",
+    "city": "21",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 6,
+    "address": "143 Bà Triệu, Lê Đại Hành, Hà Nội, Việt Nam",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 7,
+    "address": " 93 Kim Mã, P.Kim Mã, Q.Ba Đình, Hà Nội",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 8,
+    "address": " 141 Hàng Bông, P.Hàng Bông, Q.Hoàn Kiếm, Hà Nội",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 9,
+    "address": " 172 Đường 3/2, Q10, TP.HCM",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 0
+  },
+  {
+    "idShop": 10,
+    "address": " 172 Đường 3/2, Q10, TP.HCM",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 11,
+    "address": "143 Bà Triệu, Lê Đại Hành, Hà Nội, Việt Nam",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 0
+  },
+  {
+    "idShop": 12,
+    "address": " 93 Kim Mã, P.Kim Mã, Q.Ba Đình, Hà Nội",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 0
+  },
+  {
+    "idShop": 13,
+    "address": " 141 Hàng Bông, P.Hàng Bông, Q.Hoàn Kiếm, Hà Nội",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 14,
+    "address": " 172 Đường 3/2, Q10, TP.HCM",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 15,
+    "address": " 172 Đường 3/2, Q10, TP.HCM",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 0
+  },
+  {
+    "idShop": 16,
+    "address": "143 Bà Triệu, Lê Đại Hành, Hà Nội, Việt Nam",
+    "city": "16",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 17,
+    "address": " 93 Kim Mã, P.Kim Mã, Q.Ba Đình, Hà Nội",
+    "city": "47",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 18,
+    "address": " 141 Hàng Bông, P.Hàng Bông, Q.Hoàn Kiếm, Hà Nội",
+    "city": "42",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 0
+  },
+  {
+    "idShop": 19,
+    "address": " 172 Đường 3/2, Q10, TP.HCM",
+    "city": "11",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  },
+  {
+    "idShop": 20,
+    "address": " 172 Đường 3/2, Q10, TP.HCM",
+    "city": "53",
+    "codeStore": "http://icons.iconarchive.com/icons/icons8/windows-8/24/Ecommerce-Qr-Code-icon.png",
+    "allowShow": 1
+  }
+]

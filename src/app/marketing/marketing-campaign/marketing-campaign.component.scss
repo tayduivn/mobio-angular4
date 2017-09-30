@@ -1,0 +1,532 @@
+    .register-campaign {
+        display: inline-block;
+        li {
+            margin-right: 20px;
+            list-style: none;
+            display: inline-block;
+            color: #313131;
+            &.active {
+                color: #37B7F7;
+                span {
+                    display: inline-block;
+                }
+            }
+        }
+        span {
+            display: none;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        i {
+            font-size: 20px;
+        }
+    }
+    
+     :host /deep/ .tab-container {
+        ul.nav {
+            display: none;
+        }
+    }
+    
+     :host /deep/ .tab-content {
+        background: transparent;
+        border: 0;
+    }
+    
+    .name-campaign {
+        .form-group {
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+            padding: 40px 100px 50px;
+            margin: 30px auto;
+            .form-control {
+                border-left: 0;
+                border-top: 0;
+                border-right: 0;
+            }
+        }
+    }
+    
+    .customer-campaign {
+        .form-group {
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+            padding: 90px 100px 50px;
+            margin: 30px auto;
+            .form-control {
+                border-left: 0;
+                border-top: 0;
+                border-right: 0;
+            }
+        }
+    }
+    
+    .btn-continue {
+        background: #37B7F7;
+        padding: 8px 20px;
+        border-radius: 40px;
+        color: #fff;
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+    
+    .btn-cancle {
+        background: transparent;
+        padding: 8px 20px;
+        border-radius: 40px;
+        &:hover {
+            background: #37B7F7;
+            color: #fff;
+        }
+    }
+    
+    .tab-customer {
+        border: 1px solid #37B7F7;
+        display: -webkit-flex;
+        /* Safari */
+        display: flex;
+        padding-left: 0px;
+        border-radius: 6px;
+        li {
+            list-style: none;
+            padding: 10px 20px;
+            -webkit-flex: 1;
+            /* Safari 6.1+ */
+            -ms-flex: 1;
+            /* IE 10 */
+            flex: 1;
+            text-align: center;
+            &.active {
+                background: #37B7F7;
+                color: #fff;
+                &:first-child {
+                    border-radius: 5px 0 0 5px;
+                }
+                &:last-child {
+                    border-radius: 0 5px 5px 0;
+                }
+            }
+            &:not(:last-child) {
+                border-right: 1px solid #37B7F7;
+            }
+        }
+    }
+    
+    .number-customer {
+        background: #fff;
+        padding: 67px 0;
+        text-align: center;
+        h2 {
+            color: #F9C023;
+        }
+        span {
+            position: absolute;
+            right: 3px;
+            bottom: 3px;
+            font-size: 11px;
+        }
+    }
+    
+    .customer-save {
+        background: #fff;
+        border: 1px solid #e1e1e1;
+        padding: 20px;
+        h6 {
+            margin: 0;
+        }
+    }
+    
+    .customer-save-content {
+        height: 202px;
+        overflow: auto;
+        h5 {
+            margin: 20px;
+        }
+        p {
+            margin-left: 40px;
+            font-size: 13px;
+            font-weight: 300;
+        }
+    }
+    
+    .customer-new {
+        padding: 15px;
+        h6 {
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        p {
+            text-align: right;
+        }
+        i {
+            margin: 12px auto;
+        }
+        .fa-plus-circle {
+            color: #37B7F7;
+        }
+    }
+    
+    .select-gender {
+        border: 1px solid #e1e6ef;
+        display: -webkit-flex;
+        /* Safari */
+        display: flex;
+        padding-left: 0px;
+        li {
+            list-style: none;
+            padding: 6px 20px;
+            -webkit-flex: 1;
+            /* Safari 6.1+ */
+            -ms-flex: 1;
+            /* IE 10 */
+            flex: 1;
+            text-align: center;
+            &.active {
+                background: #37B7F7;
+                color: #fff;
+            }
+            &:not(:last-child) {
+                border-right: 1px solid #e1e6ef;
+            }
+        }
+    }
+    
+    #region {
+        option {
+            border-bottom: 1px solid #e1e6ef;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+    }
+    
+    agm-map {
+        height: 300px;
+    }
+    
+    .region-select {
+        border-bottom: 1px solid #e1e6ef;
+        padding-bottom: 7px;
+        position: relative;
+        .region-radius {
+            background: rgba(55, 183, 247, 0.3);
+            padding: 20px 10px;
+            width: 150px;
+            height: auto;
+            p {
+                text-align: center;
+                margin-bottom: 5px;
+            }
+        }
+    }
+    
+    input[type="range"] {
+        -webkit-appearance: none;
+        -moz-apperance: none;
+        border-radius: 6px;
+        height: 6px;
+        background-image: -webkit-gradient( linear, left top, right top, #94A14E, #C5C5C5);
+    }
+    
+    .save-customer {
+        margin-top: 10px;
+        padding: 10px;
+    }
+    
+    .name-voucher {
+        .form-group {
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+            padding: 40px 100px 50px;
+            margin: 30px auto;
+        }
+    }
+    
+    .channel {
+        padding: 13px;
+        border: 1px solid #ededed;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+    
+     :host /deep/ .card.customClassMobio {
+        border: 1px solid #16D39A;
+        border-radius: 5px;
+        .card-block {
+            padding: 0;
+        }
+        .card-header {
+            background-color: #E3F2FD !important;
+            border-radius: 5px;
+            padding: 12px;
+            border: none;
+            .card-title {
+                margin-bottom: 0px;
+            }
+            i {
+                margin-top: -2px;
+                color: #adadad;
+                font-size: 24px;
+                font-weight: 300;
+                &:hover {
+                    color: #5bc0de;
+                }
+            }
+        }
+    }
+    
+     :host /deep/ .customClassFb {
+        border: 1px solid #FFC7D2;
+        border-radius: 5px;
+        .card-block {
+            padding: 0;
+        }
+        .card-header {
+            background-color: #FFC7D2 !important;
+            border-radius: 5px;
+            padding: 12px;
+            border: none;
+            .card-title {
+                margin-bottom: 0px;
+            }
+            i {
+                margin-top: -2px;
+                color: #adadad;
+                font-size: 24px;
+                font-weight: 300;
+                &:hover {
+                    color: #5bc0de;
+                }
+            }
+        }
+    }
+    
+     :host /deep/ .customClassEmail {
+        border: 1px solid #FFECB3;
+        border-radius: 5px;
+        .card-block {
+            padding: 0;
+        }
+        .card-header {
+            background-color: #FFF8E1 !important;
+            border-radius: 5px;
+            padding: 12px;
+            border: none;
+            .card-title {
+                margin-bottom: 0px;
+            }
+            i {
+                margin-top: -2px;
+                color: #adadad;
+                font-size: 24px;
+                font-weight: 300;
+                &:hover {
+                    color: #5bc0de;
+                }
+            }
+        }
+    }
+    
+    .step {
+        border-bottom: 1px solid #ededed;
+        padding-bottom: 10px;
+        margin-top: 10px;
+    }
+    
+    .modal-sm {
+        .modal-content {
+            border: 1px solid #37B7F7;
+            border-radius: 5px;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .btn-cancle {
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #374767;
+        }
+        .btn-confirm {
+            margin-bottom: 20px;
+            color: #37B7F7;
+            background: transparent;
+            text-transform: uppercase;
+            &:hover {
+                background: #37B7F7;
+                border-radius: 40px;
+                color: #fff;
+            }
+        }
+        min-width: 450px;
+        margin: 100px auto;
+    }
+    
+     :host /deep/ .option {
+        input {
+            background: rgba(96, 96, 96, 0.13);
+            border: none;
+            border-radius: 0 4px 4px 0;
+        }
+        .input-group-addon {
+            background: rgba(96, 96, 96, 0.13);
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+    }
+    
+    .accordion-content {
+        display: flex;
+        .content {
+            flex: 3;
+            margin-right: 10px;
+            border-right: 1px solid #16D39A;
+            border-top: 1px solid #16D39A;
+            padding: 1.25rem;
+            p {
+                margin-bottom: 5px;
+            }
+        }
+        .mobile {
+            flex: 1;
+            border-left: 1px solid #16D39A;
+            border-top: 1px solid #16D39A;
+            padding: 1.25rem;
+        }
+    }
+    
+    .accordion-fb {
+        >a {
+            margin: 1.25rem;
+            display: inline-block;
+            color: #4267b2;
+            text-decoration: none;
+        }
+        .fa-facebook-square {
+            font-size: 20px;
+            color: #4267b2;
+            margin-right: 5px;
+        }
+        .fa-question-circle {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        .content {
+            padding: 1.25rem;
+            a {
+                color: #4267b2;
+                font-size: 15px;
+            }
+            border-top: 1px solid #FFC7D2;
+            border-bottom: 1px solid #FFC7D2;
+        }
+        .content-fb {
+            display: flex;
+        }
+        .form-fb {
+            flex: 3;
+            padding: 1.25rem;
+            border-right: 1px solid #FFC7D2;
+            margin-right: 5px;
+            p {
+                margin-bottom: 5px;
+            }
+        }
+        .mobile {
+            padding: 1.25rem;
+            flex: 1;
+            border-left: 1px solid #FFC7D2;
+        }
+    }
+    
+    .accordion-email {
+        border-top: 1px solid #FFECB3;
+        border-bottom: 1px solid #FFECB3;
+        padding: 1.25rem;
+        h6 {
+            font-size: 15px;
+            font-weight: 500;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ededed;
+        }
+        .form-email {
+            padding: 1.25rem;
+            .fa-question-circle {
+                color: rgba(0, 0, 0, 0.3);
+            }
+            input {
+                border-radius: 5px;
+            }
+            .pull-right {
+                margin-top: 3px;
+            }
+        }
+    }
+    
+    .email-template {
+        padding: 1.25rem;
+        li {
+            padding: 7px 5px;
+        }
+    }
+    
+     :host /deep/ .carousel-indicators {
+        display: none !important;
+    }
+    
+     :host /deep/ .carousel-control-prev {
+        span {
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            &:before {
+                content: "\f104";
+            }
+            font-size: 2rem;
+        }
+        left: -10%;
+    }
+    
+     :host /deep/ .carousel-control-next {
+        span {
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            &:before {
+                content: "\f105";
+            }
+            font-size: 2rem;
+        }
+        right: -10%;
+    }
+    
+    .email-template {
+        .btn-created {
+            float: none;
+            padding: 3px 10px;
+            margin: auto;
+            display: block;
+        }
+    }
+    
+    .email-content {
+        border-top: 1px solid #FFECB3;
+        padding: 1.25rem;
+        h6 {
+            font-size: 15px;
+            font-weight: 500;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ededed;
+        }
+    }
+    
+     :host /deep/ .modal-body {
+        .tab-panel {
+            padding: 0;
+        }
+    }

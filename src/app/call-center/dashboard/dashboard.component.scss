@@ -1,0 +1,55 @@
+.card-number {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.card-ctn {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.card-chart {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.table-top-left {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.table-top-right {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.table-statistics {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.audio {
+  position: fixed;
+  bottom: 0;
+  right: 360px;
+  background-color: #ffffff;
+  border: 1px solid #e1e6ef;
+  z-index: 10;
+}
+.calendar {
+  position: absolute;
+  top: -65px;
+  right: 50px;
+  .input-ctn {
+    position: relative;
+    i {
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+    input {
+      padding-left: 30px;
+      border: none;
+      border-bottom: 1px solid #c0cadd;
+    }
+  }
+}

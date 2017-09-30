@@ -1,0 +1,31 @@
+.title_creat_beacon {
+  margin-left: -16px;
+  font-size: 16px;
+  color: black;
+  padding-left: 0;
+}
+
+#select-page {
+  width: 60px;
+  padding-left: 15px;
+}
+
+.input-group-addon {
+  color: #000;
+}
+
+th > i {
+  float: right;
+}
+
+.state-show {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+i[class='fa-pencil-square-o']:hover {
+  cursor: pointer;
+}
+
+.btn {
+  width: 100px;
+}

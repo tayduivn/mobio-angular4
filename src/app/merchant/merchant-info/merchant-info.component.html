@@ -1,0 +1,186 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 padding-5">
+      <div class="card">
+        <div class="card-header">
+          <h5>Thông tin đăng ký</h5>
+          <div class="card-actions">
+            <a class="btn-minimize" *ngIf="!_stateEditCommonInfo" tooltip="Sửa" href="javascript:;" style="border-left:0px;" (click)="onClickEditCommonInfo($event)"><i
+              class="fa fa-pencil-square-o"></i></a>
+            <a class="btn-minimize" *ngIf="_stateEditCommonInfo" tooltip="Cập nhật" href="javascript:;" style="border-left:0px;" (click)="updateMerchantCommon($event)"><i class="fa fa-check-circle-o"></i></a>
+            <a class="btn-minimize" *ngIf="_stateEditCommonInfo" tooltip="Bỏ qua" href="javascript:;" style="border-left:0px;" (click)="onClickEditCommonInfo($event)"><i class="fa fa-times-circle-o"></i></a>
+          </div>
+        </div>
+        <div class="user-basic-info-block card-block" [ngStyle]="{'height':_stateAmintionCommonInfo?'755px':'auto'}" [class.animated-background]="_stateAmintionCommonInfo"
+          *ngIf="!!merchantInfo">
+          <div class="row">
+            <div class="col-sm-12" *ngIf="!_stateAmintionCommonInfo">
+              <div class="form-group row">
+                <label class="col-md-4 form-control-label" for="name_merchant">Tên nhãn hàng</label>
+                <div class="col-md-8">
+                  <p *ngIf="!_stateEditCommonInfo" class="form-control-static">{{merchantInfo.nameMerchant}}</p>
+                  <input *ngIf="_stateEditCommonInfo" [(ngModel)]="merchantInfo.nameMerchant" class="form-control" id="name_merchant" type="text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 form-control-label">Giới thiệu chung</label>
+                <div class="col-md-12" *ngIf="!_stateEditCommonInfo" [innerHtml]="merchantInfo.description">
+                </div>
+                <div class="col-md-12">
+                  <ckeditor *ngIf="_stateEditCommonInfo" [(ngModel)]="merchantInfo.description" [config]="configCkeditor"></ckeditor>
+                </div>
+              </div>
+              <!--Danh Muc nhan hang-->
+              <div class="form-group row">
+                <label class="col-md-4 form-control-label" for="theme_merchant">Danh mục nhãn hàng</label>
+                <div class="col-md-8">
+                  <p *ngIf="!_stateEditCommonInfo" class="form-control-static">{{merchantInfo.idCategory}}</p>
+                  <input *ngIf="_stateEditCommonInfo" [(ngModel)]="merchantInfo.idCategory" class="form-control" id="category_merchant" type="text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 form-control-label" for="theme_merchant">Kiểu giao diên</label>
+                <div class="col-md-8">
+                  <p *ngIf="!_stateEditCommonInfo" class="form-control-static">{{merchantInfo.idTheme}}</p>
+                  <input *ngIf="_stateEditCommonInfo" [(ngModel)]="merchantInfo.idTheme" class="form-control" id="theme_merchant" type="text"
+                    readonly>
+                </div>
+              </div>
+              <!--Kieu giao dien-->
+              <div class="form-group row">
+                <label class="col-md-4 form-control-label" for="email_merchant">Email</label>
+                <div class="col-md-8">
+                  <p *ngIf="!_stateEditCommonInfo" class="form-control-static">{{merchantInfo.email}}</p>
+                  <input *ngIf="_stateEditCommonInfo" [(ngModel)]="merchantInfo.email" class="form-control" id="email_merchant" type="text">
+                </div>
+              </div>
+              <!--Email-->
+              <div class="form-group row">
+                <label class="col-md-4 form-control-label" for="hotline_merchant">Hotline</label>
+                <div class="col-md-8">
+                  <p *ngIf="!_stateEditCommonInfo" class="form-control-static">{{merchantInfo.phone}}</p>
+                  <input *ngIf="_stateEditCommonInfo" [(ngModel)]="merchantInfo.phone" class="form-control" id="hotline_merchant" type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- and card left-->
+    </div>
+    <div class="col-sm-6 padding-5">
+      <div class="card">
+        <div class="card-header">
+          <h5>Logo nhãn hàng</h5>
+          <div class="card-actions">
+            <a class="btn-minimize" *ngIf="!_stateEditLogo" tooltip="Sửa" href="javascript:;" style="border-left:0;" (click)="onClickEditLogo($event)"><i class="fa fa-pencil-square-o"></i></a>
+            <a class="btn-minimize" *ngIf="_stateEditLogo" tooltip="Cập nhật" href="javascript:;" style="border-left:0;" (click)="onClickSubmitEditLogo($event)"><i class="fa fa-check-circle-o"></i></a>
+            <a class="btn-minimize" *ngIf="_stateEditLogo" tooltip="Bỏ qua" href="javascript:;" style="border-left:0;" (click)="onClickCancelEditLogo($event)"><i class="fa fa-times-circle-o"></i></a>
+          </div>
+        </div>
+        <div class="card-block fadeIn">
+          <div class="form-group">
+            <div class="hidden-xs-down hidden-xs-up">
+              <input [attr.disable]="_stateEditLogo" class="form-control input-sm" id="logo" placeholder="" #fileUrlLogo type="file" accept="image/jpg, image/jpeg, image/png"
+                (change)="uploadLogo()">
+            </div>
+            <div class="mt-element-overlay" [class.pointer]="_stateEditLogo">
+              <div class="mt-overlay-3" (click)="clickUploadLogo($event)" *ngIf="!!merchantInfo">
+                <img width="300px" [src]="merchantInfo.avatar">
+                <div class="mt-overlay" *ngIf="_stateEditLogo">
+                  <h2>Thay đổi</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h5>Trạng thái tham gia hệ thống Mobio</h5>
+        </div>
+        <div class="card-block fadeIn">
+          <div class="user-basic-info-block card-block">
+            <div class="row" *ngIf="!!merchantInfo">
+              <div class="col-sm-12" *ngIf="!_stateAmintionCommonInfo">
+                <div class="form-group row">
+                  <label class="col-md-6 form-control-label">Thời gian đăng ký</label>
+                  <div class="col-md-6">
+                    <p class="form-control-static">{{merchantInfo.timeCreate}}</p>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-6 form-control-label">Thời gian được duyệt</label>
+                  <div class="col-md-6">
+                    <p class="form-control-static">{{merchantInfo.timeUpdate}}</p>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-6 form-control-label">Hạn sử dụng</label>
+                  <div class="col-md-6">
+                    <p class="form-control-static">{{merchantInfo.expiryDate}}</p>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-6 form-control-label">Mã giới thiệu cho nhãn hàng khác</label>
+                  <div class="col-md-6">
+                    <p class="form-control-static">{{merchantInfo.identificationCode}}</p>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-6 form-control-label">Tham gia mPoint</label>
+                  <div class="col-md-6">
+                    <p class="form-control-static">{{merchantInfo.xpointJoinState || 'Chưa tham gia'}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- and card right-->
+      <div class="card" [ngStyle]="{'display':!registerInfo.email?'none':'block'}">
+        <div class="card-header">
+          <h5>Thông tin đầu mối liên lạc</h5>
+          <div class="card-actions">
+            <a class="btn-minimize text-primary" *ngIf="!_stateEditContactInfo" tooltip="Sửa" href="javascript:;" style="border-left:0px;"
+              (click)="onClickEditContactInfo()"><i class="fa fa-pencil"></i></a>
+            <a class="btn-minimize text-success" *ngIf="_stateEditContactInfo" tooltip="Cập nhật" href="javascript:;" style="border-left:0px;"
+              (click)="updateContactInfo()"><i class="fa fa-check"></i></a>
+            <a class="btn-minimize text-danger" *ngIf="_stateEditContactInfo" tooltip="Bỏ qua" href="javascript:;" style="border-left:0px;"
+              (click)="onClickEditContactInfo()"><i class="fa fa-times"></i></a>
+          </div>
+        </div>
+        <div class="user-basic-info-block card-block" [ngStyle]="{'height':_stateAmintionContactInfo?'755px':'auto'}" [class.animated-background]="_stateAmintionContactInfo"
+          *ngIf="!!merchantInfo">
+          <div class="row">
+            <div class="col-sm-12" *ngIf="!_stateAmintionContactInfo">
+              <div class="form-group row">
+                <label class="col-md-4 form-control-label" for="contact_name_merchant">Số điện thoại</label>
+                <div class="col-md-8">
+                  <p *ngIf="!_stateEditContactInfo" class="form-control-static">{{registerInfo?.phone}}</p>
+                  <input *ngIf="_stateEditContactInfo" [(ngModel)]="registerInfo.phone" class="form-control" id="contact_name_merchant" type="text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 form-control-label" for="contact_email_suport">Email</label>
+                <div class="col-md-8">
+                  <p *ngIf="!_stateEditContactInfo" class="form-control-static">{{registerInfo?.email}}</p>
+                  <input *ngIf="_stateEditContactInfo" [(ngModel)]="registerInfo.email" class="form-control" id="contact_email_suport" type="text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-4 form-control-label" for="contact_address">Địa chỉ</label>
+                <div class="col-md-8">
+                  <p *ngIf="!_stateEditContactInfo" class="form-control-static">{{registerInfo?.address}}</p>
+                  <input *ngIf="_stateEditContactInfo" [(ngModel)]="registerInfo.address" class="form-control" id="contact_address" type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- and card left-->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+.box {
+  background-color: #ffffff;
+  color: #666666;
+  border: 1px solid #e1e6ef;
+  padding: 15px 30px;
+  font-size: 1rem;
+  .header {
+    border-bottom: 1px solid #e1e6ef;
+    margin-bottom: 15px;
+    display: block;
+    .phone {
+      padding: 5px 10px;
+      font-size: 1.3rem;
+      border-radius: 5px;
+      color: #ffffff;
+    }
+    .action {
+      display: flex;
+      justify-content: flex-end;
+      & > * {
+        flex: 0 0 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        a {
+          cursor: pointer;
+        }
+      }
+      .save {
+        color: #69c2e6;
+      }
+    }
+  }
+  .label {
+    margin-bottom: 10px;
+  }
+  .item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .ext {
+    flex: 0 0 30%;
+    .number {
+      padding: 5px 30px;
+      background-color: #dddddd;
+      float: left;
+      border-radius: 5px;
+    }
+  }
+  .employee {
+    flex: 0 0 30%;
+  }
+  .forward {
+    flex: 0 0 40%;
+  }
+  .employee,
+  .forward {
+    padding: 0 15px;    
+    input {
+      border-radius: 5px;
+    }
+  }
+}

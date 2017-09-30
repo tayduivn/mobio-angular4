@@ -1,0 +1,277 @@
+<div class="animated fadeIn">
+    <div class="row" style="margin-bottom:10px;">
+        <div class="col-xs-7">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Khách hàng ghé thăm</strong>
+                    <div class="card-actions">
+                        <div class="input-group filter-date">
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar fa-lg"></span>
+                            </span>
+                            <span class="form-control uneditable-input" name="daterange" daterangepicker (selected)="selectedDateLineChart($event, mainInput)" [options]="optionsDateFitter">
+                                {{ mainInput.start | date:'dd/M/y' }} - {{ mainInput.end| date:'dd/M/y' }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- card header -->
+                <div class="card-block" *ngFor="let c of chartCustomer">
+                    <mo-line-chart [data]="NumberOfCustomerData"></mo-line-chart>
+                </div>
+                <!-- card-block -->
+            </div>
+            <!-- card -->
+        </div>
+        <!-- col xs 7 -->
+        <div class="col-xs-5">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Tỉ lệ khách hàng</strong>
+                    <div class="card-actions">
+                        <div class="input-group filter-date">
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar fa-lg"></span>
+                            </span>
+                            <span class="form-control uneditable-input" name="daterange" daterangepicker (selected)="selectedDatePieChart($event, mainInput)" [options]="optionsDateFitter">
+                                {{ mainInput.start | date:'dd/M/y' }} - {{ mainInput.end| date:'dd/M/y' }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-block" *ngFor="let c of piechartcustomer">
+                    <mo-pie-chart [data]="RateOfCustomerData"></mo-pie-chart>
+                    <div class="legend-chart">
+                        <span class="news"></span> <span style="font-size:12px; font-weight:400; vertical-align:text-bottom;">Mới</span><br>
+                        <span class="come-back"></span> <span style="font-size:12px; font-weight:400; vertical-align:text-bottom;">Quay lại</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- col sm 5 -->
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- Nav tabs -->
+            <tabset #tab>
+                <tab heading="Theo cửa hàng" (select)="getTabValue()">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="input-group search-content">
+                                <span class="input-group-btn">
+                                    <button (click)="searchFoottrafficReport()" type="button" class="btn btn-primary"><i
+                                      class="fa fa-search"></i></button>
+                                </span>
+                                <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm" #searchFoottraffic (keypress)="searchFoottrafficReport()" />
+                            </div>
+                        </div>
+                        <div class="col-xs-offset-5 col-xs-4">
+
+                            <div class="card-actions" style="display:flex;">
+                                <div class="input-group filter-date" style="flex:2;margin-right:20px;">
+                                    <span class="input-group-addon">
+                                            <span class="fa fa-calendar fa-lg"></span>
+                                    </span>
+                                    <span class="form-control uneditable-input" name="daterange" daterangepicker (selected)="selectedDateList($event, mainInput)" [options]="optionsDateFitter">
+                                            {{ mainInput.start | date:'dd/M/y' }} - {{ mainInput.end| date:'dd/M/y' }}
+                                        </span>
+                                </div>
+                                <button class="btn btn-default"><i class="fa fa-download"></i> Xuất file</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- row-->
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-xs-3">
+                            <div class="card" style="max-height:500px; overflow: auto;">
+                                <div class="card-block">
+                                    <h6>Cửa hàng</h6>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button (click)="searchAllShop($event)" type="button"
+                                                    class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                        </span>
+                                        <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm cửa hàng" #searchShop (keypress)="searchAllShop($event)" />
+                                    </div>
+                                    <div class="form-group" style="margin-top:10px ">
+                                        <div class="checkbox" *ngFor="let s of shops; let i = index">
+                                            <label for="{{s.idShop}}" *ngIf="i === 0">
+                        <input type="checkbox" id="{{s.idShop}}" name="{{s.idShop}}" value="{{s.idShop}}" #shopChek
+                               checked (change)="filterFoottraffic($event, s.idShop)"> {{s.nameShop}} {{s.address}}
+                      </label>
+                                            <label for="{{s.idShop}}" *ngIf="i !== 0">
+                        <input type="checkbox" id="{{s.idShop}}" name="{{s.idShop}}" value="{{s.idShop}}" #shopChek
+                               (change)="filterFoottraffic($event,s.idShop)"> {{s.nameShop}} {{s.address}}
+                      </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /col -->
+                        <div class="col-xs-9">
+                            <div class="card">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <th>Cửa hàng <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                        <th>Số lượt ghé thăm <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                        <th>Số khách hàng ghé thăm <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                        <th>Số khách hàng mua sắm <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                        <th>Số điểm tặng khách hàng <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="animated fadeIn" *ngFor="let f of foottraffic">
+                                            <td>{{f.address}}</td>
+                                            <td>{{f.numberVisited}}</td>
+                                            <td>{{f.numberCustomer}}</td>
+                                            <td>{{f.numberSale}}</td>
+                                            <td>{{f.numberPointGift}}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">
+                                                <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+                                            </td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" style="padding-right: 0;">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon file-upload-show">Hiển thị </span>
+                                                    <select class="select-page" id="select-page" name="select-page" size="1" #_selectCurrentPage (change)="changePerPage(_selectCurrentPage.value)">
+                          <option value="5">5</option>
+                          <option value="10">10</option>
+                          <option value="15">15</option>
+                          <option value="20">20</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /row -->
+                </tab>
+                <tab heading="Theo chương trình" (select)="getTabValue1()">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                </span>
+                                <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm" />
+                            </div>
+                        </div>
+                        <div class="col-xs-offset-6 col-xs-3">
+                            <div class="input-group date filter-date">
+                                <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                                <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                                </span>
+                                <input type="text" class="form-control" id="filterDate" daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+                                <button class="btn btn-default"><i class="fa fa-download"></i> Xuất file</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row-->
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-xs-3">
+                            <div class="card" style="max-height:500px; overflow: auto;">
+                                <div class="card-block">
+                                    <h6>Trạng thái hiển thị</h6>
+                                    <div class="form-group" style="margin-top:10px ">
+                                        <div class="radio">
+                                            <label><input type="radio" name="show" #showStateItem
+                                    (change)="filterStateShow($event)"> Hiển thị</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="show" #hideStateItem
+                                    (change)="filterStateShow($event)"> Ẩn</label>
+                                        </div>
+                                    </div>
+
+                                    <h6>Trạng thái hiệu lực</h6>
+                                    <div class="form-group" style="margin-top:10px ">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" #allowChangeItem
+                                    (change)="filterAllowChange($event)"> Còn hiệu lực</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" #dontAllowChangeItem
+                                    (change)="filterAllowChange($event)"> Hết hiệu lực</label>
+                                        </div>
+                                    </div>
+
+                                    <h6>Danh mục</h6>
+                                    <div class="form-group" style="margin-top:10px ">
+                                        <div class="checkbox" *ngFor="let category of categories">
+                                            <label>
+                        <input name="{{category.idCategory}}" type="checkbox" value="{{category.idCategory}}"
+                               (change)="filterCategory($event, category.idCategory)"> {{category.name}}
+                      </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /col -->
+                        <div class="col-xs-9">
+                            <div class="card">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <th>Tên chương trình foot-traffic <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                        <th>Số lượt ghé thăm <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                        <th>Số khách hàng ghé thăm <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                        <th>Số khách hàng mua sắm <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                        <th>Số điểm tặng khách hàng <i aria-hidden="true" class="select-cursor fa fa-sort"></i></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="animated fadeIn" *ngFor="let f of foottraffic">
+                                            <td>{{f.name}}</td>
+                                            <td>{{f.numberVisited}}</td>
+                                            <td>{{f.numberCustomer}}</td>
+                                            <td>{{f.numberSale}}</td>
+                                            <td>{{f.numberPointGift}}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">
+                                                <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+                                            </td>
+                                            <td colspan="1"></td>
+                                            <td colspan="1" style="padding-right: 0;">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon file-upload-show">Hiển thị </span>
+                                                    <select class="select-page" id="select-page" name="select-page" size="1" #_selectCurrentPage (change)="changePerPage(_selectCurrentPage.value)">
+                          <option value="5">5</option>
+                          <option value="10">10</option>
+                          <option value="15">15</option>
+                          <option value="20">20</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /row -->
+                </tab>
+            </tabset>
+            <!-- col xs 12 -->
+        </div>
+        <!-- row -->
+    </div>
+</div>
+<!-- content -->

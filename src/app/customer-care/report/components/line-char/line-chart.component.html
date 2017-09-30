@@ -1,0 +1,9 @@
+<div class="chart-wrapper">
+    <canvas baseChart class="chart" [datasets]="data['datasets']" [labels]="data['labels'] " [options]="data['options']" [colors]="data['colors']" [legend]="data['legend']" [chartType]="data['chartType']"></canvas>
+</div>
+<div class="m-point" *ngIf="data['datasets'][0]['sum'] >= 0">
+    <div class="col-xs-2" *ngFor="let item of data['datasets']">
+        <h4>{{item['sum']}}</h4>
+        <p>{{item['labelSum']}}</p>
+    </div>
+</div>

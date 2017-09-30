@@ -1,0 +1,151 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Lịch sử khách hàng đánh giá</strong>
+                    <div class="card-actions">
+                        <div class="input-group date filter-date">
+                            <span class="input-group-addon" (click)="showDaterangeFitter($event)">       
+                            <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                            </span>
+                            <input type="text" class="form-control" id="filterDate" daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+                        </div>
+                    </div>
+                </div>
+                <!-- /card header -->
+                <div class="card-block" *ngFor="let c of chartdata">
+                    <mo-line-chart [data]="HistoryRateData"></mo-line-chart>
+                </div>
+                <!-- card-block -->
+            </div>
+            <!-- /card -->
+        </div>
+        <!-- /col12 -->
+    </div>
+    <!-- /row -->
+    <div class="row" style="margin-bottom:10px;">
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button (click)="searchCustomerRating($event)" type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </span>
+                <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm" #searchCustom (keypress)="searchCustomerRating($event)" />
+            </div>
+        </div>
+        <div class="col-xs-offset-6 col-xs-3">
+            <div class="input-group date filter-date">
+                <span class="input-group-addon" (click)="showDaterangeFitter($event)">       
+                <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                </span>
+                <input type="text" class="form-control" id="filterDate" daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+                <button class="btn btn-default"><i class="fa fa-download"></i> Xuất file</button>
+            </div>
+        </div>
+    </div>
+    <!-- /row -->
+    <div class="row" style="margin-top:10px;">
+        <div class="col-xs-3">
+            <div class="card" style="max-height:500px; overflow: auto;">
+                <div class="card-block">
+                    <h6>Điểm đánh giá</h6>
+                    <div class="form-group" style="margin-top:10px ">
+                        <div class="checkbox">
+                            <label for="checkbox1">
+                            <input type="checkbox" id="checkbox1" name="checkbox1" value="1" checked #ratingCheck (change)="filterRating($event)"> 1 sao
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox2">
+                            <input type="checkbox" id="checkbox2" name="checkbox2" value="2" checked #ratingCheck (change)="filterRating($event)"> 2 sao
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox2">
+                            <input type="checkbox" id="checkbox3" name="checkbox3" value="3" #ratingCheck (change)="filterRating($event)"> 3 sao
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox2">
+                            <input type="checkbox" id="checkbox3" name="checkbox4" value="4" #ratingCheck (change)="filterRating($event)"> 4 sao
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox2">
+                            <input type="checkbox" id="checkbox5" name="checkbox5" value="5" #ratingCheck (change)="filterRating($event)"> 5 sao
+                            </label>
+                        </div>
+                    </div>
+
+                    <h6>Cửa hàng</h6>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button (click)="searchAllShop($event)" type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        </span>
+                        <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm cửa hàng" #searchShop (keypress)="searchAllShop($event)" />
+                    </div>
+                    <div class="form-group" style="margin-top:10px ">
+                        <div class="checkbox" *ngFor="let s of shops; let i = index">
+                            <label for="{{s.idShop}}">
+                            <input type="checkbox" id="{{s.idShop}}" name="{{s.idShop}}" value="{{s.idShop}}" #shopChek (change)="filterFoottraffic($event,s.idShop)"> {{s.nameShop}} {{s.address}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col -->
+        <div class="col-xs-9">
+            <div class="card">
+                <table class="table table-condensed">
+                    <thead>
+                        <th>STT </th>
+                        <th>Thời gian </th>
+                        <th>Khách hàng </th>
+                        <th>Cửa hàng được đánh giá </th>
+                        <th>Điểm đánh giá </th>
+                        <th>Nội dung đánh giá </th>
+                    </thead>
+                    <tbody>
+                        <tr class="animated fadeIn" *ngFor="let c of customer; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{c.date | date:'short'}}</td>
+                            <td>
+                                <p>Họ và tên: {{c.name}}</p>
+                                <p>Số điện thoại: {{c.tel}}</p>
+                                <p>Thư điện tử: {{c.email}}</p>
+                            </td>
+                            <td>{{c.address}}</td>
+                            <td>{{c.rating}}</td>
+                            <td>{{c.content}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+                            </td>
+                            <td colspan="1"></td>
+                            <td colspan="1" style="padding-right: 0;">
+                                <div class="input-group">
+                                    <span class="input-group-addon file-upload-show">Hiển thị </span>
+                                    <select class="select-page" id="select-page" name="select-page" size="1" #_selectCurrentPage (change)="changePerPage(_selectCurrentPage.value)">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- row -->
+</div>
+<!-- content -->

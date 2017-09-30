@@ -1,0 +1,44 @@
+<div class="box">
+  <div class="row header clearfix">
+    <div class="pull-left phone" [ngStyle]="{'background-color': data.color}">
+      {{data.phone}}
+    </div>
+    <div class="pull-right action">
+      <div class="edit" [hidden]="isEditting">
+        <a (click)="edit()"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+      </div>
+      <div class="cancel" [hidden]="!isEditting">
+        <a (click)="cancel()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+      </div>
+      <div class="save" [hidden]="!isEditting">
+        <a (click)="save()"><i class="fa fa-check-circle-o" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="row label">
+    <div class="ext">
+      Máy lẻ
+    </div>
+    <div class="employee">
+      Nhân viên
+    </div>
+    <div class="forward">
+      Chuyển tiếp cuộc gọi đến số điện thoại
+    </div>
+  </div>
+  <div class="row item" *ngFor="let item of data.exts">
+    <div class="ext">
+      <div class="number">
+        {{item.number}}
+      </div>
+    </div>
+    <div class="employee">
+      <div *ngIf="!isEditting">{{item.employee}}</div>
+      <input type="text" class="form-control" [(ngModel)]="item.employee" *ngIf="isEditting">
+    </div>
+    <div class="forward">
+      <div *ngIf="!isEditting">{{item.forward}}</div>
+      <input type="text" class="form-control" [(ngModel)]="item.forward" *ngIf="isEditting">
+    </div>
+  </div>
+</div>

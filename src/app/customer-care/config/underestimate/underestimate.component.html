@@ -1,0 +1,182 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <div class="card card-outline-primary">
+        <div class="card-header">
+          <strong>Tặng điểm khi khách hàng đánh giá</strong>
+          <div class="card-actions">
+            <a class="btn-minimize text-primary" *ngIf="!_stateEditScore" tooltip="Sửa" href="javascript:" style="border-left:0;" (click)="onClickEditRewardPoint($event)"><i class="fa fa-pencil"></i></a>
+            <a class="btn-minimize text-success" *ngIf="_stateEditScore" tooltip="Cập nhật" href="javascript:" style="border-left:0"
+              (click)="onClickSubmitRewardPoint($event)"><i class="fa fa-check"></i></a>
+            <a class="btn-minimize text-danger" *ngIf="_stateEditScore" tooltip="Bỏ qua" href="javascript:" style="border-left:0px;"
+              (click)="onClickCancelRewardPoint($event)"><i class="fa fa-times"></i></a>
+          </div>
+        </div>
+        <div class="card-block">
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="score" class="col-sm-2 col-xs-2 col-md-2 col-lg-2">Điểm</label>
+              <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input id="score" (keydown)="checkValidScore($event)" min="0" type="number" class="form-control" [disabled]="!_stateEditScore"
+                  [(ngModel)]="underestimateReward.points">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-outline-primary">
+        <div class="card-header">
+          <strong>Ngưỡng và lý do đánh giá thấp</strong>
+          <div class="card-actions">
+            <a class="btn-minimize text-primary" *ngIf="!_stateEditReason" tooltip="Sửa" href="javascript:;" style="border-left:0px;"
+              (click)="onClickEditReason($event)"><i class="fa fa-pencil"></i></a>
+            <a class="btn-minimize text-success" *ngIf="_stateEditReason" tooltip="Cập nhật" href="javascript:;" style="border-left:0px;"
+              (click)="onClickSubmitReason($event)"><i class="fa fa-check"></i></a>
+            <a class="btn-minimize text-danger" *ngIf="_stateEditReason" tooltip="Bỏ qua" href="javascript:;" style="border-left:0px;"
+              (click)="onClickCancelReason($event)"><i class="fa fa-times"></i></a>
+          </div>
+        </div>
+        <div class="card-block">
+          <blockquote class="card-blockquote">
+            <div class="form-group">
+              <label for="level">Ngưỡng đánh giá thấp (*)
+                <i class="fa fa-question-circle" aria-hidden tooltip="Điểm dánh giá dưới ngưỡng này được coi là đánh giá thấp"></i>
+              </label>
+              <div class="row">
+                <div class="col-md-1 col-lg-1"></div>
+                <input id="level" class="form-control col-md-10 col-lg-10" value="2" [disabled]="!_stateEditReason" [(ngModel)]="underestimateReason.threshold"
+                  readonly>
+              </div>
+            </div>
+            <div class="form-group" #divAddReason>
+              <label>Lý do đánh giá thấp (*)</label>
+              <div *ngFor="let reason of underestimateReason.reasons" class="row">
+                <div class="col-md-1 col-lg-1"></div>
+                <div class="btn btn-primary col-sm-10 col-xs-10 col-md-10 col-lg-10 myRow">
+                  {{reason}}
+                </div>
+                <div class="col-sm-2 col-xs-2 col-md-1 col-lg-1" *ngIf="_stateEditReason">
+                  <i class="fa fa-minus-circle" aria-hidden (click)="deleteReason(reason)"></i>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="_stateCreateReason">
+              <div class="col-md-1 col-lg-1"></div>
+              <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input class="form-control " autofocus placeholder="Lý do cần thêm mới..." #newReason="ngModel" [(ngModel)]="reason" (keyup)="addReasonToList($event, newReason.value)"
+                  required pattern="(?!^ +$)^.+$">
+                <p class="help-block" *ngIf="newReason.errors && (newReason.dirty
+                       || newReason.touched)" [hidden]="!newReason.errors.pattern">* Lý do không được chứa toàn kí tự khoảng trắng</p>
+                <p class="help-block" *ngIf="newReason.errors && (newReason.dirty
+                      || newReason.touched)" [hidden]="!newReason.errors.required">* Lý do không được để trống</p>
+              </div>
+            </div>
+            <div class="form-group" *ngIf="_stateEditReason">
+              <label (click)="addNewReason()">
+                <a href="javascript:">Thêm lý do <i class="fa fa-plus-circle" aria-hidden></i></a>
+              </label>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    <div class="col-sm-6 col-md-6">
+      <div class="card card-outline-primary">
+        <div class="card-header">
+          <strong>Nhận thông báo khi khách hàng đánh giá thấp</strong>
+          <div class="card-actions">
+            <a class="btn-minimize text-primary" *ngIf="!_stateEditNotification" tooltip="Sửa" href="javascript:;" style="border-left:0px;"
+              (click)="onClickEditNotification($event)"><i class="fa fa-pencil"></i></a>
+            <a class="btn-minimize text-success" *ngIf="_stateEditNotification" tooltip="Cập nhật" href="javascript:;" style="border-left:0px;"
+              (click)="onClickSubmitNotification($event)"><i class="fa fa-check"></i></a>
+            <a class="btn-minimize text-danger" *ngIf="_stateEditNotification" tooltip="Bỏ qua" href="javascript:;" style="border-left:0px;"
+              (click)="onClickCancelNotification($event)"><i class="fa fa-times"></i></a>
+          </div>
+        </div>
+        <div class="card-block">
+          <ul>
+            <li>
+              <label>Qua email
+                <i class="fa fa-question-circle" aria-hidden tooltip="Các email cách nhau bằng ;"></i>
+              </label>
+              <div class="row">
+                <label for="email" class="col-md-4 col-lg-4">Email:</label>
+                <div class="col-md-8 col-lg-8">
+                  <input id="email" class="form-control" type="email" [disabled]="!_stateEditNotification" [(ngModel)]="underestimateNotify.emails.values">
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-4 col-lg-4">Kiểu nhận thông báo:</label>
+                <div class="col-md-8 col-lg-8">
+                  <label class="radio">
+                    <input type="radio" #endDay name="notifyType" [disabled]="!_stateEditNotification"
+                            [checked]="underestimateNotify.emails.type === 2"
+                            (change)="setUnderestimateEmailType(endDay.checked, customerReport.checked)">
+                    Cuối ngày
+                  </label>
+                  <label class="radio">
+                    <input type="radio" #customerReport name="notifyType" [disabled]="!_stateEditNotification"
+                            [checked]="underestimateNotify.emails.type === 1"
+                            (change)="setUnderestimateEmailType(endDay.checked, customerReport.checked)">
+                    Mỗi khi khách hàng đánh giá thấp
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li>
+              <label>Qua SMS
+                <i class="fa fa-question-circle" aria-hidden="true" tooltip="Các số điện thoại cách nhau bằng ;"></i>
+              </label>
+              <div class="row">
+                <label for="phoneNumber" class="col-md-4 col-lg-4">Số điện thoại:</label>
+                <div class="col-md-8 col-lg-8">
+                  <input id="phoneNumber" class="form-control" [disabled]="!_stateEditNotification" [(ngModel)]="underestimateNotify.sms.values">
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-4 col-lg-4">Nhận thông báo từ:</label>
+                <div class="col-md-3 col-lg-3" [ngClass]="{'disabledbutton':!_stateEditNotification}">
+                  <sq-datetimepicker [options]="optionsLeft" [(ngModel)]="underestimateSmsStartedTime">
+                  </sq-datetimepicker>
+                </div>
+                <div class="col-md-2 col-lg-2">
+                  đến:
+                </div>
+                <div class="col-md-3 col-lg-3" [ngClass]="{'disabledbutton':!_stateEditNotification}">
+                  <sq-datetimepicker [options]="optionsRight" [(ngModel)]="underestimateSmsFinishedTime">
+                  </sq-datetimepicker>
+                </div>
+              </div>
+            </li>
+            <li>
+              <label>Qua push notifications</label>
+              <div class="row">
+                <label class="col-md-4 col-lg-4">Tài khoản quản trị:</label>
+                <div class="col-md-8 col-lg-8" [ngClass]="{'disabledbutton':!_stateEditNotification}">
+                  <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                    (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-4 col-lg-4">Nhận thông báo từ:</label>
+                <div class="col-md-3 col-lg-3" [ngClass]="{'disabledbutton':!_stateEditNotification}">
+                  <sq-datetimepicker [options]="optionsLeft" [(ngModel)]="underestimatePushStartedTime">
+                  </sq-datetimepicker>
+                </div>
+                <div class="col-md-2 col-lg-2">
+                  đến:
+                </div>
+                <div class="col-md-3 col-lg-3" [ngClass]="{'disabledbutton':!_stateEditNotification}">
+                  <sq-datetimepicker [options]="optionsRight" [(ngModel)]="underestimatePushFinishedTime">
+                  </sq-datetimepicker>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>

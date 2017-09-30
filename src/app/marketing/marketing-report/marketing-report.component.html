@@ -1,0 +1,485 @@
+<div class="animated fadeIn">
+  <div class="row" style="margin-bottom:10px">
+    <div class="col-sm-3">
+      <h5>Chiến dịch 1</h5>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-success">
+        Đang diễn ra
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <label class="switch switch-xs switch-3d switch-primary">
+        <input type="checkbox" class="switch-input" checked="">
+        <span class="switch-label"></span>
+        <span class="switch-handle"></span>
+      </label>
+    </div>
+    <div class="col-sm-3">
+      <ul class="action pull-right">
+        <li><a href="javascript:void(0);" tooltip="Sửa"><i class="icon-note icons"></i></a></li>
+        <li><a href="javascript:void(0);" (click)="smModal.show()" tooltip="Copy"><i class="fa
+                  fa-clone"></i></a></li>
+      </ul>
+    </div>
+    <div class="col-sm-1">
+      <a href="javascript:void(0);" class="btn btn-marketing">
+        <i class="fa fa-download" aria-hidden="true"></i> Xuất file
+      </a>
+    </div>
+  </div>
+  <!-- /row -->
+  <div class="row">
+    <div class="col-sm-6" style="padding-right:2.5px">
+      <div class="card campaign" style="min-height:200px;">
+        <div class="card-body">
+          <div class="campaign-header">
+            <h6>Tổng quát</h6>
+          </div>
+          <div class="campaign-body">
+            <div class="row">
+              <div class="col-sm-1">
+                <div class="icon">
+                  <i class="icon-speedometer icons font-xl d-block mt-4"></i>
+                  <span class="tooltip-icon" tooltip="Thời gian diễn ra chiến dịch" placement="right"
+                        container="body">?</span>
+                </div>
+              </div>
+              <div class="col-sm-11">
+                <p>29/07/2017 10:00 - 31/08/2017 22:30</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1">
+                <div class="icon">
+                  <i class="icon-volume-2 icons font-xl d-block mt-4"></i>
+                  <span class="tooltip-icon" tooltip="Kênh gửi thông tin" placement="right" container="body">?</span>
+                </div>
+              </div>
+              <div class="col-sm-11">
+                <p>Push, Email, FB Messenger</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-1">
+                <div class="icon">
+                  <i class="icon-tag icons font-2xl d-block mt-4"></i>
+                  <span class="tooltip-icon" tooltip="Thông tin chương trình voucher" placement="right"
+                        container="body">?</span>
+                </div>
+              </div>
+              <div class="col-sm-11">
+                <p>Voucher giá tri 50K cho tât ca các nhãn hàng có the thành viên Cocasuki</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col6 -->
+    <div class="col-sm-6" style="padding-left:2.5px">
+      <div class="card campaign" style="min-height:200px;">
+        <div class="card-body">
+          <div class="campaign-header">
+            <h6>Tập khách hàng</h6>
+          </div>
+          <div class="campaign-body">
+            <div class="row">
+              <div class="col-sm-1">
+                <div class="icon">
+                  <i class="icon-user icons font-xl d-block mt-4"></i>
+                  <span class="tooltip-icon" tooltip="Tên tập khách hàng" placement="right"
+                        container="body">?</span>
+                </div>
+              </div>
+              <div class="col-sm-11">
+                <p>Nữ - Độ tuổi từ 24 đến 45 tuổi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col6 -->
+  </div>
+  <!-- /row -->
+  <div class="row">
+    <div class="col-sm-6" style="padding-right:2.5px">
+      <div class="card campaign">
+        <div class="card-body">
+          <div class="campaign-header">
+            <h6>Tỉ lệ mở</h6>
+          </div>
+          <div class="campaign-body">
+            <div class="row">
+              <div class="col-xs-4 border-right">
+                <div class="customer">
+                  <round-progress style="margin:auto" [color]="'#606060'" [current]="1600" [stroke]="2" [max]="1600"
+                                  [radius]="55"></round-progress>
+                  <p class="value">1600</p>
+                  <p class="name">Khách hàng tiếp cận <span class="tooltip-icon"
+                                                            tooltip="Thông tin chương trình voucher" placement="bottom"
+                                                            container="body">?</span></p>
+                </div>
+              </div>
+              <div class="col-xs-4 border-right">
+                <div class="open-percent">
+                  <round-progress style="margin:auto" [color]="'#F85061'" [current]="1300" [stroke]="2" [max]="1600"
+                                  [radius]="55">
+                  </round-progress>
+                  <p class="value">75%</p>
+                  <p class="name">Khách hàng mở <span class="tooltip-icon" tooltip="Thông tin chương trình voucher"
+                                                      placement="bottom" container="body">?</span></p>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="crv">
+                  <round-progress style="margin:auto" [color]="'#E0D517'" [current]="1200" [stroke]="2" [max]="1600"
+                                  [radius]="55"></round-progress>
+                  <p class="value">60%</p>
+                  <p class="name">Tỉ lệ mở <span class="tooltip-icon" tooltip="Thông tin chương trình voucher"
+                                                 placement="bottom" container="body">?</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col6 -->
+    <div class="col-sm-6" style="padding-left:2.5px">
+      <div class="card campaign">
+        <div class="card-body">
+          <div class="campaign-header">
+            <h6>Tỉ lệ chuyển đổi</h6>
+          </div>
+          <div class="campaign-body">
+            <div class="row">
+              <div class="col-xs-4 border-right">
+                <div class="customer">
+                  <round-progress style="margin:auto" [color]="'#606060'" [current]="1600" [stroke]="2" [max]="1600"
+                                  [radius]="55"></round-progress>
+                  <p class="value">1600</p>
+                  <p class="name">Số lượt lấy mã <span class="tooltip-icon" tooltip="Thông tin chương trình voucher"
+                                                       placement="bottom" container="body">?</span></p>
+                </div>
+              </div>
+              <div class="col-xs-4 border-right">
+                <div class="open-percent">
+                  <round-progress style="margin:auto" [color]="'#F85061'" [current]="1300" [stroke]="2" [max]="1600"
+                                  [radius]="55">
+                  </round-progress>
+                  <p class="value">75%</p>
+                  <p class="name">Số lượt sử dụng mã <span class="tooltip-icon" tooltip="Thông tin chương trình voucher"
+                                                           placement="bottom" container="body">?</span></p>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="crv">
+                  <round-progress style="margin:auto" [color]="'#E0D517'" [current]="1200" [stroke]="2" [max]="1600"
+                                  [radius]="55"></round-progress>
+                  <p class="value">60%</p>
+                  <p class="name">CRV <span class="tooltip-icon" tooltip="Thông tin chương trình voucher"
+                                            placement="bottom" container="body">?</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col6 -->
+  </div>
+  <!-- /row -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card campaign">
+        <div class="card-body">
+          <div class="campaign-header">
+            <h6>Tỉ lệ mở theo kênh</h6>
+          </div>
+          <div class="campaign-body">
+            <div class="row" style="margin-bottom:20px;">
+              <div class="col-xs-12">
+                <ul class="progress-detail">
+                  <li><span style="background:#F8AB75"></span>Khách hàng tiếp cận</li>
+                  <li><span style="background:#606060"></span>Khách hàng mở</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row" style="margin-bottom:20px">
+              <div class="col-sm-4 border-right" style="padding:30px;">
+                <p class="channel">Mobio <span>30%</span></p>
+                <p style="margin: 10px 0 5px;">500</p>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                       style="width:100%;background: #F8AB75;">
+                  </div>
+                </div>
+                <p style="margin: 10px 0 5px;">300</p>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                       aria-valuemax="100" style="width:60%; background: #606060;">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 border-right" style="padding:30px;">
+                <p class="channel">FB Messenger <span>30%</span></p>
+                <p style="margin: 10px 0 5px;">500</p>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                       style="width:100%;background: #F8AB75;">
+                  </div>
+                </div>
+                <p style="margin: 10px 0 5px;">300</p>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                       aria-valuemax="100" style="width:60%; background: #606060;">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4" style="padding:30px;">
+                <p class="channel">Email <span>30%</span></p>
+                <p style="margin: 10px 0 5px;">500</p>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                       style="width:100%;background: #F8AB75;">
+                  </div>
+                </div>
+                <p style="margin: 10px 0 5px;">300</p>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                       aria-valuemax="100" style="width:60%; background: #606060;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col12 -->
+  </div>
+  <!-- /row -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card campaign">
+        <div class="card-body">
+          <div class="campaign-header">
+            <h6>Tỉ lệ chuyển đổi theo kênh kênh</h6>
+          </div>
+          <div class="campaign-body">
+            <div class="row" style="margin-bottom:20px;">
+              <div class="col-xs-12">
+                <ul class="progress-detail">
+                  <li><span style="background:#C44518"></span>Lượt lấy mã</li>
+                  <li><span style="background:#37B7F7"></span>Lượt sử dụng mã</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 border-right" style="padding:30px;">
+                <p class="channel">Mobio <span>30%</span></p>
+                <p style="margin: 10px 0 5px;">500</p>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                       style="width:100%;background: #C44518;">
+                  </div>
+                </div>
+                <p style="margin: 10px 0 5px;">300</p>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                       aria-valuemax="100" style="width:60%; background: #37B7F7;">
+                  </div>
+                </div>
+                <hr style="margin:30px 0;">
+                <div class="row">
+                  <div class="col-sm-6 border-right" style="padding:15px;">
+                    <p style="margin:0 5px; ">500</p>
+                    <div class="progress ">
+                      <div class="progress-bar " role="progressbar " aria-valuenow="100 " aria-valuemin="0 "
+                           aria-valuemax="100 " style="width:100%;background: #C44518; ">
+                      </div>
+                    </div>
+                    <p style="margin: 10px 0 5px; ">300</p>
+                    <div class="progress ">
+                      <div class="progress-bar progress-bar-success " role="progressbar " aria-valuenow="60 "
+                           aria-valuemin="0 " aria-valuemax="100 " style="width:60%; background: #37B7F7; ">
+                      </div>
+                    </div>
+                    <p style="text-align:center">Push qua Mobio</p>
+                  </div>
+                  <div class="col-sm-6" style="padding:15px;">
+                    <p style="margin:0 5px; ">500</p>
+                    <div class="progress ">
+                      <div class="progress-bar " role="progressbar " aria-valuenow="100 " aria-valuemin="0 "
+                           aria-valuemax="100 " style="width:100%;background: #C44518; ">
+                      </div>
+                    </div>
+                    <p style="margin: 10px 0 5px; ">300</p>
+                    <div class="progress ">
+                      <div class="progress-bar progress-bar-success " role="progressbar " aria-valuenow="60 "
+                           aria-valuemin="0 " aria-valuemax="100 " style="width:60%; background: #37B7F7; ">
+                      </div>
+                    </div>
+                    <p style="text-align:center">In App Mobio</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 border-right" style="padding:30px;">
+                <p class="channel ">FB Messenger <span>30%</span></p>
+                <p style="margin: 10px 0 5px; ">500</p>
+                <div class="progress ">
+                  <div class="progress-bar " role="progressbar " aria-valuenow="100 " aria-valuemin="0 "
+                       aria-valuemax="100 " style="width:100%;background: #C44518; ">
+                  </div>
+                </div>
+                <p style="margin: 10px 0 5px; ">300</p>
+                <div class="progress ">
+                  <div class="progress-bar progress-bar-success " role="progressbar " aria-valuenow="60 "
+                       aria-valuemin="0 " aria-valuemax="100 " style="width:60%; background: #37B7F7; ">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4" style="padding:30px;">
+                <p class="channel ">Email <span>30%</span></p>
+                <p style="margin: 10px 0 5px; ">500</p>
+                <div class="progress ">
+                  <div class="progress-bar " role="progressbar " aria-valuenow="100 " aria-valuemin="0 "
+                       aria-valuemax="100 " style="width:100%;background: #C44518; ">
+                  </div>
+                </div>
+                <p style="margin: 10px 0 5px; ">300</p>
+                <div class="progress ">
+                  <div class="progress-bar progress-bar-success " role="progressbar " aria-valuenow="60 "
+                       aria-valuemin="0 " aria-valuemax="100 " style="width:60%; background: #37B7F7; ">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col12 -->
+  </div>
+  <!-- /row -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card campaign">
+        <div class="card-body">
+          <div class="campaign-header" style="border:0;">
+            <div class="row col-sm-9">
+              <div class="col-sm-8">
+                <h6>Số khách hàng tương tác</h6>
+              </div>
+              <div class="col-sm-4">
+                <div class="input-group date filter-date">
+                                    <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                                        <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                                    </span>
+                  <input type="text" class="form-control input-sm" daterangepicker [(ngModel)]="stringdaterangeFitter"
+                         [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="campaign-body">
+            <div class="row">
+              <div class="col-sm-9">
+                <mo-line-chart [data]="chart"></mo-line-chart>
+              </div>
+              <div class="col-sm-3">
+                <ul class="button-channel">
+                  <li class="active">
+                    <a href="javascript:void(0);">Tất cả các kênh <span class="fa fa-caret-down"></span></a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">Push qua mobio</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">FB Messenger</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">Email</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /row -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card campaign">
+        <div class="card-body">
+          <div class="campaign-header" style="border:0;">
+            <div class="row col-sm-9">
+              <div class="col-sm-8">
+                <h6>Số lượt chuyển đổi</h6>
+              </div>
+              <div class="col-sm-4">
+                <div class="input-group date filter-date">
+                                    <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                                            <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                                    </span>
+                  <input type="text" class="form-control input-sm" daterangepicker [(ngModel)]="stringdaterangeFitter"
+                         [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="campaign-body">
+            <div class="row">
+              <div class="col-sm-9">
+                <mo-line-chart [data]="chartreport"></mo-line-chart>
+              </div>
+              <div class="col-sm-3">
+                <ul class="button-channel">
+                  <li class="active">
+                    <a href="javascript:void(0);">Tất cả các kênh <span class="fa fa-caret-down"></span></a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">Push qua mobio</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">FB Messenger</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0);">Email</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /row -->
+</div>
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title pull-left">THÔNG BÁO</h6>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="smModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-weight:300; margin-top:20px;">Bạn có muốn sao chép chiến dịch này không?</p>
+      </div>
+      <div class="col-xs-offset-7 col-xs-5">
+        <a [routerLink]="['/marketing/dashboard']" class="btn btn-cancle">Không</a>
+        <a [routerLink]="['/marketing/dashboard']" class="btn btn-confirm">Có</a>
+      </div>
+    </div>
+  </div>
+</div>

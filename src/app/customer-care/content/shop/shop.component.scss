@@ -1,0 +1,144 @@
+.header-pagination {
+    padding-left: 0;
+}
+
+// default style table
+:host /deep/ .card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: white !important;
+    border-bottom: 1px solid white !important;
+}
+
+:host /deep/ .selected-list {
+    .c-btn {
+        box-shadow: none !important;
+        border-color: #e1e6ef
+    }
+}
+
+.perpage-pagination {
+    padding-right: 0;
+    float: right;
+}
+
+.title_creat_shop {
+    margin-left: -16px;
+    font-size: 16px;
+    color: black;
+    padding-left: 0;
+}
+
+agm-map {
+    height: 400px;
+    width: 96%;
+}
+
+#input-longitude {
+    border-bottom: 1px solid #e1e6ef;
+}
+
+#input-latitude {
+    border-bottom: 1px solid #e1e6ef;
+}
+
+.modal-lg {
+    .modal-body {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: 525px;
+    }
+}
+
+.modal-gencode {
+    overflow-y: hidden !important;
+}
+
+.modal-sm {
+    margin-top: 180px;
+}
+
+.modal-content-barcode {
+    width: 230px !important;
+    margin: auto;
+    padding: 0;
+}
+
+.bar-gender:hover {
+    cursor: pointer;
+}
+
+.action-render>i:hover {
+    cursor: pointer;
+}
+
+.action-render>label:hover {
+    cursor: pointer;
+}
+
+.img-barcode {
+    vertical-align: middle;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 35px;
+    margin-top: 10px;
+}
+
+// =================================== STYLE MENU LEFT =================================
+.list-city {
+    overflow-y: scroll;
+    height: 290px;
+    margin-bottom: 15px;
+}
+
+@media (min-width: 1440px) {
+    .list-city {
+        height: 57vh;
+    }
+}
+
+@media (min-width: 1366px) {
+    .list-city {
+        height: 57vh;
+    }
+}
+
+.fa:hover {
+    cursor: pointer;
+}
+
+td>i {
+    padding-right: 5px;
+}
+
+th>i {
+    margin-left: 5px;
+}
+
+.state-show {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#select-page {
+    width: 60px;
+    padding-left: 15px;
+}
+
+div.buttom-option>button {
+    width: 125px !important;
+}
+
+// NguyenManh Custom
+:host /deep/ .cuppa-dropdown {
+    width: 91%;
+}
+
+.modal-body-upload-product {
+    max-height: 255px;
+    overflow-y: hidden;
+}
+
+div.buttom-option>button {
+    width: 125px !important;
+}

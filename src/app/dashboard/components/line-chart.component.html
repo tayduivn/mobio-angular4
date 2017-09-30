@@ -1,0 +1,22 @@
+<div class="card double-height-card">
+    <div class="card-header">
+        <h6 style="font-weight:400;">{{data.title}}</h6>
+        <div class="card-actions">
+            <div class="input-group filter-date">
+                <span class="input-group-addon">
+                    <span class="fa fa-calendar fa-lg"></span>
+                </span>
+                 <span class="form-control uneditable-input" name="daterange" daterangepicker (selected)="selectedDateLineChart($event, mainInput)" [options]="optionsDateFitter">
+                    {{ mainInput.start | date:'dd/M/y' }} - {{ mainInput.end| date:'dd/M/y' }}
+                </span> 
+                
+            </div>
+        </div>
+    </div>
+    <div *ngIf="data && data.datasets" class="card-block">
+        <div class="chart-wrapper">
+                 <canvas baseChart class="chart" [datasets]="data.datasets" [labels]="data.labels" [options]="data.options" [colors]="data.colors" [legend]="data.legend" [chartType]="data.chartType"></canvas>       
+        </div>
+    </div>
+</div>
+<!--/.card-->

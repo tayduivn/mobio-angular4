@@ -1,0 +1,38 @@
+.header-pagination {
+  padding-left: 0;
+}
+
+.perpage-pagination {
+  padding-right: 0;
+  float: right;
+}
+
+.textLable {
+  display: block;
+}
+
+.ng-pristine button.datepicker-actions__button {
+  display: none !important;
+  background: #f00;
+}
+
+.datepicker-actions__input {
+  background: #f00 !important;
+}
+
+#outDatetim {
+  position: relative;
+}
+
+#zindexhiedden {
+  position: absolute;
+  z-index: 999;
+  background: #fff;
+  height: 38px;
+  width: 8%;
+  right: 0px;
+}
+
+div.buttom-option > button {
+  width: 120px;
+}

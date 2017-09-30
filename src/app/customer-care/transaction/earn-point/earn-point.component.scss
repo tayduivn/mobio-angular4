@@ -1,0 +1,17 @@
+.note{
+display: none;
+}
+.info:hover .note{
+    display: block;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    padding: 5px;
+}
+.info ul li{
+margin: 5px;
+}
+
+// .header-upload .title-upload:hover .note{
+//     display: block;
+// }

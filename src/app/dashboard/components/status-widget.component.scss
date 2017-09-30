@@ -1,0 +1,38 @@
+:host {
+    .col-xs-8 {
+        padding-right: 0;
+        div {
+            height: 50%;
+            padding-left: 15px;
+            position: relative;
+        }
+    }
+}
+
+.single-height-card {
+    position: relative;
+    padding-top: 55px;
+    height: 159px;
+    .icon-wrapper {
+        i {
+            color: #F9C023;
+            font-size: 36px;
+            text-align: center;
+        }
+    }
+}
+
+.img-status {
+    width: 70px;
+    height: auto;
+}
+
+.img-status-60 {
+    width: 60px;
+    height: auto;
+}
+
+.img-status-55 {
+    width: 55px;
+    height: auto;
+}

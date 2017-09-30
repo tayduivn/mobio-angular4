@@ -1,0 +1,38 @@
+{
+  "score": 1,
+  "level": 2,
+  "reason": [
+    {
+      "id": 1,
+      "name":"Nhân viên hỗ trợ không nhiệt tình"
+    },
+    {
+      "id": 2,
+      "name":"Chất lượng sản phẩm không như mong đợi"
+    },
+    {
+      "id": 3,
+      "name":"Giá cả không hợp lý với chất lượng sản phẩm"
+    }
+  ],
+  "email": "maing@cocasuki.vn",
+  "mailTime": [
+    {
+      "id": 1,
+      "name": "cuối ngày"
+    },
+    {
+      "id": 2,
+      "name": "Mỗi khi khách hàng đánh giá thấp"
+    }
+  ],
+  "phone": "0123456789",
+  "smsStartedTime": "08:00:00",
+  "smsFinishedTime": "18:00:00",
+  "account": [
+      "maing@cocasuki.vn",
+      "adam@eva.vcl"
+  ],
+  "accountStartedTime": "08:00:00",
+  "accountFinishedTime": "18:00:00"
+}

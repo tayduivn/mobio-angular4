@@ -1,0 +1,71 @@
+<div class="statistics-call">
+    <h4 class="label">{{data?.name}}</h4>
+    <div class="table-call">
+      <div class="row header">
+        <div class="employee">
+          Nhân viên
+        </div>
+        <div class="total-call-in">
+          Tổng số cuộc gọi đến
+        </div>
+        <div class="call-in-answered">
+          Số cuộc gọi đến đã trả lời
+        </div>
+        <div class="ratio">
+          Tỉ lệ trả lời cuộc gọi đến
+        </div>
+        <div class="avg-call-in">
+          Số cuộc gọi đến trung bình/ngày
+        </div>
+        <div class="avg-duration-in">
+          Thời gian trung bình / cuộc gọi đến
+        </div>
+        <div class="total-call-out">
+          Tổng số cuộc gọi đi
+        </div>
+        <div class="avg-call-out">
+          Số cuộc gọi đi trung bình/ngày
+        </div>
+        <div class="avg-duration-out">
+          Thời gian trung bình của cuộc gọi đi
+        </div>
+      </div>
+      <div class="row item" *ngFor="let item of data?.data">
+        <div class="employee">
+          <div class="avatar">
+              <img [src]="item.avatar" alt="">
+          </div>
+          <div class="info">
+              <div class="full-name">
+                  {{item.fullName || '--'}}
+              </div>
+          </div>
+        </div>
+        <div class="total-call-in">
+            {{item.totalCallIn}}
+        </div>
+        <div class="call-in-answered">
+            {{item.callInAnswered}}
+        </div>
+        <div class="ratio">
+            {{item.ratio}}
+        </div>
+        <div class="avg-call-in">
+            {{item.avgCallIn}}
+        </div>
+        <div class="avg-duration-in">
+            {{item.avgDurationIn}}
+        </div>
+        <div class="total-call-out">
+            {{item.totalCallOut}}
+        </div>
+        <div class="avg-call-out">
+            {{item.avgCallOut}}
+        </div>
+        <div class="avg-duration-out">
+            {{item.avgDurationOut}}
+        </div>
+      </div>
+    </div>
+  </div>
+  

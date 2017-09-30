@@ -1,0 +1,17 @@
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <li [ngClass]="{disabled:pager.page === 1}">
+        <a (click)="getCurrentPage(1)"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+    </li>
+    <li [ngClass]="{disabled:pager.page === 1}">
+        <a (click)="getCurrentPage(pager.page - 1)"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </li>
+    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.page === page}">
+        <a (click)="getCurrentPage(page)">{{page}}</a>
+    </li>
+    <li [ngClass]="{disabled:pager.page === pager.total_page}">
+        <a (click)="getCurrentPage(pager.page + 1)"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    </li>
+    <li [ngClass]="{disabled:pager.page === pager.total_page}">
+        <a (click)="getCurrentPage(pager.total_page)"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+    </li>
+</ul>

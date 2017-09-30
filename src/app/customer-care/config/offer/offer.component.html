@@ -1,0 +1,167 @@
+
+<!--          =========== SHOW LIST OFFER ===============           -->
+<div *ngIf="!switchUpdateScreen">
+  <div class="row">
+    <div class="col-md-1 col-lg-1"></div>
+    <div class="card card-accent-primary col-md-10 col-lg-10">
+      <div class="card-header row">
+        <span><strong>Hình thức tặng:</strong></span>
+        <div class="col-md-1 col-lg-1"></div>
+        <span class="col-md-3 col-lg-3">
+          {{ currentOfferMethod.name }}
+        </span>
+      </div>
+      <div class="card-block">
+        <div class="row">
+          <p><strong>Mức tặng:</strong></p>
+        </div>
+        <div *ngFor="let level of offer.levels" class="row">
+          <div class="card col-md-12 col-lg-12" *ngIf="!level.deleted">
+            <div class="card-block">
+              <p>Giá trị hóa đơn</p>
+              <p class="row">
+                <span class="col-md-1 col-lg-1"></span>
+                <span class="col-md-1 col-lg-1">Từ</span>
+                <span class="col-md-3 col-lg-3">{{ level.priceFrom }} VNĐ</span>
+                <span class="col-md-1 col-lg-1">Đến</span>
+                <span class="col-md-4 col-lg-4 col-md-offset-1 col-lg-offset-1"> {{ level.priceTo }} VNĐ</span>
+              </p>
+              <p>Tặng điểm & voucher</p>
+              <p class="row">
+                <span class="col-md-1 col-lg-1"></span>
+                <span class="col-md-4 col-lg-4">Tỉ lệ phần trăm trên giá trị hóa đơn</span>
+                <span class="col-md-6 col-lg-6">{{ level.rateReward }} %</span>
+              </p>
+              <div *ngIf="level.voucher">
+                <p class="row">
+                  <span class="col-md-1 col-lg-1"></span>
+                  <span class="col-md-4 col-lg-4">Voucher</span>
+                  <span class="col-md-6 col-lg-6">{{ level.voucher.name }}</span>
+                </p>
+                <p class="row">
+                  <span class="col-md-5"></span>
+                  <span class="col-md-6 col-lg-6">
+                  <span class="btn btn-danger">Hết hiệu lực</span>
+                </span>
+                </p>
+                <p class="row" *ngIf="level.voucher && level.voucher.voucherType === 1">
+                  <span class="col-md-1 col-lg-1"></span>
+                  <span class="col-md-4 col-lg-4">Số lượt tích Voucher</span>
+                  <span class="col-md-6 col-lg-6">{{ level.numberVoucher }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-lg-10"></div>
+    <div class="col-md-2 col-lg-2">
+      <div class="btn btn-primary" style="margin: 10px"
+           (click)="switchUpdateScreen = !switchUpdateScreen">Sửa</div>
+    </div>
+  </div>
+</div>
+<!--  ==================  UPDATE OFFER  ===================== -->
+<div *ngIf="switchUpdateScreen">
+  <div class="row">
+    <div class="col-md-1 col-lg-1"></div>
+    <div class="card card-accent-primary col-md-10 col-lg-10">
+      <div class="card-header row">
+        <p><strong>Hình thức tặng:</strong></p>
+        <div class="col-md-12 col-lg-12">
+          <div class="form-inline">
+              <div *ngFor="let offerMethod of offerMethods" class="col-md-4 col-lg-4">
+                <div class="form-group">
+                  <input id="{{offerMethod.id}}" [checked]="offerMethod.id === offer.reward_type"
+                         (change)="changeOfferMethod($event, offerMethod)"
+                         name="methodOffer" type="radio" class="form-control input-lg" style="margin-right: 5px">
+                  <label for="{{offerMethod.id}}">  {{offerMethod.name}}  </label>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-block">
+        <div class="row">
+          <p><strong>Mức tặng:</strong></p>
+        </div>
+        <div *ngFor="let level of offer.levels" class="row">
+          <div class="card col-md-12 col-lg-12" *ngIf="!level.deleted">
+            <div class="card-block">
+              <div class="row">
+                <p class="col-md-11 col-lg-11">Giá trị hóa đơn</p>
+                <div class="col-md-1 col-lg-1 myDelIcon">
+                  <i class="fa fa-minus-circle fa-2x" aria-hidden
+                     (click)="deleteLevel(level)"></i>
+                </div>
+              </div>
+              <div class="row">
+                <span class="col-md-1 col-lg-1"></span>
+                <div class="col-md-4 col-lg-4 form-group">
+                  <label>Từ (*)</label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" [(ngModel)]="level.priceFrom"
+                           placeholder="Nhập giá trị hóa đơn" min="0">
+                    <span class="input-group-addon">VNĐ</span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-lg-4 form-group">
+                  <label>Đến (*)</label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" [(ngModel)]="level.priceTo"
+                           placeholder="Nhập giá trị hóa đơn" min="0">
+                    <span class="input-group-addon">VNĐ</span>
+                  </div>
+                </div>
+              </div>
+              <p>Tặng điểm & voucher</p>
+              <div class="row">
+                <span class="col-md-1 col-lg-1"></span>
+                <div class="col-md-4 col-lg-4 form-group" *ngIf="offer.reward_type !== 3">
+                  <label>Tỉ lệ giảm giá trên giá trị hóa đơn (*)</label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" [(ngModel)]="level.rateReward"
+                           placeholder="Nhập tỉ lệ giảm giá" min="0">
+                    <span class="input-group-addon">%</span>
+                  </div>
+                </div>
+                <div class="col-md-4 col-lg-4 form-group">
+                  <label>Voucher</label>
+                  <select class="form-control" (change)="setVoucherForCreatedReward($event, level)"
+                        [value]="level.voucher ? level.voucher.idVoucher : 0">
+                    <option value="0">Chọn Voucher</option>
+                    <option *ngFor="let voucher of vouchers" [value]="voucher.idVoucher">
+                      {{voucher.name}}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-3 col-lg-3 form-group" *ngIf="level.voucher && level.voucher.voucherType === 1">
+                  <label>Số lượt tích Voucher (*)</label>
+                  <input type="number" class="form-control" [(ngModel)]="level.numberVoucher"
+                         min="0" [max]="level.voucher.maximumAccumulations">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 col-lg-2"></div>
+          <div class="col-md-4 col-lg-4">
+            <p (click)="addLevel()">Thêm mức tặng <i class="fa fa-plus-circle" aria-hidden></i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9 col-lg-9"></div>
+    <div class="col-md-3 col-lg-3">
+      <div class="btn btn-primary" style="margin: 10px" (click)="saveOffer()">Lưu</div>
+      <div class="btn btn-default" style="margin: 10px"
+           (click)="switchUpdateScreen = !switchUpdateScreen">Bỏ qua</div>
+    </div>
+  </div>
+</div>

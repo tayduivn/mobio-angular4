@@ -1,0 +1,390 @@
+<toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+<div class="animated fadeIn">
+    <div class="row" style="margin-bottom:10px">
+        <div class="col-xs-3" style="padding:0;">
+            <fieldset class="cards">
+                <legend>Thẻ
+                    <span class="badge badge-pill badge-warning">{{cardComments?.data?.common.no_replies_number}}</span>
+                </legend>
+                <div class="single-card">
+                    <!--<img class="img-responsive" alt="" src="{{d.image}}">-->
+                    <div class="display-comment" [hidden]="hidden">
+                        <div class="media" *ngFor="let cardComment of cardComments?.data?.comments | slice:0:showmorecomment; let i = index" (click)="showInfoCustomer(cardComment.owner.type, cardComment.owner.id)" [class.state-show]="cardComment.status === 2">
+                            <div class="wrap-media" [class.state-show]="cardComment.status === 2">
+                                <div class="media-left">
+                                    <img src="{{cardComment.owner.avatar}}" class="media-object" style="width:50px; height:50px;">
+                                    <span class="media-name">{{cardComment.owner.name}}</span>
+                                </div>
+                                <div class="media-body">
+                                    <p class="content-message" style="max-width: 235px;">
+                                        {{cardComment.content}}
+                                    </p>
+                                    <p class="quote-wrap"><textarea [class.state-show]="cardComment.status === 2" class="quotes-comment form-control" name="textarea-input" rows="3" readonly [hidden]="!cardComment?.quote?.content" placeholder="Reply..">{{cardComment?.quote?.content || ''}}</textarea>
+                                    </p>
+                                    <!--quote-->
+                                    <p>
+                                        <a href="javascript:void(0)" (click)="showRelyForCardComment(cardComment.id)"><i
+                      class="fa fa-mail-reply-all"></i>
+                      Trả lời
+                    </a>
+                                        <span><i class="fa fa-clock-o"
+                             aria-hidden="true"></i> {{cardComment.posted_time | date: 'yMdjm'}}</span>
+                                    </p>
+                                    <ul class="action">
+                                        <li>
+                                            <a href="javascript:void(0)"><i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
+                      </a>
+                                            <ul class="sub-action">
+                                                <li><a href="javascript:void(0)" (click)="changeStatusComment(cardComment.status, cardComment.id,'default',1)"><i
+                          class="fa fa-minus-circle"></i> {{cardComment.status === 1?
+                          'Ẩn': 'Hiển Thị'}}</a></li>
+                                                <li><a href="javascript:void(0)" (click)="removeComment(cardComment.id, 'default' , 1)"><i
+                          class="fa fa-trash"></i> Xoá</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--Wrap media-->
+                            <div class="reply-comment" [hidden]="stateReplyCard !== cardComment.id" style="margin-bottom: 10px;">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="reply-content"><textarea name="textarea-input" rows="4" class="form-control" #contentReplyElement placeholder="Reply.."></textarea></div>
+                                        <div class="button-send" (click)="replyComment(cardComment.id,contentReplyElement.value, 'default', 1)"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--repy comment-->
+                        </div>
+                        <!-- /media -->
+                        <div class="show-more" *ngIf="showmorecomment < cardComments?.data?.comments.length">
+                            <p><a href="javascript:void(0);" (click)="showmorecomment = showmorecomment + 5"><i
+                class="fa fa-angle-double-down fa-lg" aria-hidden="true"></i></a></p>
+                        </div>
+                    </div>
+                    <!-- /displaycomment -->
+                    <div class="display-order" [hidden]="!hidden">
+                        <fieldset>
+                            <legend>Đặt chỗ
+                                <span class="fa fa-close" (click)="showOrderForm()"></span>
+                            </legend>
+                            <div class="order-content">
+                                <div class="media" *ngFor="let o of cards[0]?.orders | slice:0:showmoreorder ; let i = index;">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="media-left">
+                                                <img src="{{o.avatar}}" class="media-object" style="width:50px; height:50px;">
+                                                <span class="media-name">{{o.name}}</span>
+                                            </div>
+                                            <div class="media-body">
+                                                <p>Ngày: {{o.date}}</p>
+                                                <p>Giờ: {{o.timeOrder}}</p>
+                                                <p>Địa chỉ: {{o.address}}</p>
+                                                <p>Ngày: {{o.address}}</p>
+                                                <p>Điện thoại: {{o.phone}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div class="media-action">
+                                                <a href="javascript:void(0)" (click)="showUpdateOrder()"><i class="fa fa-pencil"></i> Sửa</a>
+                                                <a href="javascript:void(0)"><i class="fa fa-check"></i> Đồng ý</a>
+                                                <a href="javascript:void(0)"><i class="fa fa-close"></i> Từ chối</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="show-more" *ngIf="true">
+                                    <p><a href="javascript:void(0)" (click)="showmoreorder = showmoreorder + 5 "><i
+                    class="fa fa-angle-double-down fa-lg" aria-hidden="true"></i></a></p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- displayorder -->
+                </div>
+                <!-- /single-card -->
+                <div class="media-footer">
+                    <button type="button" class="btn btn-primary btn-block" (click)="showOrderForm()">Khách đặt chỗ <span
+            class="badge badge-pill badge-danger pull-right" style="font-size:13px;" [hidden]="hidden">2</span>
+          </button>
+                </div>
+            </fieldset>
+        </div>
+        <!--Thẻ ================================================== -->
+
+        <div class="col-xs-3" style="padding:0;">
+            <fieldset class="products">
+                <legend>Sản phẩm
+                    <span class="badge badge-pill badge-warning">{{productsComments?.common?.no_replies_number}}</span>
+                </legend>
+                <div class="single-product">
+                    <div class="single-card" *ngFor="let productComments of productsComments?.products">
+                        <!--<img class="img-responsive" alt=""-->
+                        <carousel class="preview-mobile" [noWrap]="false">
+                            <slide *ngFor="let image of productComments.images" style="margin: 0 auto;">
+                                <img width="224px" height="100px" style="max-height:100px; margin:0 auto;width: auto;" [src]="image">
+                            </slide>
+                        </carousel>
+                        <p style="margin-bottom:0;margin-top:5px;"><strong>{{productComments.title}}</strong></p>
+                        <p style="margin-bottom:0px">{{ productComments.subtitle.data}} VNĐ</p>
+                        <div style="border-bottom: 1px solid #d1d1d1;
+                        margin:5px;"></div>
+                        <div class="display-comment">
+                            <div class="media" style="margin-bottom: 20px;" *ngFor="let comment of productComments.comments| slice:0:productComments.numberCommentShow||2; let i = index;" (click)="showInfoCustomer(comment.owner.type, comment.owner.id)">
+                                <div class="wrap-media" [class.state-show]="comment.status === 2">
+                                    <div class="media-left">
+                                        <img src="{{comment.owner.avatar}}" class="media-object" style="width:50px; height:50px;">
+                                        <span class="media-name">{{comment.owner.name}}</span>
+                                    </div>
+                                    <!--media left avatar-->
+                                    <div class="media-body">
+                                        <!--<p style="word-wrap: break-word; padding-right:20px;text-align: justify;"-->
+                                        <!--[innerHTML]="comment.content"></p>-->
+                                        <p class="content-message">
+                                            {{comment.content}}
+                                        </p>
+                                        <!--quote-->
+                                        <p class="quote-wrap"><textarea [class.state-show]="comment.status === 2" class="quotes-comment form-control" name="textarea-input" rows="3" readonly [hidden]="!comment.quote.content" placeholder="Reply..">{{comment?.quote?.content || ''}}</textarea>
+                                        </p>
+                                        <p>
+                                            <a href="javascript:void(0)" (click)="showReplyForProductComment(comment.id)"><i
+                        class="fa fa-mail-reply-all"></i>
+                        Trả lời
+                      </a>
+                                            <span><i class="fa fa-clock-o"
+                               aria-hidden="true"></i> {{comment.posted_time | date: 'yMdjm'}}</span>
+                                        </p>
+                                        <ul class="action">
+                                            <li>
+                                                <a href="javascript:void(0)"><i class="fa fa-ellipsis-v fa-lg" aria-hidden="true"></i>
+                        </a>
+                                                <ul class="sub-action">
+                                                    <li><a href="javascript:void(0)" (click)="changeStatusComment(comment.status, comment.id,productComments.id, 2)"><i
+                            class="fa fa-minus-circle"></i> {{comment.status === 1?
+                            'Ẩn': 'Hiển Thị'}}</a></li>
+                                                    <li><a href="javascript:void(0)" (click)="removeComment(comment.id, productComments.id , 2)"><i
+                            class="fa fa-trash"></i> Xoá</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!--media body-->
+                                </div>
+                                <!--Wrap media-->
+                                <div class="reply-comment" [hidden]="stateReplyProduct !== comment.id" style="margin-bottom: 10px;">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="reply-content"><textarea name="textarea-input" rows="4" class="form-control" #contentReplyElement placeholder="Reply.."></textarea></div>
+                                            <div class="button-send" (click)="replyComment(comment.id,contentReplyElement.value, productComments.id, 2)"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--repy comment-->
+                            </div>
+                            <!-- /media -->
+                            <div class="show-more" *ngIf="productComments.comments.length>2 && productComments.numberCommentShow < productComments.comments.length">
+                                <p><a href="javascript:void(0);" (click)="loadMoreProductComment(productComments.id)"><i
+                  class="fa fa-angle-double-down fa-lg" aria-hidden="true"></i></a></p>
+                            </div>
+                        </div>
+                        <!-- /display-comment -->
+                    </div>
+                    <!-- /single-card -->
+                </div>
+                <div class="update-order" [hidden]="showUpdate">
+                    <fieldset>
+                        <legend>Nhật Linh
+                            <span class="fa fa-close" (click)="showUpdateOrder()"></span>
+                        </legend>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-xs-4">Thời gian</label>
+                                    <div class="col-xs-8" style="padding:0px;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-xs-4">Địa chỉ</label>
+                                    <input type="text" class="form-control col-xs-8 input-sm" id="adress" placeholder="Địa chỉ" name="address">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-xs-4">Số người</label>
+                                    <input type="number" class="form-control col-xs-8 input-sm" id="person" placeholder="Số người" name="address">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-xs-4">Điện thoại</label>
+                                    <input type="tel" class="form-control col-xs-8 input-sm" id="phone" placeholder="Điện thoại" name="phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media-footer">
+                            <button type="button" class="btn btn-primary btn-block" (click)="showUpdateOrder()">Lưu</button>
+                        </div>
+                    </fieldset>
+                </div>
+                <!-- displayorder -->
+            </fieldset>
+        </div>
+        <!--Sản phẩm ============================================= -->
+
+        <div class="col-xs-3" style="padding:0;">
+            <fieldset class="products">
+                <legend>Ưu đãi/Voucher/Foot-traffic
+                    <span class="badge badge-pill badge-warning">{{itemsComments?.common?.no_replies_number}}</span>
+                </legend>
+                <div class="single-product">
+                    <div class="single-card" *ngFor="let itemComments of itemsComments?.items">
+                        <carousel class="preview-mobile" [noWrap]="false">
+                            <slide *ngFor="let image of itemComments?.images" style="margin: 0 auto;">
+                                <img width="224px" height="100px" style="max-height:100px; margin:0 auto;width: auto;" [src]="image">
+                            </slide>
+                        </carousel>
+                        <p style="margin-bottom:0;margin-top:5px;"><strong>{{itemComments.title}}</strong></p>
+                        <p style="margin-bottom:0;font-size: 12px;">Từ {{itemComments.subtitle.since}} đến {{itemComments.subtitle.until}}
+                        </p>
+                        <div style="border-bottom: 1px solid #d1d1d1;
+                                margin:5px;"></div>
+                        <div class="display-comment">
+                            <div class="media" *ngFor="let comment of itemComments.comments | slice:0:itemComments.numberCommentShow; let i = index;" (click)="showInfoCustomer(comment.owner.type, comment.owner.id)">
+                                <div class="wrap-media" [class.state-show]="comment.status === 2">
+                                    <div class="media-left">
+                                        <img src="{{comment.owner.avatar}}" class="media-object" style="width:50px; height:50px;">
+                                        <span class="media-name">{{comment.owner.name}}</span>
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="content-message">
+                                            {{comment.content}}
+                                        </p>
+                                        <p class="quote-wrap"><textarea [class.state-show]="comment.status === 2" class="quotes-comment form-control" rows="3" readonly [hidden]="!comment.quote.content" placeholder="Reply..">{{comment?.quote?.content || ''}}</textarea>
+                                            <a href="javascript:void(0)" (click)="showReplyForItemComment(comment.id)"><i
+                        class="fa fa-mail-reply-all"></i>
+                        Trả lời
+                      </a>
+                                            <span><i class="fa fa-clock-o"
+                               aria-hidden="true"></i> {{comment.posted_time | date: 'yMdjm'}}</span>
+                                        </p>
+                                        <ul class="action">
+                                            <li>
+                                                <a href="javascript:void(0)"><i class="fa fa-ellipsis-v fa-lg"
+                                                        aria-hidden="true"></i></a>
+                                                <ul class="sub-action">
+                                                    <li><a href="javascript:void(0)" (click)="changeStatusComment(comment.status, comment.id,itemComments.id, 3)"><i
+                            class="fa fa-minus-circle"></i> {{comment.status === 1?
+                            'Ẩn': 'Hiển Thị'}}</a></li>
+                                                    <li><a href="javascript:void(0)" (click)="removeComment(comment.id, itemComments.id , 3)"><i
+                            class="fa fa-trash"></i> Xoá</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!--media body-->
+                                </div>
+                                <!--Wrap media-->
+                                <div class="reply-comment" [hidden]="stateReplyItem !== comment.id" style="margin-bottom: 10px;">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="reply-content"><textarea name="textarea-input" rows="4" class="form-control" #contentReplyElement placeholder="Reply.."></textarea></div>
+                                            <div class="button-send" (click)="replyComment(comment.id,contentReplyElement.value, itemComments.id, 3)"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--repy comment-->
+                            </div>
+                            <!-- /media -->
+                            <div class="show-more" *ngIf="itemComments?.comments.length>2 && itemComments.numberCommentShow < itemComments.comments.length">
+                                <p><a href="javascript:void(0);" (click)="loadMoreItemComment(itemComments.id)"><i
+                  class="fa fa-angle-double-down fa-lg" aria-hidden="true"></i></a></p>
+                            </div>
+                        </div>
+                        <!-- /displaycomment -->
+                    </div>
+                    <!-- /single-card -->
+                </div>
+            </fieldset>
+        </div>
+        <!--Ưu đãi/Voucher/Foot-traffic ========================== -->
+
+        <div class="col-xs-3" style="padding:0;">
+            <fieldset style="background:#fff; height:40vh;">
+                <legend>Thông tin khách hàng
+                </legend>
+                <div class="customer">
+                    <div class="customer-avatar">
+                        <img [src]="customerInfo?.customer?.profile?.avatar" alt="" style="width:60px; height:60px; display:block; margin:auto;" />
+                    </div>
+                    <div class="customer-info">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr style="text-align:center">
+                                    <td>{{customerInfo?.customer?.profile?.membership}}</td>
+                                    <td>M - Ranking <sub>{{customerInfo?.customer?.ranking}}</sub></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><i class="fa fa-envelope"></i> {{customerInfo?.customer?.profile?.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><i class="fa fa-phone"></i> {{customerInfo?.customer?.profile?.phone}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><i class="fa fa-male"></i> {{genderTemp}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><i class="fa fa-calendar"></i> {{customerInfo?.customer?.profile?.birthday}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><i class="fa fa-home"></i> {{customerInfo?.customer?.profile?.address}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset style="background:#fff; height:40vh;  overflow: hidden">
+                <legend>Khách hàng giao dịch
+                </legend>
+                <div class="customer">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Điểm tích luỹ</td>
+                                <td>{{customerInfo?.customer?.profile?.loyalty_point}}</td>
+                            </tr>
+                            <tr>
+                                <td>Thành viên từ</td>
+                                <td>{{customerInfo?.customer?.profile?.member_join | date: 'yMdjm'}}</td>
+                            </tr>
+                            <tr>
+                                <td>Tổng số giao dịch</td>
+                                <td>{{customerInfo?.customer?.summary?.transaction?.total}}</td>
+                            </tr>
+                            <tr>
+                                <td>Giao dịch tại cửa hàng</td>
+                                <td>{{customerInfo?.customer?.summary?.transaction?.offline_number}}</td>
+                            </tr>
+                            <tr>
+                                <td>Giao dịch trên Mobio</td>
+                                <td>{{customerInfo?.customer?.summary?.transaction?.online_number}}</td>
+                            </tr>
+                            <tr>
+                                <td>Giao dịch gần nhất</td>
+                                <td>{{customerInfo?.customer?.summary?.transaction?.last_time | date: 'yMdjm'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
+        <!--Thông tin khách hàng ================================= -->
+
+    </div>
+    <!-- row -->
+</div>
+<!-- animate -->

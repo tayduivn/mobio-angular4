@@ -1,0 +1,319 @@
+<div class="animated fadeIn">
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-3">
+            <div class="input-group search-content">
+                <span class="input-group-btn">
+                    <button type="button" class="btn" (click)="searchCardPattern()"><i
+                      class="fa fa-search"></i></button>
+                  </span>
+                <input type="text" (keyup.enter)="searchCardPattern()" [(ngModel)]="keySearch" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm" />
+            </div>
+        </div>
+        <!--search-->
+        <div class="col-md-4">
+            <button class="btn btn-hide" [disabled]="!allowButton" type="submit" (click)="hideCardSelect()">Ẩn</button>
+            <button class="btn btn-show" [disabled]="!allowButton" type="submit" (click)="showCardSelect()">Hiển thị
+      </button>
+        </div>
+        <div class="col-md-5 btn-execute">
+            <button class="btn btn-created" type="button" data-toggle="modal" (click)="showCreateCardPattern()"><i
+        class="fa fa-plus-circle"></i> Tạo thẻ mẫu
+      </button>
+            <button class="btn btn-import" type="button" data-toggle="modal" (click)="showModalCardConfig()" style="background-color: rgb(224, 110, 110) !important;color: #fff;
+              border-color:rgb(224, 110, 110) !important; margin-right:10px;">
+        <i class="fa fa-cog"></i> Cấu hình hạng thẻ
+      </button>
+        </div>
+    </div>
+    <!--seach and upload file, create product-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="list-card-pattern">
+                            <th style="width: 1%;text-align: left;">
+                                <input type="checkbox" (click)="selectAllCardPattern($event)" #_selectAllCardPattern/>
+                            </th>
+                            <th style="width: 15%;text-align: center;">
+                                Ảnh mặt trước
+                            </th>
+                            <th style="width: 15%;text-align: center;">
+                                Ảnh mặt sau
+                            </th>
+                            <th style="width: 15%">
+                                Loại thẻ
+                            </th>
+                            <th style="width: 20%;">
+                                Kiểu sinh mã thẻ
+                            </th>
+                            <th style="width: 15%;">
+                                Kiểu duyệt thẻ
+                            </th>
+                            <th style="width: 10%;">
+                                Thao tác
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[ngStyle]="{'display': item.select && hide?'none':'table-row'}"-->
+                        <tr *ngFor="let cardPattern of cardPatterns" [class.state-show]="cardPattern.state === 2">
+                            <td><input name="{{cardPattern.idCardPattern}}" value="{{cardPattern.idCardPattern}}" type="checkbox" (change)="selectCardPattern($event,cardPattern.idCardPattern)" [checked]="cardPattern.select">
+                            </td>
+                            <td style="text-align: center;"><img [src]="cardPattern.frontPhoto" width="110" height="62" alt=""></td>
+                            <td style="text-align: center;"><img [src]="cardPattern.backPhoto" width="110" height="62" alt=""></td>
+                            <td>{{cardPattern.cardName}}</td>
+                            <td style="color: #37B7F7;">
+                                <label>{{cardPattern.selfGenerateCode === 1 ? 'Mã cá nhân trên mobio'
+                :'Mã thẻ theo hệ thống nhãn hàng'}}</label>
+                            </td>
+                            <td>{{cardPattern.tabbedBrowsing === 1? 'Tự động': 'Thủ công'}}</td>
+                            <td class="btn-execute">
+                                <i (click)="showEditCardPattern(cardPattern.idCardPattern)" class="fa fa-pencil-square-o fa-3" tooltip="Sửa" aria-hidden="true"></i>
+                                <i (click)="changeStateShow(cardPattern.idCardPattern, cardPattern.state)" class="fa" [tooltip]="cardPattern.state === 1? 'Ẩn':'Hiện'" aria-hidden="true" [ngClass]="{'fa-eye': cardPattern.state === 2,'fa-eye-slash':cardPattern.state===1}">
+              </i>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+                            </td>
+                            <td colspan="1"></td>
+                            <td colspan="1">
+                                <div class="input-group">
+                                    <span class="input-group-addon file-upload-show">Hiển thị </span>
+                                    <select class="select-page" id="select-page" name="select-page" size="1" #_perPage (change)="changePerPage(_perPage.value)">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--Show Table List Product-->
+</div>
+
+<div bsModal #modalCreateEditCardPattern="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" #titleModalCardPattern>TẠO MẪU THẺ</h4>
+                <button type="button" class="close" (click)="modalCreateEditCardPattern.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <div class="row body-create-card">
+                    <div class="col-sm-12 col-sm-offset-4">
+                        <div class="col-sm-12 creat-product">
+                            <div class="form-group row">
+                                <label class="col-sm-10 form-control-label" for="input-name">Thông tin chung </label>
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label" for="input-name">Tên Loại thẻ (*)</label>
+                                    <input name="cardNameVal" #cardNameVal="ngModel" [(ngModel)]="cardPattern.cardName" class="form-control input-sm col-sm-11" id="input-name" [disabled]="isLoadingCardPattern" placeholder="Tên Loại thẻ" type="text" required>
+                                    <div *ngIf="cardNameVal.errors && (cardNameVal.dirty || cardNameVal.touched)" class="validate-error">
+                                        <div [hidden]="!cardNameVal.errors.required">
+                                            * Tên loại thẻ không được phép để trống.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Tên thẻ-->
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label">Kiểu sinh mã thẻ</label>
+                                    <select class="form-control ng-valid ng-dirty ng-touched col-sm-11" #_selfGenerateCode (change)="selectSelfGenerateCode(_selfGenerateCode.value)" id="type-create-key-card" [disabled]="isLoadingCardPattern">
+                    <option value="1" [selected]="cardPattern.selfGenerateCode===1">Mã cá nhân trên mobio</option>
+                    <option value="2" [selected]="cardPattern.selfGenerateCode===2">Mã thẻ theo hệ thống nhãn hàng
+                    </option>
+                  </select>
+                                </div>
+                                <!--Kieu sinh ma the-->
+                            </div>
+                            <!--Ten the + kieu sinh ma the-->
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <div style="width: 100%;" class="tooltip-show">
+                                        <label>Kiểu hiện thị mã thẻ <i class="fa fa-question" aria-hidden="true"></i></label>
+                                        <span class="tooltiptext-show" style="margin-left: -156px;">Thông thường có nhiều loại mã. Bạn cần sắc định <br/> thẻ mẫu được thực hiện dưới loại mã nào</span>
+                                    </div>
+                                    <select class="form-control ng-valid ng-dirty ng-touched col-sm-11" #_typeCardDisplay (change)="selectTypeCardDisplay(_typeCardDisplay.value)" id="type-create-key-qr-code" [disabled]="isLoadingCardPattern">
+                    <option *ngFor="let codeItem of CodeTypes"
+                            [selected]="codeItem.value=== cardPattern.typeCardDisplay"
+                            [value]="codeItem.value">{{codeItem.title.vi}}
+                    </option>
+                  </select>
+                                </div>
+                                <!--Kieu hien thi ma the-->
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label">Kiểu duyệt thẻ</label>
+                                    <select class="form-control ng-valid ng-dirty ng-touched col-sm-11" #_tabbedBrowsing (change)="selectTabbedBrowsing(_tabbedBrowsing.value)" id="active-card" [disabled]="isLoadingCardPattern">
+                    <option value="1" [selected]="cardPattern.tabbedBrowsing === 1">Tự động</option>
+                    <option value="2" [selected]="cardPattern.tabbedBrowsing === 2">Thủ công</option>
+                  </select>
+                                </div>
+                                <!--Kieu duyet the-->
+                            </div>
+                            <!--Kieu hien thi + kieu duyet the-->
+                        </div>
+                        <!-- Create card-pattern section 1 Thong tin chung -->
+                        <div class="col-sm-12 creat-product" style="padding: 20px 40px 0;">
+                            <div class="col-sm-12 creat-product" style="min-height: 330px;">
+                                <div class="form-group row">
+                                    <label class="col-sm-10 form-control-label">Ảnh mặt trước (*)</label>
+                                    <span class="titleinfo">Khích thước ảnh 480x300 pixels. Dung lượng =< 100kb. Ảnh jpg, jpeg, png</span>
+                                    <div class="col-sm-6" style="padding-left: 0px;">
+                                        <input class="form-control input-sm" id="input-url-avatar" name="input-url" placeholder="" #fileElementUploadFront type="file" accept="image/jpg, image/jpeg, image/png" (change)="changeFileFrontPhoto()" [disabled]="isLoadingCardPattern">
+                                    </div>
+                                    <div id="outImg">
+                                        <div class="fileImgUpload">
+                                            <img style="width: 300px;height: 188px;" class="image-card" *ngIf="frontPhotoImage!==''" [src]="frontPhotoImage" width="300px" height="188px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Ảnh mặt trước -->
+                            <div class="col-sm-12 creat-product" style="min-height: 330px;">
+                                <div class="form-group row">
+                                    <label class="col-sm-10 form-control-label">Ảnh mặt sau (*)</label>
+                                    <span class="titleinfo">Khích thước ảnh 480x300 pixels. Dung lượng =< 100kb. Ảnh jpg, jpeg, png</span>
+                                    <div class="col-sm-6" style="padding-left: 0px;">
+                                        <input class="form-control input-sm" id="input-url-description" name="input-url" placeholder="" #fileElementUploadBack type="file" accept="image/jpg, image/jpeg, image/png" (change)="changeFileBackPhoto()" [disabled]="isLoadingCardPattern">
+                                    </div>
+                                    <div id="outImg">
+                                        <div class="fileImgUpload">
+                                            <img style="width: 300px;height: 188px;" class="image-card" *ngIf="backPhotoImage!==''" [src]="backPhotoImage" width="300px" height="188px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ảnh mặt sau -->
+
+                        </div>
+                        <!--Create product section 2 anh the-->
+                        <div class="col-sm-12 creat-product" style="padding: 20px 40px 0;">
+                            <div class="form-group row">
+                                <label class="col-sm-2 form-control-label">Trạng thái hiển thị</label>
+                                <label class="switch switch-3d switch-mobio" style="margin-top:5px">
+                  <input checked="" class="switch-input" type="checkbox"
+                         (change)="switchState($event)"
+                         [checked]="cardPattern.state===1" [disabled]="isLoadingCardPattern">
+                  <span class="switch-label"></span>
+                  <span class="switch-handle"></span>
+                </label>
+                            </div>
+                        </div>
+                        <!--Create product section 3 Trạng Thái-->
+                        <div class="col-sm-12">
+                            <button class="btn btn-cancle" type="button" [ladda]="isLoadingCardPattern" [disabled]="cardNameVal.errors" (click)="saveCardPattern()">Lưu
+              </button>
+                            <button class="btn btn-cancle" type="button" (click)="modalCreateEditCardPattern.hide()">Bỏ qua
+              </button>
+                        </div>
+                        <!--Create product section 3 Trạng Thái-->
+                    </div>
+                    <!--body content-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-12">
+                    <button class="btn btn-created" type="button" [ladda]="isLoadingCardPattern" (click)="saveCardPattern()">Lưu
+</button>
+                    <button class="btn btn-cancle" type="button" (click)="modalCreateEditCardPattern.hide()">Bỏ qua
+</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Modal Create Card Pattern -->
+
+<div bsModal #modalCardConfig="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="width: 800px;margin: auto;">
+            <div class="modal-header">
+                <h4 class="modal-title">CẤU HÌNH HẠNG THẺ</h4>
+                <button type="button" class="close" (click)="modalCardConfig.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+            </div>
+            <div class="row body-create-card">
+                <div class="col-sm-12 creat-product" style="padding: 20px 25px 0; max-width: 92%; margin: auto;margin-bottom: 10px;margin-top: 10px;">
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <h6 class="col-sm-10 form-control-label">Điều kiện thẻ</h6>
+                        </div>
+                        <!--Vĩ độ-->
+                        <div class="col-sm-8">
+                            <select #setViewCodition class="form-control ng-valid ng-dirty ng-touched col-sm-11" (change)='changeConditionCard(setViewCodition.value)'>
+                <option value="1" [selected]="cardPatternConfig.setting.card_condition === 1">Không có điều kiện
+                </option>
+                <option value="2" [selected]="cardPatternConfig.setting.card_condition === 2">Điểm tích lũy</option>
+                <option value="3" [selected]="cardPatternConfig.setting.card_condition === 3">Tổng giá trị hóa đơn
+                </option>
+              </select><br/>
+                        </div>
+                        <!--Điều kiện thẻ-->
+                        <div class="col-sm-4">
+                            <h6 class="col-sm-10 form-control-label">Tự động nâng hạng thẻ</h6>
+                        </div>
+                        <label class="switch switch-3d switch-mobio" style=" margin-left: 15px; margin-top:5px;">
+              <input
+                [checked]="cardPatternConfig.setting.change_card_level === 1 && cardPatternConfig.setting.card_condition !== 1"
+                [disabled]="cardPatternConfig.setting.card_condition === 1" (change)="changeCardLevel($event)"
+                class="switch-input" type="checkbox">
+              <span class="switch-label"></span>
+              <span class="switch-handle"></span>
+            </label>
+                    </div>
+                </div>
+                <!--Dieu kien-->
+
+                <div class="col-sm-12 creat-product config-sort-card">
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <h6>Phân hạng thẻ</h6>
+                            <i style="display: block;width: 82%;">Sắp xếp thứ tự hạng thẻ từ thấp đến cao</i>
+                        </div>
+                    </div>
+                    <div class="form-group row setupCart" [ngStyle]="{'pointer-events': setHidePoint? 'none':'auto', 'color': setHidePoint?'#ccc': 'black'}">
+                        <div class="col-sm-12" style="padding-right: 40px">
+                            <ul [dragula]='"bag-items"' [dragulaModel]="cardPatternConfig.cards">
+                                <li *ngFor="let cardItemConfig of cardPatternConfig.cards"><label class="label-card">{{cardItemConfig.cardName}}</label>
+                                    <input [disabled]="setHidePoint" [ngStyle]="{'cursor': setHidePoint?'move':''}" class="condition-cart" placeholder="Nhập điều kiện để đạt được thẻ" type="number" min="1" pattern="[0-9]" [(ngModel)]="cardItemConfig.value" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--setupCart-->
+                </div>
+                <!--Create product section 5 Trạng Thái-->
+
+                <!--Create product section 3 Trạng Thái-->
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-12">
+                    <span class="error-message" [ngStyle]="{'display': 'none'}">Bạn đã bỏ trông hoặc nhập các giá trị trùng nhau</span>
+                    <button class="btn btn-created" type="button" (click)="saveConfigCard()" [ladda]="isLoadingConfig">Lưu
+      </button>
+                    <button class="btn btn-cancle" type="button" (click)="modalCardConfig.hide()">Bỏ qua</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Modal Config CardPattern -->

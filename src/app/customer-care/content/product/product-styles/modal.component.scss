@@ -1,0 +1,288 @@
+h1 {
+    color: red;
+}
+
+.btn-execute>button {
+    float: right;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:active {
+    cursor: pointer;
+}
+
+.btn-crud>button {
+    background-color: white !important;
+}
+
+:host /deep/ .my-drop-zone {
+    height: 200px;
+    border: 1px solid #ededed;
+}
+
+.title-filter {
+    text-transform: uppercase;
+}
+
+label>input[type='checkbox'] {
+    margin-left: 5px;
+}
+
+.card-header {
+    text-transform: uppercase;
+}
+
+.card-filter>.card-block {
+    padding-bottom: 5px !important;
+    padding-top: 10px !important;
+}
+
+.btn-execute>i:hover {
+    cursor: pointer;
+}
+
+#outImg {
+    clear: both;
+    width: 100%;
+    padding: 0px 15px;
+}
+
+#outImg img {
+    float: left;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    margin-right: 5px;
+    background-size: cover;
+}
+
+#outImg .fileImgUpload {
+    position: relative;
+    width: 100px;
+    float: left;
+    height: 100px;
+    margin-right: 7px;
+}
+
+#outImg .fileImgUpload span {
+    display: none;
+    text-align: center;
+    line-height: 88px;
+    color: #f00;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(132, 127, 127, 0.62);
+}
+
+#outImg .fileImgUpload span i {}
+
+#outImg .fileImgUpload:hover span {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 11;
+    left: 0;
+    display: block;
+    border-radius: 50%;
+}
+
+#input-url[_ngcontent-c2] {
+    background: url(../../../../../assets/img/upload-icon-31.png) no-repeat;
+    background-size: 47px;
+    text-indent: 9999px;
+    width: 53px;
+    height: 61px;
+    cursor: pointer;
+    border-style: none;
+}
+
+#content {
+    text-align: left;
+    width: 90%;
+    height: 300px;
+    border-radius: 3px;
+    border: 1px solid #ededed;
+}
+
+#content-product {
+    width: 96%;
+    height: 300px;
+    border: 1px solid #ededed;
+    border-radius: 3px;
+    padding: 5px;
+    margin: auto;
+}
+
+#ng2-tag-input__text-input {
+    border: 1px solid #ededed;
+}
+
+.ng-pristine {
+    /*border-bottom: none;*/
+}
+
+.ng2-tag-input[_ngcontent-c3],
+.ng2-tag-input.ng2-tag-input--focused[_ngcontent-c3] {
+    border-bottom: none;
+}
+
+.ng2-tag-input.ng2-tag-input--focused[_ngcontent-c3] {
+    border-bottom: none;
+}
+
+.ng2-tag-input__text-input[_ngcontent-c5] {
+    border: 1px solid #ededed;
+}
+
+.creat-product {
+    border: 1px solid #ededed;
+    padding: 10px 0 0 40px;
+    margin-bottom: 15px;
+}
+
+.body-create-product {
+    padding-left: 10px;
+    border: 0 solid;
+}
+
+#viewmobile {}
+
+.sidebar-outer {
+    position: relative;
+    border: 1px solid #ededed;
+}
+
+.fixed {
+    position: fixed;
+    margin-right: 30px;
+    background: url('../../../../../assets/img/icon/iPhone.png') no-repeat;
+    width: 320px;
+    height: 518px;
+    background-size: 279px 518px;
+    margin-top: 0px;
+    background-position: center 0px;
+}
+
+#contentIphoneOut {
+    width: 224px;
+    margin-left: 45px;
+    margin-top: 60px;
+    overflow: hidden;
+}
+
+#contentIphoneIn {
+    width: 108%;
+    height: 100%;
+    overflow: auto;
+}
+
+.infomation-chose-list-product {
+    float: left;
+    position: fixed;
+    cursor: context-menu;
+    background: #fff;
+    border: 1px groove navy;
+    text-align: left !important;
+    z-index: 999999999;
+    padding: 10px;
+    margin-left: 14px;
+    display: block;
+    color: black;
+    margin-top: -20px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 19px;
+    border-radius: 10px;
+}
+
+.un-list li::before {
+    content: "-";
+    padding-left: 10px;
+    padding-right: 2px;
+}
+
+.badge-default {
+    background-color: #212837;
+}
+
+.badge {
+    cursor: pointer;
+}
+
+.chondanhsachsanpham {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.filter-span:hover {
+    cursor: pointer !important;
+}
+
+.cke_bottom {
+    padding: 0px;
+    display: none;
+}
+
+.file-example {
+    margin-top: 10px;
+    color: #58AFE5
+}
+
+.drop-file {
+    position: absolute;
+    bottom: 10px;
+    display: block;
+}
+
+.input-radius-right {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    webkit-border-top-right-radius: 5px;
+    webkit-border-bottom-right-radius: 5px;
+}
+
+.input-radius-left {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    webkit-border-top-left-radius: 5px;
+    webkit-border-bottom-left-radius: 5px
+}
+
+.input-radius {
+    // border-radius: 5px;
+    // webkit-border-radius:5px
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px !important;
+}
+
+.input-search {
+    background-color: #DEDEDE;
+}
+
+.drop-file {
+    position: absolute;
+    bottom: 10px;
+    display: block;
+}
+
+.img-responsive {
+    width: 80%;
+}
+
+.file-note {
+    color: #BFBFBF;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.upload-product-box {
+    box-shadow: 10px 10px 77px -12px black;
+}
+
+.form-control-label {
+    font-size: 16px;
+}

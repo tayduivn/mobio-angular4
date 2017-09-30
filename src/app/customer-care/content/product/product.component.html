@@ -1,0 +1,482 @@
+<div class="animated fadeIn">
+    <!--search and upload file, create product-->
+    <div class="row" style="margin-bottom: 10px;">
+        <!--search-->
+        <div class="col-md-3">
+            <div class="input-group search-content">
+                <span class="input-group-btn">
+                    <button type="button" (click)="searchProduct()" class="btn btn-default"><i
+                      class="fa fa-search"></i></button>
+                  </span>
+                <input type="text" [(ngModel)]="keySearch" (keyup.enter)="searchProduct()" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm" />
+            </div>
+        </div>
+        <!--/search-->
+
+        <div class="col-md-5" *ngIf="allowButton">
+            <button class="btn btn-delete col-sm-2" [disabled]="!allowButton" type="button" (click)="removeProductSelect()">
+        Xóa
+      </button>
+            <button class="btn btn-hide col-sm-2" [disabled]="!allowButton" type="button" (click)="hideProductSelect()">Ẩn
+      </button>
+            <button class="btn btn-show col-sm-2" [disabled]="!allowButton" type="button" (click)="showProductSelect()">
+        Hiển thị
+      </button>
+        </div>
+        <div class="col-md-5" *ngIf="!allowButton"></div>
+        <div class="col-md-4 btn-execute">
+            <button class="btn btn-created" type="button" data-toggle="modal" (click)="showCreateProduct($event)"><i
+        class="fa fa-plus-circle"></i> Tạo sản phẩm
+      </button>
+            <button class="btn btn-created" style="margin-right: 10px;" type="button" (click)="showModalUploadProduct()"><i
+        class="fa fa-plus-circle"></i>
+        Nhập file
+      </button>
+        </div>
+    </div>
+    <!--/seach and upload file, create product-->
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="card card-filter">
+                <div class="card-header">Trạng thái hiển thị</div>
+                <div class="card-block">
+                    <div class="checkbox">
+                        <label for="chkShow">
+              <input id="chkShow" name="chkShow" type="checkbox" value="show" #showStateItem
+                     (change)="filterStateShow($event)"> Hiển
+              Thị
+            </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="chkHide">
+              <input id="chkHide" name="chkHide" type="checkbox" value="hide" #hideStateItem
+                     (change)="filterStateHide($event)"> Ẩn
+            </label>
+                    </div>
+                </div>
+                <div class="card-header">Trạng thái đổi điểm</div>
+                <div class="card-block">
+                    <div class="checkbox">
+                        <label for="chkAllow">
+              <input id="chkAllow" name="chkAllow" type="checkbox" value="allow" #allowChangeItem
+                     (change)="filterAllowChange($event)"> Cho
+              phép đổi
+            </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="chkReject">
+              <input id="chkReject" name="chkReject" type="checkbox" value="reject" #dontAllowChangeItem
+                     (change)="filterDontAllowChange($event)"> Không cho phép đổi</label>
+                    </div>
+                </div>
+                <div class="card-header">Danh Mục</div>
+                <div class="card-block list-category">
+                    <div class="checkbox" *ngFor="let category of categories">
+                        <label>
+              <input name="{{category.idCategory}}" type="checkbox" value="{{category.idCategory}}"
+                     (change)="filterCate($event, category.idCategory)"> {{category.name}}
+            </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--menu left- product-->
+        <div class="col-sm-10">
+            <div class="card">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%">
+                                <input class="select-cursor" type="checkbox" (click)="selectAllProduct($event)" #_selectAllProduct/>
+                            </th>
+                            <th style="width: 20%">
+                                Ảnh đại diện
+                            </th>
+                            <th style="width: 35%">
+                                <span class="filter-span" (click)="sortNameProduct()">
+               Tên sản phẩm
+              <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconViewName===0,
+                'fa-sort-asc':setIconViewName===1,'fa-sort-desc':setIconViewName===2}"
+                 style="float:none;" aria-hidden="true"></i></span>
+                            </th>
+                            <th style="width: 20%;text-align: center;">
+                                <span class="filter-span" (click)="sortPriceProduct()">Giá
+                  <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconViewPrice===0,
+                    'fa-sort-asc':setIconViewPrice===1,'fa-sort-desc':setIconViewPrice===2}" aria-hidden="true"
+                     style="float:none;"></i> </span>
+                            </th>
+                            <th style="width: 0%;text-align: center;display: none">
+                                Danh Mục
+                            </th>
+                            <th style="width: 15%;text-align: center;">
+                                Thao tác
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[ngStyle]="{'display': item.select && hide?'none':'table-row'}"-->
+                        <tr *ngFor="let product of products" [class.deactive]="product.state===2" class="animated fadeIn">
+                            <td><input class="select-cursor" name="{{product.idProduct}}" value="{{product.idProduct}}" type="checkbox" (change)="selectProduct($event,product.idProduct)" [checked]="product['select']">
+                            </td>
+                            <td><img [src]="!product.avatar?'http://icons.iconarchive.com/icons/custom-icon-design/flatastic-5/128/Product-sale-report-icon.png':product.avatar" width="72" height="72" alt=""></td>
+                            <td style="color: #37B7F7;">
+                                <button class="btn btn-sm" [ngClass]="{'allow':product.statusChangePoint ===1,
+                                                                  'block':product.statusChangePoint ===2}">
+                {{product.statusChangePoint ===1? 'Cho phép đổi': 'Không cho phép đổi'}}
+              </button>
+                                <br/>
+                                <label>{{product.name}}</label>
+                            </td>
+                            <td style="text-align: center;">{{product.price | number:0}}</td>
+                            <td style="display: none;">{{product.idCategory}}</td>
+                            <td style="text-align: center;" class="btn-execute">
+                                <i (click)="showEditProduct(product.idProduct)" tooltip="Sửa" class="fa fa-pencil-square-o fa-3" aria-hidden="true"></i>
+                                <i (click)="switchSingleState(product.idProduct, product.state)" class="fa" [tooltip]="product.state === 1? 'Ẩn':'Hiện'" [ngClass]="{'fa-eye': product.state===2,'fa-eye-slash':product.state===1}" aria-hidden="true"></i>
+                                <i (click)="deleteProduct(product.name,product.idProduct)" class="glyphicon glyphicon-trash" tooltip="Xóa" aria-hidden="true"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+                            </td>
+                            <td colspan="1"></td>
+                            <td colspan="1" style="text-align:right">
+                                <div class="input-group">
+                                    <span class="input-group-addon file-upload-show">Hiển thị </span>
+                                    <select class="select-page input-radius" id="select-page" name="select-page" size="1" #_selectCurrentPage (change)="changePerPage(_selectCurrentPage.value)">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="50">100</option>
+                </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--Show Table List Product-->
+
+</div>
+<div bsModal #modalCreateEditProduct="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" #titleModalProduct>TẠO SẢN PHẨM</h4>
+                <button type="button" class="close" (click)="modalCreateEditProduct.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body" #elModalBody (scroll)="onScroll($event)">
+                <div class="row body-create-product">
+                    <div class="col-sm-8 col-sm-offset-4">
+                        <div class="col-sm-12 creat-product">
+                            <div class="form-group row" #elProductName>
+                                <label class="col-sm-10 form-control-label">Tên sản phẩm (*)</label>
+                                <div class="col-sm-11">
+                                    <input class="form-control input-lg input-radius" name="nameProduct" #nameProduct="ngModel" [(ngModel)]="product.name" placeholder="Tên sản phẩm" [disabled]="isLoadingCreateProduct" type="text" required>
+                                    <div *ngIf="nameProduct.errors && (nameProduct.dirty || nameProduct.touched)" class="validate-error">
+                                        <div [hidden]="!nameProduct.errors.required">
+                                            * Tên sản phẩm không được phép để trống
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Tên sản phẩm-->
+                            <div class="form-group row">
+                                <label class="col-sm-10 form-control-label">Mã sản phẩm</label>
+                                <div class="col-sm-11">
+                                    <input class="form-control input-sm input-radius" name="codeProduct" #codeProduct="ngModel" [(ngModel)]="product.codeProduct" id="input-key" [disabled]="isLoadingCreateProduct" name="input-key" required placeholder="Mã sản phâm" type="text">
+                                    <div *ngIf="codeProduct.errors && (codeProduct.dirty || codeProduct.touched)" class="validate-error">
+                                        <div [hidden]="!codeProduct.errors.required">
+                                            * Mã sản phẩm không được phép để trống
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Mã Sản phẩm-->
+                            <div class="form-group row">
+                                <label class="col-sm-10 form-control-label">Danh mục (*)</label>
+                                <div class="col-md-4" *ngFor="let category of categoriesByModal">
+                                    <div class="checkbox">
+                                        <label>
+                      <input (change)="selectProductCateByModal($event,category.idCategory)"
+                             [checked]="category['select']" [disabled]="isLoadingCreateProduct"
+                             name="{{category.idCategory}}" type="checkbox" value="{{category.name}}">
+                      {{category.name}}
+                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Danh Mục-->
+                        </div>
+                        <!-- Create product section 1-->
+
+                        <div class="col-sm-12 creat-product">
+                            <div class="form-group row">
+                                <label class="col-sm-12 form-control-label">Trạng thái đổi điểm (*)</label>
+                                <div class="col-md-11">
+                                    <select class="form-control input-radius" id="select" name="select" size="1" #_statusChangePointModal (change)="statusChangePointModal(_statusChangePointModal.value)" [disabled]="isLoadingCreateProduct">
+                    <option value="1">Có</option>
+                    <option value="2">Không</option>
+                  </select>
+                                </div>
+                            </div>
+                            <!--Trạng thái đổi điểm-->
+
+                            <div class="form-group row">
+                                <label class="col-sm-12 form-control-label">Giá sản phẩm (*)</label>
+                                <div class="col-md-11">
+                                    <input class="form-control input-sm input-radius" [disabled]="isLoadingCreateProduct" [(ngModel)]="product.price" type="number" required min="1">
+                                </div>
+                            </div>
+                            <!--Trạng thái đổi điểm-->
+                            <!--Giá sản phẩm-->
+                        </div>
+                        <!-- Create product section 2 -->
+
+                        <div class="col-sm-12 creat-product" #elModalDescription style="padding: 0 40px;">
+                            <label style="margin-left: -13px;margin-top: 10px;" class="col-sm-10 form-control-label">Mô tả
+                (*)</label>
+                            <div class="form-group row">
+                                <ckeditor [(ngModel)]="product.description" [config]="config" [disabled]="isLoadingCreateProduct"></ckeditor>
+                            </div>
+                            <!--Mô tả-->
+                            <div class="form-group row">
+                            </div>
+                            <div class="form-group row">
+                                <div style="width: 100%;" class="tooltip-show">
+                                    <label>Tags</label>
+                                    <span class="tooltiptext-show">Bạn nên chọn các từ khóa có liên quan đến sản phẩm để tối ưu hóa tìm kiếm trên Google Search và các công cụ tìm kiếm khác</span>
+                                </div>
+                                <div>
+                                    <tag-input style="border-radius:0px;" [(ngModel)]='tags' [disabled]="isLoadingCreateProduct" theme='minimal'></tag-input>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Create product section 3 = tag input -->
+
+                        <div class="col-sm-12 creat-product" #elProductAvatar style="padding: 20px 40px 0;">
+                            <div class="col-sm-12 header-upload">
+                                <label class="col-sm-10 form-control-label title-upload">Ảnh đại diện (*)</label><br/>
+                                <i class="file-note">Kích thước 320x320 pixels Dung lượng =< 100kB Ảnh jpg, jpeg, png</i>
+                            </div>
+                            <div class="col-sm-12" style="min-height: 150px;">
+                                <div class="form-group row">
+                                    <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOverAvatar}" (onFileDrop)="changeUrlFileUploadAvatar($event)" (fileOver)="fileOverBaseUploadAvatar($event)" [uploader]="uploaderAvatar" class="well my-drop-zone">
+                                        <!--<div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và thả ảnh</div>-->
+                                        <div class="row">
+                                            <!--<div class="col-sm-4 text-right text-hoac">-->
+                                            <!--Hoặc :-->
+                                            <!--</div>-->
+                                            <div class="col-sm-3"></div>
+                                            <div class="col-sm-6" style="height:160px;">
+                                                <!--<button class="btn btn-s" type="button" (click)="chooseFileUpdateAvatar($event)">-->
+                                                <!--<span class="glyphicon glyphicon-upload"></span> Chọn file-->
+                                                <img (click)="chooseFileUpdateAvatar($event)" style="margin:auto;" class="img-responsive drop-file center-block" src="../../../../assets/img/upload-icon.PNG" alt="">
+                                                <!--</button>-->
+                                                <div class="hidden-md-down hidden-md-up">
+                                                    <input type="file" #elInputFileAvatar ng2FileSelect (change)="changeUrlFileUploadAvatar($event)" [(uploader)]="uploaderAvatar" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3"></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div *ngFor="let imgAvatar of uploaderAvatar.queue,let iImgAvatar = index" class="fileImgUpload">
+                                            <img [src]="imgAvatar.url" [alt]="'Ảnh '+iImgAvatar">
+                                            <span (click)="imgAvatar.remove()"> <i class="fa fa-close"></i></span>
+                                        </div>
+                                        <div *ngIf="product.avatar && product.avatar!=='' && uploaderAvatar.queue.length===0" class="fileImgUpload">
+                                            <img [src]="product.avatar">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Ảnh đại diện -->
+                            <div class="col-sm-12 header-upload">
+                                <label class="col-sm-10 form-control-label title-upload">Ảnh mô tả (*)</label><br/>
+                                <i class="file-note">Kích thước 720x450 pixels Dung lượng =< 100kB Ảnh jpg, jpeg, png</i>
+                            </div>
+                            <div class="col-sm-12" style="min-height: 150px;">
+                                <div class="form-group row">
+                                    <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOverImageDescriptions}" (onFileDrop)="changeUrlFileUploadImageDescriptions()" (fileOver)="fileOverBaseUploadImageDescriptions($event)" [uploader]="uploaderImageDescriptions" class="well my-drop-zone">
+                                        <!--<div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và thả ảnh</div>-->
+                                        <div class="row">
+                                            <!--<div class="col-sm-4 text-right text-hoac">
+  Hoặc :
+</div>-->
+                                            <div class="col-sm-3"></div>
+                                            <div class="col-sm-6" style="height:160px;">
+                                                <!--<button class="btn btn-l" type="button" (click)="chooseFileUpdateImageDescriptions($event)">-->
+                                                <!--<span class="glyphicon glyphicon-upload"></span> Chọn file-->
+                                                <img (click)="chooseFileUpdateImageDescriptions($event)" style="margin:auto;" class="img-responsive center-block drop-file" src="../../../../assets/img/upload-icon.PNG" alt="">
+                                                <!--</button>-->
+
+                                                <div class="hidden-md-down hidden-md-up">
+                                                    <input type="file" accept="image/x-png,image/jpg,image/jpeg" #elInputFileImageDescriptions ng2FileSelect (change)="changeUrlFileUploadImageDescriptions()" [(uploader)]="uploaderImageDescriptions" multiple/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div *ngFor="let imgDescription of uploaderImageDescriptions.queue,let iImgDescription = index" class="fileImgUpload">
+                                            <img [src]="imgDescription.url" [alt]="'Ảnh '+iImgDescription">
+                                            <span (click)="imgDescription.remove()"> <i class="fa fa-close"></i></span>
+                                        </div>
+                                        <div *ngFor="let imgEdit of product.imageDescriptions;let iImgDescription = index" class="fileImgUpload">
+                                            <img [src]="imgEdit.linkImage">
+                                            <span (click)="removeImgDescription(iImgDescription)"> <i class="fa fa-close"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ảnh mô tả -->
+                        </div>
+                        <!-- Create Fproduct section 4 -->
+
+                        <div class="col-sm-12 creat-product" style="padding: 20px 40px 0;">
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Trạng Thái</label>
+                                <label class="switch switch-3d switch-mobio" style="margin-top:5px;">
+                  <input checked="" class="switch-input" type="checkbox" (change)="switchState($event)"
+                         [checked]="product.state===1" [disabled]="isLoadingCreateProduct">
+                  <span class="switch-label"></span>
+                  <span class="switch-handle"></span>
+                </label>
+                            </div>
+                        </div>
+                        <!--Create product section 5 Trạng Thái-->
+
+                    </div>
+                    <!--Left body content-->
+                    <div class="col-sm-4" id="viewmobile" style="position: relative;">
+                        <div id="scroolMobie" class="fixed sidebar-outer">
+                            <div id="contentIphoneOut">
+                                <div id="contentIphoneIn">
+                                    <mobileKaraoke-component #elMobileKaraoke [product]="product" [uploaderImageDescriptions]="uploaderImageDescriptions.queue" [uploaderAvatar]="(!!uploaderAvatar && uploaderAvatar.queue.length > 0)?uploaderAvatar.queue[0].url:''" [setTop]="setTop" *ngIf="_isProductKaraoke"></mobileKaraoke-component>
+                                    <mobileProduct-component #elMobileDetail [product]="product" [uploaderImageDescriptions]="uploaderImageDescriptions.queue" [uploaderAvatar]="(!!uploaderAvatar && uploaderAvatar.queue.length > 0)?uploaderAvatar.queue[0].url:''" [setTop]="setTop" *ngIf="!_isProductKaraoke"></mobileProduct-component>
+                                </div>
+                            </div>
+                            <!--<mobileKaraoke-component></mobileKaraoke-component>-->
+                        </div>
+                    </div>
+                    <!-- Mobile view product-->
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-cancle btn-create-product text-uppercase" (click)="modalCreateEditProduct.hide()">
+    Bỏ qua
+  </button>
+                    <button type="button" [ladda]='isLoadingCreateProduct' class="btn btn-created btn-create-product text-uppercase" (click)="saveProduct()">Lưu
+  </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- Modal Create Product -->
+<div bsModal #uploadProductModal="bs-modal" class="modal fade modal-upload-product " tabindex="-1" role="dialog" aria-labelledby="uploadProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-sm upload-product-box" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">TẠO SẢN PHẨM TỪ FILE</h4>
+                <button type="button" class="close" (click)="uploadProductModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body modal-body-upload-product">
+                <div class="row">
+                    <div class="col-sm-12 chondanhsachsanpham">
+                        Chọn danh sách sản phẩm
+                        <span class="" id="infomation_span" (mouseover)="changeStateInfoMationUploadProduct($event)">
+              <i class="glyphicon glyphicon-info-sign" id="infomation_icon"></i>
+              <div class="infomation-chose-list-product" *ngIf="_stateShowInfoMationUploadProduct">
+                <div class="col-sm-12">
+                  Chú ý:
+                </div>
+                <div class="col-sm-12">
+                  <ul class="un-list list-unstyled">
+                    <li>Chỉ nhập file text (.xsl) để thêm mới cửa hàng của nhãn hàng.</li>
+                    <li>Tất cả các cột ngăn cách bởi dấu (Tab), và nội dung không được chứa dấu (Tab).</li>
+                    <li>Nội dung không được chứa dấu xuống dòng nội dung thay thế bằng thẻ &lt;br&gt;.</li>
+                  </ul>
+                </div>
+                <div class="col-sm-12">
+                  File text chỉ chứa gồm các cột:
+                </div>
+                <div class="col-sm-12">
+                  <ol>
+                    <li>Số thứ tự</li>
+                    <li>Tên sản phẩm.</li>
+                    <li>Nội dung không được chứa dấu xuống dòng nội dung thay thế bằng thẻ &lt;br&gt;</li>
+                    <li>Tên sản phẩm.</li>
+                    <li>Giá sản phẩm.</li>
+                    <li>Mô tả chi tiết (Định dạng html).</li>
+                    <li>Trạng thái đổi điểm (1:Được đổi bằng điểm, 0: Không được đổi bằng điểm).</li>
+                  </ol>
+                </div>
+              </div>
+            </span>
+                    </div>
+                    <div class="col-sm-12">
+                        <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (onFileDrop)="onFileDropUploadProduct($event)" (fileOver)="fileOverBaseUploadProduct($event)" [uploader]="uploaderProduct" class="well my-drop-zone">
+                            <!--<div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và thả file</div>-->
+                            <div class="row">
+                                <!--<div class="col-sm-4 text-right text-hoac">-->
+                                <!--Hoặc :-->
+                                <!--</div>-->
+                                <!--<div class="col-sm-3"></div>-->
+                                <div class="col-sm-6" style="height:160px; margin:auto;">
+                                    <!--<button class="btn btn-s" type="button" (click)="chooseFileUpdateProduct($event)">-->
+                                    <!--<span class="glyphicon glyphicon-upload"></span> Chọn file-->
+                                    <img (click)="chooseFileUpdateProduct($event)" class="img-responsive drop-file center-block" src="../../../../assets/img/upload-icon.PNG" alt="">
+                                    <!--</button>-->
+                                    <span *ngFor="let item of uploaderProduct.queue">
+                    {{ item?.file?.name }}
+                  </span>
+                                    <div class="hidden-md-down hidden-md-up">
+                                        <input type="file" #elInputFileProduct ng2FileSelect (change)="onFileDropUploadProduct($event)" [(uploader)]="uploaderProduct" />
+                                    </div>
+                                </div>
+                                <!--<div class="col-sm-3"></div>-->
+                            </div>
+                        </div>
+                        <p class="file-example">
+                            <a style="cursor: pointer;" (click)="getFileExample()"> <i class="fa fa-paperclip" aria-hidden="true"></i> Mẫu file tạo sản phẩm</a>
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-12">
+                    <button type="button" (click)="uploadProduct()" [ladda]='isLoadingUploadProduct' class="btn btn-created text-uppercase">
+          Đồng ý
+        </button>
+                    <button type="button" class="btn btn-cancle text-uppercase" (click)="uploadProductModal.hide()">Bỏ qua
+        </button>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

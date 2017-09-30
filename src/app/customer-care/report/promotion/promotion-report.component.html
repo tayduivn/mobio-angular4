@@ -1,0 +1,465 @@
+<div class="animated fadeIn" *ngIf="showhide">
+    <!--<div class="row" style="margin-bottom:10px;">-->
+    <!--<div class="col-xs-7">-->
+    <!--<div class="card">-->
+    <!--<div class="card-header">-->
+    <!--<strong>Lượt tương tác</strong>-->
+    <!--<div class="card-actions">-->
+    <!--<div class="input-group date filter-date">-->
+    <!--<span class="input-group-addon" (click)="showDaterangeFitter($event)">-->
+    <!--<span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>-->
+    <!--</span>-->
+    <!--<input type="text" class="form-control" #elmDaterangeFitter daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /card header &ndash;&gt;-->
+    <!--<div class="card-block">-->
+    <!--<mo-line-chart [data]="PointPromotionData"></mo-line-chart>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; card-block &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /card &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /col &ndash;&gt;-->
+    <!--<div class="col-xs-5">-->
+    <!--<div class="card">-->
+    <!--<div class="card-header">-->
+    <!--<strong>Điểm đổi quà tặng theo danh mục</strong>-->
+    <!--<div class="card-actions">-->
+    <!--<div class="input-group date filter-date">-->
+    <!--<span class="input-group-addon" (click)="showDaterangeFitter($event)">-->
+    <!--<span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>-->
+    <!--</span>-->
+    <!--<input type="text" class="form-control" id="filterDate" daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /card header &ndash;&gt;-->
+    <!--<div class="card-block">-->
+    <!--<mo-progress [data]="PointPromotionOfCategoryData"></mo-progress>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; card block &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /card &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /col &ndash;&gt;-->
+    <!--</div>-->
+    <!-- /row -->
+    <div class="row" style="margin-bottom:10px;">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Lượt tương tác</strong>
+                    <div class="card-actions">
+                        <div class="input-group date filter-date">
+                            <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                  <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                            </span>
+                            <input type="text" class="form-control" daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+                        </div>
+                    </div>
+                </div>
+                <!-- /card header -->
+                <div class="card-block">
+                    <mo-line-chart [data]="InteractiveData"></mo-line-chart>
+                </div>
+                <!-- card-block -->
+            </div>
+            <!-- /card -->
+        </div>
+        <!-- /col -->
+    </div>
+    <!-- /row -->
+    <div class="row" style="margin-bottom:10px;">
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </span>
+                <input type="text" name="input1-group2" class="form-control" placeholder="Tìm kiếm" />
+            </div>
+        </div>
+        <div class="col-xs-offset-6 col-xs-3">
+            <div class="input-group date filter-date">
+                <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                </span>
+                <input type="text" class="form-control" daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+                <button class="btn btn-default"><i class="fa fa-download"></i> Xuất file</button>
+            </div>
+        </div>
+    </div>
+    <!-- /row -->
+    <div class="row" style="margin-top:10px;">
+        <div class="col-xs-3">
+            <div class="card" style="max-height:500px; overflow: auto;">
+                <div class="card-block">
+                    <h6>Trạng thái hiển thị</h6>
+                    <div class="form-group" style="margin-top:10px ">
+                        <div class="checkbox">
+                            <label for="checkbox1">
+                <input type="checkbox" id="checkbox1" name="checkbox1" value="option1"> Hiển thị
+              </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox2">
+                <input type="checkbox" id="checkbox2" name="checkbox2" value="option2"> Ẩn
+              </label>
+                        </div>
+                    </div>
+
+                    <h6>Trạng thái hiệu lực</h6>
+                    <div class="form-group" style="margin-top:10px ">
+                        <div class="checkbox">
+                            <label for="checkbox3">
+                <input type="checkbox" id="checkbox3" name="checkbox1" value="option1"> Có
+              </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox4">
+                <input type="checkbox" id="checkbox4" name="checkbox2" value="option2"> Không
+              </label>
+                        </div>
+                    </div>
+
+                    <h6>Danh mục</h6>
+                    <div class="form-group" style="margin-top:10px ">
+                        <div class="checkbox">
+                            <label for="checkbox5">
+                <input type="checkbox" id="checkbox5" name="checkbox1" value="option1"> Ăn uống
+              </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox6">
+                <input type="checkbox" id="checkbox6" name="checkbox2" value="option2"> Bar & Karaoke
+              </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox7">
+                <input type="checkbox" id="checkbox7" name="checkbox2" value="option2"> Cà phê
+              </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox8">
+                <input type="checkbox" id="checkbox8" name="checkbox2" value="option2"> Dịch vụ y tế
+              </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox9">
+                <input type="checkbox" id="checkbox9" name="checkbox9" value="option2"> Điện thoại máy tính bảng
+              </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox11">
+                <input type="checkbox" id="checkbox11" name="checkbox11" value="option2"> Đồ dùng trẻ em
+              </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox12">
+                <input type="checkbox" id="checkbox12" name="checkbox2" value="option2"> Đồ gia dụng nội thất
+              </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col -->
+        <div class="col-xs-9">
+            <div class="card">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Tên ưu đãi </th>
+                            <th colspan="2">Trong kỳ báo cáo</th>
+                            <th colspan="2">Toàn thời gian</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>Số lượt</th>
+                            <th>Số khách hàng</th>
+                            <th>Số lượt</th>
+                            <th>Toàn thời gian</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="animated fadeIn">
+                            <td><a href="javascipt:voi(0);" (click)="changeShowHide()">[HCM] - Coca Suki Vui Tết SongKran, Thưởng thức trà thái chỉ 1 USD</a></td>
+                            <td>105</td>
+                            <td>100</td>
+                            <td>105</td>
+                            <td>100</td>
+                        </tr>
+                        <tr class="animated fadeIn">
+                            <td><a href="javascipt:voi(0);" (click)="changeShowHide()">[HCM] - Coca Suki Vui Tết SongKran, Thưởng thức trà thái chỉ 1 USD</a></td>
+                            <td>105</td>
+                            <td>100</td>
+                            <td>105</td>
+                            <td>100</td>
+                        </tr>
+                        <tr class="animated fadeIn">
+                            <td><a href="javascipt:voi(0);" (click)="changeShowHide()">[HCM] - Coca Suki Vui Tết SongKran, Thưởng thức trà thái chỉ 1 USD</a></td>
+                            <td>105</td>
+                            <td>100</td>
+                            <td>105</td>
+                            <td>100</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="1">
+                            </td>
+                            <td colspan="1"></td>
+                            <td colspan="1" style="padding-right: 0;">
+                                <div class="input-group">
+                                    <span class="input-group-addon file-upload-show">Hiển thị </span>
+                                    <select class="select-page" name="select-page" size="1">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- row -->
+</div>
+<!-- /content -->
+
+<!-- detail content -->
+<div class="animated fadeIn web-card" *ngIf="showhide1">
+    <div class="row" style="margin-bottom:10px">
+        <button (click)="changeHideShow()" style="position:absolute; top:-30px; right:30px" type="button" class="btn btn-sm btn-default">Chi tiết <i class="fa fa-close"></i></button>
+        <div class="col-xs-3">
+            <div class="image-detail">
+                <img src="https://static.pexels.com/photos/263041/pexels-photo-263041.jpeg" alt="">
+            </div>
+        </div>
+        <!-- /col -->
+        <div class="col-xs-7">
+            <div class="content-detail">
+                <h5>[HCM] - Coca Suki Vui Tết SongKran, Thưởng thức trà thái chỉ 1 USD</h5>
+                <div class="promotion-point">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <strong>700</strong>
+                            <p>Lượt xem</p>
+                        </div>
+                        <div class="col-xs-4">
+                            <strong>150</strong>
+                            <p>Lượt đổi ưu đãi</p>
+                        </div>
+                        <div class="col-xs-4">
+                            <strong>70</strong>
+                            <p>Lượt nhận</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /col -->
+    </div>
+    <!-- /row -->
+    <div class="row" style="margin-bottom:10px;">
+        <div class="col-xs-3">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </span>
+                <input type="text" name="input1-group2" class="form-control" placeholder="Tìm kiếm" />
+            </div>
+        </div>
+        <div class="col-xs-offset-7 col-xs-2">
+            <div class="input-group" style="display:block;">
+                <button style="float:right;" class="btn btn-default"><i class="fa fa-download"></i> Xuất file</button>
+            </div>
+        </div>
+    </div>
+    <!-- /row -->
+    <div class="row" style="margin-bottom:10px;">
+        <div class="col-xs-12">
+            <div class="card" style="padding:5px;">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="customer-content">
+                                    <p><strong>Hà Anh</strong></p>
+                                    <p>+84 1234567890</p>
+                                    <p>contact@gmail.com</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Mã giao dịch: <strong>011GHA</strong></p>
+                                    <p><button type="button" class="btn btn-sm btn-success">Đã nhận</button></p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Đổi ưu đãi: 04/07/2017 19:07</p>
+                                    <p>Xác nhận yêu cầu: 04/07/2017 16:07</p>
+                                    <p>Nhận: 07/07/2017 9:54</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Địa điểm nhận: 105 Bà Triệu, Q.Hoàn Kiếm, Hà Nội
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="customer-content">
+                                    <p><strong>Hà Anh</strong></p>
+                                    <p>+84 1234567890</p>
+                                    <p>contact@gmail.com</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Mã giao dịch: <strong>011GHA</strong></p>
+                                    <p><button type="button" class="btn btn-sm btn-success">Đã nhận</button></p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Đổi ưu đãi: 04/07/2017 19:07</p>
+                                    <p>Xác nhận yêu cầu: 04/07/2017 16:07</p>
+                                    <p>Nhận: 07/07/2017 9:54</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Địa điểm nhận: 105 Bà Triệu, Q.Hoàn Kiếm, Hà Nội
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="customer-content">
+                                    <p><strong>Hà Anh</strong></p>
+                                    <p>+84 1234567890</p>
+                                    <p>contact@gmail.com</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Mã giao dịch: <strong>011GHA</strong></p>
+                                    <p><button type="button" class="btn btn-sm btn-success">Đã nhận</button></p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Đổi ưu đãi: 04/07/2017 19:07</p>
+                                    <p>Xác nhận yêu cầu: 04/07/2017 16:07</p>
+                                    <p>Nhận: 07/07/2017 9:54</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Địa điểm nhận: 105 Bà Triệu, Q.Hoàn Kiếm, Hà Nội
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="customer-content">
+                                    <p><strong>Hà Anh</strong></p>
+                                    <p>+84 1234567890</p>
+                                    <p>contact@gmail.com</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Mã giao dịch: <strong>011GHA</strong></p>
+                                    <p><button type="button" class="btn btn-sm btn-success">Đã xác nhận</button></p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Đổi ưu đãi: 04/07/2017 19:07</p>
+                                    <p>Xác nhận yêu cầu: 04/07/2017 16:07</p>
+                                    <p>Nhận: 07/07/2017 9:54</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Địa điểm nhận: 105 Bà Triệu, Q.Hoàn Kiếm, Hà Nội
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="customer-content">
+                                    <p><strong>Hà Anh</strong></p>
+                                    <p>+84 1234567890</p>
+                                    <p>contact@gmail.com</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Mã giao dịch: <strong>011GHA</strong></p>
+                                    <p><button type="button" class="btn btn-sm btn-success">Đã huỷ</button></p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Đổi ưu đãi: 04/07/2017 19:07</p>
+                                    <p>Xác nhận yêu cầu: 04/07/2017 16:07</p>
+                                    <p>Nhận: 07/07/2017 9:54</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Địa điểm nhận: 105 Bà Triệu, Q.Hoàn Kiếm, Hà Nội
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /col -->
+                    <div class="col-xs-4">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="customer-content">
+                                    <p><strong>Hà Anh</strong></p>
+                                    <p>+84 1234567890</p>
+                                    <p>contact@gmail.com</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Mã giao dịch: <strong>011GHA</strong></p>
+                                    <p><button type="button" class="btn btn-sm btn-success">Đã nhận</button></p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Đổi ưu đãi: 04/07/2017 19:07</p>
+                                    <p>Xác nhận yêu cầu: 04/07/2017 16:07</p>
+                                    <p>Nhận: 07/07/2017 9:54</p>
+                                </div>
+                                <div class="customer-content">
+                                    <p>Địa điểm nhận: 105 Bà Triệu, Q.Hoàn Kiếm, Hà Nội
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /col -->
+                </div>
+            </div>
+        </div>
+        <!-- /col -->
+    </div>
+    <!-- /row -->
+    <div class="row" style="margin-bottom:15px;">
+        <div class="col-xs-10">
+        </div>
+        <div class="col-xs-2">
+            <div class="input-group">
+                <span class="input-group-addon file-upload-show">Hiển thị </span>
+                <select class="select-page" name="select-page" size="1">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /detail content -->

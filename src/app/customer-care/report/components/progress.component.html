@@ -1,0 +1,6 @@
+<div class="progress-data">
+    <div *ngFor="let data of data" style="margin-bottom:10px">
+        <p>{{data.category}}<span style="float:right">{{data.dynamic}}</span></p>
+        <progressbar [animate]="false" [max]="data.max" [value]="data.dynamic" [type]="data.type"></progressbar>
+    </div>
+</div>

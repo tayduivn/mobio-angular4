@@ -1,0 +1,13 @@
+<div class="form-group row">
+  <label class="col-sm-10 form-control-label">Ảnh đại  (*)</label>
+  <div class="col-sm-6">
+    <input class="form-control input-sm" id="input-url-avatar" name="input-url" placeholder=""
+           #fileUrlAvatar type="file" accept="image/jpg, image/jpeg, image/png"
+           (change)="getUrlFileUploadAvatar()">
+  </div>
+  <div #outImgAvatar id="outImg">
+    <div *ngFor="let img of imagesAvatar" class="fileImgUpload">
+      <img [src]="img.src" [alt]="(img.stt)">
+    </div>
+  </div>
+</div>

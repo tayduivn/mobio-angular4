@@ -1,0 +1,55 @@
+<div class="top-call">
+  <h4 class="label">{{data?.name}}</h4>
+  <div class="table-call">
+    <div class="row header">
+      <div class="col-sm-4 name">
+        Tên khách hàng
+      </div>
+      <div class="col-sm-2 phone">
+        Điện thoại
+      </div>
+      <div class="col-sm-2 time-call">
+        Thời gian
+      </div>
+      <div class="col-sm-1 duration">
+        Độ dài
+      </div>
+      <div class="col-sm-2 employee">
+        Nhân viên
+      </div>
+      <div class="col-sm-1 listen-again">
+        Nghe lại
+      </div>
+    </div>
+    <div class="row item" *ngFor="let item of data?.data">
+      <div class="col-sm-4 name">
+        <div class="avatar">
+            <img [src]="item.avatar" alt="">
+        </div>
+        <div class="info">
+            <div class="full-name">
+                {{item.fullName || '--'}}
+            </div>
+            <div class="type-card">
+                {{item.card}}
+            </div>
+        </div>
+      </div>
+      <div class="col-sm-2 phone">
+          <a (click)="call(item.phone)" class="number">{{item.phone}}</a> <a class="phone-icon"><i class="fa fa-phone" aria-hidden="true"></i></a>
+      </div>
+      <div class="col-sm-2 time-call">
+          {{item.time}}
+      </div>
+      <div class="col-sm-1 duration">
+          {{item.duration}}
+      </div>
+      <div class="col-sm-2 employee">
+          {{item.employee}}
+      </div>
+      <div class="col-sm-1 listen-again">
+          <a (click)="play(item)"><img src="../../../../assets/img/call-center/play.svg" alt=""></a>
+      </div>
+    </div>
+  </div>
+</div>

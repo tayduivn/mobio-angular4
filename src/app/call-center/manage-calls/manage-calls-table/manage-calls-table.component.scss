@@ -1,0 +1,74 @@
+.table-calls {
+  background-color: #ffffff;
+  color: #666666;
+  border: 1px solid #e1e6ef;
+  padding: 20px 10px;
+  font-size: 1rem;
+  .action,
+  .phone,
+  .time,
+  .employee {
+    flex: 0 0 10%;
+  }
+  .time-waiting {
+    flex: 0 0 13%;
+  }
+  .duration {
+    flex: 0 0 14%;
+  }
+  .note {
+    flex: 0 0 15%;
+  }
+  .customer {
+    flex: 0 0 18%;
+  }
+  .header {
+    border-bottom: 1px solid #e1e6ef;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    color: #000000;
+    & > * {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+  }
+  .list-call {
+    font-size: 0.8rem;
+    // height: 265px;
+    // overflow-x: hidden;
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+     
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+     
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+    }
+  }
+}
+.footer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  .quantity {
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+    align-items: center;
+    & > * {
+      flex: 0 0 70px;
+    }
+  }
+}
+.audio {
+  position: fixed;
+  bottom: 0;
+  right: 360px;
+  background-color: #ffffff;
+  border: 1px solid #e1e6ef;
+  z-index: 10;
+}

@@ -1,0 +1,56 @@
+.tooltip-show {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  .tooltiptext-show {
+    visibility: hidden;
+    width: 100%;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 53%;
+    margin-left: -355px;
+    opacity: 0;
+    transition: opacity 1s;
+    .tooltiptext-show::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 7%;
+      margin-left: -35px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+  }
+  &:hover .tooltiptext-show {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+[ng2-tooltip] {margin: 40px; border: 1px solid #ccc}
+
+[ng2-tooltip] .tooltip-contents {
+  border: 1px solid #ccc; padding: 5px
+}
+[ng2-tooltip] .tooltip-down-arrow {
+  height: 10px;
+}
+[ng2-tooltip] .tooltip-down-arrow:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 45%;
+  bottom: 5px;
+  background: #FFFFFF;
+  border-left:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+  transform:rotate(-45deg);
+}

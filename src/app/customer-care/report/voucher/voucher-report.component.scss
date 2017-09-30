@@ -1,0 +1,26 @@
+#select-page {
+  width: 60px;
+  padding-left: 15px;
+  display: block;
+  float: right;
+}
+
+.card-block {
+  padding-bottom: 0px;
+}
+
+.image-detail {
+  border: 2px solid gray;
+  img {
+    width: 100%;
+  }
+}
+
+.voucher-point {
+  border: 2px solid gray;
+  padding: 48px 15px;
+}
+
+.customer-content:not(:last-child) {
+  border-bottom: 1px solid #d1d1d1;
+}

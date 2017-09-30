@@ -1,0 +1,14 @@
+.ctn {
+  font-size: 1rem;
+  width: 500px;
+  padding: 10px;
+  .info {
+    display: flex;
+    .phone {
+        margin-right: 10px;
+    }
+    .close {
+        margin-left: auto;
+    }
+  }
+}

@@ -1,0 +1,454 @@
+<div class="animated fadeIn">
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-3">
+            <div class="input-group search-content">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" (click)="buttomSearch()"><i class="fa fa-search"></i></button>
+                  </span>
+                <input type="text" [(ngModel)]="keySearch" (keyup.enter)="buttomSearch()" name="input1-group2" class="form-control" placeholder="Tìm kiếm" />
+            </div>
+        </div>
+        <!--search-->
+        <div class="col-md-4">
+            <button class="btn btn-delete" [disabled]="!allowButton" type="submit" (click)="rejectMultiMemberCustomer()">
+        Hủy
+      </button>
+        </div>
+        <div class="col-md-5 btn-execute">
+            <button class="btn btn-created" type="button" data-toggle="modal" (click)="showFromCreate(1)"><i
+        class="fa fa-plus-circle"></i> Tạo Thẻ Khách Hàng
+      </button>
+            <button class="btn btn-created" style="margin-right: 10px;" type="button" (click)="uploadMemberCustomer()"><i
+        class="fa fa-plus-circle"></i>
+        Nhập file
+      </button>
+        </div>
+    </div>
+    <!--seach and upload file, create product-->
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="card card-filter">
+                <div class="card-header">Loại thẻ</div>
+                <div class="card-block" style="overflow-x: hidden;overflow-y: scroll;max-height: 250px;">
+                    <div class="checkbox" *ngFor="let cardPattern of cardPatterns">
+                        <label>
+              <input name="chkAllow" type="radio" [value]="cardPattern.idCardPattern"
+                     (change)="filterTypeCard(cardPattern.idCardPattern)">
+              {{cardPattern.cardName}}
+            </label>
+                    </div>
+                </div>
+                <!--- loai the -->
+                <div class="card-header">Trạng thái duyệt</div>
+                <div class="card-block">
+                    <div class="checkbox">
+                        <label>
+              <input name="status" type="radio" value="pendding"
+                     (change)="filterStatus(1)"> Chờ duyệt
+            </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+              <input name="status" type="radio" value="cartVip"
+                     (change)="filterStatus(2)">
+              Đã duyệt
+            </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+              <input name="status" type="radio" value="cancel"
+                     (change)="filterStatus(3)">
+              Đã hủy
+            </label>
+                    </div>
+                </div>
+                <div class="card-header">Thời gian đăng ký</div>
+                <div class="card-block">
+                    <div class="input-group date filter-date">
+                        <span class="input-group-addon">
+              <span class="fa fa-calendar"></span>
+                        </span>
+                        <input type="text" class="form-control" daterangepicker [(ngModel)]="timeRangerRegister" (applyDaterangepicker)="filterTimeRegister($event)">
+                    </div>
+                </div>
+                <div class="card-header">Thời gian Duyệt</div>
+                <div class="card-block">
+                    <div class="input-group date filter-date">
+                        <span class="input-group-addon">
+              <span class="fa fa-calendar"></span>
+                        </span>
+                        <input type="text" class="form-control" daterangepicker [(ngModel)]="timeRangerApprove" (applyDaterangepicker)="filterTimeApprove($event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="card">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width:20px">
+                                <input type="checkbox" (click)="selectAllMemberCustomer($event)" #_selectAllMemberCustomer/>
+                            </th>
+                            <th style="width: 20%">
+                                Khách hàng thành viên
+                            </th>
+                            <th style="width: 20%">
+                                Thông tin thẻ
+                            </th>
+                            <th style="width: 20%;text-align: center">
+                                Thời gian đăng ký
+                                <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconTimeStart===0,
+                    'fa-sort-asc':setIconTimeStart===1,'fa-sort-desc':setIconTimeStart===2}" aria-hidden="true" (click)="sortTimeStart()"></i>
+                            </th>
+                            <th style="width: 20%;text-align: center;">
+                                Thời gian duyệt
+                                <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconTimeEnd===0,
+                    'fa-sort-asc':setIconTimeEnd===1,'fa-sort-desc':setIconTimeEnd===2}" aria-hidden="true" (click)="sortTimeEnd()"></i>
+                            </th>
+                            <th style="width: 20%;text-align: center;">
+                                Thao tác
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[ngStyle]="{'display': item.select && hide?'none':'table-row'}"-->
+                        <tr *ngFor="let item of memberCustomers" [ngStyle]="{'background-color': item.status===1?'white':(item.status === 2? '#e6e6ff':'#f0f0f4')}">
+                            <td><input name="{{item.idMemberCustomer}}" value="{{item.idMemberCustomer}}" type="checkbox" (change)="selectMemberCustomer($event,item.idMemberCustomer)" [checked]="item.select">
+                            </td>
+                            <td><span class="textLable">Họ và tên: {{item.name}}</span>
+                                <span class="textLable">Số điện thoại: {{item.phone}}</span>
+                                <span class="textLable">Thư điện tử: {{item.email}}</span>
+                            </td>
+                            <td>
+                                <p>
+                                    <span class="textLable">Loại thẻ: {{item.category}}</span>
+                                    <span class="textLable">Mã thẻ: {{item.keyCard}} </span>
+                                </p>
+                                <p class="imgCard">
+                                    <img [src]="item.imageFist" width="60" height="32" alt="">
+                                    <img [src]="item.imageLast" width="60" height="32" alt="">
+                                </p>
+                            </td>
+                            <td>
+                                <p class="datetime">{{item.dataCreate}}</p>
+                            </td>
+                            <td>
+                                <p class="datetime">{{item.dateActive}}</p>
+                            </td>
+
+                            <td style="text-align: center;" class="btn-execute">
+                                <i (click)="editMemberCustomer(item.idMemberCustomer)" tooltip="Sửa" class="fa fa-pencil-square-o fa-3" aria-hidden="true"></i>
+                                <i *ngIf="item.status === 3 || item.status === 1" (click)="acceptMemberCustomerModal(item.idMemberCustomer)" class="fa fa-check" tooltip="Duyệt" aria-hidden="true">
+                <!--[ngClass]="{'fa fa-check': item['status']=== 1,'fa fa-check':item['status']=== 3}"-->
+              </i>
+                                <i *ngIf="item.status === 2 || item.status===1" (click)="rejectMemberCustomer(item.idMemberCustomer, item.keyCard)" class="fa fa-2 fa-trash" tooltip="Hủy" aria-hidden="true"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+                            </td>
+                            <td colspan="1" style="float:right;">
+                                <div class="input-group">
+                                    <span class="input-group-addon file-upload-show">Hiển thị </span>
+                                    <select class="select-page" name="select-page" size="1" #_selectCurrentPage (change)="changePerPage(_selectCurrentPage.value)">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--Show Table List Product-->
+
+</div>
+
+<div bsModal #largeModal="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{title}}</h4>
+                <button type="button" class="close" (click)="closeFromCreate()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body" style="height: 450px;">
+                <div class="row body-create-card">
+                    <div class="col-sm-12 col-sm-offset-4">
+                        <div class="col-sm-12 creat-product">
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label label-title">Loại thẻ (*)</label>
+                                    <select #elTypeCard class="form-control ng-valid ng-dirty ng-touched col-sm-11" (change)="selectTypeCard(elTypeCard.value)">
+                    <option value="0" disabled [selected]="true">Chọn loại thẻ</option>
+                    <option *ngFor="let cardPattern of cardPatterns" [value]="cardPattern.idCardPattern"
+                            [selected]="eidtTheMauNhaCungCapID === cardPattern.idCardPattern">
+                      {{cardPattern.cardName}}
+                    </option>
+                  </select>
+                                </div>
+                                <!--sinh ma the-->
+
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label label-title">Mã thẻ (*)</label>
+                                    <input #elKeyCard class="form-control input-sm col-sm-11" [(ngModel)]="keyCard" placeholder="Mã thẻ" type="text">
+                                </div>
+                                <!--sinh ma the-->
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label label-title">Họ và tên</label>
+                                    <input #elName class="form-control input-sm col-sm-11" name="input-accumulative-point" placeholder="Họ và tên" type="text" [(ngModel)]="name">
+                                </div>
+                                <!--Họ va ten-->
+
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label label-title">Phone (*)</label>
+                                    <input #elPhone class="form-control input-sm col-sm-11" name="input-accumulative-point" placeholder="Số điện thoại" type="text" [(ngModel)]="phone">
+                                </div>
+                                <!--sinh ma the-->
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label>Email</label>
+                                    <input #elEmail class="form-control input-sm col-sm-11" name="input-accumulative-point" placeholder="email" type="text" [(ngModel)]="email">
+                                </div>
+                                <div class="col-sm-6" style="    max-width: 46% !important; flex: 0 0 46%;">
+                                    <label [ngStyle]="{'display': setHideActicess?'none':'block'}">Ngày/Tháng/Năm sinh</label>
+                                    <div [ngStyle]="{'display': setHideActicess?'none':'block'}">
+                                        <duc-datetimepicker [options]="dobDatetimePicker" [groupClass]="'left-ico'" [groupIconClass]="'fa fa-calendar'" [(ngModel)]="dob">
+                                        </duc-datetimepicker>
+                                    </div>
+                                    <label [ngStyle]="{'display': !setHideActicess?'none':'block'}">Thời gian đăng ký</label>
+                                    <input [ngStyle]="{'display': !setHideActicess?'none':'block'}" #elEmail class="form-control input-sm col-sm-11" name="input-accumulative-point" placeholder="email" type="text" [(ngModel)]="dataCreate">
+                                </div>
+
+                            </div>
+                            <!--condition-->
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label>Địa chỉ</label>
+                                    <input #elAdress class="form-control input-sm col-sm-11" name="input-accumulative-point" placeholder="Nhập số nhà, dường, quân/huyên, tỉnh/thành" type="text" [(ngModel)]="address">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Giới tính (*)</label>
+                                    <div class="form-group row">
+                                        <div class="col-sm-4">
+                                            <div class="radio">
+                                                <label>
+                          <input name="genderCard" [checked]="gender === 2" type="radio" value="2"
+                                 (change)="changeGender(2)">
+                          Nam
+                        </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="radio">
+                                                <label>
+                          <input name="genderCard" [checked]="gender === 3" type="radio" value="3"
+                                 (change)="changeGender(3)">
+                          Nữ
+                        </label>
+                                            </div>
+                                        </div>
+                                        <input [(ngModel)]="checkCreate" type="hidden">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--condition-->
+                        </div>
+
+
+                        <!--Create product section 3 Trạng Thái-->
+
+                    </div>
+                    <!--body content-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-12">
+                    <button class="btn btn-created" type="button" (click)="save()">{{textButtomAccess}}</button>
+                    <button class="btn btn-cancle" type="button" (click)="closeFromCreate()">Bỏ qua</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Modal Create Product -->
+
+<div bsModal #acceptAndRejectModal="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">DUYỆT THÔNG TIN KHÁCH HÀNG THÀNH VIÊN</h4>
+                <button type="button" class="close" (click)="closeFromAccept()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body" style="height: 370px;">
+                <div class="row body-create-card">
+                    <div class="col-sm-12 col-sm-offset-4">
+                        <div class="col-sm-12 creat-product">
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label label-title">Họ và tên</label>
+                                    <input #elName class="form-control input-sm col-sm-11" name="input-accumulative-point" placeholder="Họ và tên" type="text" [(ngModel)]="name">
+                                </div>
+                                <!--Họ va ten-->
+
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label label-title">Phone (*)</label>
+                                    <input #elPhone class="form-control input-sm col-sm-11" name="input-accumulative-point" placeholder="Số điện thoại" type="text" [(ngModel)]="phone">
+                                </div>
+                                <!--So dien thoi-->
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label>Email</label>
+                                    <input #elEmail class="form-control input-sm col-sm-11" name="input-accumulative-point" placeholder="email" type="text" [(ngModel)]="email">
+                                </div>
+                                <div class="col-sm-6" style="    max-width: 46% !important; flex: 0 0 46%;">
+                                    <label [ngStyle]="{'display': setHideActicess?'none':'block'}">Ngày/Tháng/Năm sinh</label>
+                                    <div [ngStyle]="{'display': setHideActicess?'none':'block'}">
+                                        <duc-datetimepicker [options]="dobDatetimePicker" [groupClass]="'left-ico'" [groupIconClass]="'fa fa-calendar'" [(ngModel)]="dob">
+                                        </duc-datetimepicker>
+                                    </div>
+                                    <label [ngStyle]="{'display': !setHideActicess?'none':'block'}">Thời gian đăng ký</label>
+                                    <input [ngStyle]="{'display': !setHideActicess?'none':'block'}" #elEmail class="form-control input-sm col-sm-11" name="input-accumulative-point" placeholder="email" type="text" [(ngModel)]="dataCreate">
+                                </div>
+                            </div>
+                            <!--ThoiGian dang ky-->
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label label-title">Loại thẻ (*)</label>
+                                    <select #elTypeCardAccept class="form-control ng-valid ng-dirty ng-touched col-sm-11" (change)="selectTypeCardAccept(elTypeCardAccept.value)">
+                    <option value="0" disabled [selected]="eidtTheMauNhaCungCapID === '0'">Chọn loại thẻ</option>
+                    <option *ngFor="let cardPattern of cardPatterns" [value]="cardPattern.idCardPattern"
+                            [selected]="eidtTheMauNhaCungCapID === cardPattern.idCardPattern">
+                      {{cardPattern.cardName}}
+                    </option>
+                  </select>
+                                </div>
+                                <!--loai the-->
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label label-title">Mã thẻ (*)</label>
+                                    <input #elKeyCard class="form-control input-sm col-sm-11" [(ngModel)]="keyCard" placeholder="Mã thẻ" type="text">
+                                </div>
+                                <!--ma the-->
+                            </div>
+                        </div>
+
+
+                        <!--Create product section 3 Trạng Thái-->
+
+                    </div>
+                    <!--body content-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-12">
+                    <button class="btn btn-created" type="button" (click)="acceptCardCustomer()">Duyệt</button>
+                    <button class="btn btn-cancle" type="button" (click)="closeFromAccept()">Bỏ qua</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Modal Accept and Reject CardCustomer -->
+
+
+
+<div bsModal #uploadMemberCustomerModal="bs-modal" class="modal fade modal-upload-product" tabindex="-1" role="dialog" aria-labelledby="uploadProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">TẠO THẺ KHÁCH HÀNG TỪ FILE</h4>
+                <button type="button" class="close" (click)="uploadMemberCustomerModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body modal-body-upload-product">
+                <div class="row">
+                    <div class="col-sm-12 chondanhsachsanpham">
+                        Chọn danh sách sản phẩm
+                        <span class="badge badge-pill badge-default" (click)="showInformation()">
+              <i class="fa fa-info fa-lg mt-4"></i>
+              <div class="infomation-chose-list-product" [ngStyle]="{'display': showInfo? 'block': 'none'}">
+                <div class="col-sm-12">
+                  Chú ý:
+                </div>
+                <div class="col-sm-12">
+                  <ul>
+                    <li>Chỉ nhập file text (.xsl) để thêm mới cửa hàng của nhãn hàng.</li>
+                    <li>Tất cả các cột ngăn cách bởi dấu (Tab), và nội dung không được chứa dấu (Tab).</li>
+                    <li>Nội dung không được chứa dấu xuống dòng nội dung thay thế bằng thẻ &lt;br&gt;.</li>
+                  </ul>
+                </div>
+                <div class="col-sm-12">
+                  File text chỉ chứa gồm các cột:
+                </div>
+                <div class="col-sm-12">
+                  <ul>
+                    <li>Số thứ tự</li>
+                    <li>Tên sản phẩm.</li>
+                    <li>Nội dung không được chứa dấu xuống dòng nội dung thay thế bằng thẻ &lt;br&gt;</li>
+                    <li>Tên sản phẩm.</li>
+                    <li>Giá sản phẩm.</li>
+                    <li>Mô tả chi tiết (Định dạng html).</li>
+                    <li>Trạng thái đổi điểm (1:Được đổi bằng điểm, 0: Không được đổi bằng điểm).</li>
+                  </ul>
+                </div>
+              </div>
+            </span>
+                    </div>
+                    <div class="col-sm-12">
+                        <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (onFileDrop)="onFileDropUploadProduct()" [uploader]="uploaderProduct" class="well my-drop-zone">
+                            <div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và thả file</div>
+                            <div class="row">
+                                <div class="col-sm-4 text-right text-hoac">
+                                    Hoặc :
+                                </div>
+                                <div class="col-sm-6">
+                                    <button class="btn btn-s" type="button" (click)="chooseFileUpdateProduct()">
+                    <span class="glyphicon glyphicon-upload"></span> Chọn file
+                  </button>
+                                    <span *ngFor="let item of uploaderProduct.queue">
+                    {{ item?.file?.name }}
+                  </span>
+                                    <div class="hidden-md-down hidden-md-up">
+                                        <input type="file" #elInputFileProduct ng2FileSelect (change)="onFileDropUploadProduct()" [(uploader)]="uploaderProduct" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" [ladda]='isLoadingUploadProduct' class="btn btn-created">Đồng ý
+        </button>
+                <button type="button" class="btn btn-cancle" (click)="uploadMemberCustomerModal.hide()">Bỏ qua</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

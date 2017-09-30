@@ -1,0 +1,164 @@
+.filter-customer-insight {
+    overflow: auto;
+    .card-body {
+        padding: 20px;
+        h5 {
+            font-size: 16px;
+            text-align: left;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        label {
+            font-size: 14px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            &:not(:last-child) {
+                border-bottom: 1px solid rgba(0, 0, 0, .3);
+                padding-bottom: 10px;
+            }
+        }
+    }
+}
+
+.card {
+    margin-bottom: 2px;
+    border: none;
+}
+
+.customer-chart {
+    position: relative;
+}
+
+.card-body {
+    padding: 10px;
+    h5 {
+        font-size: 14px;
+    }
+    h6 {
+        font-size: 18px;
+        font-weight: 400;
+    }
+}
+
+.card-customer-insight {
+    .card {
+        height: 164px;
+        padding-top: 5px;
+    }
+    h6 {
+        font-size: 14px;
+        font-weight: 400;
+    }
+    .number {
+        color: #F9C023;
+        font-size: 30px;
+        margin: 29px 0;
+    }
+    .percent {
+        font-size: 11px;
+    }
+}
+
+.progress {
+    margin-bottom: 10px;
+}
+
+:host /deep/ .chart-wrapper {
+    height: 280px !important;
+    margin-top: 0px !important;
+}
+
+.btn-created {
+    padding: 3px 20px !important;
+    border-radius: 15px;
+    float: left;
+}
+
+//:host /deep/ .card {
+//  margin-bottom: 0 !important;
+//  height: 630px;
+//}
+.btn-created:hover {
+    cursor: pointer !important;
+}
+
+.card-end {
+    margin-bottom: 0;
+    height: 100%;
+    .card-body {
+        height: 350px;
+        padding: 30px 20px 0;
+        .fa-star {
+            font-size: 10px;
+        }
+    }
+}
+
+.filter-report {
+    padding-left: 0;
+    padding-right: 0;
+    .card-body {
+        padding-top: 0 !important;
+    }
+}
+
+.content-report {
+    padding-left: 0;
+    padding-right: 0;
+    .section-one-report {
+        .line-char-customer {
+            width: 100% !important;
+            padding: 0 !important;
+            .card {
+                margin-bottom: 0 !important;
+                .card-body {
+                    padding: 10px 10px 0;
+                    margin-right: 3px;
+                }
+            }
+        }
+        .card-customer-insight {
+            padding: 0 !important;
+            .row {
+                .col-sm-6 {
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                    .card {
+                        margin-bottom: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+    .section-two-report {
+        background: #fff;
+        padding: 15px;
+        margin-left: 5px;
+        margin-right: 10px;
+        border: 1px solid #e1e6ef;
+    }
+    .section-three-report {
+        .chart-progress-one {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .chart-progress-two {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+}
+
+.progress-bar {
+    height: 10px;
+}
+
+.date {
+    position: absolute;
+    top: -66px;
+    right: 27px;
+}

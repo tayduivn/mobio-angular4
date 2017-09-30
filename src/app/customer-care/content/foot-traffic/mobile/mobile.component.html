@@ -1,0 +1,84 @@
+<section class="conten-full">
+  <div class="conten" #elMobileContent>
+
+    <!-- Bengin hearder -->
+    <section class="menu-mobi">
+      <div class="hearder_mobile">
+        <div class="menu-icon-sammo">
+          <a href="javascript:void(0)"><img alt="imenu" src="../../../../../assets/img/icon/imenu.png"/></a>
+        </div>
+        <div class="logomobile">
+          <h1 class="title-cat">Foot-Traffic</h1>
+        </div>
+        <div class="hearder-item-icon">
+          <a href="javascript:void(0)" class="avata-thumnal">
+            <img *ngIf="!!uploaderAvatar" [attr.src]="uploaderAvatar">
+            <img *ngIf="!uploaderAvatar"
+                 [attr.src]="(!!footTraffic.avatar)?footTraffic.avatar:'../../../../../../assets/img/icon/avata.jpg'">
+          </a>
+          <p style="color:#fff; font-size:12px;">12345</p>
+        </div>
+      </div>
+    </section>
+    <!-- End hearder -->
+    <!-- Bengin slive -->
+    <div class="slive silve-preview-mobile">
+      <!-- Slides Container -->
+      <carousel class="preview-mobile" [noWrap]="noWrapSlides">
+        <slide *ngFor="let image of uploaderImageDescriptions || []; let index=index">
+          <img width="224px" height="100px" style="max-height:224px; max-height:100px; margin:0 auto;"
+               [src]="image.url">
+        </slide>
+        <slide *ngFor="let image of footTraffic.imageDescriptions; let index=index">
+          <img width="224px" height="100px" style="max-height:224px; max-height:100px; margin:0 auto;"
+               [src]="image.linkImage">
+        </slide>
+      </carousel>
+    </div>
+    <!-- End slive -->
+
+    <!-- Bengin box-conten -->
+    <div class="box-conten">
+      <!-- Bengin singer -->
+      <div class="singer" #elMobileName>
+        <div class="pading5">
+          <h2 class="singger-title">{{footTraffic.namePromotion}}</h2>
+          <p class="singger-time" style="font-size:9px;">Từ {{footTraffic.timeStartPromotion | date:'short'}} | Đến
+            {{footTraffic.timeEndPromotion| date:'short'}}</p>
+        </div>
+
+
+        <div class="like-comment">
+          <div class="like-comment-col">
+            <p style="color:#333;">15</p>
+            <p style=" font-size:12px;">Thích</p>
+          </div>
+          <div class="like-comment-col">
+            <p style="color:#333;">66</p>
+            <p style=" font-size:12px;">Bình luận</p>
+          </div>
+          <div class="like-comment-col" style="border-right: 0;">
+            <p style="color:#333;">4.0</p>
+            <p style=" font-size:12px;">Đánh giá</p>
+          </div>
+        </div>
+      </div>
+      <!-- End singer -->
+      <!-- Bengin singer -->
+      <div class="singer" #elDescription>
+        <div class="entry-title">Điều kiện áp dụng</div>
+        <div class="pading5">
+          <div class="entry" #elMobileEntry>
+            <div [innerHTML]="footTraffic.description"></div>
+          </div>
+        </div>
+      </div>
+      <!-- End singer -->
+
+
+    </div>
+    <!-- End box-conten -->
+
+  </div>
+</section>
+<!-- End conten-full -->

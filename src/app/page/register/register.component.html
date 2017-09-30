@@ -1,0 +1,112 @@
+<toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+<div class="app flex-row align-items-center animated fadeIn" [class.view-login]="!isView">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+        <div class="card mx-2">
+          <div class="card-block p-2" style="width: 70%;margin: 0 auto;">
+            <div class="title-register">
+              <h1>Mobio</h1>
+              <h4>Đăng ký tài khoản</h4>
+            </div>
+
+            <div class="controls">
+              <div class="input-prepend input-group">
+                <span class="input-group-addon"><i class="fa fa-id-badge"></i></span>
+                <input name="nameBrands" #nameBrands="ngModel" [(ngModel)]="registerData.nameBrands" type="text"
+                       class="form-control" placeholder="Tên nhãn hàng" required
+                       (keypress)="changeBrands(nameBrands.value)" (keyup)="changeBrands(nameBrands.value)">
+              </div>
+              <p class="help-block" *ngIf="nameBrands.errors && (nameBrands.dirty
+                  || nameBrands.touched || nameBrands.length===0)"
+                 [hidden]="!nameBrands.errors.required">* Tên nhãn hàng không được phép để trống</p>
+            </div>
+            <!--Tên nhãn hàng-->
+
+            <div class="controls">
+              <div class="input-prepend input-group">
+                <span class="input-group-addon"><i class="fa fa fa-user"></i></span>
+                <input name="userName" #userName="ngModel" [(ngModel)]="registerData.userName" type="text"
+                       class="form-control" placeholder="Tên đăng nhập" pattern="^[0-9a-z._]{4,27}$" required>
+                <span class="input-group-addon" style="width: auto;">@{{nameBrandsAfter}}</span>
+              </div>
+              <p class="help-block" *ngIf="userName.errors && (userName.dirty
+                  || userName.touched || userName.length===0)"
+                 [hidden]="!userName.errors.required">* Tên đăng nhập không được phép để trống</p>
+              <p class="help-block" *ngIf="userName.errors && (userName.dirty
+              || userName.touched || userName.length===0)"
+             [hidden]="!userName.errors.pattern">* Chỉ sử dụng chữ cái (a-z), số, dấu chấm (.), gạch dưới (_) và độ dài từ 4 đến 27 ký tự</p>
+            </div>
+            <!--Tên đăng nhập-->
+
+            <div class="controls">
+              <div class="input-prepend input-group">
+                <span class="input-group-addon"><i
+                  class="fa fa-envelope"></i></span>
+                <input name="emailVal" #emailVal="ngModel" [(ngModel)]="registerData.email" type="text"
+                       class="form-control" placeholder="Email" required #emailInput>
+              </div>
+              <p class="help-block" *ngIf="emailVal.errors && (emailVal.dirty
+                  || emailVal.touched || emailVal.length===0)"
+                 [hidden]="!emailVal.errors.required">* Email không được phép để trống</p>
+            </div>
+            <!--Email-->
+
+            <div class="controls">
+              <div class="input-prepend input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input name="password" #password="ngModel" [(ngModel)]="registerData.password" type="password"
+                       class="form-control" placeholder="Mật khẩu" pattern="^.{4,15}$" required #passwordInput>
+              </div>
+              <p class="help-block" *ngIf="password.errors && (password.dirty
+                  || password.touched || password.length<=6)"
+                 [hidden]="!password.errors.required">* Mật khẩu không được phép để trống</p>
+              <p class="help-block" *ngIf="password.errors && (password.dirty
+                 || password.touched || password.length<=6)"
+                [hidden]="!password.errors.pattern">* Chỉ sử dụng độ dài từ 4 đến 15 ký tự</p>
+            </div>
+            <!--Mật khẩu-->
+
+            <div class="controls">
+              <div class="input-prepend input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input name="retryPass" #retryPassw="ngModel" [(ngModel)]="registerData.retryPass"
+                       type="password" class="form-control"
+                       placeholder="Nhập lại mật khẩu" pattern="^.{4,15}$" required #retryPassInput>
+              </div>
+              <p class="help-block" *ngIf="retryPassw.errors && (retryPassw.dirty
+                  || retryPassw.touched)"
+                 [hidden]="!retryPassw.errors.required">* Mật khẩu nhập lại không được để trống</p>
+              <p class="help-block" *ngIf="retryPassw.errors && (retryPassw.dirty
+                 || retryPassw.touched)"
+                [hidden]="!retryPassw.errors.pattern">* Chỉ sử dụng độ dài từ 4 đến 15 ký tự</p>
+            </div>
+            <!--Nhập lại mật khẩu-->
+
+            <div class="input-group mb-1" style="margin-top:10px;">
+              <span class="input-group-addon" style="width: 65px;"><i class="fa fa-mobile"></i></span>
+              <select #typeDisplaySelect (change)="selectTypeDisplay(typeDisplaySelect.value)">
+                <option disabled value="0">Chọn kiểu hiển thị trong của nhãn hàng trên ứng dụng</option>
+                <option *ngFor="let typeDisplay of lstTypeDisplay" value="{{typeDisplay.value}}">{{typeDisplay.name}}
+                </option>
+              </select>
+            </div>
+            <div class="input-group mb-1">
+              <span style="text-align: right;width: 100%;"><a href="javascript:void(0)" (click)="viewTypeDisplay()">Xem hình minh họa</a></span>
+            </div>
+            <div class="register-account">
+              <button type="button" #register class="btn btn-block btn-primary" [ladda]='isLoading'
+                      [disabled]="isLoading || nameBrands.errors || userName.errors || emailVal.errors
+                      || password.errors ||retryPassw.errors"
+                      (click)="registerAccount()">Đăng ký
+              </button>
+            </div>
+            <p class="text-muted-2"
+               style="margin-top: 10px !important;margin-bottom: -10px !important;color: #a74333 !important;margin-left: 1px !important;">
+              Đã có tài khoản? <a routerLink="/login">Đăng nhập</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

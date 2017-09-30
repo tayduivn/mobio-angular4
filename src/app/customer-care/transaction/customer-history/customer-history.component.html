@@ -1,0 +1,220 @@
+<div class="animated fadeIn">
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
+                  </span>
+                <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm" />
+            </div>
+        </div>
+        <!--search-->
+    </div>
+    <div class="row">
+
+        <!--left menu-->
+        <div class="col-md-2 col-sm-12">
+            <div class="card card-filter">
+                <div class="card-header">LOẠI THẺ</div>
+                <div class="card-block">
+                    <div class="checkbox">
+                        <label for="chkShow"> <input id="chkShow" name="chkShow" type="checkbox" value="show"> Thẻ thành viên</label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="chkHide"> <input id="chkHide" name="chkHide" type="checkbox" value="hide"> Thẻ VIP </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="chkHide"> <input id="chkHide" name="chkHide" type="checkbox" value="hide"> Thẻ vàng </label>
+                    </div>
+                </div>
+                <div class="card-header">LOẠI GIAO DỊCH</div>
+                <div class="card-block">
+                    <div class="checkbox">
+                        <label for="chkAllow"> <input id="chkAllow" name="chkAllow" type="checkbox" value="allow"> Tích điểm </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="chkReject">  <input id="chkReject" name="chkReject" type="checkbox" value="reject"> Sản phẩm</label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="chkReject">  <input id="chkReject" name="chkReject" type="checkbox" value="reject"> Ưu đãi</label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="chkReject">  <input id="chkReject" name="chkReject" type="checkbox" value="reject"> Voucher</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /left menu-->
+
+        <!--right content-->
+        <div class="col-md-10 col-sm-12">
+            <div class="card">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <!--<th style="width: 10%">
+                                <input class="select-cursor" type="checkbox" (click)="selectAllProduct($event)" #_selectAllProduct/>
+                            </th>-->
+                            <th style="width: 25%" class="text-center">
+                                Khách hàng thành viên
+                            </th>
+                            <th style="width: 20%" class="text-center">
+                                Thông tin thẻ
+                            </th>
+                            <th style="width: 15%" class="text-center">
+                                Điểm tích lũy
+                            </th>
+                            <th style="width: 20%" class="text-center">
+                                Giao dịch gần nhất
+                            </th>
+                            <th style="width: 20%" class="text-center">
+                                Xem chi tiết
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[ngStyle]="{'display': item.select && hide?'none':'table-row'}"-->
+                        <tr class="animated fadeIn">
+                            <!--<td><input class="select-cursor" name="product.idProduct" value="product.idProduct" type="checkbox"
+                                    (change)="selectProduct($event,product.idProduct)" [checked]="product.select">
+                            </td>-->
+                            <td class="text-left" style="padding-left:50px;">
+                                <ul class="list-unstyled">
+                                    <li>Họ và tên: Hoàng Kim Sơn</li>
+                                    <li>Số điện thoại: 0123456789</li>
+                                    <li>Thư điện tử: son.hoang@vmodev.com</li>
+                                </ul>
+                            </td>
+                            <td class="text-left">
+                                <ul class="list-unstyled">
+                                    <li>Loại thẻ: Thẻ VIP </li>
+                                    <li>Mã thẻ: 123456 </li>
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                1000
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled">
+                                    <li>19/9/2017</li>
+                                    <li><button class="btn btn-sm btn-success">Sản phẩm</button></li>
+                                </ul>
+                            </td>
+                            <td class="text-center"><i class="fa fa-arrow-circle-o-right fa-2x" aria-hiden="true"></i></td>
+                        </tr>
+                        <tr class="animated fadeIn">
+                            <!--<td><input class="select-cursor" name="product.idProduct" value="product.idProduct" type="checkbox"
+                                    (change)="selectProduct($event,product.idProduct)" [checked]="product.select">
+                            </td>-->
+                            <td style="padding-left:50px;">
+                                <ul class="list-unstyled">
+                                    <li>Họ và tên: Hoàng Kim Sơn</li>
+                                    <li>Số điện thoại: 0123456789</li>
+                                    <li>Thư điện tử: son.hoang@vmodev.com</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    <li>Loại thẻ: Thẻ VIP </li>
+                                    <li>Mã thẻ: 123456 </li>
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                1000
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled">
+                                    <li>19/9/2017</li>
+                                    <li><button class="btn btn-sm btn-dangger">Voucher</button></li>
+                                </ul>
+                            </td>
+                            <td class="text-center"><i class="fa fa-arrow-circle-o-right fa-2x" aria-hiden="true"></i></td>
+                        </tr>
+
+                        <tr class="animated fadeIn">
+                            <!--<td><input class="select-cursor" name="product.idProduct" value="product.idProduct" type="checkbox"
+                                    (change)="selectProduct($event,product.idProduct)" [checked]="product.select">
+                            </td>-->
+                            <td style="padding-left:50px;">
+                                <ul class="list-unstyled">
+                                    <li>Họ và tên: Hoàng Kim Sơn</li>
+                                    <li>Số điện thoại: 0123456789</li>
+                                    <li>Thư điện tử: son.hoang@vmodev.com</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    <li>Loại thẻ: Thẻ VIP </li>
+                                    <li>Mã thẻ: 123456 </li>
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                1000
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled">
+                                    <li>19/9/2017</li>
+                                    <li><button class="btn btn-sm btn-warning">Tích điểm</button></li>
+                                </ul>
+                            </td>
+                            <td class="text-center"><i class="fa fa-arrow-circle-o-right fa-2x" aria-hiden="true"></i></td>
+                        </tr>
+
+                        <tr class="animated fadeIn">
+                            <!--<td><input class="select-cursor" name="product.idProduct" value="product.idProduct" type="checkbox"
+                                    (change)="selectProduct($event,product.idProduct)" [checked]="product.select">
+                            </td>-->
+                            <td style="padding-left:50px;">
+                                <ul class="list-unstyled">
+                                    <li>Họ và tên: Hoàng Kim Sơn</li>
+                                    <li>Số điện thoại: 0123456789</li>
+                                    <li>Thư điện tử: son.hoang@vmodev.com</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    <li>Loại thẻ: Thẻ VIP </li>
+                                    <li>Mã thẻ: 123456 </li>
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                1000
+                            </td>
+                            <td class="text-center">
+                                <ul class="list-unstyled">
+                                    <li>19/9/2017</li>
+                                    <li><button class="btn btn-sm btn-primary">Sản phẩm</button></li>
+                                </ul>
+                            </td>
+                            <td class="text-center"><i class="fa fa-arrow-circle-o-right fa-2x" aria-hiden="true"></i></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="header-pagination">
+                                <pagination-mobio [paging]="paging"></pagination-mobio>
+                            </td>
+                            <td colspan=""></td>
+                            <td  class="perpage-pagination pull-right">
+                                <div class="input-group ">
+                                    <span class="input-group-adon file-upload-show">Hiển thị </span>
+                                    <select class="select-page" style="width:20px;" id="select-page" name="select-page" size="1">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="50">100</option>
+                </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <!-- /right menu -->
+    </div>
+
+</div>

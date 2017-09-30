@@ -1,0 +1,129 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-6 col-md-3" style="padding-right:1.5px;">
+            <mo-status-widget [data]="membershipStatus"></mo-status-widget>
+            <mo-status-widget [data]="currentPointStatus"></mo-status-widget>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-md-3" style="padding-left:1.5px;">
+            <mo-status-widget [data]="notVerifiedVoucherStatus"></mo-status-widget>
+            <mo-status-widget [data]="visibleProductStatus"></mo-status-widget>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-md-6" style="padding-left:5px">
+            <mo-line-chart [data]="membershipChartData"></mo-line-chart>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+
+    <div class="row">
+        <div class="col-sm-6 col-md-3" style="padding-right:1.5px;">
+            <mo-status-widget [data]="activedPromotionStatus"></mo-status-widget>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-md-3" style="padding-left:1.5px;">
+            <mo-status-widget [data]="activedVoucherPromotionStatus"></mo-status-widget>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-md-3" style="padding-right:1.5px;">
+            <mo-status-widget [data]="activedFootTrafficVoucherPromotionStatus"></mo-status-widget>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-md-3" style="padding-left:1.5px;">
+            <mo-status-widget [data]="activedGiftStatus"></mo-status-widget>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6" style="padding-right:5px;">
+            <mo-line-chart [data]="shoppingChartData"></mo-line-chart>
+            <!--/.card-->
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-md-6" style="padding-left:5px;">
+            <mo-line-chart [data]="mobioChartData"></mo-line-chart>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <mo-line-chart [data]="voucherChartData"></mo-line-chart>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-md-3" style="padding-right:1.5px">
+            <div class="card double-height-card star-rating">
+                <div class="card-header">
+                    <h6 style="font-weight:400">Đánh giá</h6>
+                </div>
+                <div class="card-block">
+                    <p style="margin-bottom:0px;">5 <i class="fa fa-star"></i></p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%;background:#3CBA54;">
+                        </div>
+                    </div>
+                    <p style="margin-bottom:0px;">4 <i class="fa fa-star"></i></p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%;background:#7CBC00;">
+                        </div>
+                    </div>
+                    <p style="margin-bottom:0px;">3 <i class="fa fa-star"></i></p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:30%;background:#EEFF71;">
+                        </div>
+                    </div>
+                    <p style="margin-bottom:0px;">2 <i class="fa fa-star"></i></p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:20%;background:#FFC74A;">
+                        </div>
+                    </div>
+                    <p style="margin-bottom:0px;">1 <i class="fa fa-star"></i></p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:10%;background:#FF003D;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-6 col-md-3" style="padding-left:1.5px;">
+            <div class="card double-height-card">
+                <div class="card-header">
+                    <h6 style="font-weight:400"> {{minRateShops?.length}} cửa hàng có điểm đánh giá thấp nhất</h6>
+                </div>
+                <div class="card-block rating" style="padding-top:0px;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="padding-top:0">Địa điểm</th>
+                                <th style="padding-top:0">Điểm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let minRateShop of minRateShops">
+                                <td style="padding:0.45rem">{{minRateShop.TenCuaHang}}</td>
+                                <td style="padding:0.45rem">{{minRateShop.rating}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6" style="padding-right:5px;">
+            <mo-filter-list [data]="topView"></mo-filter-list>
+        </div>
+        <div class="col-sm-6 col-md-6" style="padding-left:5px;">
+            <mo-filter-list [data]="topChanged"></mo-filter-list>
+        </div>
+    </div>
+    <!--/.row-->
+</div>

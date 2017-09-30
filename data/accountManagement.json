@@ -1,0 +1,152 @@
+[
+    {
+        "id": "1",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh1.png",
+        "level": "Quản lý/ Chủ nhãn hàng ",
+        "status": "1"
+    },
+    {
+        "id": "2",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh2.png",
+        "level": " nhân viên nội dung",
+        "status": "1"
+    },
+    {
+        "id": "3",
+        "username": "An Giang",
+        "fullName": "An Giang  fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh3.png",
+        "level": " nhân viên nội dung",
+        "status": "1"
+    },
+    {
+        "id": "4",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh4.png",
+        "level": "nhân viên nội dung",
+        "status": "1"
+    },
+    {
+        "id": "5",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh1.png",
+        "level": " Quản lý/ Chủ nhãn hàng",
+        "status": "1"
+    },
+    {
+        "id": "6",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh2.png",
+        "level": " Quản lý/ Chủ nhãn hàng",
+        "status": "1"
+    },
+    {
+        "id": "7",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh3.png",
+        "level": "nhân viên nội dung",
+        "status": "1"
+    },
+    {
+        "id": "8",
+        "username": "An Giang",
+        "fullName": "An Giang",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh4.png",
+        "level": "4",
+        "status": "1"
+    },
+    {
+        "id": "9",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh1.png",
+        "level": "nhân viên nội dung",
+        "status": "1"
+    },
+    {
+        "id": "10",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh2.png",
+        "level": "nhân viên nội dung",
+        "status": "1"
+    },
+    {
+        "id": "11",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh3.png",
+        "level": "Nhân viên chăm sóc khách hàng",
+        "status": "1"
+    },
+    {
+        "id": "12",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh4.png",
+        "level": "4",
+        "status": "1"
+    },
+    {
+        "id": "13",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh3.png",
+        "level": "1",
+        "status": "1"
+    },
+    {
+        "id": "14",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh3.png",
+        "level": "Nhân viên chăm sóc khách hàng",
+        "status": "1"
+    },
+    {
+        "id": "15",
+        "username": "An Giang",
+        "fullName": "An Giang fullName",
+        "email": "email1@cocacola",
+        "phone": "1234567890",
+        "avatar": "assets/img/avatars/anh2.png",
+        "level": "nhân viên nội dung",
+        "status": "1"
+    }
+]

@@ -1,0 +1,332 @@
+[
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 1
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 0,
+    "idCardPattern": 2
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ vip",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 3
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 4
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 0,
+    "idCardPattern": 5
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ vip",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 6
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 7
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 0,
+    "idCardPattern": 8
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ vip",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 9
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 10
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 0,
+    "idCardPattern": 11
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": 2,
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 12
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 13
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 0,
+    "idCardPattern": 14
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": 2,
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 15
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 16
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 0,
+    "idCardPattern": 17
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ vip",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 18
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 19
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 0,
+    "idCardPattern": 20
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ vip",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 21
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 22
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 0,
+    "idCardPattern": 23
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ vip",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 24
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 25
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 0,
+    "idCardPattern": 26
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ vip",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 27
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 28
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": "Thẻ vip",
+    "allowShow": 0,
+    "idCardPattern": 29
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ vip",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 30
+  },
+  {
+    "name": "Mã cá nhân trên Mobio",
+    "category": "The Thanh viên",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 1,
+    "allowShow": 1,
+    "idCardPattern": 31
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ Vàng",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 0,
+    "idCardPattern": 32
+  },
+  {
+    "name": "Mã theo hệ thống nhãn hàng",
+    "category": "Thẻ vip",
+    "typeActiveCard": "tự động",
+    "imageFist": "assets/img/card/firstCard.jpg",
+    "imageLast": "assets/img/card/lastCard.jpg",
+    "allowChange": 2,
+    "allowShow": 1,
+    "idCardPattern": 33
+  }
+]

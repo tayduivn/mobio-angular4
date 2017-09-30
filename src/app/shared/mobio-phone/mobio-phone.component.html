@@ -1,0 +1,228 @@
+<div *ngIf="!isShowPhone" class="init-phone">
+  <div class="call">
+    <a data-toggle="tooltip" title="Gọi điện cho khách hàng" (click)="showPhone(true)"><img src="../../../../assets/img/call-center/answer.svg" alt=""></a>
+  </div>
+  <div *ngIf="!isAcceptCall" class="busy">
+    <a data-toggle="tooltip" title="Trạng thái bận, không thể tiếp nhận cuộc gọi" (click)="changeStatus(true)"><i class="fa fa-minus-circle" aria-hidden="true"></i></a>
+  </div>
+  <div *ngIf="isAcceptCall" class="accept-call">
+    <a data-toggle="tooltip" title="Trạng thái tiếp nhận cuộc gọi" (click)="changeStatus(false)"><i class="fa fa-check-circle" aria-hidden="true"></i></a>
+  </div>
+</div>
+<div class="mobio-phone" *ngIf="isShowPhone && !isMinimizePhone">
+  <div class="header text-right">
+    <a *ngIf="phoneNumber" (click)="minimizePhone(true)"><i class="fa fa-minus" aria-hidden="true"></i></a>
+    <a (click)="showPhone(false)"><i class="fa fa-times" aria-hidden="true"></i></a>
+  </div>
+  <div class="body">
+    <div class="form-input-number">
+      <div class="body-form">
+        <div style="margin: auto;">
+          <div class="name text-center" *ngIf="isShowInfoReceiver">
+            <span>Nguyễn Hà Anh</span>
+            <a *ngIf="statusCall === STATUS_CALL[0]" (click)="clearPhoneNumber()"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+          </div>
+          <div class="input-ctn">
+            <div class="info">
+              <div class="avatar-receiver" *ngIf="isShowInfoReceiver">
+                <img src="../../../../assets/img/avatars/1.jpg" alt="">
+              </div>
+              <input [ngStyle]="{'flex': isShowInfoReceiver ? '0 0 130px' : '0 0 200px', 'margin-top': isShowInfoReceiver ? '5px' : '35px'}" *ngIf="statusCall === STATUS_CALL[0]" [(ngModel)]="phoneNumber" (keyup)="checkPhoneNumber($event)" (keydown)="filterChar($event)"
+                (change)="onChangePhone($event)" type="text" class="form-control" dir="rtl" placeholder=" ... Nhập số điện thoại">
+              <a [ngStyle]="{'margin-top': isShowInfoReceiver ? '5px' : '35px'}" *ngIf="phoneNumber && statusCall === STATUS_CALL[0]" class="btn-clear" (click)="clearLastNumber()"></a>
+              <div class="number" *ngIf="statusCall !== STATUS_CALL[0]">{{phoneNumber}}</div>
+            </div>
+            <div class="type-card" *ngIf="isShowInfoReceiver">Thẻ vàng</div>
+          </div>
+        </div>
+
+      </div>
+      <div *ngIf="statusCall !== STATUS_CALL[0]">
+        <div class="status-call">
+          <span *ngIf="statusCall === STATUS_CALL[1]">
+          Đang gọi đi ...
+          </span>
+          <span *ngIf="statusCall === STATUS_CALL[2]">
+            Đang gọi đến ...
+          </span>
+          <span *ngIf="statusCall === STATUS_CALL[3]">
+            00:01
+          </span>
+        </div>
+        <div class="action">
+          <div class="note" *ngIf="statusCall === STATUS_CALL[1] || statusCall === STATUS_CALL[3]">
+            <a (click)="noteCall(true)"><img src="../../../../assets/img/call-center/note-calling.svg" alt=""></a>
+          </div>
+          <div class="answer" *ngIf="statusCall === STATUS_CALL[2]">
+            <a (click)="answer()"><img src="../../../../assets/img/call-center/answer.svg" alt=""></a>
+          </div>
+          <div class="end-call">
+            <a (click)="endCall()"><img src="../../../../assets/img/call-center/end-call-1.svg" alt=""></a>
+          </div>
+        </div>
+        <div class="note-text" *ngIf="isNoting">
+          <textarea placeholder="Nhập ghi chú ..." rows="3" class="form-control"></textarea>
+          <div class="clearfix action-edit">
+            <div class="pull-left count">
+              0 / 512
+            </div>
+            <div class="pull-right">
+              <button (click)="cancelNote()" class="btn btn-default">Hủy bỏ</button>
+              <button (click)="saveNote()" class="btn btn-info">Lưu</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="bottom" [ngStyle]="{'max-height': statusCall === STATUS_CALL[0] ? '370px' : (isNoting ? (isShowInfoReceiver ? '200px' : '250px') :  (isShowInfoReceiver ? '300px' : '350px'))}">
+      <div class="number-board" *ngIf="statusCall === STATUS_CALL[0]">
+        <div class="button-list">
+          <div class="item" *ngFor="let item of phoneKeyboard">
+            <a (click)="addNumber(item)" class="btn-number">{{item}}</a>
+          </div>
+        </div>
+        <div class="button-call">
+          <a (click)="call()"><img src="../../../../assets/img/call-center/answer.svg" alt=""></a>
+        </div>
+      </div>
+      <div *ngIf="statusCall !== STATUS_CALL[0]">
+        <div class="info-customer">
+          <div class="headline">THÔNG TIN KHÁCH HÀNG</div>
+          <div class="info">
+            <div class="rank">
+              <div class="type-card">
+                <div class="text-center">Hạng thẻ</div>
+                <div class="text-center value">Thẻ vàng</div>
+              </div>
+              <div class="m-rank">
+                <div class="text-center">M-ranking</div>
+                <div class="text-center value">
+                  ---
+                </div>
+              </div>
+            </div>
+            <div class="email">
+              <div class="icon">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </div>
+              <div class="value">nhatlinh@gmail.com</div>
+            </div>
+            <div class="phone">
+              <div class="icon">
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+              </div>
+              <div class="value">
+                0123456789
+              </div>
+            </div>
+            <div class="gender">
+              <div class="icon">
+                <i class="fa fa-venus-mars" aria-hidden="true"></i>
+              </div>
+              <div class="value">Nữ</div>
+            </div>
+            <div class="birthday">
+              <div class="icon">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+              </div>
+              <div class="value">12/12/1990</div>
+            </div>
+            <div class="address">
+              <div class="icon">
+                <i class="fa fa-home" aria-hidden="true"></i>
+              </div>
+              <div class="value">22 Phan Huy Chú - Hoàn Kiếm - Hà Nội</div>
+            </div>
+            <div class="customer-transaction">
+              <div class="headline">KHÁCH HÀNG GIAO DỊCH</div>
+              <div class="point">
+                <div>Điểm tích lũy</div>
+                <div class="value">1000 mPoint</div>
+              </div>
+              <div class="last">
+                <div>Giao dịch mới nhất</div>
+                <div class="value">07/07/2017</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="recent-transaction">
+          <div class="headline">GIAO DỊCH GẦN ĐÂY</div>
+          <div class="accumulative-point">
+            <div class="header-accumulative-point">
+              <div class="time">07/07/2017 09:05</div>
+              <div class="name">
+                Tích điểm
+              </div>
+            </div>
+            <hr>
+            <div class="point">
+              <label>Điểm</label>
+              <div class="value">+1</div>
+            </div>
+            <div class="reason">
+              <label>Lý do</label>
+              <div class="value">Đánh giá cửa hàng</div>
+            </div>
+            <div class="address-transaction">
+              <label>Địa điểm</label>
+              <div class="value">105 Bà Triệu, Q.Hoàn Kiếm, Hà Nội</div>
+            </div>
+          </div>
+          <div class="product">
+            <div class="header-product">
+              <div class="time">05/07/2017 09:30</div>
+              <div class="name">
+                Sản phẩm
+              </div>
+            </div>
+            <hr>
+            <div class="desc text-center">
+              Nhận sản phẩm S03. Cá chẽm (Lớn) - Fresh Seabass (Large)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="minimize-phone" *ngIf="isShowPhone && isMinimizePhone">
+  <div class="info">
+    <div class="name" *ngIf="isShowInfoReceiver">Nguyễn Hà Anh</div>
+    <div class="number">{{phoneNumber}}</div>
+    <div class="type-card" *ngIf="isShowInfoReceiver">Thẻ thành viên</div>
+  </div>
+  <div class="action">
+    <div class="header">
+      <div class="maximize">
+        <a (click)="minimizePhone(false)"><img src="../../../../assets/img/call-center/stretch.svg" alt=""></a>
+      </div>
+      <div class="close">
+        <a (click)="showPhone(false)"><i class="fa fa-times" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="action-call" *ngIf="statusCall !== STATUS_CALL[0]">
+      <div class="status">
+        <span *ngIf="statusCall === STATUS_CALL[1]">
+        Đang gọi đi ...
+        </span>
+        <span *ngIf="statusCall === STATUS_CALL[2]">
+          Đang gọi đến ...
+        </span>
+        <span *ngIf="statusCall === STATUS_CALL[3]">
+          00:01
+        </span>
+      </div>
+      <a (click)="answer()" class="answer" *ngIf="statusCall === STATUS_CALL[2]">
+        <img src="../../../../assets/img/call-center/answer.svg" alt="">
+        </a>
+      <a (click)="endCall()" class="end-call">
+            <img src="../../../../assets/img/call-center/end-call-1.svg" alt="">
+        </a>
+    </div>
+    <div class="clearfix" *ngIf="statusCall === STATUS_CALL[0]">
+      <a class="btn-call-min" (click)="call()"><img src="../../../../assets/img/call-center/answer.svg" alt=""></a>
+    </div>
+  </div>
+</div>

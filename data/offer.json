@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "priceFrom": 1,
+    "priceTo": 100000,
+    "rate": 1,
+    "voucherId": 1,
+    "voucherName": "[HCM] Lẩu Thái CocaSuki Tặng 1 Set Lunch Trị Giá 78.000đ Khi Sử Dụng & Tích Lũy Đủ 7 Set",
+    "voucherStatus": 1,
+    "voucherMax": 1
+  },
+  {
+    "id": 2,
+    "priceFrom": 2,
+    "priceTo": 200000,
+    "rate": 2,
+    "voucherId": 2,
+    "voucherName": "[HCM] Lẩu Thái CocaSuki Tặng 1 Set Lunch Trị Giá 78.000đ Khi Sử Dụng & Tích Lũy Đủ 7 Set",
+    "voucherStatus": 2,
+    "voucherMax": 2
+  },
+  {
+    "id": 3,
+    "priceFrom": 3,
+    "priceTo": 300000,
+    "rate": 3,
+    "voucherId": 3,
+    "voucherName": "[HCM] Lẩu Thái CocaSuki Tặng 1 Set Lunch Trị Giá 78.000đ Khi Sử Dụng & Tích Lũy Đủ 7 Set",
+    "voucherStatus": 1,
+    "voucherMax": 3
+  },
+  {
+    "id": 4,
+    "priceFrom": 4,
+    "priceTo": 400000,
+    "rate": 4,
+    "voucherId": 4,
+    "voucherName": "[HCM] Lẩu Thái CocaSuki Tặng 1 Set Lunch Trị Giá 78.000đ Khi Sử Dụng & Tích Lũy Đủ 7 Set",
+    "voucherStatus": 2,
+    "voucherMax": 4
+  },
+  {
+    "id": 5,
+    "priceFrom": 5,
+    "priceTo": 500000,
+    "rate": 5,
+    "voucherId": 5,
+    "voucherName": "[HCM] Lẩu Thái CocaSuki Tặng 1 Set Lunch Trị Giá 78.000đ Khi Sử Dụng & Tích Lũy Đủ 7 Set",
+    "voucherStatus": 1,
+    "voucherMax": 5
+  }
+]

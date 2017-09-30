@@ -1,0 +1,18 @@
+<div class="ctn" [hidden]="!showAudio">
+  <div class="info">
+    <div class="phone">
+      Số điện thoại: {{data?.phone}}
+    </div>
+    <div class="time">
+      Thời gian gọi: {{data?.time}}
+    </div>
+    <div class="close">
+      <a (click)="close()"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <div class="audio">
+    <audio controls #audio>
+      <source *ngIf="showAudio" [src]="data.source"> Your browser does not support the audio element.
+    </audio>
+  </div>
+</div>

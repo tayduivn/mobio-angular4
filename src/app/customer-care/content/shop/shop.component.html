@@ -1,0 +1,360 @@
+<div class="animated fadeIn">
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-3">
+            <div class="input-group search-content">
+                <span class="input-group-btn">
+                    <button type="button" (click)="searchShop()" class="btn btn-primary"><i
+                      class="fa fa-search"></i></button>
+                  </span>
+                <input type="text" [(ngModel)]="keySearch" (keyup.enter)="searchShop()" id="input1-group2" name="input1-group2" class="form-control" placeholder="Tìm kiếm" />
+            </div>
+        </div>
+        <!--search-->
+        <div class="col-md-5">
+            <button class="btn btn-hide" [disabled]="!allowButton" type="submit" (click)="hideShopSelect()">Ẩn</button>
+            <button class="btn btn-show" [disabled]="!allowButton" type="submit" (click)="showShopSelect()">Hiển thị
+      </button>
+        </div>
+        <div class="col-md-4 btn-execute" style="text-align:right;">
+            <button class="btn btn-created" type="button" data-toggle="modal" (click)="showCreateShop()"><i
+        class="fa fa-plus-circle"></i> Tạo cửa hàng
+      </button>
+            <button class="btn btn-created" style="margin-right: 10px;" type="button" (click)="showModalUploadFile()"><i
+        class="fa fa-plus-circle"></i>
+        Nhập file
+      </button>
+        </div>
+    </div>
+    <!--seach and upload file, create product-->
+    <div class="row">
+        <div class="col-md-2">
+            <div class="card card-filter">
+                <div class="card-header">Trạng thái hiển thị</div>
+                <div class="card-block">
+                    <div class="checkbox">
+                        <label for="chkShow">
+              <input id="chkShow" name="chkShow" type="checkbox" value="show"
+                     (change)="filterShowState()" #showStateItem> Hiển Thị
+            </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="chkHide">
+              <input id="chkHide" name="chkHide" type="checkbox" value="hide"
+                     (change)="filterHideState()" #hideStateItem> Ẩn
+            </label>
+                    </div>
+                </div>
+                <!--Trạn thái hiển thị-->
+                <div class="card-header">
+                    <label>Tỉnh thành</label>
+                    <input style="border-bottom: 1px solid #e1e6ef;" type="text" name="input-city" placeholder="Tìm kiếm" class="form-control" [(ngModel)]="filterCity" />
+                </div>
+                <div class="card-block list-city">
+                    <div class="checkbox">
+                        <label>
+              <input name="0" type="checkbox" value="0" [checked]="checkAllCity"
+                     (change)="filterAllCityFunc($event)"> Tất cả
+            </label>
+                    </div>
+                    <div class="checkbox" *ngFor="let provincesCity of provinceCities | dataFilterCity: filterCity">
+                        <label>
+              <input name="{{provincesCity.code}}" [checked]="provincesCity['select']" type="checkbox"
+                     value="{{provincesCity.code}}"
+                     (change)="filterCityFunc($event, provincesCity.code)"> {{provincesCity.name}}
+            </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Menu left-->
+        <div class="col-md-10 ">
+            <div class="card">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%">
+                                <input type="checkbox" (click)="selectAllShop($event)" [checked]="checkAllShop" #_selectAllShop/>
+                            </th>
+                            <th style="width: 42%">
+                                <span class="filter-span" (click)="sortAddress()">Địa chỉ cửa hàng</span><i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconViewAddress===0,
+                    'fa-sort-asc':setIconViewAddress===1,'fa-sort-desc':setIconViewAddress===2}" aria-hidden="true" (click)="sortAddress()"></i>
+                            </th>
+                            <th style="width: 18%">
+                                <span class="filter-span" (click)="sortCity()">Tỉnh thành</span><i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconViewCity===0,
+                    'fa-sort-asc':setIconViewCity===1,'fa-sort-desc':setIconViewCity===2}" aria-hidden="true" (click)="sortCity()"></i>
+                            </th>
+                            <th style="width: 15%;text-align: center;">
+                                Mã cửa hàng
+                            </th>
+                            <th style="width: 15%;text-align: center;">
+                                Thao tác
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--[ngStyle]="{'display': item.select && hide?'none':'table-row'}"-->
+                        <tr *ngFor="let shop of shops" [class.state-show]="shop.state === 2" class="animated fadeIn">
+                            <td><input name="{{shop.idShop}}" value="{{shop.idShop}}" type="checkbox" (change)="selectShop($event,shop.idShop)" [checked]="shop.select">
+                            </td>
+                            <td>{{shop.address}}</td>
+                            <td style="color: #37B7F7;">
+                                {{shop.city | dataMapCity: shop.city}}
+                            </td>
+                            <td class="bar-gender" style="text-align: center;" (click)="showModalBarCode(shop.idShop,shop.codeStore)">
+                                <qr-code [value]="shop.codeStore" [size]="40"></qr-code>
+                            </td>
+                            <td style="text-align: center;" class="btn-execute">
+                                <i (click)="showEditShop(shop.idShop)" tooltip="Sửa" class="fa fa-pencil-square-o fa-3" aria-hidden="true"></i>
+                                <i (click)="hideState(shop.idShop, shop.state)" class="fa" [tooltip]="shop.state === 1? 'Ẩn':'Hiện'" [ngClass]="{'fa-eye': shop['state']===2,'fa-eye-slash':shop['state']===1}" aria-hidden="true"></i></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">
+                                <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+                            </td>
+                            <td colspan="1"></td>
+                            <td colspan="1" style="text-align:right;">
+                                <div class="input-group">
+                                    <span class="input-group-addon file-upload-show">Hiển thị </span>
+                                    <select class="select-page" id="select-page" name="select-page" size="1" #_selectCurrentPage (change)="changePerPage(_selectCurrentPage.value)">
+                  <option value="5">5</option>
+                  <option value="10" selected>10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <!--Show Table List Product-->
+    </div>
+</div>
+<div bsModal #largeModal="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: hidden !important;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" #titleModalShop>TẠO CỬA HÀNG</h4>
+                <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body" (scroll)="triggerMap()">
+                <div class="row body-create-product">
+                    <div class="col-sm-12 col-sm-offset-4">
+
+                        <div class="col-sm-12 creat-product">
+                            <label class="col-sm-12 form-control-label title_creat_shop" for="input-name">Thông tin
+                chung</label>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label" for="input-name">Tên cửa hàng </label>
+                                    <input class="form-control input-sm col-sm-11" id="input-name" name="input-name" [disabled]="isLoadingShop" placeholder="Tên cửa hàng" type="text" [(ngModel)]="shop.nameShop">
+                                </div>
+                                <!--Tên sản phẩm-->
+
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label">Hotline</label>
+                                    <input class="form-control input-sm input-sm col-sm-11" id="input-hotline" name="input-hotline" [disabled]="isLoadingShop" placeholder="Hotline" type="number" min="1" [(ngModel)]="shop.hotLine">
+                                </div>
+                                <!--hotline-->
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label" for="input-email">Thư điện tử </label>
+                                    <input class="form-control input-sm col-sm-11" id="input-email" name="input-email" #emailInput [disabled]="isLoadingShop" placeholder="Thư điện tử" type="text" [(ngModel)]="shop.email">
+                                </div>
+                                <!--email-->
+
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label">Tỉnh thành (*)</label>
+                                    <angular2-multiselect [data]="dropDownListShop" [(ngModel)]="selectedShop" [settings]="dropDownSettings" (onSelect)="onShopSelect($event)" (onDeSelect)="onShopDeSelect()"></angular2-multiselect>
+                                </div>
+                                <!--hotline-->
+                                <div class="col-sm-12">
+                                    <label class="col-sm-10 form-control-label">Địa chỉ (*)</label>
+                                    <input class="form-control input-sm col-sm-12" style="width: 96%;" id="input-address" name="input-address" [(ngModel)]="shop.address" [disabled]="isLoadingShop" placeholder="Nhập số nhà, đường, quận/huyện, tỉnh/thành" type="text">
+                                </div>
+                                <!--hotline-->
+                            </div>
+                        </div>
+                        <!-- Create shop section 1-->
+
+                        <div class="col-sm-12 creat-product">
+                            <label class="col-sm-12 form-control-label title_creat_shop" for="input-name">Tọa độ cửa hàng</label>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label" for="input-longitude">Kinh
+                    độ</label>
+                                    <input class="form-control input-sm col-sm-11" id="input-longitude" name="input-longitude" [disabled]="isLoadingShop" placeholder="Kinh độ" type="number" [(ngModel)]="shop.lng" (click)="triggerMap()">
+                                </div>
+                                <!--Kinh độ-->
+                                <div class="col-sm-6">
+                                    <label class="col-sm-10 form-control-label">Vĩ độ</label>
+                                    <input class="form-control input-sm input-sm col-sm-11" id="input-latitude" name="input-latitude" [disabled]="isLoadingShop" placeholder="Vĩ độ" type="number" [(ngModel)]="shop.lat" (click)="triggerMap()">
+                                </div>
+                                <!--Vĩ độ-->
+                                <div class="col-sm-12" style="margin-top: 20px;">
+                                    <agm-map [latitude]="shop.lat" [longitude]="shop.lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (statusChange)="testChange($event)" (mapClick)="mapClicked($event)">
+                                        <agm-marker [latitude]="shop.lat" [longitude]="shop.lng" (dragEnd)="markerDragEnd($event)">
+                                        </agm-marker>
+                                    </agm-map>
+                                </div>
+                                <!--hotline-->
+                            </div>
+                        </div>
+                        <!-- -- Create shop section google map- -->
+
+                        <div class="col-sm-12 creat-product" style="padding: 20px 40px 0;">
+                            <div class="form-group row">
+                                <label class="col-sm-2 form-control-label">Trạng thái</label>
+                                <label class="switch switch-3d switch-mobio" style="margin-top:5px">
+                  <input checked="" class="switch-input" type="checkbox" (change)="switchState($event)"
+                         [checked]="shop.state===1">
+                  <span class="switch-label"></span>
+                  <span class="switch-handle"></span>
+                </label>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--body content-->
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-sm-12">
+                    <button class="btn btn-created" type="button" (click)="saveShop()">Lưu</button>
+                    <button class="btn btn-cancle" type="button" (click)="largeModal.hide()">Bỏ qua</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Modal Create Product -->
+
+
+<div bsModal #smallModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content modal-content-barcode">
+            <div class="modal-body modal-gencode" style="height: 200px;">
+                <div class="row" style="text-align: center;margin-bottom: 10px;">
+                    <qr-code #qrCode [value]="barCodeSelected" [size]="130" style="margin: 0 auto;"></qr-code>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-12 action-render" style="text-align: center;">
+                        <i (click)="genBarCode()" class="fa fa-refresh" aria-hidden="true"></i>
+                        <label (click)="genBarCode()">Sinh lại mã</label>
+                        <i class="fa fa-download" aria-hidden="true" style="margin-left: 10px;"></i>
+                        <label (click)="downloadBarCode(qrCode)"><a href="">Tải về</a></label>
+                        <a download="YourFileName.jpeg" href="http://icons.iconarchive.com/icons/saki/nuoveXT/96/Apps-demo-icon.png">
+                            <img src="http://icons.iconarchive.com/icons/saki/nuoveXT/96/Apps-demo-icon.png" />
+                        </a>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
+<!-- Section refresh bar-code -->
+
+
+<div bsModal #uploadShopModal="bs-modal" class="modal fade modal-upload-product" tabindex="-1" role="dialog" aria-labelledby="uploadProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">TẠO SẢN PHẨM TỪ FILE</h4>
+                <button type="button" class="close" (click)="uploadShopModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body modal-body-upload-product">
+                <div class="row">
+                    <div class="col-sm-12 chondanhsachsanpham">
+                        Chọn danh sách sản phẩm
+                        <span class="badge badge-pill badge-default" id="infomation_span" (click)="changeStateInformationUploadShop($event)">
+              <i class="fa fa-info fa-lg mt-4" id="infomation_icon"></i>
+              <div class="infomation-chose-list-product" *ngIf="_stateShowInformationUploadShop">
+                <div class="col-sm-12">
+                  Chú ý:
+                </div>
+                <div class="col-sm-12">
+                  <ul>
+                    <li>Chỉ nhập file text (.xsl) để thêm mới cửa hàng của nhãn hàng.</li>
+                    <li>Tất cả các cột ngăn cách bởi dấu (Tab), và nội dung không được chứa dấu (Tab).</li>
+                    <li>Nội dung không được chứa dấu xuống dòng nội dung thay thế bằng thẻ &lt;br&gt;.</li>
+                  </ul>
+                </div>
+                <div class="col-sm-12">
+                  File text chỉ chứa gồm các cột:
+                </div>
+                <div class="col-sm-12">
+                  <ul>
+                    <li>Số thứ tự</li>
+                    <li>Tên cửa hàng.</li>
+                    <li>Hotline</li>
+                    <li>Thư điện tử.</li>
+                    <li>Kinh độ.</li>
+                    <li>Vĩ độ.</li>
+                    <li>Địa chỉ.</li>
+                    <li>Mã tỉnh thành.</li>
+                  </ul>
+                </div>
+              </div>
+            </span>
+                    </div>
+                    <div class="col-sm-12">
+                        <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (onFileDrop)="onFileDropUploadShop()" (fileOver)="fileOverBaseUploadProduct($event)" [uploader]="uploaderShop" class="well my-drop-zone">
+                            <div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và thả file</div>
+                            <div class="row">
+                                <div class="col-sm-4 text-right text-hoac">
+                                    Hoặc :
+                                </div>
+                                <div class="col-sm-6">
+                                    <button class="btn btn-s" type="button" (click)="chooseFileUpdateShop($event)">
+                    <span class="glyphicon glyphicon-upload"></span> Chọn file
+                  </button>
+                                    <span *ngFor="let item of uploaderShop.queue">
+                    {{ item?.file?.name }}
+                  </span>
+                                    <div class="hidden-md-down hidden-md-up">
+                                        <input type="file" #elInputFileProduct ng2FileSelect (change)="onFileDropUploadShop()" [(uploader)]="uploaderShop" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /end upload file-->
+            <p class="file-example">
+                <a style="cursor: pointer;" (click)="getFileCodeStore()">
+                    <i class="fa fa-paperclip" aria-hidden="true"></i> Mẫu file mã tỉnh thành</a><br/>
+                <a style="cursor: pointer;" (click)="getFileDataStore()">
+                    <i class="fa fa-paperclip" aria-hidden="true"></i> Mẫu file nhập liệu cửa hàng</a>
+            </p>
+            <div class="modal-footer">
+                <button type="button" (click)="uploadFileExcel()" [ladda]='isLoadingUploadShop' class="btn btn-created">
+          Đồng ý
+        </button>
+                <button type="button" class="btn btn-cancle" (click)="uploadShopModal.hide()">Bỏ qua</button>
+            </div>
+        </div>
+    </div>
+
+</div>

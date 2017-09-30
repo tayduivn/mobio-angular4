@@ -1,0 +1,268 @@
+<header class="app-header navbar">
+    <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">&#9776;</button>
+    <a class="navbar-brand" [routerLink]="['/']"></a>
+    <ul class="nav navbar-nav">
+        <li *ngFor="let item of navigator; let i = index" class="nav-item dropdown hidden-md-down" dropdown [autoClose]="false" container="body">
+            <a class="dropdown-toggle" role="button" [routerLink]="[item.link]">
+                <i class="{{item.icon}} text-info"></i> {{item.label}}
+            </a>
+            <div *ngIf="item.children">
+                <ul class="dropdown-menu dropdown-menu-left" [ngClass]="{'dropdown-menu-lg':i ==0,'dropdown-menu-md':i!==0}">
+
+                    <div class="row" *ngIf="i!==0">
+                        <div class="col-xs-12">
+                            <li>
+                                <ul *ngFor="let citem of item.children">
+                                    <li *ngIf="!citem.children" role="menuitem" style="border-bottom:none"><a class="dropdown-item" [routerLink]="[citem.link]"><i
+                    class="{{citem.icon}}"></i> {{citem.label}}</a></li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="i==0">
+                        <div class="col-xs-2">
+                            <li>
+                                <ul *ngFor="let citem of item.children">
+                                    <li *ngIf="!citem.children" role="menuitem" style="border-bottom:none"><a class="dropdown-item" [routerLink]="[citem.link]"><i
+                    class="{{citem.icon}}"></i> {{citem.label}}</a></li>
+                                </ul>
+                            </li>
+                        </div>
+                        <!-- menu with length === 1 -->
+                        <div class="col-xs-2">
+                            <li>
+                                <ul *ngFor="let citem of item.children">
+                                    <div *ngIf="citem.id === 14">
+                                        <li role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[citem.link]">
+                                                <i class="{{citem.icon}}"></i> {{citem.label}}
+                                            </a>
+                                        </li>
+                                        <li *ngFor="let child of citem.children" role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[child.link,  {outlets: {'content': null}}]">
+                        {{child.label}}
+                      </a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </div>
+                        <div class="col-xs-2">
+                            <li>
+                                <ul *ngFor="let citem of item.children">
+                                    <div *ngIf="citem.id === 15">
+                                        <li role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[citem.link]">
+                                                <i class="{{citem.icon}}"></i> {{citem.label}}
+                                            </a>
+                                        </li>
+                                        <li *ngFor="let child of citem.children" role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[child.link,  {outlets: {'content': null}}]">{{child.label}}
+                      </a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </div>
+                        <div class="col-xs-2">
+                            <li>
+                                <ul *ngFor="let citem of item.children">
+                                    <div *ngIf="citem.id === 16">
+                                        <li role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[citem.link]">
+                                                <i class="{{citem.icon}}"></i> {{citem.label}}
+                                            </a>
+                                        </li>
+                                        <li *ngFor="let child of citem.children" role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[child.link,  {outlets: {'content': null}}]">{{child.label}}
+                      </a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </div>
+                        <div class="col-xs-2">
+                            <li>
+                                <ul *ngFor="let citem of item.children">
+                                    <div *ngIf="citem.id === 17">
+                                        <li role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[citem.link]">
+                                                <i class="{{citem.icon}}"></i> {{citem.label}}
+                                            </a>
+                                        </li>
+                                        <li *ngFor="let child of citem.children" role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[child.link,  {outlets: {'content': null}}]">{{child.label}}
+                      </a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </div>
+                        <div class="col-xs-2">
+                            <li>
+                                <ul *ngFor="let citem of item.children">
+                                    <div *ngIf="citem.id === 18">
+                                        <li role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[citem.link]">
+                                                <i class="{{citem.icon}}"></i> {{citem.label}}
+                                            </a>
+                                        </li>
+                                        <li *ngFor="let child of citem.children" role="menuitem">
+                                            <a class="dropdown-item" [routerLink]="[child.link,  {outlets: {'content': null}}]">{{child.label}}
+                      </a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+        <!--begin notification popup panel-->
+        <li class="nav-item dropdown hidden-md-down" dropdown placement="bottom right" (onToggle)="toggled($event)" style="padding:1rem 0.75rem">
+            <a class="nav-link nav-pill" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
+                <i class="icon-bell"></i>
+                <div class="notify">
+                    <span class="heartbit"></span>
+                    <span class="point"></span>
+                </div>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+                <div class="dropdown-header text-center">Bạn có {{notificationPopup.total}} thông báo</div>
+                <div *ngFor="let item of notificationPopup.data">
+                    <a [routerLink]="[item.href]" class="dropdown-item">
+                        <i class="{{item.class}}"></i> {{item.label}}
+                    </a>
+                </div>
+                <div class="dropdown-header text-center">
+                    <a href="#">Xem thêm</a>
+                </div>
+            </div>
+        </li>
+        <!--end notification popup panel-->
+
+        <!--begin message popup panel-->
+        <li class="nav-item dropdown hidden-md-down" dropdown placement="bottom right" (onToggle)="toggled($event)" style="padding:1rem 0.75rem">
+            <a class="nav-link nav-pill" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
+                <i class="icon-envelope-letter"></i>
+                <div class="notify">
+                    <span class="heartbit"></span>
+                    <span class="point"></span>
+                </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+                <div class="dropdown-header text-center">Bạn có {{messagePopup.total}} tin nhắn</div>
+                <div *ngFor="let item of messagePopup.data">
+                    <a [routerLink]="[item.href]" class="dropdown-item">
+                        <div class="message">
+                            <div class="py-1 mr-1 float-left">
+                                <div class="avatar">
+                                    <img src="{{item.arvatar}}" class="img-avatar" alt="admin@mockup.vn">
+                                    <span class="avatar-status badge-warning"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <small class="text-muted">{{item.sender}}</small>
+                                <small class="text-muted float-right mt-q">{{item.time}}</small>
+                            </div>
+                            <div class="text-truncate font-weight-bold">{{item.title}}</div>
+                            <div class="small text-muted text-truncate">{{item.body}}</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="dropdown-header text-center">
+                    <a href="#">Xem thêm</a>
+                </div>
+            </div>
+        </li>
+        <!--end message popup panel-->
+
+        <!--begin account popup panel-->
+        <li class="nav-item dropdown" dropdown placement="bottom right" style="padding:1rem 0.75rem">
+            <a style="display:inline;" class="nav-link nav-pill avatar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
+                <img src="{{account.avatar}}" class="img-avatar" alt="{{account.email}}">
+                <span style="color:#F9C023;" class="fa fa-caret-down"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+                <div class="text-center">
+                    <div style="padding:10px; border-bottom:1px solid #eceeef">
+                        <img src="{{account.avatar}}" class="img-avatar" alt="{{account.email}}">
+                        <p style="margin-bottom:5px;">{{account.email}}</p>
+                    </div>
+                </div>
+                <a class="dropdown-item" [routerLink]="['/account/merchant-info']"><i class="fa fa-user"></i> Thông tin nhãn
+          hàng</a>
+                <a class="dropdown-item" [routerLink]="['/account/account-info']"><i class="fa fa-file"></i> Thông tin tài khoản</a>
+                <a class="dropdown-item" [routerLink]="['/account/account-management']"><i class="fa fa-wrench"></i> Phân quyền
+          tài khoản</a>
+                <!--fa-usd-->
+                <a class="dropdown-item" (click)="inboxUser()"><i class="fa fa-file"></i> Hòm thư</a>
+                <div class="divider"></div>
+                <!--<a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock account</a>-->
+                <a class="dropdown-item" (click)="logOut()"><i class="fa fa-lock"></i> Đăng xuất</a>
+            </div>
+        </li>
+        <!--end account popup panel-->
+    </ul>
+</header>
+
+<div class="app-body">
+    <!--begin navigator in sidebar panel-->
+    <div class="sidebar hidden-lg-up">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <div *ngFor="let item of navigator">
+                    <li class="divider"></li>
+                    <li class="nav-title text-center">
+                        <span><i class="{{item.icon}}"></i> {{item.label}}</span>
+                    </li>
+                    <div *ngIf="item.children">
+                        <div *ngFor="let citem of item.children">
+                            <div *ngIf="citem.children; else elseBlock">
+                                <li class="nav-item nav-dropdown" routerLinkActive="open">
+                                    <a class="nav-link nav-dropdown-toggle" [routerLink]="[citem.link]"><i class="{{citem.icon}}"></i>{{citem.label}}</a>
+                                    <ul class="nav-dropdown-items">
+                                        <li class="nav-item" *ngFor="let child of citem.children">
+                                            <a class="nav-link" routerLinkActive="active" [routerLink]="[child.link]"><i
+                        class="{{child.icon}}"></i> {{child.label}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </div>
+                            <ng-template #elseBlock>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLinkActive="active" [routerLink]="[citem.link]"><i
+                    class="{{citem.icon}}"></i> {{citem.label}}</a>
+                                </li>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </div>
+    <!--end navigator in sidebar panel-->
+
+    <!-- Main content -->
+    <main class="main">
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb">
+            <breadcrumbs></breadcrumbs>
+        </ol>
+
+        <div class="container-fluid">
+            <router-outlet>
+            </router-outlet>
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+</div>
+
+<footer class="app-footer">
+
+</footer>

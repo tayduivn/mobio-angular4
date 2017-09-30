@@ -1,0 +1,79 @@
+<div class="animated fadeIn" [hidden]="hidden">
+  <div class="row">
+    <!-- statistics and chart left -->
+    <div class="col-sm-6 card-ctn">
+      <div class="row">
+        <div class="col-sm-6 card-number">
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+        </div>
+        <div class="col-sm-6 card-number">
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 card-chart">
+          <mo-card-statistics-chart [data]="chartTest" [legend]="legend"></mo-card-statistics-chart>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 card-number">
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+        </div>
+        <div class="col-sm-6 card-number">
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+        </div>
+      </div>
+    </div>
+    <!-- statistics and chart right -->
+    <div class="col-sm-6 card-ctn">
+      <div class="row">
+        <div class="col-sm-6 card-number">
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+        </div>
+        <div class="col-sm-6 card-number">
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 card-chart">
+          <mo-card-statistics-chart [data]="chartTest" [legend]="legend"></mo-card-statistics-chart>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 card-number">
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+        </div>
+        <div class="col-sm-6 card-number">
+          <mo-card-statistics-number [data]="dataTest"></mo-card-statistics-number>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- table statistics -->
+  <div class="row">
+    <!-- top 5 long duration call in -->
+    <div class="col-sm-6 table-top-left">
+      <mo-table-top-call (eventAudio)="eventAudio($event)" [data]="dataTableTop"></mo-table-top-call>
+    </div>
+    <!-- top 5 long duration call out -->
+    <div class="col-sm-6 table-top-right">
+      <mo-table-top-call (eventAudio)="eventAudio($event)" [data]="dataTableTop"></mo-table-top-call>
+    </div>
+  </div>
+  <!-- statistics call by employee -->
+  <div class="row table-statistics">
+    <mo-table-statistics-call [data]="dataTableStatistics"></mo-table-statistics-call>
+  </div>
+</div>
+<div class="audio">
+  <mo-audio [data]="sourceAudio"></mo-audio>
+</div>
+<div class="calendar">
+  <div class="input-ctn">
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <input type="text" class="form-control" id="filterDate" daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter"
+      (applyDaterangepicker)="selectedDateFitter($event)">
+  </div>
+</div>

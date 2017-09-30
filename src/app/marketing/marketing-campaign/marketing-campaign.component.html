@@ -1,0 +1,734 @@
+<div class="animated fadeIn" (scroll)="triggerMap()">
+    <div class="row">
+        <div class="col-xs-offset-5 col-xs-7">
+            <h6 style="display:inline; color:#37B7F7; text-transform:uppercase; font-weight:400">Các bước tạo chiến dịch</h6>
+            <ul class="register-campaign">
+                <li [ngClass]="{'active':active == 0}" (click)="selectTab(0)"><i class="fa fa-info-circle"></i> <span>Tên chiến dịch</span>
+                </li>
+                <li [ngClass]="{'active':active == 1}" (click)="selectTab(1)"><i class="fa fa-user-circle-o "></i> <span>Khách hàng mục tiêu</span>
+                </li>
+                <li [ngClass]="{'active':active == 2 }" (click)="selectTab(2)"><i class="fa fa-tags"></i> <span>Voucher</span>
+                </li>
+                <li [ngClass]="{'active':active == 3}" (click)="selectTab(3)"><i class="fa fa-volume-up "></i>
+                    <span>Nội dung</span></li>
+                <li [ngClass]="{'active':active == 4}" (click)="selectTab(4)"><i class="fa fa-clock-o"></i>
+                    <span>Thời gian</span></li>
+                <li [ngClass]="{'active':active == 5}" (click)="selectTab(5)"><i class="fa fa-thumbs-o-up"></i>
+                    <span>Xem lại</span></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <tabset #staticTabs>
+                <tab>
+                    <div class="name-campaign" style="background:#fff;">
+                        <div class="row">
+                            <div class="form-group col-xs-offset-2 col-xs-8">
+                                <label for="name" style="font-size:15px;">Tên chiến dịch</label>
+                                <input style="padding:0.5rem 0;" type="text" class="form-control" id="name" placeholder="Nhập tên chiên dịch">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-xs-offset-10 col-xs-2">
+                            <button class="btn btn-cancle" (click)="smModal.show()">Huỷ</button>
+                            <button class="btn btn-continue" (click)="selectTab(1)">Tiếp tục</button>
+                        </div>
+                    </div>
+                </tab>
+                <tab>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h6 style="margin-top:15px; font-weight:400;">Chọn đối tượng khách hàng mục tiêu</h6>
+                        </div>
+                        <div class="col-sm-4">
+                            <ul class="tab-customer">
+                                <li [ngClass]="{'active': customeractive == 0}" (click)="customerTab(0)">Tất cả</li>
+                                <li [ngClass]="{'active': customeractive == 1}" (click)="customerTab(1)">Đã lưu</li>
+                                <li [ngClass]="{'active': customeractive == 2}" (click)="customerTab(2)">Tạo mới</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <tabset #customerTabs>
+                                <tab style="padding:0;">
+                                    <div class="row">
+                                        <div class="col-sm-9">
+                                            <div class="customer-campaign" style="background:#fff">
+                                                <div class="row">
+                                                    <div class="form-group col-xs-offset-1 col-xs-10">
+                                                        <h5 class="both-center">Tất cả khách hàng thành viên</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="number-customer">
+                                                <h2>~3500</h2>
+                                                <h6>Khách hàng</h6>
+                                                <span> Ước tính đến <br> 10:00 2/9/2017</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </tab>
+                                <tab style="padding:0;">
+                                    <div class="row">
+                                        <div class="col-sm-12" style="padding:0px;">
+                                            <div class="customer-save" (click)="showCustomerSave()">
+                                                <h6>Tập khách hàng 1 <span class="fa fa-lg pull-right" [ngClass]="{'fa-angle-down':customersave,'fa-angle-up':!customersave}"></span>
+                                                </h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row" style="margin-top:20px;" [hidden]="customersave">
+                                        <div class="col-sm-9" style="padding:0;">
+                                            <div class="customer-save-content" style="background:#fff">
+                                                <h5>Tập khách hàng 1</h5>
+                                                <p>Gioi tính Nu, Đô tuôi 25-40, Vi trí đia lí Hà Nôi, Có mua săm tai cua hàng trong 30 ngày gân đây.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3" style="padding-right:0px;">
+                                            <div class="number-customer">
+                                                <h2>~3500</h2>
+                                                <h6>Khách hàng</h6>
+                                                <span> Ước tính đến <br> 10:00 2/9/2017</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab style="padding:0px;">
+                                    <div class="row">
+                                        <div class="col-sm-9" style="padding:0;">
+                                            <div class="customer-new" style="background:#fff">
+                                                <h6>Thông tin khách hàng</h6>
+                                                <div class="row" style="margin-bottom:10px;">
+                                                    <div class="col-sm-3">
+                                                        <p>Thời gian đăng ký thành viên</p>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="option" [hidden]="hidden[0]">
+                                                            <duc-datetimepicker [options]="optionsStartEventDatetimePicker" [groupClass]="'left-ico'" [groupIconClass]="'fa fa-calendar'" (dpUpdate)="updateOptionsEndEvent()">
+                                                            </duc-datetimepicker>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-offset-3 col-sm-2">
+                                                        <i class="fa fa-lg" [ngClass]="{'fa-minus-circle': !hidden[0],'fa-plus-circle':hidden[0]}" (click)="hideShowOption($event,0)"></i>
+                                                    </div>
+                                                </div>
+                                                <!-- /row -->
+                                                <div class="row" style="margin-bottom:10px;">
+                                                    <div class="col-sm-3">
+                                                        <p>Hạng thẻ</p>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="option" [hidden]="hidden[1]">
+                                                            <select id="multiple-select" name="multiple-select" class="form-control" size="5" multiple="">
+                                <option value="1">Thẻ vàng</option>
+                                <option value="2">Thẻ bạc</option>
+                                <option value="3">Thẻ đồng</option>
+                              </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2 col-xs-offset-3">
+                                                        <i class="fa fa-lg" [ngClass]="{'fa-minus-circle': !hidden[1],'fa-plus-circle':hidden[1]}" (click)="hideShowOption($event,1)"></i>
+                                                    </div>
+                                                </div>
+                                                <!-- /row -->
+                                                <div class="row" style="margin-bottom:10px;">
+                                                    <div class="col-sm-3">
+                                                        <p>Giới tính</p>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="option" [hidden]="hidden[2]">
+                                                            <ul class="select-gender">
+                                                                <li [ngClass]="{'active': gender == 0}" (click)="selectGender(0)">Tất cả</li>
+                                                                <li [ngClass]="{'active': gender == 1}" (click)="selectGender(1)">Nam</li>
+                                                                <li [ngClass]="{'active': gender == 2}" (click)="selectGender(2)">Nữ</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2 col-xs-offset-3">
+                                                        <i class="fa fa-lg" [ngClass]="{'fa-minus-circle': !hidden[2],'fa-plus-circle':hidden[2]}" (click)="hideShowOption($event,2)"></i>
+                                                    </div>
+                                                </div>
+                                                <!-- /row -->
+                                                <div class="row" style="margin-bottom:10px;">
+                                                    <div class="col-sm-3">
+                                                        <p>Độ tuổi</p>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="option" [hidden]="hidden[3]">
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <select id="select" name="select" class="form-control">
+                                    <option value="0">18</option>
+                                    <option value="1">19</option>
+                                    <option value="2">20</option>
+                                    <option value="3">21</option>
+                                  </select>
+                                                                </div>
+                                                                <div class="col-sm-2 text-center">
+                                                                    <i class="fa fa-minus"></i>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <select id="select" name="select" class="form-control">
+                                    <option value="0">50</option>
+                                    <option value="1">51</option>
+                                    <option value="2">53</option>
+                                    <option value="3">54</option>
+                                  </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2 col-xs-offset-3">
+                                                        <i class="fa fa-lg" [ngClass]="{'fa-minus-circle': !hidden[3],'fa-plus-circle':hidden[3]}" (click)="hideShowOption($event,3)"></i>
+                                                    </div>
+                                                </div>
+                                                <!-- /row -->
+                                                <div class="row" style="margin-bottom:10px;">
+                                                    <div class="col-sm-3">
+                                                        <p>Vị trí địa lý</p>
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                        <div class="option" [hidden]="hidden[4]">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <select id="region" name="multiple-select" class="form-control" size="5" multiple="" #selectRegion>
+                                    <option *ngFor="let r of regions" value="{{r}}">{{r}}</option>
+                                  </select>
+                                                                    <button (click)="selectAllRegion()" class="btn btn-info" style="margin-top:10px">Chọn
+                                    tất cả
+                                  </button>
+                                                                    <button (click)="deleteAllRegion()" class="btn btn-default" style="margin-top:10px">Bỏ
+                                    chọn tất cả
+                                  </button>
+                                                                </div>
+                                                                <div class="col-sm-1">
+                                                                    <i (click)="selectRe()" style="margin-top:40px; margin-right:10px;" class="fa fa-exchange"></i></div>
+                                                                <div class="col-sm-5">
+                                                                    <select id="region" name="multiple-select" class="form-control" size="5" multiple="">
+                                    <option *ngFor="let r of region" value="{{r}}">{{r}}</option>
+                                  </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <i class="fa fa-lg" [ngClass]="{'fa-minus-circle': !hidden[4],'fa-plus-circle':hidden[4]}" (click)="hideShowOption($event,4)"></i>
+                                                    </div>
+                                                </div>
+                                                <!-- /row -->
+                                            </div>
+
+                                            <div class="save-customer">
+                                                <div class="checkbox">
+                                                    <label for="checkbox1">
+                            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1"><span
+                            style="font-size:15px; font-weight:500;">Lưu tập khách hàng</span>
+                          </label>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3" style="text-align:right">
+                                                        <p style="margin-top:5px;">Tên tập tin khách hàng(*)</p>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="form-group">
+                                                            <input placeholder="Tên tập tin khách hàng" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-3" style="padding-right:0px;">
+                                            <div class="number-customer" style="position:relative; min-height:556px;">
+                                                <div class="both-center">
+                                                    <h2>~3500</h2>
+                                                    <h6>Khách hàng</h6>
+                                                </div>
+                                                <span> Ước tính đến <br> 10:00 2/9/2017</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                            </tabset>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-xs-offset-10 col-xs-2">
+                            <button class="btn btn-cancle" (click)="smModal.show()">Huỷ</button>
+                            <button class="btn btn-continue" (click)="selectTab(2)">Tiếp tục</button>
+                        </div>
+                    </div>
+                </tab>
+                <tab>
+
+                    <div class="name-voucher" style="background:#fff;">
+                        <div class="row">
+                            <div class="form-group col-xs-offset-2 col-xs-8">
+                                <label for="name" style="font-size:16px;">Tên voucher</label>
+                                <input type="text" class="form-control" id="name" placeholder="Nhập tên voucher">
+                                <p style="margin-top:30px; font-size:15px">Thời gian diễn ra chương trình voucher</p>
+                                <div class="row">
+                                    <div class="col-sm-6" style="display:flex">
+                                        <span style="flex:1; margin-top:7px;">Từ</span>
+                                        <div class="option" style="flex:11">
+                                            <duc-datetimepicker [options]="optionsStartEventDatetimePicker" [groupClass]="'left-ico'" [groupIconClass]="'fa fa-calendar'" (dpUpdate)="updateOptionsEndEvent()">
+                                            </duc-datetimepicker>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" style="display:flex">
+                                        <span style="flex:1; margin-top:7px;margin-right:5px;">Đến</span>
+                                        <div class="option" style="flex:11">
+                                            <duc-datetimepicker [options]="optionsStartEventDatetimePicker" [groupClass]="'left-ico'" [groupIconClass]="'fa fa-calendar'" (dpUpdate)="updateOptionsEndEvent()">
+                                            </duc-datetimepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-xs-offset-10 col-xs-2">
+                            <button class="btn btn-cancle" (click)="smModal.show()">Huỷ</button>
+                            <button class="btn btn-continue" (click)="selectTab(3)">Tiếp tục</button>
+                        </div>
+                    </div>
+                </tab>
+                <tab>
+                    <div class="name-voucher" style="background:#fff; padding: 40px 100px 50px;">
+                        <div class="row">
+                            <div class="col-xs-offset-1 col-xs-10">
+                                <p>Chọn kênh gửi thông tin</p>
+                                <accordion>
+                                    <accordion-group #mobio panelClass="customClassMobio">
+                                        <div accordion-heading>
+                                            Push qua mobio
+                                            <i class="pull-right float-xs-right fa" [ngClass]="{'fa-minus-circle': mobio?.isOpen, 'fa-plus-circle': !mobio?.isOpen}"></i>
+                                        </div>
+                                        <div class="accordion-content">
+                                            <div class="content">
+                                                <p>Nội dung <i style="font-size:12px; float:right;">Giới hạn 320 kí tự</i></p>
+                                                <textarea style="border-radius:5px;" id="textarea-input" name="textarea-input" rows="4" class="form-control" placeholder="Nhập nội dung thông báo"></textarea>
+                                            </div>
+                                            <div class="mobile">
+                                                <img class="img-responsive" src="../../assets/img/mobile.png">
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+                                    <accordion-group #fb panelClass="customClassFb">
+                                        <div accordion-heading>
+                                            Fb Messenger
+                                            <i class="pull-right float-xs-right fa" [ngClass]="{'fa-minus-circle': fb?.isOpen, 'fa-plus-circle': !fb?.isOpen}"></i>
+                                        </div>
+                                        <div class="accordion-fb">
+                                            <a [hidden]="accordionfb" href="javascript:void(0);" (click)="notifiFaceModal.show()"><i
+                        class="fa fa-facebook-square"></i> Kết nối Fanpage Facebook <i class="fa fa-question-circle"
+                                                                                       tooltip="Hỗ trợ 01 trang Facebook"
+                                                                                       placement="bottom"
+                                                                                       container="body"></i></a>
+                                            <div [hidden]="!accordionfb" class="content">
+                                                <a href="javascript:void(0);"><i class="fa fa-facebook-square"></i> Cocasuki VietNam Fanpage</a>
+                                            </div>
+                                            <div class="content-fb" [hidden]="!accordionfb">
+                                                <div class="form-fb">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <label for="name">Link voucher</label>
+                                                            <div class="row">
+                                                                <div class="col-xs-8">
+                                                                    <input style="display:inline;" type="text" class="form-control" id="name" placeholder="Link voucher" value="https://www.facebook.com/groups/152971785286713/permalink" style="border-radius:5px;">
+                                                                </div>
+                                                                <div class="col-xs-4">
+
+                                                                    <button style="display:inline;" class="btn btn-info" style="padding:0.5rem 1.25rem; border-radius:3px;">Sao chép
+                                  </button>
+                                                                </div>
+                                                            </div>
+                                                            <i style="font-size:12px; color:#d1d1d1;">Sao chép link voucher và dán vào nôi dung tin
+                                nhắn gui cho khách hàng</i>
+                                                        </div>
+                                                        <div class="col-xs-12" style="margin-top:30px;">
+                                                            <p>Nội dung <i style="font-size:12px; float:right;">Giới hạn 320 kí tự</i></p>
+                                                            <textarea style="border-radius:5px;" id="textarea-input" name="textarea-input" rows="4" class="form-control" placeholder="Nhập nội dung thông báo"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mobile">
+                                                    <img class="img-responsive" src="../../assets/img/mobile.png">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </accordion-group>
+                                    <accordion-group #email panelClass="customClassEmail">
+                                        <div accordion-heading>
+                                            Push qua email
+                                            <i class="pull-right float-xs-right fa" [ngClass]="{'fa-minus-circle': email?.isOpen, 'fa-plus-circle': !email?.isOpen}"></i>
+                                        </div>
+                                        <div class="accordion-email">
+                                            <h6>Thông tin chung</h6>
+                                            <div class="form-email">
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+                                                        <label for="email">Email người gửi <i class="fa fa-question-circle"
+                                                                  tooltip="Thông tin sẽ được gửi tới khách hàng từ địa chỉ email này"
+                                                                  placement="top" container="body"></i></label>
+                                                        <input type="text" class="form-control" id="email" placeholder="Email người gửi">
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top:15px;">
+                                                    <div class="col-xs-6">
+                                                        <label for="name">Tên người gửi <i class="fa fa-question-circle"
+                                                               tooltip="Tên người gửi hiển thị trong Email gửi đến khách hàng"
+                                                               placement="top"></i></label>
+                                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên người gửi">
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="margin-top:15px;">
+                                                    <div class="col-xs-12">
+                                                        <label style="display:block" for="name">Tiêu đề email <i class="pull-right"
+                                                                                     style="font-size:11px;">Giới hạn
+                              320 kí tự</i></label>
+                                                        <input type="text" class="form-control" id="name" placeholder="Nhập tên người gửi">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="email-template">
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <h6 style="margin-top:10px; font-weight:400;">Mẫu email</h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <ul class="tab-customer">
+                                                        <li [ngClass]="{'active':emailtemplate == 0}" (click)="emailTab(0)">Đã lưu</li>
+                                                        <li [ngClass]="{'active':emailtemplate == 1}" (click)="emailTab(1)">Kho mẫu email</li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                            <tabset #emailTabs>
+                                                <tab>
+                                                    <carousel>
+                                                        <slide>
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
+                                                                    <img class="img-responsive" src="assets/images/nature/1.jpg" alt="First slide">
+                                                                    <p class="text-center">Mobio1</p>
+                                                                    <button class="btn btn-created text-center" (click)="lgModal.show()">Xem</button>
+                                                                </div>
+                                                                <div class="col-xs-4">
+                                                                    <img class="img-responsive" src="assets/images/nature/2.jpg" alt="First slide">
+                                                                    <p class="text-center">Teamplate1</p>
+                                                                    <button class="btn btn-created text-center" (click)="lgModal.show()">Xem</button>
+                                                                </div>
+                                                                <div class="col-xs-4">
+                                                                    <img class="img-responsive" src="assets/images/nature/3.jpg" alt="First slide">
+                                                                    <p class="text-center">Teamplate2</p>
+                                                                    <button class="btn btn-created text-center" (click)="lgModal.show()">Xem</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </slide>
+                                                    </carousel>
+                                                </tab>
+                                                <tab>
+                                                    <carousel>
+                                                        <slide>
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
+                                                                    <img class="img-responsive" src="assets/images/nature/3.jpg" alt="First slide">
+                                                                    <p class="text-center">Mobio1</p>
+                                                                    <button class="btn btn-created text-center" (click)="lgModal.show()">Xem</button>
+                                                                </div>
+                                                                <div class="col-xs-4">
+                                                                    <img class="img-responsive" src="assets/images/nature/2.jpg" alt="First slide">
+                                                                    <p class="text-center">Teamplate1</p>
+                                                                    <button class="btn btn-created text-center" (click)="lgModal.show()">Xem</button>
+                                                                </div>
+                                                                <div class="col-xs-4">
+                                                                    <img class="img-responsive" src="assets/images/nature/1.jpg" alt="First slide">
+                                                                    <p class="text-center">Teamplate2</p>
+                                                                    <button class="btn btn-created text-center" (click)="lgModal.show()">Xem</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </slide>
+                                                    </carousel>
+                                                </tab>
+                                            </tabset>
+                                        </div>
+                                        <!-- /email-template -->
+                                        <div class="email-content">
+                                            <h6>Nội dung email</h6>
+                                            <div class="row">
+                                                <div class="col-xs-12" style="margin-top:20px;">
+                                                    <label for="name">Link voucher</label>
+                                                    <div class="row">
+                                                        <div class="col-xs-8">
+                                                            <input style="display:inline;" type="text" class="form-control" id="name" placeholder="Link voucher" value="https://www.facebook.com/groups/152971785286713/permalink" style="border-radius:5px;">
+                                                        </div>
+                                                        <div class="col-xs-4">
+
+                                                            <button style="display:inline;" class="btn btn-info" style="padding:0.5rem 1.25rem; border-radius:3px;">Sao chép
+                              </button>
+                                                        </div>
+                                                    </div>
+                                                    <i style="font-size:12px; color:#d1d1d1;">Sao chép link voucher và dán vào nôi dung tin nhắn
+                            gui cho khách hàng</i>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <p style="margin-top:25px; margin-bottom:10px;">Nội dung <i class="pull-right" style="font-size:12px;">Giới hạn
+                            320 kí tự</i></p>
+                                                    <ckeditor [config]="config"></ckeditor>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </accordion-group>
+                                </accordion>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-xs-offset-10 col-xs-2">
+                            <button class="btn btn-cancle" (click)="smModal.show()">Huỷ</button>
+                            <button class="btn btn-continue" (click)="selectTab(4)">Tiếp tục</button>
+                        </div>
+                    </div>
+                </tab>
+                <tab>
+                    <div class="name-voucher" style="background:#fff;">
+                        <div class="row">
+                            <div class="form-group col-xs-offset-2 col-xs-8">
+
+                                <p style="margin:10px 0; font-size:16px;">Thời gian diễn ra voucher</p>
+                                <div class="row">
+                                    <div class="col-xs-offset-1 col-sm-5" style="display:flex">
+                                        <span style="flex:1; margin-top:7px;">Từ</span>
+                                        <div class="option" style="flex:5">
+                                            <duc-datetimepicker [options]="optionsStartEventDatetimePicker" [groupClass]="'left-ico'" [groupIconClass]="'fa fa-calendar'" (dpUpdate)="updateOptionsEndEvent()">
+                                            </duc-datetimepicker>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5" style="display:flex">
+                                        <span style="flex:1; margin-top:7px;margin-right:5px;">Đến</span>
+                                        <div class="option" style="flex:5">
+                                            <duc-datetimepicker [options]="optionsStartEventDatetimePicker" [groupClass]="'left-ico'" [groupIconClass]="'fa fa-calendar'" (dpUpdate)="updateOptionsEndEvent()">
+                                            </duc-datetimepicker>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="name-voucher" style="background:#fff;">
+                        <div class="row">
+                            <div class="form-group col-xs-offset-2 col-xs-8">
+                                <p style="margin:10px 0;font-size:16px;">Thời gian bắt đầu chiến dịch</p>
+                                <div class="radio">
+                                    <label for="radio1">
+                    <input type="radio" id="radio1" name="radios" value="option1"> Ngay lập tức
+                  </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="radio2">
+                    <input type="radio" id="radio2" name="radios" value="option2" (change)="hiddentime=true"> Chọn ngày
+                    giờ
+                  </label>
+                                </div>
+                                <div class="row" [hidden]="!hiddentime">
+                                    <div class="col-xs-offset-1 col-sm-5">
+                                        <div class="option" style="margin-top:5px;">
+                                            <duc-datetimepicker [options]="optionsStartEventDatetimePicker" [groupClass]="'left-ico'" [groupIconClass]="'fa fa-calendar'" (dpUpdate)="updateOptionsEndEvent()">
+                                            </duc-datetimepicker>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="name-voucher" style="background:#fff;">
+                        <div class="row">
+                            <div class="form-group col-xs-offset-2 col-xs-8">
+                                <p style="margin:10px 0;font-size:16px;">Thời gian kêt thúc chiến dịch</p>
+
+                                <div class="row">
+                                    <div class="col-xs-offset-1 col-sm-5">
+                                        <div class="option">
+                                            <duc-datetimepicker [options]="optionsStartEventDatetimePicker" [groupClass]="'left-ico'" [groupIconClass]="'fa fa-calendar'" (dpUpdate)="updateOptionsEndEvent()">
+                                            </duc-datetimepicker>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-xs-offset-10 col-xs-2">
+                            <button class="btn btn-cancle" (click)="smModal.show()">Huỷ</button>
+                            <button class="btn btn-continue" (click)="selectTab(5)">Xem lại</button>
+                        </div>
+                    </div>
+                </tab>
+                <tab>
+                    <div class="name-voucher" style="background:#fff;">
+                        <div class="row">
+                            <div class="form-group col-xs-offset-2 col-xs-8">
+                                <div class="step">
+                                    <h6>Tên chiến dịch
+                                        <button (click)="selectTab(0)" class="btn btn-created pull-right">Sửa</button>
+                                    </h6>
+                                    <p>
+                                        <span style="margin-left:10px">Chiến dịch 1</span>
+
+                                    </p>
+                                </div>
+                                <div class="step">
+                                    <h6>Khách hàng mục tiêu
+                                        <button (click)="selectTab(1)" class="btn btn-created pull-right">Sửa</button>
+                                    </h6>
+                                    <p>
+                                        <span style="margin-left:10px">Tập khách hàng 1</span>
+
+                                    </p>
+                                </div>
+                                <div class="step">
+                                    <h6>Voucher
+                                        <button (click)="selectTab(2)" class="btn btn-created pull-right">Sửa</button>
+                                    </h6>
+                                    <p>
+                                        <span style="margin-left:10px">Chiến dịch 1</span>
+
+                                    </p>
+                                </div>
+                                <div class="step">
+                                    <h6>Nội dung
+                                        <button (click)="selectTab(3)" class="btn btn-created pull-right">Sửa</button>
+                                    </h6>
+                                    <p>
+                                        <span style="margin-left:10px">Chiến dịch 1</span>
+
+                                    </p>
+                                </div>
+                                <div class="step">
+                                    <h6>Thời gian
+                                        <button (click)="selectTab(4)" class="btn btn-created pull-right">Sửa</button>
+                                    </h6>
+                                    <p>
+                                        <span style="margin-left:10px">20/10/2017 15:30</span>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px">
+                        <div class="col-xs-offset-10 col-xs-2">
+                            <button class="btn btn-cancle" (click)="smModal.show()">Huỷ</button>
+                            <a href="/marketing/dashboard" class="btn btn-continue">Kích hoạt chiến dịch</a>
+                        </div>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title pull-left">THÔNG BÁO</h6>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="smModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <p style="font-weight:300; margin-top:20px;">Bạn có muốn lưu nháp chiến dịch này không?</p>
+            </div>
+            <div class="col-xs-offset-7 col-xs-5">
+                <a [routerLink]="['/marketing/dashboard']" class="btn btn-cancle">Không</a>
+                <a [routerLink]="['/marketing/dashboard']" class="btn btn-confirm">Có</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div bsModal #notifiFaceModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title pull-left">KẾT NỐI FACEBOOK</h6>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="notifiFaceModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <p style="font-weight:300; margin-top:20px;">Vui lòng truy cập Mạng xã hội để kết nối Fanpage Facebook</p>
+            </div>
+            <div class="col-xs-offset-6 col-xs-6">
+                <a href="javascript:void(0);" class="btn btn-confirm" (click)="notifiFaceModal.hide(); accordionfb = true;">Đồng
+          ý</a>
+                <a href="javscript:void(0)" class="btn btn-cancle" (click)="notifiFaceModal.hide();">Bỏ qua</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">TÊN MẪU EMAIL</h5>
+                <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body" style="position:relative; max-height:500px; overflow:auto;padding:0;">
+                <div style="position:absolute; top:5%; left:50%; transform:translateX(-50%);z-index:100;">
+
+                    <ul class="tab-customer">
+                        <li [ngClass]="{'active':emailmodal == 0}" (click)="modalTab(0)">Desktop</li>
+                        <li [ngClass]="{'active':emailmodal == 1}" (click)="modalTab(1)">Mobile</li>
+                    </ul>
+
+                </div>
+                <tabset #emailModal>
+                    <tab style="padding:0">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <img style="width:100%" src="assets/images/nature/1.jpg">
+                                <h6 class="text-center">Mẫu email 1</h6>
+                                <p>Chia sẻ tại buổi làm việc với câu lạc bộ LBC với chủ đề công nghệ 4.0, ông Nguyễn Tuấn Anh, CEO của Grab Việt Nam khẳng định thời điểm này Grab không lo lắng nhiều về đối thủ.</p>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab style="padding:0">
+                        <div class="row">
+                            <div class="col-xs-offset-4 col-xs-4">
+                                <img style="width:100%" src="assets/images/nature/1.jpg">
+                                <h6 class="text-center">Mẫu email 1</h6>
+                                <p>Chia sẻ tại buổi làm việc với câu lạc bộ LBC với chủ đề công nghệ 4.0, ông Nguyễn Tuấn Anh, CEO của Grab Việt Nam khẳng định thời điểm này Grab không lo lắng nhiều về đối thủ.</p>
+                            </div>
+                        </div>
+                    </tab>
+                </tabset>
+
+            </div>
+            <div class="row" style="margin:20px">
+                <div class="col-xs-offset-9 col-xs-3">
+                    <button (click)="lgModal.hide()" class="btn btn-cancle">Đóng</button>
+                    <button (click)="lgModal.hide()" class="btn btn-continue">Sử dụng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

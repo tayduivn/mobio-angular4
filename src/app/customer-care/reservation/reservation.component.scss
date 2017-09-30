@@ -1,0 +1,77 @@
+table {
+  .text-label {
+    display: block;
+  }
+  td {
+    .header-pagination {
+      padding-left: 0;
+    }
+    .perpage-pagination {
+      padding-right: 0;
+      float: right;
+    }
+  }
+}
+
+:host /deep/ ul {
+  max-height: 115px !important;
+}
+
+.ng-pristine button.datepicker-actions__button {
+  display: none !important;
+  background: #f00;
+}
+
+.datepicker-actions__input {
+  background: #f00 !important;
+}
+
+div.buttom-option > button {
+  width: 120px;
+}
+
+.card-filter {
+  height: 570px;
+  .filter-state {
+    max-height: 100px;
+  }
+  .filter-date-start {
+    max-height: 50px;
+  }
+}
+
+.modal-dialog {
+  width: 1000px;
+  .modal-body {
+    height: 350px !important;
+    .creat-product {
+      border: none;
+    }
+    .date-picker {
+      width: 92%;
+    }
+    .note-reservation {
+      max-width: 96%;
+      textarea {
+        resize: none;
+      }
+    }
+    .button-option {
+      padding: 0 40px;
+      text-align: right;
+      button {
+        width: 110px;
+      }
+    }
+  }
+}
+
+:host /deep/ .cuppa-dropdown {
+  width: 413px;
+}
+
+@media (min-width: 992px) {
+  .modal-dialog {
+    margin: 100px auto;
+  }
+}

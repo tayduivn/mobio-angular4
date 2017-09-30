@@ -1,0 +1,11 @@
+:host {
+    .chart-wrapper {
+        height: 300px;
+        >canvas {
+            width: 280px !important;
+            height: 280px !important;
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+}

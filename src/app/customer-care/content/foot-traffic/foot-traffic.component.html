@@ -1,0 +1,548 @@
+<div class="animated fadeIn">
+  <div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-3">
+      <div class="input-group search-content">
+                <span class="input-group-btn">
+                    <button (click)="searchFootTraffic()" type="button" class="btn btn-primary"><i
+                      class="fa fa-search"></i></button>
+                  </span>
+        <input type="text" [(ngModel)]="keySearch" (keyup.enter)="searchFootTraffic()" id="input1-group2"
+               name="input1-group2" class="form-control" placeholder="Tìm kiếm"/>
+      </div>
+    </div>
+    <!--search-->
+    <div class="col-md-4">
+      <button class="btn btn-delete" [disabled]="!allowButton" (click)="removeFootTrafficSelect()">Xóa
+      </button>
+      <button class="btn btn-hide" [disabled]="!allowButton" (click)="switchStateFootTraffic(2)">Ẩn
+      </button>
+      <button class="btn btn-show" [disabled]="!allowButton" (click)="switchStateFootTraffic(1)">Hiển thị</button>
+    </div>
+    <div class="col-md-5 btn-execute">
+      <button class="btn btn-created" type="button" (click)="showCreateFootTraffic()"><i
+        class="fa fa-plus-circle"></i> Tạo ưu đãi
+      </button>
+    </div>
+  </div>
+  <!--search and upload file, create promotion-->
+
+  <div class="row">
+    <div class="col-md-2 col-sm-12">
+      <div class="card card-filter">
+        <div class="card-header">Trạng thái hiển thị</div>
+        <div class="card-block">
+          <div class="checkbox">
+            <label>
+              <input name="chkShow" type="checkbox" value="show" #showStateItem
+                     (change)="filterStateShow()"> Hiển Thị
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input name="chkHide" type="checkbox" value="hide" #hideStateItem
+                     (change)="filterStateHide()"> Ẩn
+            </label>
+          </div>
+        </div>
+        <!--Trạng thái hiển thị -->
+        <div class="card-header">Trạng thái hiệu lực</div>
+        <div class="card-block">
+          <div class="checkbox">
+            <label>
+              <input name="chkAllow" type="checkbox" value="allow" #acceptEffect
+                     (change)="filterAcceptEffect()"> Có
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input name="chkReject" type="checkbox" value="reject" #rejectEffect
+                     (change)="filterRejectEffect()"> Không
+            </label>
+          </div>
+        </div>
+        <!--Trạng thai hiệu lực -->
+        <div class="card-header">Danh Mục</div>
+        <div class="card-block list-category">
+          <div class="checkbox" *ngFor="let promotionType of promotionTypes">
+            <label>
+              <input name="{{promotionType.code}}" type="checkbox" value="{{promotionType.code}}"
+                     (change)="filterCate($event, promotionType.code)"> {{promotionType.title.vi}}
+            </label>
+          </div>
+        </div>
+        <!--Danh mục -->
+      </div>
+    </div>
+    <!--Menu left- Filtering foot-traffic-->
+    <div class="col-md-10 col-sm-12">
+      <div class="card">
+        <table class="table table-list">
+          <thead>
+          <tr>
+            <th style="width: 20px;">
+              <input type="checkbox" #_selectAllFootTraffic (click)="selectFootTraffics($event)"/>
+            </th>
+            <th style="width: 15%;">
+              Ảnh đại diện
+            </th>
+            <th style="width: 25%;">
+              Tên chương trình foot-traffic
+              <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconNameProgram === 0,
+                    'fa-sort-asc':setIconNameProgram===1,'fa-sort-desc':setIconNameProgram===2}" aria-hidden="true"
+                 (click)="sortNameProgram()"></i>
+            </th>
+            <th style="width: 20%;text-align: center">
+              Thời gian bắt đầu
+              <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconTimeStart===0,
+                    'fa-sort-asc':setIconTimeStart===1,'fa-sort-desc':setIconTimeStart===2}" aria-hidden="true"
+                 (click)="sortTimeStart()"></i>
+            </th>
+            <th style="width: 20%;text-align: center;">
+              Thời gian kết thúc
+              <i [ngClass]="{'select-cursor fa':true,'fa-sort':setIconTimeEnd===0,
+                    'fa-sort-asc':setIconTimeEnd===1,'fa-sort-desc':setIconTimeEnd===2}" aria-hidden="true"
+                 (click)="sortTimeEnd()"></i>
+            </th>
+            <th style="width: 20%;text-align: center;">
+              Thao tác
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let footTraffic of footTraffics" [class.state-show]="footTraffic.state === 2">
+            <td><input name="{{footTraffic.idFootTraffic}}" value="{{footTraffic.idFootTraffic}}" type="checkbox"
+                       (change)="selectFootTraffic($event,footTraffic.idFootTraffic)" [checked]="footTraffic['select']">
+            </td>
+            <td><img
+              [src]="!+footTraffic.avatar?'http://www.manningeagles.com/wp-content/uploads/promotion.jpg':footTraffic.avatar"
+              width="100%" height="72" alt=""></td>
+            <td style="color: #2874ea;font-weight: 500;">
+              <button class="btn out-date" [ngStyle]="{'display': footTraffic.stateOfEffect === 1? 'none':'initial'}">
+                Hết hiệu lực
+              </button>
+              <br/>
+              <label>{{footTraffic.namePromotion}}</label>
+            </td>
+            <td style="text-align: center;">{{footTraffic.timeStartPromotion}}</td>
+            <td style="text-align: center">{{footTraffic.timeEndPromotion}}</td>
+            <td style="text-align: center" class="btn-execute">
+              <i (click)="showEditFootTraffic(footTraffic.idFootTraffic, footTraffic.state)"
+                 class="fa fa-pencil-square-o fa-3" tooltip="Sửa" aria-hidden="true"></i>
+              <i (click)="switchSingleState(footTraffic.idFootTraffic, footTraffic.state)" class="fa"
+                 [tooltip]="footTraffic.state === 1? 'Ẩn':'Hiện'"
+                 [ngClass]="{'fa-eye': footTraffic.state === 2,'fa-eye-slash': footTraffic.state === 1}"></i>
+              <i (click)="removeFootTraffic(footTraffic.namePromotion,footTraffic.idFootTraffic)"
+                 class="glyphicon glyphicon-trash" tooltip="Xóa"></i>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="5">
+              <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+            </td>
+            <td colspan="1" style="float: right">
+              <div class="input-group">
+                <span class="input-group-addon file-upload-show">Hiển thị </span>
+                <select class="select-page" id="select-page" name="select-page" size="1" #_selectCurrentPage
+                        (change)="changePerPage(_selectCurrentPage.value)">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <!--Table show data and action add + edit + delete-->
+  </div>
+  <!--Show Table List Product-->
+
+</div>
+
+<div bsModal #footTrafficModal="bs-modal" class="modal fade modal-create-product" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style="min-width: 1000px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{textTitle}}</h4>
+        <button type="button" class="close" (click)="footTrafficModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" #elModalFootTrafficBody (scroll)="onScrollFootTrafficModal()">
+        <div class="row body-create-product">
+          <div class="col-sm-8 col-sm-offset-4">
+            <div class="col-sm-12 creat-product">
+              <div class="form-group row" #elFootTrafficName>
+                <label class="col-sm-10 form-control-label">Tên chương trình foot-traffic (*)</label>
+                <div class="col-sm-11">
+                  <input class="form-control input-sm" [(ngModel)]="footTraffic.namePromotion" type="text"
+                         [disabled]="isLoadingFootTraffic" maxlength="256">
+                </div>
+              </div>
+              <!--Tên ưu đãi-->
+              <div class="form-group row">
+                <label class="col-sm-10 form-control-label">Danh mục (*)</label>
+                <div class="col-sm-4" *ngFor="let promotionType of promotionTypesModal">
+                  <div class="checkbox">
+                    <label>
+                      <input name="input-category" type="checkbox" [checked]="promotionType['select']"
+                             [value]="promotionType.code" [disabled]="isLoadingFootTraffic"
+                             (change)="selectPromotionInModal($event, promotionType.code)"> {{promotionType.title.vi}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!--Danh Mục-->
+              <div class="form-group row">
+                <label class="col-sm-12 form-control-label">Giới hạn tặng điểm (*)</label>
+                <div class="col-md-11">
+                  <select class="form-control" size="1" #_typePromotion
+                          (change)="changeLimitPointDonation(_typePromotion.value)">
+                    <option value="4" [selected]="footTraffic.limitPointDonation === 4">Theo tổng số điểm trong toàn
+                      chương trình
+                    </option>
+                    <option value="5" [selected]="footTraffic.limitPointDonation === 5">Theo số lượt khách hàng ghé thăm
+                      trong toàn chương
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <!--Gioi han tang diem-->
+              <div class="form-group row input-two-data">
+                <div class="col-6" style="padding-left: 0;">
+                  <label class="col-sm-12 form-control-label">{{ footTraffic.limitPointDonation === 4
+                    ?"Tổng số điểm tặng(*)": "Số lượt khách hàng ghé thăm (*)"}}</label>
+                  <div class="col-sm-12">
+                    <div class="input-group">
+                      <input class="form-control" type="number" [(ngModel)]="valuePointOrView" min="0"
+                             [disabled]="isLoadingFootTraffic">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="col-sm-12 form-control-label">Số điểm tặng cho 01 lượt ghé
+                    thăm (*)</label>
+                  <div class="col-sm-12">
+                    <div class="input-group">
+                      <input class="form-control" type="number" [disabled]="isLoadingFootTraffic"
+                             [(ngModel)]="footTraffic.pointsAwarded" min="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--So diem tang + So luot ghe tham-->
+
+              <div class="form-group row input-two-data">
+                <div class="col-6" style="padding-left: 0;">
+                  <label class="col-sm-12 form-control-label" style="min-height: 42px;">Số lần tặng điểm
+                    tối đa cho 01 khách hàng trong toàn chương trình (*)</label>
+                  <div class="col-sm-12">
+                    <div class="input-group">
+                      <input class="form-control" type="number" [disabled]="isLoadingFootTraffic"
+                             [(ngModel)]="footTraffic.maximumAccumulations" min="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="col-sm-12 form-control-label" style="min-height: 42px;">Khoảng cách giữa hai lần tặng
+                    điểm cho 01 khách hàng (*)</label>
+                  <div class="col-sm-12">
+                    <div class="input-group">
+                      <input class="form-control" type="number" [disabled]="isLoadingFootTraffic"
+                             [(ngModel)]="footTraffic.distance" min="0">
+                      <span class="input-group-addon col-sm-4" style="text-align: left;padding-left: 15px;">Giờ</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Create foot-traffic section 1-->
+
+            <div class="col-sm-12 creat-product">
+              <div class="form-group row input-two-data">
+                <div class="col-6" style="padding-left: 0;">
+                  <label class="col-sm-12 form-control-label">Thời gian bắt đầu(*)</label>
+                  <div class="col-sm-12">
+                    <duc-datetimepicker [options]="optionsStartEventDatetimePicker" [groupClass]="'left-ico'"
+                                        [groupIconClass]="'fa fa-calendar'"
+                                        [(ngModel)]="footTraffic.timeStartPromotion"></duc-datetimepicker>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="col-sm-12 form-control-label">Thời gian kết thúc</label>
+                  <div class="col-sm-12">
+                    <duc-datetimepicker [options]="optionsEndEventDatetimePicker" [groupClass]="'left-ico'"
+                                        [groupIconClass]="'fa fa-calendar'"
+                                        [(ngModel)]="footTraffic.timeEndPromotion"></duc-datetimepicker>
+                  </div>
+                </div>
+              </div>
+              <!--Date start and End date-->
+              <div class="form-group row input-two-data">
+                <div class="col-6" style="padding-left: 0;">
+                  <label class="col-sm-12 form-control-label">Thời gian bắt đầu hiện thị(*)</label>
+                  <div class="col-sm-12">
+                    <duc-datetimepicker [options]="optionsStartDisplayDatetimePicker" [groupClass]="'left-ico'"
+                                        [groupIconClass]="'fa fa-calendar'"
+                                        [(ngModel)]="footTraffic.timeStartDisplay"></duc-datetimepicker>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="col-sm-12 form-control-label">Thời gian kết thúc hiển thị</label>
+                  <div class="col-sm-12">
+                    <duc-datetimepicker [options]="optionsEndDisplayDatetimePicker" [groupClass]="'left-ico'"
+                                        [groupIconClass]="'fa fa-calendar'"
+                                        [(ngModel)]="footTraffic.timeEndDisplay"></duc-datetimepicker>
+                  </div>
+                </div>
+              </div>
+              <!--set time-->
+            </div>
+            <!-- Create foot-traffic section 5 -->
+            <div class="col-sm-12 creat-product" style="padding: 0 40px;" #elModalDescription>
+              <label style="margin-left: -5px;margin-top: 10px;" class="col-sm-10 form-control-label">Mô tả (*)</label>
+              <div class="form-group row" style="padding: 0 5px;width: 98.5%;">
+                <ckeditor [config]="config" [(ngModel)]="footTraffic.description"></ckeditor>
+              </div>
+              <!--Mô tả-->
+              <div class="form-group row">
+              </div>
+              <div class="form-group row" style="padding: 0 15px;">
+                <div style="width: 96%;border-bottom: none; " class="tooltip-show">
+                  <label>Tags <i class="fa fa-question"
+                                 tooltip="Bạn nên chọn các từ khóa có liên quan đến khuyễn mãi để tối ưu hóa tim kiếm trên Google Search và các công cụ tìm kiếm khác"></i></label>
+                </div>
+                <div style="width: 96%;">
+                  <tag-input [(ngModel)]='tags'></tag-input>
+                </div>
+              </div>
+            </div>
+            <!-- Create foot-traffic section 4 = description and tag-input -->
+
+            <div class="col-sm-12 creat-product" style="padding: 0 40px;">
+              <label style="margin-left: -13px;margin-top: 10px;" class="col-sm-10 form-control-label">Địa điểm áp
+                dụng</label>
+              <div class="row bar-filter-shop">
+                <div class="col-md-4">
+                  <div class="input-group">
+                                        <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </span>
+                    <input type="text" id="input-search-shop" name="input-search-shop" class="form-control"
+                           placeholder="Tìm cửa hàng" [(ngModel)]="valueAddressSearch"/>
+                  </div>
+                </div>
+                <!--search-->
+                <div class="col-md-4 dopdownSelect">
+                  <label class="lableSelect" (click)=setViewArea()>Chọn vùng miền
+                    <i [ngClass]="{'fa-angle-down':setHideSelectArea,'fa-angle-up':!setHideSelectArea}" class="fa"></i>
+                  </label>
+                  <ul [ngStyle]="{'display': setHideSelectArea?'none':'block'}">
+                    <li style="border-bottom: 1px solid #e4e0e0;"><input type="checkbox"
+                                                                         (change)="selectAllDomain($event)" value="0"/>
+                      <span id="selectAreaAll"> {{!checkBoxArea?'Chọn tất cả':'Bỏ tất cả'}}</span>
+                    </li>
+                    <li *ngFor="let province of provinces">
+                      <input type="checkbox" [value]="province.code" [checked]="province['select']"
+                             (change)="selectDomain($event, province.code)" [disabled]="isLoadingFootTraffic"/>
+                      <span>{{province.name.vi}}</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Select a region -->
+                <div class="col-md-4 dopdownSelect">
+                  <label class="lableSelect" (click)=setViewCity()>Chọn tỉnh thành
+                    <i [ngClass]="{'fa-angle-down':setHideSelectCity,'fa-angle-up':!setHideSelectCity}" class="fa"></i>
+                  </label>
+                  <ul [ngStyle]="{'display': setHideSelectCity?'none':'block'}">
+                    <li style="border-bottom: 1px solid #e4e0e0;"><input [checked]="checkAllCity"
+                                                                         [disabled]="isLoadingFootTraffic"
+                                                                         type="checkbox" value="0"
+                                                                         (change)="selectAllProvincesCity($event)"/>
+                      <span id="selectCityAll">{{!checkBoxCity?'Chọn tất cả':'Bỏ tất cả'}}</span>
+                    </li>
+                    <li *ngFor="let provincesCity of provincesCityByModal">
+                      <input type="checkbox" (click)="selectProvincesCity($event, provincesCity.code)"
+                             [checked]="checkBoxCity" [value]="provincesCity.idCity"/>
+                      <span>{{provincesCity.name}}</span>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Select a city -->
+              </div>
+              <!-- Select a city -->
+
+              <div class="row" style="margin: 0 1px;margin-top: 15px;">
+                <table class="table table-hover">
+                  <thead style="display: block;width: 100%;">
+                  <tr>
+                    <th width="100px"><input type="checkbox" (change)="selectAllShop($event)" [checked]="checkAllShop"
+                                             [disabled]="isLoadingFootTraffic">
+                    </th>
+                    <th style="width: 1000px;padding-left: 110px;">Địa chỉ</th>
+                  </tr>
+                  </thead>
+                  <tbody style="display: block;height: 250px;overflow-y: auto;overflow-x: hidden;">
+                  <tr *ngFor="let shop of shops | dataFilterShop: valueAddressSearch">
+                    <td width="100px"><input type="checkbox" (change)="selectShop($event,shop.idShop)"
+                                             [disabled]="isLoadingFootTraffic" [checked]="shop['select']">
+                    </td>
+                    <td style="width: 1000px;">{{shop.address}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--shop filter and table shop-->
+            <div class="col-sm-12 creat-product" style="padding: 20px 40px 0;" #elImageDescription>
+              <div class="col-sm-12 header-upload">
+                <label class="col-sm-10 form-control-label title-upload">Ảnh đại diện (*)</label><br/>
+                <i>Kích thước 320x320 pixels Dung lượng =< 100kB Ảnh jpg, jpeg, png</i>
+              </div>
+              <div class="col-sm-12" style="min-height: 150px;">
+                <div class="form-group row">
+                  <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOverAvatar}"
+                       (onFileDrop)="changeUrlFileUploadAvatar()" (fileOver)="fileOverBaseUploadAvatar($event)"
+                       [uploader]="uploaderAvatar" class="well my-drop-zone">
+                    <div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và thả ảnh</div>
+                    <div class="row">
+                      <div class="col-sm-4 text-right text-hoac">
+                        Hoặc :
+                      </div>
+                      <div class="col-sm-6">
+                        <button class="btn btn-s" type="button" (click)="chooseFileUpdateAvatar()">
+                          <span class="glyphicon glyphicon-upload"></span> Chọn file
+                        </button>
+                        <span style="display: none;" *ngFor="let item of uploaderAvatar.queue">
+                          {{ item?.file?.name }}
+                        </span>
+                        <div class="hidden-md-down hidden-md-up">
+                          <input type="file" #elInputFileAvatar ng2FileSelect [disabled]="isLoadingFootTraffic"
+                                 accept="image/x-png,image/gif,image/jpeg"
+                                 (change)="changeUrlFileUploadAvatar()" [(uploader)]="uploaderAvatar"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div *ngFor="let imgAvatar of uploaderAvatar.queue,let iImgAvatar = index" class="fileImgUpload">
+                      <img [src]="imgAvatar.url" [alt]="'Ảnh '+iImgAvatar">
+                      <span (click)="imgAvatar.remove()"> <i class="fa fa-close"></i></span>
+                    </div>
+                    <div *ngIf="footTraffic.avatar && footTraffic.avatar!=='' && uploaderAvatar.queue.length===0"
+                         class="fileImgUpload">
+                      <img [src]="footTraffic.avatar">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Ảnh đại diện -->
+              <div class="col-sm-12 header-upload">
+                <label class="col-sm-10 form-control-label title-upload">Ảnh mô tả (*)</label><br/>
+                <i>Kích thước 720x450 pixels Dung lượng =< 100kB Ảnh jpg, jpeg, png</i>
+              </div>
+              <div class="col-sm-12" style="min-height: 150px;">
+                <div class="form-group row">
+                  <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOverImageDescriptions}"
+                       (onFileDrop)="changeUrlFileUploadImageDescriptions()"
+                       (fileOver)="fileOverBaseUploadImageDescriptions($event)" [uploader]="uploaderImageDescriptions"
+                       class="well my-drop-zone">
+                    <div class="col-sm-6 offset-md-4 title-upload-product"> Kéo và thả ảnh</div>
+                    <div class="row">
+                      <div class="col-sm-4 text-right text-hoac">
+                        Hoặc :
+                      </div>
+                      <div class="col-sm-6">
+                        <button class="btn btn-s" type="button" (click)="chooseFileUpdateImageDescriptions()">
+                          <span class="glyphicon glyphicon-upload"></span> Chọn file
+                        </button>
+                        <span style="display: none" *ngFor="let item of uploaderImageDescriptions.queue">
+                          {{ item?.file?.name }}
+                        </span>
+                        <div class="hidden-md-down hidden-md-up">
+                          <input type="file" accept="image/x-png,image/gif,image/jpeg" [disabled]="isLoadingFootTraffic"
+                                 #elInputFileImageDescriptions ng2FileSelect
+                                 (change)="changeUrlFileUploadImageDescriptions()"
+                                 [(uploader)]="uploaderImageDescriptions" multiple/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div *ngFor="let imgDescription of uploaderImageDescriptions.queue,let iImgDescription = index"
+                         class="fileImgUpload">
+                      <img [src]="imgDescription.url" [alt]="'Ảnh '+iImgDescription">
+                      <span (click)="imgDescription.remove()"> <i class="fa fa-close"></i></span>
+                    </div>
+                    <div *ngFor="let imgEdit of footTraffic.imageDescriptions;let iImgDescription = index"
+                         class="fileImgUpload">
+                      <img [src]="imgEdit.linkImage">
+                      <span (click)="removeImgDescription(iImgDescription)"> <i class="fa fa-close"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- ảnh mô tả -->
+            </div>
+            <!-- Create footTraffic section 6 => Image description -->
+
+            <div class="col-sm-12 creat-product" style="padding: 20px 40px 0;">
+              <div class="form-group row">
+                <label class="col-sm-3 form-control-label">Trạng Thái Hiển Thị</label>
+                <label class="switch switch-3d switch-mobio" style="margin-top:5px;">
+                  <input checked="" class="switch-input" type="checkbox" (change)="switchState($event)"
+                         [checked]="footTraffic.state===1" [disabled]="isLoadingFootTraffic">
+                  <span class="switch-label"></span>
+                  <span class="switch-handle"></span>
+                </label>
+              </div>
+            </div>
+            <!--Create  section 7 Trạng Thái Hiển Thị -->
+
+
+            <!--Create product section 8 => button execute -->
+
+          </div>
+          <!--Left body content-->
+          <div class="col-sm-4" id="viewmobile" style="position: relative;">
+            <div id="scroolMobie" class="fixed  sidebar-outer">
+              <div id="contentIphoneOut">
+                <div id="contentIphoneIn">
+                  <mobile-foot-traffic-component #elMobileFootTraffic
+                                                 [uploaderImageDescriptions]="uploaderImageDescriptions.queue"
+                                                 [uploaderAvatar]="(!!uploaderAvatar && uploaderAvatar.queue.length > 0)?uploaderAvatar.queue[0].url:''"
+                                                 [footTraffic]="footTraffic"
+                                                 [setTop]="setTop"></mobile-foot-traffic-component>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Mobile view product-->
+          <div #divOutClick id="divOutClick" (click)="dismisDopdown()"
+               [ngStyle]="{'display': setHideSelectOutClick?'none':'block'}"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-xs-12">
+
+          <button type="button" class="btn btn-created" [ladda]="isLoadingFootTraffic" (click)="saveFootTraffic()">Lưu
+          </button>
+          <button type="button" class="btn btn-cancle" (click)="footTrafficModal.hide()">Bỏ qua
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- Modal Create Product -->

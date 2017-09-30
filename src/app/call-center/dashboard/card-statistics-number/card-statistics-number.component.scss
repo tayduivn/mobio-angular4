@@ -1,0 +1,21 @@
+.card {
+	background-color: #ffffff;
+	padding: 5px 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;	
+	color: #666666;
+	font-size: 1rem;
+	.value {
+		color: #000000;
+		font-size: 2rem;
+		display: flex;
+		align-items: center;
+	}
+	.icon {
+		flex: 0 0 150px;
+	}
+	.desc {
+		color: #aaaaaa;
+		font-size: 0.75rem;
+	}
+}

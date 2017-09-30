@@ -1,0 +1,55 @@
+<div class="row item">
+  <div class="customer">
+    <div class="icon">
+      <img [src]="item.icon" alt="">
+    </div>
+    <div class="avatar">
+      <img [src]="item.avatar" alt="">
+    </div>
+    <div class="info">
+      <div class="full-name">{{item.fullName}}</div>
+      <div class="type-card">{{item.card}}</div>
+    </div>
+  </div>
+  <div class="phone">
+    <a (click)="call(item.phone)" class="number">{{item.phone}}</a> <a class="phone-icon"><i class="fa fa-phone" aria-hidden="true"></i></a>
+  </div>
+  <div class="time">
+    {{item.time}}
+  </div>
+  <div class="time-waiting">
+    {{item.timeWaiting}}
+  </div>
+  <div class="duration">
+    {{item.duration}}
+  </div>
+  <div class="employee" data-toggle="tooltip" title="{{item.employee}}">
+    {{item.employee}}
+  </div>
+  <div class="note" data-toggle="tooltip" title="{{item.note}}">
+    {{item.note}}
+  </div>
+  <div class="action">
+    <div class="edit-note">
+      <a data-toggle="tooltip" title="Cập nhật ghi chú" (click)="editNote(item.id)"></a>
+      <div class="input-edit" *ngIf="isEdittingNote">
+        <textarea maxlength="512" placeholder="Nhập ghi chú ..." [(ngModel)]="item.note" rows="4" class="form-control"></textarea>
+        <div class="action-edit">
+          <div class="pull-left count">
+            {{item.note.length}} / 512
+          </div>
+          <div class="pull-right">
+            <button (click)="cancelEditNote()" class="btn btn-default">Hủy bỏ</button>
+            <button (click)="saveEditNote()" class="btn btn-info">Lưu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="play">
+      <a data-toggle="tooltip" title="Nghe lại cuộc gọi" (click)="play()"></a>
+    </div>
+    <div class="download">
+      <a data-toggle="tooltip" title="Tải file" href="" download></a>
+    </div>
+  </div>
+</div>

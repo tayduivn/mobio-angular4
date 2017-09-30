@@ -1,0 +1,304 @@
+<toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+<div class="animated fadeIn">
+    <div class="row" style="margin-bottom:30px;">
+        <div class="col-sm-2">
+            <div class="card filter-customer-insight">
+                <div class="card-body">
+                    <h5>Loại thẻ</h5>
+                    <div class="form-group">
+                        <div class="checkbox" *ngFor="let cardPattern of cardPatterns">
+                            <label>
+				<input type="checkbox" name="checkbox1" [value]="cardPattern.idCardPattern"
+					   (click)="filterCardType(cardPattern.idCardPattern)"> {{cardPattern.cardName}}</label>
+                        </div>
+                    </div>
+                    <!-- filter card type-->
+
+                    <h5>Độ tuổi</h5>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label for="checkbox6">
+				<input type="checkbox" id="checkbox6" name="checkbox6" value="option6" (change)="filterAge(18)"> <18
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox7">
+				<input type="checkbox" id="checkbox7" name="checkbox7" value="option7" (change)="filterAge(1824)"> 18-24
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox8">
+				<input type="checkbox" id="checkbox8" name="checkbox8" value="option8" (change)="filterAge(2534)"> 25-34
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox9">
+				<input type="checkbox" id="checkbox9" name="checkbox9" value="option9" (change)="filterAge(3544)"> 35-44
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox10">
+				<input type="checkbox" id="checkbox10" name="checkbox10" value="option10" (change)="filterAge(4554)">
+				45-54
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox11">
+				<input type="checkbox" id="checkbox11" name="checkbox11" value="option11" (change)="filterAge(55)"> >55
+			  </label>
+                        </div>
+                    </div>
+                    <!-- filter age -->
+
+                    <h5>Giới tính</h5>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label for="checkbox12">
+				<input type="checkbox" id="checkbox12" name="checkbox12" value="option12" (change)="filterGender(1)">
+				Nam
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox13">
+				<input type="checkbox" id="checkbox13" name="checkbox13" value="option13" (change)="filterGender(2)"> Nữ
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox14">
+				<input type="checkbox" id="checkbox14" name="checkbox14" value="option14" (change)="filterGender(0)">
+				Không xác định
+			  </label>
+                        </div>
+                    </div>
+                    <!-- filter gender-->
+
+                    <h5>Hệ điều hành</h5>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label for="checkbox16">
+				<input type="checkbox" id="checkbox16" name="checkbox16" value="option16" (change)="filterOs(1)"> IOS
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox17">
+				<input type="checkbox" id="checkbox17" name="checkbox17" value="option17" (change)="filterOs(2)">
+				Android
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox18">
+				<input type="checkbox" id="checkbox18" name="checkbox18" value="option18" (change)="filterOs(0)"> Khác
+			  </label>
+                        </div>
+                    </div>
+                    <!-- filter age -->
+
+                    <h5>Mức độ hài lòng</h5>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label for="checkbox19">
+				<input type="checkbox" id="checkbox19" name="checkbox19" value="option19"
+					   (change)="filterSatisfaction(1)"> 1 sao
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox20">
+				<input type="checkbox" id="checkbox20" name="checkbox20" value="option20"
+					   (change)="filterSatisfaction(2)"> 2 sao
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox21">
+				<input type="checkbox" id="checkbox21" name="checkbox21" value="option21"
+					   (change)="filterSatisfaction(3)"> 3 sao
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox22">
+				<input type="checkbox" id="checkbox22" name="checkbox22" value="option22"
+					   (change)="filterSatisfaction(4)"> 4 sao
+			  </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="checkbox23">
+				<input type="checkbox" id="checkbox23" name="checkbox23" value="option23"
+					   (change)="filterSatisfaction(5)"> 5 sao
+			  </label>
+                        </div>
+                    </div>
+                    <!-- filter satify-->
+
+                </div>
+            </div>
+        </div>
+        <!-- /col3 -->
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-6" style="padding-left:0;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 style="margin:11px 0 0;">Khách hàng</h6>
+                            <mo-line-chart [data]="customerinsight"></mo-line-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 card-customer-insight">
+                    <div class="row">
+                        <div class="col-sm-6" style="padding-right:1px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Khách hàng thành viên hiện tại <i class="fa fa-info-circle" tooltip="Tổng số khách hàng được duyệt thẻ thành viên tới thời điểm hiện tại" container="body" placement="bottom"></i></h6>
+                                    <p class="number">{{numberCurrentCustomer?.report?.current_customer}}</p>
+                                    <p class="percent" *ngIf="!!numberCurrentCustomer?.report?.ratio">
+                                        {{numberCurrentCustomer.report.ratio | number : '1.2-2'}}% so với 30 ngày trước</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="padding-left:1px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Khách hàng thành viên mới <i class="fa fa-info-circle" tooltip="Khách hàng được duyệt thẻ thành viên trong kì báo cáo" container="body" placement="bottom"></i></h6>
+                                    <p class="number">{{numberNewCustomer?.report?.new_customer}}</p>
+                                    <p class="percent" *ngIf="!!numberNewCustomer?.report?.ratio">
+                                        {{numberNewCustomer.report.ratio | number : '1.2-2'}}% so với 30 ngày trước</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6" style="padding-right:1px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Khách hàng tương tác <i class="fa fa-info-circle" tooltip="Khách hàng tương tác quá tất cả các kênh" container="body" placement="bottom"></i></h6>
+                                    <p class="number">{{numberCustomerInteractive?.report?.customer_interactive}}</p>
+                                    <p *ngIf="!!numberCustomerInteractive?.report?.ratio" class="percent">
+                                        {{numberCustomerInteractive.report.ratio | number : '1.2-2'}}% so với 30 ngày trước</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="padding-left:1px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Tỉ lệ khách xoá thẻ <i class="fa fa-info-circle" tooltip="Khách hàng xoá thẻ thành viên của nhãn hàng" container="body" placement="bottom"></i></h6>
+                                    <p class="number">{{numberCustomerDeleteRatio?.report?.deleted_ratio | number : '1.2-2'}}%</p>
+                                    <p class="percent" *ngIf="!!numberCustomerDeleteRatio?.report?.ratio">
+                                        {{numberCustomerDeleteRatio.report.ratio | number : '1.2-2'}}% so với 30 ngày trước</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+
+            <div class="row" style="background:#fff; margin-right:0;margin-bottom:3px;padding:10px;">
+                <div class="col-sm-3">
+                    <div class="customer-chart">
+                        <canvas baseChart [data]="cardTypeReport['data']" [colors]="cardTypeReport['colors']" [labels]="cardTypeReport['labels']" [options]="cardTypeOption" [chartType]="cardTypeReport['chartType']"></canvas>
+                        <img src="../../assets/img/icon/card-visit.png" class="both-center">
+                    </div>
+                    <p class="text-center" style="margin-bottom:0px">Loại thẻ</p>
+                </div>
+                <div class="col-sm-3">
+                    <div class="customer-chart">
+                        <canvas baseChart [data]="ageReportData " [labels]="ageReportLabel " [chartType]="ageReportType " [options]="ageOption " (chartHover)="chartHovered($event)" [colors]="ageReportColor" (chartClick)="chartClicked($event) "></canvas>
+                        <img src="../../assets/img/icon/birthday.png" class="both-center">
+                    </div>
+                    <p class="text-center" style="margin-bottom:0px">Độ tuổi</p>
+                </div>
+                <div class="col-sm-3">
+                    <div class="customer-chart">
+                        <canvas baseChart [data]="genderReportData " [labels]="genderReportLabel " [chartType]="osReportType " [options]="genderOption" [colors]="genderReportColor" (chartHover)="chartHovered($event) " (chartClick)="chartClicked($event) "></canvas>
+                        <img src="../../assets/img/icon/gender.png" class="both-center">
+                    </div>
+                    <p class="text-center" style="margin-bottom:0px">Giới tính</p>
+                </div>
+                <div class="col-sm-3">
+                    <div class="customer-chart">
+                        <canvas baseChart [data]="osReportData " [labels]="osReportLabel " [chartType]="genderReportType " [colors]="osReportColor" [options]="osOption " (chartHover)="chartHovered($event) " (chartClick)="chartClicked($event) "></canvas>
+                        <img src="../../assets/img/icon/mobile.png" class="both-center">
+                    </div>
+                    <p class="text-center" style="margin-bottom:0px">Hệ điều hành</p>
+                </div>
+            </div>
+            <!-- /row -->
+            <div class="row">
+                <div class="col-sm-6" style="padding-left:0;">
+                    <div class="card card-end">
+                        <div class="card-body">
+                            <h6 style="margin-bottom:20px;">Vị trí</h6>
+                            <p style="margin-bottom:0px;">Hồ Chí Minh</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%;background:#3CBA54;">
+                                </div>
+                            </div>
+                            <p style="margin-bottom:0px;">Hà Nội</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%;background:#3CBA54;">
+                                </div>
+                            </div>
+                            <p style="margin-bottom:0px;">Đà Nẵng</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:30%;background:#3CBA54;">
+                                </div>
+                            </div>
+                            <p style="margin-bottom:0px;">Hải phòng</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:20%;background:#3CBA54;">
+                                </div>
+                            </div>
+                            <p style="margin-bottom:0px;">Vinh</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:10%;background:#3CBA54;">
+                                </div>
+                            </div>
+                            <button class="btn btn-created" style="margin-right: 10px;" type="button" (click)="loadMoreLocation()">Xem
+				thêm
+			  </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card card-end">
+                        <div class="card-body">
+                            <h6 style="margin-bottom:20px;">Mức độ hài lòng</h6>
+                            <p style="margin-bottom:0px;">5 <i class="fa fa-star"></i></p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="reportRating?.report[0]?.value" aria-valuemin="0" aria-valuemax="100" style="width:70%;background:#3CBA54;">
+                                </div>
+                            </div>
+                            <p style="margin-bottom:0;">4 <i class="fa fa-star"></i></p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': reportRating?.report[1]?.value+'%', 'background':'#7CBC00'}">
+                                </div>
+                            </div>
+                            <p style="margin-bottom:0;">3 <i class="fa fa-star"></i></p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': reportRating?.report[2]?.value+'%', 'background':'#EEFF71'}">
+                                </div>
+                            </div>
+                            <p style="margin-bottom:0px;">2 <i class="fa fa-star"></i></p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': reportRating?.report[3]?.value+'%', 'background':'#EEFF71'}">
+                                </div>
+                            </div>
+                            <p style="margin-bottom:0;">1 <i class="fa fa-star"></i></p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': reportRating?.report[4]?.value+'%', 'background':'#FF003D'}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /col9 -->
+    </div>
+    <!-- /row -->
+</div>
+<div class="input-group date filter-date col-xs-2">
+    <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+	  <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+    </span>
+    <input type="text" class="form-control" id="filterDate" daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+</div>

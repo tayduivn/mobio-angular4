@@ -1,0 +1,16 @@
+<div class="chart-wrapper">
+  <div class="label">{{data['labelChart']}}</div>
+  <div class="row">
+    <div class="col-sm-6">
+      <canvas baseChart [data]="data['data']" [colors]="data['colors']" [labels]="data['labels']" [chartType]="data['chartType']"
+        [options]="data['options']"></canvas>
+      <img [src]="data['icon']" class="icon-chart" />
+    </div>
+    <div class="col-sm-6 legend">
+      <div class="item" *ngFor="let item of legend">
+          <div class="color" [ngStyle]="{'background-color': item.color}"></div>
+          <div class="legend-text">{{item.text}}</div>
+      </div>
+    </div>
+  </div>
+</div>

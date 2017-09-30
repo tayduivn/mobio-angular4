@@ -1,0 +1,104 @@
+<section class="conten-full">
+  <div class="conten" #elMobileContent>
+
+    <!-- Bengin hearder -->
+    <section class="menu-mobi">
+      <div class="hearder_mobile">
+        <div class="menu-icon-sammo">
+          <a href="javascript:void(0)"><img alt="imenu" src="../../../../../../assets/img/icon/imenu.png"/></a>
+        </div>
+        <div class="logomobile">
+          <h1 class="title-cat">Nhãn hàng</h1>
+        </div>
+        <div class="hearder-item">
+          <div class="hearder-item-icon">
+            <a href="javascript:void(0)"><img alt="icon" src="../../../../../../assets/img/icon/add.png"/></a>
+          </div>
+          <div class="hearder-item-icon">
+            <a href="javascript:void(0)"><img alt="icon" src="../../../../../../assets/img/icon/thong-bao.png"/></a>
+            <span class="ring-ring">3</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- End hearder -->
+
+
+    <!-- Bengin box-conten -->
+    <div class="box-conten">
+      <!-- Bengin slive -->
+      <div class="slive">
+        <!-- Slides Container -->
+        <carousel class="preview-mobile" [noWrap]="noWrapSlides">
+          <slide *ngFor="let image of uploaderImageDescriptions; let index=index">
+            <img width="224px" height="100px" style="max-height:224px; max-height:100px; margin:0 auto;" [src]="image.url">
+          </slide>
+          <slide *ngFor="let image of product.imageDescriptions; let index=index">
+            <img width="224px" height="100px" style="max-height:224px; max-height:100px; margin:0 auto;" [src]="image.linkImage">
+          </slide>
+        </carousel>
+      </div>
+      <!-- End slive -->
+      <div class="bg-karaok">
+        <div class="padding10" #elMobileName>
+          <h3 class="post-title-karaoke"><a href="javascript:void(0);">{{!product.name?'Phòng Vip':product.name}}</a></h3>
+          <p class="post-time">{{product.price|number:0}}VND/1h</p>
+        </div>
+        <div class="karaoke-thich">
+          <div class="icon-sp-thich"><a href="javascript:void(0);"><img src="../../../../../../assets/img/icon/sp-thich.png"></a></div>
+          <div class="icon-sp-thich"><a href="javascript:void(0);"><img src="../../../../../../assets/img/icon/sp-danhgia.png"></a></div>
+        </div>
+      </div>
+
+
+      <div class="thumnail-dia-diem">
+        <div class="left-dia-diem">
+          <a href="javascript:void(0);" class="thong-bao-img">
+            <img *ngIf="!!uploaderAvatar" [attr.src]="uploaderAvatar">
+            <img *ngIf="!uploaderAvatar" [attr.src]="(!!product.avatar)?product.avatar:'../../../../../../assets/img/icon/avata.jpg'">
+          </a>
+          <h3 class="them-the-title"><a href="javascript:void(0);"><strong>Dr.marsten</strong></a></h3>
+        </div>
+        <div class="right-dia-diem">
+          <a href="javascript:void(0);" class="goi-call">012345678</a>
+        </div>
+      </div>
+
+      <div class="tien-ich-kraoke">
+        <div class="like-comment-col">
+          <p style="color:#333;">15</p>
+          <p style=" font-size:12px;">Giao dịch</p>
+        </div>
+        <div class="like-comment-col">
+          <p style="color:#333;">66</p>
+          <p style=" font-size:12px;">Bình luận</p>
+        </div>
+        <div class="like-comment-col" style="border-right: 0;">
+          <p style="color:#333;">4.0</p>
+          <p style=" font-size:12px;">Đánh giá</p>
+        </div>
+      </div>
+
+      <div class="tien-ich-kraoke">
+        <span class="tien-ich-title">Tiện ích:</span>
+        <span class="tien-ich-img"><img src="../../../../../../assets/img/icon/wifi.png"/></span>
+        <span class="tien-ich-img"><img src="../../../../../../assets/img/icon/wifi-02.png"/></span>
+        <span class="tien-ich-img"><img src="../../../../../../assets/img/icon/wifi-03.png"/></span>
+        <span class="tien-ich-img"><img src="../../../../../../assets/img/icon/wifi-04.png"/></span>
+        <span class="tien-ich-img"><img src="../../../../../../assets/img/icon/wifi-05.png"/></span>
+      </div>
+
+      <!-- Bengin singer -->
+      <div class="singer">
+        <div class="pading5">
+          <div class="entry" #elMobileEntry [innerHTML]="product.description">
+          </div>
+        </div>
+      </div>
+      <!-- End singer -->
+
+    </div>
+  </div>
+</section>
+<!-- End conten-full -->

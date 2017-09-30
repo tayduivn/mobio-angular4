@@ -1,0 +1,27 @@
+<div class="filter">
+  <h4>TRẠNG THÁI CUỘC GỌI</h4>
+  <div class="checkbox">
+    <label>
+        <input type="checkbox" value="answered"> Cuộc gọi đến đã trả lời
+      </label>
+  </div>
+  <div class="checkbox">
+    <label>
+          <input type="checkbox" value="reject"> Cuộc gọi đến từ chối trả lời
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+        <input type="checkbox" value="miss"> Cuộc gọi nhỡ
+      </label>
+  </div>
+  <div class="checkbox">
+    <label>
+          <input type="checkbox" value="call out"> Cuộc gọi đi
+        </label>
+  </div>
+  <hr>
+  <h4>THỜI GIAN</h4>
+  <input type="text" class="form-control" id="filterDate" daterangepicker [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter"
+    (applyDaterangepicker)="selectedDateFitter($event)">
+</div>

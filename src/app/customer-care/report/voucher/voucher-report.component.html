@@ -1,0 +1,285 @@
+<div class="animated fadeIn" *ngIf="showhide">
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Số Voucher</strong>
+          <div class="card-actions">
+            <div class="input-group date filter-date">
+                            <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                                <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                            </span>
+              <input type="text" class="form-control" id="filterDate" daterangepicker
+                     [(ngModel)]="stringdaterangeFitter" [options]="optionsDateFitter"
+                     (applyDaterangepicker)="selectedDateFitter($event)">
+            </div>
+          </div>
+        </div>
+        <!-- /card header -->
+        <div class="card-block">
+          <mo-line-chart [data]="lineChartNumberVoucher"></mo-line-chart>
+        </div>
+        <!-- card-block -->
+      </div>
+      <!-- /card -->
+    </div>
+    <!-- /col -->
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-3">
+      <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" (click)="searchVoucher()" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </span>
+        <input type="text" [(ngModel)]="keySearch" name="input1-group2" class="form-control" placeholder="Tìm kiếm"/>
+      </div>
+    </div>
+    <div class="col-xs-offset-6 col-xs-3">
+      <div class="input-group date filter-date">
+                <span class="input-group-addon" (click)="showDaterangeFitter($event)">
+                <span class="fa fa-calendar" ng-reflect-ng-class="fa fa-calendar"></span>
+                </span>
+        <input type="text" class="form-control" id="filterDate" daterangepicker [(ngModel)]="stringdaterangeFitter"
+               [options]="optionsDateFitter" (applyDaterangepicker)="selectedDateFitter($event)">
+        <button class="btn btn-default"><i class="fa fa-download"></i> Xuất file</button>
+      </div>
+    </div>
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-top:10px;">
+    <div class="col-xs-3">
+      <div class="card" style="max-height:500px; overflow: auto;">
+        <div class="card-block">
+          <h6>Trạng thái hiển thị</h6>
+          <div class="form-group" style="margin-top:10px ">
+            <div class="checkbox">
+              <label>
+                <input name="chkShow" type="checkbox" value="show" #showStateItem
+                       (change)="filterStateShow()"> Hiển
+                Thị
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input name="chkHide" type="checkbox" value="hide" #hideStateItem
+                       (change)="filterStateHide()"> Ẩn
+              </label>
+            </div>
+          </div>
+
+          <h6>Trạng thái hiệu lực</h6>
+          <div class="form-group" style="margin-top:10px ">
+            <div class="checkbox">
+              <label>
+                <input name="chkAllow" type="checkbox" value="allow" #acceptEffect
+                       (change)="filterAcceptEffect()"> Có
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input name="chkReject" type="checkbox" value="reject" #rejectEffect
+                       (change)="filterRejectEffect()"> Không
+              </label>
+            </div>
+          </div>
+
+          <h6>Danh mục</h6>
+          <div class="form-group" style="margin-top:10px ">
+            <div class="checkbox" *ngFor="let promotionType of promotionTypes">
+              <label>
+                <input name="{{promotionType.code}}" type="checkbox" value="{{promotionType.code}}"
+                       (change)="filterCate($event, promotionType.code)"> {{promotionType.title.vi}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+    <div class="col-xs-9">
+      <div class="card">
+        <table class="table table-condensed">
+          <thead>
+          <th>Tên Voucher</th>
+          <th>Trong kỳ báo cáo</th>
+          <th>Toàn thời gian</th>
+          </thead>
+          <tbody>
+          <tr class="animated fadeIn" *ngFor="let voucherReport of vouchers">
+            <td>
+              <button class="btn btn-danger button-status btn-sm" style="border-radius: 5px;color: white;"
+                      [ngStyle]="{'display': voucherReport.stateEffect === 1? 'none':'initial'}">
+                Hết hiệu lực
+              </button>
+              <br/>
+              <a href="javascipt:voi(0);" (click)="changeShowHide(voucherReport.VoucherID)">{{voucherReport.nameVoucher}}</a>
+            </td>
+            <td>
+              <div class="progressbar" style="margin-bottom:10px;">
+                {{voucherReport.all.released}}
+                <progressbar [max]="voucherReport.all.released + 100" [value]="voucherReport.all.released"
+                             type="success">
+                </progressbar>
+              </div>
+              <div class="progressbar" style="margin-bottom:10px;">
+                {{voucherReport.all.used}}
+                <progressbar [max]="voucherReport.all.used + 100" [value]="voucherReport.all.used"
+                             type="warning">
+                </progressbar>
+              </div>
+            </td>
+            <td>
+              <div class="progressbar" style="margin-bottom:10px;">
+                {{voucherReport.in_period.released}}
+                <progressbar [max]="voucherReport.in_period.released + 100" [value]="voucherReport.in_period.released"
+                             type="success">
+                </progressbar>
+              </div>
+              <div class="progressbar" style="margin-bottom:10px;">
+                {{voucherReport.in_period.used}}
+                <progressbar [max]="voucherReport.in_period.used + 100" [value]="voucherReport.in_period.used"
+                             type="warning">
+                </progressbar>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="1" style="padding-left: 0;">
+              <pagination-mobio [paging]="paging" (onSelectPage)="getCurrentPage($event)"></pagination-mobio>
+            </td>
+            <td colspan="1"></td>
+            <td colspan="1" style="padding-right: 0;float: right;">
+              <div class="input-group">
+                <span class="input-group-addon file-upload-show">Hiển thị </span>
+                <select style="width: 50px;padding-left: 10px;" class="select-page" name="select-page" size="1"
+                        #_selectCurrentPage (change)="changePerPage(_selectCurrentPage.value)">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- row -->
+</div>
+<!-- /content -->
+
+<!-- detail content -->
+<div class="animated fadeIn web-card" *ngIf="showhide1">
+  <div class="row" style="margin-bottom:10px">
+    <button (click)="changeHideShow()" style="position:absolute; top:-30px; right:30px" type="button"
+            class="btn btn-sm btn-default">Chi tiết <i class="fa fa-close"></i></button>
+    <div class="col-xs-3">
+      <div class="image-detail">
+        <img src="https://static.pexels.com/photos/263041/pexels-photo-263041.jpeg" alt="">
+      </div>
+    </div>
+    <!-- /col -->
+    <div class="col-xs-7">
+      <div class="content-detail">
+        <h5>Pizza Bolognaise Cỡ lớn</h5>
+        <div class="voucher-point">
+          <div class="row">
+            <div class="col-xs-4">
+              <h3>700</h3>
+              <p>Phát hành</p>
+            </div>
+            <div class="col-xs-4">
+              <h3>500</h3>
+              <p>Đã sử dụng</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- /col -->
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-3">
+      <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" (click)="searchTransaction()"><i
+                      class="fa fa-search"></i></button>
+                </span>
+        <input type="text" [(ngModel)]="keySearchTransaction" id="input1-group2" name="input1-group2"
+               class="form-control" placeholder="Tìm kiếm"/>
+      </div>
+    </div>
+    <div class="col-xs-offset-7 col-xs-2">
+      <div class="input-group" style="display:block;">
+        <button style="float:right;" class="btn btn-default"><i class="fa fa-download"></i> Xuất file</button>
+      </div>
+    </div>
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-bottom:10px;">
+    <div class="col-xs-12">
+      <div class="card" style="padding:5px;">
+        <div class="row">
+          <div class="col-xs-4" *ngFor="let transaction of transactions">
+            <div class="card">
+              <div class="card-block">
+                <div class="customer-content">
+                  <p><strong>{{transaction.fullName}}</strong></p>
+                  <p>{{transaction.idPhone}}</p>
+                  <p>{{transaction.email}}</p>
+                </div>
+                <div class="customer-content">
+                  <p>Mã giao dịch: <strong>{{transaction.codeTrading}}</strong></p>
+                  <p>
+                    <button type="button" class="btn btn-sm btn-success">Đã sử dụng</button>
+                  </p>
+                </div>
+                <div class="customer-content">
+                  <p>Đổi quà tặng: 04/07/2017 19:07</p>
+                  <p>Xác nhận yêu cầu: 04/07/2017 16:07</p>
+                  <p>Nhận: 07/07/2017 9:54</p>
+                </div>
+                <div class="customer-content">
+                  <p>Thông tin nhận: thông tin khách hàng cung cấp khi bấm đổi quà trên app
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--transaction-->
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+  </div>
+  <!-- /row -->
+  <div class="row" style="margin-bottom:15px;">
+    <div class="col-xs-10">
+      <pagination-mobio [paging]="pagingTransaction"
+                        (onSelectPage)="getCurrentPageTransaction($event)"></pagination-mobio>
+    </div>
+    <div class="col-xs-2">
+      <div class="input-group" style="float: right;width: auto;">
+        <span class="input-group-addon file-upload-show">Hiển thị </span>
+        <select style="width: 50px;padding-left: 10px;" class="select-page" name="select-page" size="1"
+                #_selectCurrentPageTransaction (change)="changePerPageTransaction(_selectCurrentPageTransaction.value)">
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /detail content -->

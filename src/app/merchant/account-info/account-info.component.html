@@ -1,0 +1,177 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 padding-5">
+      <div class="card">
+        <div class="card-header">
+          <h5>Thông tin tài khoản</h5>
+          <div class="card-actions">
+            <a class="btn-minimize" *ngIf="!_stateEditBasicInfo" tooltip="Sửa" href="javascript:;"
+               style="border-left:0px;" (click)="onClickEditBasicInfo($event)"><i class="fa fa-pencil-square-o"></i></a>
+            <a class="btn-minimize" *ngIf="_stateEditBasicInfo" tooltip="Cập nhật" href="javascript:;"
+               style="border-left:0px;" (click)="onClickSubmitEditBasicInfo($event)"><i
+              class="fa fa-check-circle-o"></i></a>
+            <a class="btn-minimize" *ngIf="_stateEditBasicInfo" tooltip="Bỏ qua" href="javascript:;"
+               style="border-left:0px;" (click)="onClickCancelEditBasicInfo($event)"><i
+              class="fa fa-times-circle-o"></i></a>
+          </div>
+        </div>
+        <div class="user-basic-info-block card-block"
+             [ngStyle]="{'height':_stateAmintionBasicInfo?'755px':'auto'}"
+             [class.animated-background]="_stateAmintionBasicInfo"
+             *ngIf="!!accountInfo && !_stateAmintionBasicInfo">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="username">Tên tài khoản</label>
+                <div class="col-md-9">
+                  <p *ngIf="!_stateEditBasicInfo" class="form-control-static">{{accountInfo.userName}}</p>
+                  <input *ngIf="_stateEditBasicInfo" [ngModel]="accountInfo?.userName" class="form-control"
+                         id="username" type="text" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="fullname">Họ và tên</label>
+                <div class="col-md-9">
+                  <p *ngIf="!_stateEditBasicInfo" class="form-control-static">{{accountInfo.fullName}}</p>
+                  <input *ngIf="_stateEditBasicInfo" [(ngModel)]="accountInfo.fullName" class="form-control"
+                         id="fullname" type="text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="email">Email</label>
+                <div class="col-md-9">
+                  <p *ngIf="!_stateEditBasicInfo" class="form-control-static">{{accountInfo.email}}</p>
+                  <input *ngIf="_stateEditBasicInfo" [(ngModel)]="accountInfo.email" class="form-control" id="email"
+                         type="text">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="phone">Số điện thoại</label>
+                <div class="col-md-9">
+                  <p *ngIf="!_stateEditBasicInfo" class="form-control-static">{{accountInfo.phoneNumber}}</p>
+                  <input *ngIf="_stateEditBasicInfo" [(ngModel)]="accountInfo.phoneNumber" class="form-control"
+                         id="phone" type="text">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h5>Mật khẩu</h5>
+          <div class="card-actions">
+            <a class="btn-minimize" *ngIf="_stateEditPassword" tooltip="Cập nhật" href="javascript:;"
+               style="border-left:0;" (click)="onClickSubmitEditPassword()"><i class="fa fa-check-circle-o"></i></a>
+            <a class="btn-minimize" *ngIf="_stateEditPassword" tooltip="Bỏ qua" href="javascript:;"
+               style="border-left:0;" (click)="onClickEditPassword($event)"><i class="fa fa-times-circle-o"></i></a>
+          </div>
+        </div>
+        <div class="user-basic-info-block card-block">
+          <div class="row" *ngIf="!!accountPassword && _stateEditPassword">
+            <div class="col-sm-12">
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="passwordold">Mật khẩu hiện tại</label>
+                <div class="col-md-9">
+                  <input [(ngModel)]="accountPassword.passwordOld" class="form-control" id="passwordold"
+                         type="password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="passwordnew">Mật khẩu mới</label>
+                <div class="col-md-9">
+                  <input [(ngModel)]="accountPassword.passwordNew" class="form-control" id="passwordnew"
+                         type="password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="re_passwordnew">Nhập lại mật khẩu mới</label>
+                <div class="col-md-9">
+                  <input [(ngModel)]="accountPassword.rePasswordNew" class="form-control" id="re_passwordnew"
+                         type="password">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="!_stateEditPassword">
+            <div class="col-sm-12">
+              <div class="form-group row">
+                <button class="btn btn-primary" style="width: 30%;margin-left: 30px;"
+                        (click)="onClickEditPassword($event)" type="button"><i
+                  class="fa fa-dot-circle-o"></i> Đổi mật khẩu
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 padding-5">
+      <div class="card">
+        <div class="card-header">
+          <h5>Ảnh đại diện</h5>
+          <div class="card-actions">
+            <a class="btn-minimize" *ngIf="!_stateEditAvatar" tooltip="Sửa" href="javascript:;"
+               style="border-left:0px;" (click)="onClickEditAvatar($event)"><i class="fa fa-pencil-square-o"></i></a>
+            <a class="btn-minimize" *ngIf="_stateEditAvatar" tooltip="Cập nhật" href="javascript:;"
+               style="border-left:0px;" (click)="onClickSubmitEditAvatar($event)"><i
+              class="fa fa-check-circle-o"></i></a>
+            <a class="btn-minimize" *ngIf="_stateEditAvatar" tooltip="Bỏ qua" href="javascript:;"
+               style="border-left:0px;" (click)="onClickCancelEditAvatar($event)"><i
+              class="fa fa-times-circle-o"></i></a>
+          </div>
+        </div>
+        <div class="card-block fadeIn">
+          <div class="form-group">
+            <div class="hidden-xs-down hidden-xs-up">
+              <input [attr.disable]="_stateEditAvatar"
+                     class="form-control input-sm" id="avatar" placeholder=""
+                     #fileUrlAvatar type="file" accept="image/jpg, image/jpeg, image/png"
+                     (change)="uploadAvatar()">
+            </div>
+            <div class="mt-element-overlay" [class.pointer]="_stateEditAvatar">
+              <div class="mt-overlay-3" (click)="clickUploadAvatar($event)" *ngIf="!!accountInfo">
+                <img width="300px" *ngIf="!!accountInfo.avatar" [src]="accountInfo?.avatar">
+                <img width="300px" *ngIf="!accountInfo.avatar" [src]="defaultAvatar">
+                <div class="mt-overlay" *ngIf="_stateEditAvatar">
+                  <h2>Thay đổi</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--div class="card-block fadeIn">
+          <img width="100px" *ngIf="!!accountInfo" [src]="accountInfo?.avatar"/>
+        </div-->
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h5>Cửa hàng</h5>
+        </div>
+        <div class="card-block fadeIn list-shop">
+          <ul class="icons-list">
+            <template ngFor let-shop [ngForOf]="shops" let-i="index">
+              <li *ngIf="i < numberSeeMoreShop || _stateSeeMore">
+                <div class="desc">
+                  <div class="title">{{shop.address}}</div>
+                </div>
+              </li>
+            </template>
+          </ul>
+          <template *ngIf="!!shops && shops.length >= numberSeeMoreShop">
+            <a href="javascript:;" *ngIf="!_stateSeeMore" class="float-right see-more" (click)="seeMoreShops(true)">
+              Xem thêm
+            </a>
+            <a href="javascript:;" *ngIf="_stateSeeMore" class="float-right see-more" (click)="seeMoreShops(false)">
+              Thu gọn
+            </a>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
