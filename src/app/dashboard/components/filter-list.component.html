@@ -7,7 +7,7 @@
             <div class="col-sm-12">
                 <div class="form-inline">
                     <div class="col-md-3 mb-1" *ngFor="let filter of data.filters; let idx = index">
-                        <input type="radio" id="{{data.name + '-radio-' + idx}}" [name]="data.name" value="filter.id" [attr.checked]="idx === 0 ? '': null ">
+                        <input type="radio" id="{{data.name + '-radio-' + idx}}" [name]="data.name" [value]="filter.id" [attr.checked]="idx === 0 ? '': null ">
                         <label for="{{data.name + '-radio-' + idx}}" class="d-inline">{{filter.name}}</label>
                     </div>
                 </div>

@@ -11,4 +11,6 @@ export class FilterListComponent {
   public data: any;
   constructor() {
   }
+  ngOnInit() {
+  }
 }

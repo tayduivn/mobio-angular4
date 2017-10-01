@@ -2,7 +2,8 @@ import {Component, Input} from '@angular/core';
 
 @Component({
   templateUrl: 'rating.component.html',
-  selector: 'mo-rating'
+  selector: 'mo-rating',
+  inputs: ['data']
 })
 
 export class RatingComponent {
@@ -13,5 +14,7 @@ export class RatingComponent {
 
   constructor() {
   }
+  ngOnInit () {
 
+  }
 }

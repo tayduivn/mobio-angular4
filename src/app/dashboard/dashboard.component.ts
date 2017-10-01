@@ -440,7 +440,12 @@ export class DashboardComponent implements OnInit {
   private minRateShops: Array<object>;
   private topChanged: object = TopModel;
   private topView: object = TopModel;
-  private merchanRating: object = {} ;
+  //rating
+  public sum:number = 0;
+  public rates:Array<any> = []
+  public rate;
+  public merchanRating:Array<any> = [];
+  
 
 
   getCurrentPointStatus() {
@@ -811,15 +816,44 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
-  public sum:number = 0;
+
   getMerchantRating() {
     this._dashboardService.getMerchantRating().subscribe(data => {
-      console.log(data.data.ratings);
       let listData = data.data.ratings.values;
-      for( var i=0; i <listData.length; i++){
+      for( let i=0; i <listData.length; i++){
         this.sum = listData[i]["value"] + this.sum;
       }
-      console.log(this.sum);
+      for( let i=0; i<listData.length;i++){
+        this.rate = listData[i]["value"]; 
+        this.rates.push(Math.round(this.rate/this.sum*100));
+      }
+      this.merchanRating = [
+        {
+          number:5,
+          percent:100-this.rates[3]-this.rates[2]-this.rates[1]-this.rates[0],
+          color:"#3CBA54"
+        },
+        {
+          number:4,
+          percent:this.rates[3],
+          color:"#7CBC00" 
+        },
+        {
+          number:3,
+          percent:this.rates[2],
+          color:"#EEFF71" 
+        },
+           {
+          number:2,
+          percent:this.rates[1],
+          color:"#FFC74A" 
+        },
+           {
+          number:1,
+          percent:this.rates[0],
+          color:"#FF003D" 
+        }
+      ]
     })
   }
 
